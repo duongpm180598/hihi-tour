@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+# Cho phép Google quét toàn bộ thư mục assets để lấy Logo, CSS, JS
+Allow: /wp-content/themes/hihi-theme/assets/
+Allow: /wp-content/uploads/
+
+# Đường dẫn đến Sitemap
+Sitemap: https://hihitour.com/sitemap_index.xml

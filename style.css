@@ -1,0 +1,27 @@
+/*
+  Theme name: Hihi
+  Author: DuongPM
+  Version: 1.0.0
+*/
+
+@font-face {
+    font-family: 'lightGallery';
+    src: url('/assets/fonts/lg.ttf'), url('/assets/fonts/lg.woff'), url('/assets/fonts/lg.woff2');
+}
+
+body {
+    color: #101f23;
+    font-family: 'Inter', sans-serif;
+}
+
+.font-phudu {
+    font-family: 'Phudu', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.font-delta-gothic {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

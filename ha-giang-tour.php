@@ -11,7 +11,6 @@ $current_lang = pll_current_language('slug');
 $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
-// thao update
 
 // Danh sách các ảnh.
 $images = [

@@ -308,53 +308,12 @@ $destinations = [
         </p>
 
         <div id="dest-grid" class="grid grid-cols-3 gap-3 md:gap-4">
-            <?php foreach ($destinations as $d):
-                $label      = $current_lang === 'en' ? $d['en'] : $d['vi'];
-                $has_page   = !empty($d['slug']);
-                $url        = $has_page ? esc_url(get_translated_permalink_by_slug($d['slug'])) : null;
-                $kw         = $current_lang === 'en' ? $d['kw_en'] : $d['kw_vi'];
-                $search_str = esc_attr(strtolower($d['en'] . ' ' . $d['vi'] . ' ' . $kw));
-                $geo_cls    = 'dg-' . $d['geo'];
-                $topo_cls   = implode(' ', array_map(fn($t) => 'dt-' . $t, $d['topo']));
-                $type_cls   = implode(' ', array_map(fn($t) => 'dtr-' . $t, $d['types']));
-                $tag        = $has_page ? 'a' : 'div';
-                $href_attr  = $has_page ? 'href="' . $url . '"' : '';
+            <?php
+            $card_template = get_template_directory() . '/components/card.php';
+            foreach ($destinations as $d) {
+                include $card_template;
+            }
             ?>
-            <<?php echo $tag; ?>
-                <?php echo $href_attr; ?>
-                class="dest-card group overflow-hidden transition-all duration-200 <?php echo $geo_cls . ' ' . $topo_cls . ' ' . $type_cls; ?> <?php echo $has_page ? 'cursor-pointer' : 'cursor-default'; ?>"
-                style="background:#000; border-radius:4px; position:relative;"
-                data-search="<?php echo $search_str; ?>"
-            >
-                <!-- Image — fills card, slight zoom on hover -->
-                <div class="aspect-[4/5] overflow-hidden" style="background:#1a1a1a;">
-                    <?php if ($d['img']): ?>
-                        <img
-                            src="<?php echo esc_url($d['img']); ?>"
-                            alt="<?php echo esc_attr($label); ?>"
-                            loading="lazy"
-                            class="w-full h-full object-cover transition-transform duration-500 <?php echo $has_page ? 'group-hover:scale-105' : ''; ?>"
-                        />
-                    <?php else: ?>
-                        <div class="w-full h-full" style="background:#2a2a2a;"></div>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Overlay: name + icons sit on top of the image, bottom of card -->
-                <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 10px 8px; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%); display:flex; align-items:flex-end; justify-content:space-between; gap:6px;">
-                    <span style="font-size:clamp(13px, 1.5vw, 20px); font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                        <?php echo esc_html($label); ?>
-                    </span>
-                    <div style="display:flex; align-items:center; gap:3px; flex-shrink:0;">
-                        <?php foreach ($d['topo'] as $t):
-                            if ($t === 'sea')      echo $svg_topo_sea;
-                            if ($t === 'mountain') echo $svg_topo_mountain;
-                            if ($t === 'city')     echo $svg_topo_city;
-                        endforeach; ?>
-                    </div>
-                </div>
-            </<?php echo $tag; ?>>
-            <?php endforeach; ?>
         </div>
 
     </div>
@@ -438,17 +397,28 @@ $destinations = [
         destApplyFilters();
     };
 
+    /* strip diacritics: "Hà Giang" → "ha giang" */
+    function normalize(str) {
+        return str
+            .normalize('NFD')                        // decompose: à → a + ̀
+            .replace(/[\u0300-\u036f]/g, '')         // strip combining marks
+            .replace(/đ/g, 'd').replace(/Đ/g, 'd')  // Vietnamese Đ not covered by NFD
+            .toLowerCase()
+            .trim();
+    }
+
     window.destApplyFilters = function () {
-        var query   = (document.getElementById('dest-search').value || '').toLowerCase().trim();
+        var raw     = document.getElementById('dest-search').value || '';
+        var query   = normalize(raw);
         var cards   = document.querySelectorAll('.dest-card');
         var visible = 0;
 
         /* show/hide clear button */
         var clearBtn = document.getElementById('dest-clear');
-        if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+        if (clearBtn) clearBtn.style.display = raw.trim() ? 'block' : 'none';
 
         cards.forEach(function (card) {
-            var sd     = (card.dataset.search || '').toLowerCase();
+            var sd     = normalize(card.dataset.search || '');
             var textOk = !query || sd.indexOf(query) !== -1;
             var geoOk  = !activeGeo  || card.classList.contains('dg-' + activeGeo);
             var topoOk = !activeTopo || card.classList.contains('dt-' + activeTopo);

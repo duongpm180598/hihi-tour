@@ -473,7 +473,7 @@ $activeId = $tableOfContents[0]['id'];
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
-                        <span style="font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#1D292C;">
+                        <span style="font-size:30px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#1D292C;">
                             <?php echo $current_lang === 'en' ? 'Ha Giang Gallery' : 'Ảnh Hà Giang'; ?>
                         </span>
                         <!-- right diamond -->
@@ -534,125 +534,222 @@ $activeId = $tableOfContents[0]['id'];
         </div>
     </section>
 
-    <!-- Accommodation -->
+    <!-- Transportation -->
     <div class="pt-16" id="transportation">
         <section class="mb-8 md:mb-16" data-aos="fade-up" data-aos-duration="1000">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
-                <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-                    <div class="relative">
-                        <h2 class="text-3xl font-bold mb-4 ">
-                            <?php echo $current_lang === 'en' ? "How you get to Ha Giang city center" : "Di chuyển tới Hà Giang" ?>
-                        </h2>
-                        <p>
-                            <?php echo $current_lang === 'en' ? "It takes around 7 - 8 hours to travel from Ha Noi to Ha Giang city center by car, so typically people choose night sleep bus and arrive by next morning." : "Thường sẽ mất khoảng 6 tiếng để đi từ Hà Nội (BX Mỹ Đình) tới thành phố Hà Giang. Do vậy, du khách thường chọn đi xe giường nằm buổi đêm, đến nơi vào sáng sớm hôm sau, nghỉ lại tại dorm trước khi lên đường." ?>
-                        </p>
-                        <?php echo $current_lang === 'en' ? "Our tour provides round-trip bus ticket. You will travel on <strong>VIP sleep bus</strong>, we assure everyone get separate bed on the bus (absolutely no sharing with stranger!)." : "Tour của Hi Hi đã bao gồm vé xe khứ hồi Hà Nội - Hà Giang. Bạn sẽ đi xe cabin VIP, mỗi người có một giường riêng." ?>
-                        <p>
-                            <?php echo $current_lang === 'en' ? "When you arrive in Ha Giang, our staff will guide you to your dorm to rest until morning. Note that child under 12 must accompany by adult on the bus." : "Khi tới Hà Giang, chúng tôi sẽ đón bạn về phòng nghỉ ngơi tới sáng trước khi lên đường. Nếu có trẻ nhỏ dưới 12 tuổi, trẻ sẽ nằm cùng bạn trên xe giường nằm." ?>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-                        </p>
-                    </div>
-
-                    <div class="overflow-hidden group">
-                        <img
-                            src="<?php echo get_template_directory_uri() . '/assets/images/ha-giang/vip-bus.jpg' ?>"
-                            alt="vip bus"
-                            class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
-                        <p class="text-center text-[#74797A] text-sm my-2">
-                            <?php echo $current_lang === 'en' ? "The image is for illustrative purpose only" : "Ảnh mang tính chất minh họa" ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-8 md:mb-16" data-aos="fade-up" data-aos-duration="1000">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
-                <h2 class="text-3xl font-bold mb-4 ">
-                    <?php echo $current_lang === 'en' ? "How you will travel around Ha Giang" : "Di chuyển ở Hà Giang" ?>
+                <!-- Section heading -->
+                <h2 class="text-center font-black tracking-widest uppercase text-sm mb-8" style="color:#1D292C; letter-spacing:.2em;">
+                    <?php echo $current_lang === 'en' ? 'TRANSPORTATION HEY HEY' : 'PHƯƠNG TIỆN DI CHUYỂN'; ?>
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card 1: bike -->
-                    <div class="rounded-lg overflow-hidden group">
-                        <img
-                            src="<?php echo get_template_directory_uri() . '/assets/images/ha-giang/transportation-1.png' ?>"
-                            alt=""
-                            class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
-                        <div class="p-3">
-                            <h3 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "On a motorbike" : "Bằng xe máy" ?></h3>
-                            <div class="flex gap-2 my-3 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
-                                <img width="24" height="24" src="<?php echo esc_url($icons['bike']); ?>" alt="Bike" />
-                                <span class="text-fg-brand-strong text-xs font-medium">
-                                    <?php echo $current_lang === 'en' ? "Unique experience" : "Trải nghiệm nên có" ?>
-                                </span>
-                            </div>
-                            <p class="text-sm">
-                                <?php echo $current_lang === 'en' ? "Most popular choice when you come to Ha Giang! Enjoy the
-                            mountain scenery around you is definitely one of the most
-                            special thing of Ha Giang Loop." : "Lựa chọn phổ biến nhất khi tới Hà Giang! Ngồi trên xe máy, bạn có thể tận hưởng trọn vẹn không khí và cảnh vật xung quanh. " ?>
-                            </p>
-                            <p class="text-sm">
-                                <?php echo $current_lang === 'en' ? "Hire easy drivers for easy trip, or you can choose to drive
-                            yourself if you have a valid license. Experience Ha Giang to
-                            the fullest!" : "Bạn có thể thuê người lái cho chuyến đi nhàn hạ, hoặc tự lái nếu muốn." ?>
 
-                            </p>
-                        </div>
-                    </div>
+                <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
+                <div class="flex items-center justify-center gap-12 mb-8">
 
-                    <!-- Card 2: luxury car -->
-                    <div class="overflow-hidden group">
-                        <img
-                            src="<?php echo get_template_directory_uri() . '/assets/images/ha-giang/transportation-2.png' ?>"
-                            alt="Hotel Ha Giang"
-                            class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
-                        <div class="p-3">
-                            <h3 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Luxury limousine" : "Bằng xe ô tô" ?></h3>
-                            <div class="flex gap-3 my-3">
-                                <div class="flex gap-2 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['family']); ?>" alt="Family" />
-                                    <span class="text-fg-brand-strong text-xs font-medium ">
-                                        <?php echo $current_lang === 'en' ? "Family friendly" : "Phù hợp gia đình" ?>
-                                    </span>
-                                </div>
-                                <div class="flex gap-2 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['group']); ?>" alt="Group" />
-                                    <span class="text-fg-brand-strong text-xs font-medium">
-                                        <?php echo $current_lang === 'en' ? "Large group" : "Nhóm đông người" ?>
-                                    </span>
-                                </div>
+                    <!-- Active tab: Sleep bus — purple blob shape -->
+                    <button
+                        id="tab-bus"
+                        onclick="transTab('bus')"
+                        class="trans-tab relative flex items-center justify-center font-bold text-white text-sm"
+                        style="width:160px; height:72px;"
+                        aria-pressed="true"
+                    >
+                        <!-- Purple blob SVG background -->
+                        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
+                            <path fill="#7B63F7" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
+                        </svg>
+                        <span class="relative z-10"><?php echo $current_lang === 'en' ? 'Sleep bus' : 'Xe giường nằm'; ?></span>
+                    </button>
 
-                            </div>
-                            <p class="text-sm">
-                                <?php echo $current_lang === 'en' ? "Most chosen by family or large group! <br /> We provide a range of
-                            options: vehicles with 9, 16, or 29 seats to fit your needs.
-                            Feel free to select a car option whenever you like." : "Thường được chọn cho gia đình hoặc nhóm đông người!<br />Chúng tôi có xe 9 - 16 - 29 chỗ tùy vào nhu cầu của bạn." ?>
-
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Card 3: ... -->
-                    <div class="overflow-hidden group">
-                        <img
-                            src="<?php echo get_template_directory_uri() . '/assets/images/ha-giang/combine-travel.png' ?>"
-                            alt="Combine travel"
-                            class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
-                        <div class="p-3">
-                            <h3 class="text-xl font-bold mb-2">
-                                <?php echo $current_lang === 'en' ? "Or maybe a combination of both" : "Hoặc là cả 2" ?>
-                            </h3>
-                            <div class="flex gap-2 my-3 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
-                                <span class="text-fg-brand-strong text-xs font-medium">
-                                    <?php echo $current_lang === 'en' ? "Flexible" : "Linh hoạt" ?>
-                                </span>
-                            </div>
-                            <p class="text-sm">
-                                <?php echo $current_lang === 'en' ? "Some of you prefer traveling by car, while others enjoy
-                            biking? No worries! We can accommodate both preferences." : "Một số người thích đi ô tô, một số khác lại muốn đi xe máy? Chúng tôi hoàn toàn có thể đáp ứng." ?>
-                            </p>
-                        </div>
-                    </div>
+                    <!-- Inactive tab: Bikes — hidden -->
+                    <!-- Inactive tab: Bicycle — hidden -->
                 </div>
+
+                <!-- ── BUS TAB CONTENT ── -->
+                <div id="trans-content-bus">
+
+                    <!-- Intro text -->
+                    <p class="text-center text-sm max-w-xl mx-auto mb-10" style="color:#1D292C;">
+                        <?php echo $current_lang === 'en'
+                            ? 'Typically, you can ask your hotel to book for you. You can also check availability and price at <strong>Vexere.com</strong> — a transport ticket booking platform in Vietnam, handy and reliable. They might have chat so contact for you to call directly.'
+                            : 'Bạn có thể nhờ khách sạn đặt giúp. Hoặc kiểm tra giá và đặt vé trực tiếp tại <strong>Vexere.com</strong> — nền tảng đặt vé xe uy tín tại Việt Nam.'; ?>
+                    </p>
+
+                    <!-- 3-column bus type cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+                        <?php
+                        // Seat icon SVGs
+                        // 2-seat row (VIP): 2 seats side by side with gap
+                        $seat_svg = '<svg viewBox="0 0 28 32" width="18" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="18" rx="5" fill="#3D4F52"/><rect x="2" y="24" width="14" height="4" rx="2" fill="#3D4F52"/></svg>';
+
+                        $bus_types = [
+                            [
+                                'label_en'  => 'VIIIIIIIIIP',
+                                'label_vi'  => 'VIIIIIIIIIP',
+                                'badge_en'  => 'VIP Cabin',
+                                'badge_vi'  => 'VIP Cabin',
+                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/bus-vip.jpg',
+                                'desc_en'   => 'If you already experience other kind, this is definitely the VIP of the VIP bus. Each cabin is for 1–2 people (you choose when book) and has curtain for privacy.<br>Typically only departure from Ha Noi.',
+                                'desc_vi'   => 'Đây là loại VIP nhất trong các loại xe VIP. Mỗi cabin dành cho 1–2 người (bạn chọn khi đặt) và có rèm riêng tư.<br>Thường chỉ xuất phát từ Hà Nội.',
+                                'rows_en'   => '2 rows and 2 floors',
+                                'rows_vi'   => '2 hàng và 2 tầng',
+                                'price_en'  => '$15 for one way ticket',
+                                'price_vi'  => '~350.000đ một chiều',
+                                'seats'     => 2,
+                            ],
+                            [
+                                'label_en'  => 'So so',
+                                'label_vi'  => 'Tạm được',
+                                'badge_en'  => 'Not very VIP',
+                                'badge_vi'  => 'Không VIP lắm',
+                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/bus-not-vip.jpg',
+                                'desc_en'   => 'More rows, which takes up to 60–80 centimeters each, small but manageable. Also has curtain.<br>Sometimes they overbook (especially during Vietnam holiday). Therefore, for solo female travelers, I recommend booking second floor\'s seats. You don\'t want a stranger lying right next to you in the middle of the night.',
+                                'desc_vi'   => 'Nhiều hàng hơn, mỗi chỗ khoảng 60–80cm, nhỏ nhưng chấp nhận được. Cũng có rèm.<br>Đôi khi họ bán quá vé (nhất là dịp lễ). Nếu đi một mình, nên đặt tầng 2 để tránh người lạ nằm cạnh.',
+                                'rows_en'   => '3 rows and 2 floors',
+                                'rows_vi'   => '3 hàng và 2 tầng',
+                                'price_en'  => '$10 for one way ticket',
+                                'price_vi'  => '~230.000đ một chiều',
+                                'seats'     => 3,
+                            ],
+                            [
+                                'label_en'  => 'Absolute chaos',
+                                'label_vi'  => 'Hỗn loạn tuyệt đối',
+                                'badge_en'  => 'Economy',
+                                'badge_vi'  => 'Phổ thông',
+                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/bus-economy.jpg',
+                                'desc_en'   => 'Don\'t expect anything for this kind. Just cheap. It is very common outside big cities; departures vary anywhere.<br>Of course no privacy. If you are a foreigner, you might receive extra attention (in a good way).<br>Time is not a thing with this kind. Good point is, there will be no limit here, you can even bring a motorcycle along.',
+                                'desc_vi'   => 'Đừng kỳ vọng gì. Chỉ là rẻ. Rất phổ biến ngoài các thành phố lớn, xuất phát ở khắp nơi.<br>Không có sự riêng tư. Nếu là người nước ngoài, bạn có thể nhận được sự chú ý đặc biệt (theo nghĩa tốt).<br>Không có giờ giấc cố định. Điểm hay là không giới hạn, thậm chí có thể mang theo xe máy.',
+                                'rows_en'   => '3 rows and 2 floors',
+                                'rows_vi'   => '3 hàng và 2 tầng',
+                                'price_en'  => '$5–10 for one way ticket',
+                                'price_vi'  => '~120.000–230.000đ một chiều',
+                                'seats'     => 3,
+                            ],
+                        ];
+
+                        // Yellow blob SVG (for image badge)
+                        $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
+
+                        foreach ($bus_types as $bt):
+                        ?>
+                        <div>
+                            <!-- Image with blob badge -->
+                            <div style="position:relative; margin-bottom:8px;">
+                                <img
+                                    src="<?php echo esc_url($bt['img']); ?>"
+                                    alt="<?php echo esc_attr($bt['badge_en']); ?>"
+                                    class="w-full object-cover rounded-lg"
+                                    style="height:220px; object-fit:cover;"
+                                />
+                                <!-- Yellow blob badge top-right -->
+                                <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
+                                    <?php echo $blob_yellow; ?>
+                                    <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
+                                        <?php echo $current_lang === 'en' ? $bt['badge_en'] : $bt['badge_vi']; ?>
+                                    </span>
+                                </div>
+                                <p class="text-center text-xs mt-1" style="color:#74797A;">
+                                    <?php echo $current_lang === 'en' ? 'The image is for illustrative purpose only' : 'Ảnh mang tính chất minh họa'; ?>
+                                </p>
+                            </div>
+
+                            <!-- Card label -->
+                            <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
+                                <?php echo $current_lang === 'en' ? $bt['label_en'] : $bt['label_vi']; ?>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-sm mb-4" style="color:#1D292C; line-height:1.7;">
+                                <?php echo $current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']; ?>
+                            </p>
+
+                            <!-- Seat rows indicator -->
+                            <div class="flex items-center gap-2 mb-2">
+                                <!-- Seat icons: render $bt['seats'] pairs per floor, 2 floors -->
+                                <div style="display:flex; flex-direction:column; gap:2px;">
+                                    <?php for ($floor = 0; $floor < 2; $floor++): ?>
+                                    <div style="display:flex; gap:3px; <?php echo $floor === 0 ? 'border-bottom:1px solid #555;' : ''; ?>">
+                                        <?php for ($s = 0; $s < $bt['seats']; $s++): ?>
+                                        <svg viewBox="0 0 20 24" width="14" height="18" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="1" y="1" width="12" height="14" rx="4" fill="#3D4F52"/>
+                                            <rect x="1" y="18" width="12" height="3" rx="1.5" fill="#3D4F52"/>
+                                        </svg>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <?php endfor; ?>
+                                </div>
+                                <span class="text-xs" style="color:#1D292C;">
+                                    <?php echo $current_lang === 'en' ? $bt['rows_en'] : $bt['rows_vi']; ?>
+                                </span>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="flex items-center gap-2">
+                                <!-- Dollar bubble icon -->
+                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
+                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
+                                </svg>
+                                <span class="text-xs" style="color:#1D292C;">
+                                    <?php echo $current_lang === 'en' ? $bt['price_en'] : $bt['price_vi']; ?>
+                                </span>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- See article link -->
+                    <p class="text-center mb-10">
+                        <a href="#" class="text-sm font-semibold underline" style="color:#7B63F7;">
+                            <?php echo $current_lang === 'en' ? 'See an article I wrote about sleep bus' : 'Xem bài viết về xe giường nằm'; ?>
+                        </a>
+                    </p>
+
+                    <!-- How to book box -->
+                    <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
+                        <div class="flex-1">
+                            <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
+                                <?php echo $current_lang === 'en' ? 'How to book?' : 'Đặt vé như thế nào?'; ?>
+                            </h4>
+                            <p class="text-sm" style="color:#1D292C; line-height:1.7;">
+                                <?php echo $current_lang === 'en'
+                                    ? 'Typically, you can ask your hotel to book for you. You can also check availability and price at <strong>Vexere.com</strong> — a transport ticket booking platform in Vietnam. Book on the site or contact the bus company directly.'
+                                    : 'Bạn có thể nhờ khách sạn đặt giúp. Hoặc kiểm tra và đặt vé tại <strong>Vexere.com</strong> — nền tảng đặt vé xe tại Việt Nam. Đặt trên web hoặc liên hệ trực tiếp hãng xe.'; ?>
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 flex-shrink-0">
+                            <!-- Vexere.com blob button -->
+                            <a href="https://vexere.com" target="_blank" rel="noopener" style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:120px; height:48px; text-decoration:none;">
+                                <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+                                    <path fill="#E7F15A" d="M60,4 C76,4 96,8 106,18 C116,28 116,36 108,42 C100,48 80,48 60,48 C40,48 20,48 12,42 C4,36 4,28 14,18 C24,8 44,4 60,4 Z"/>
+                                </svg>
+                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">Vexere.com</span>
+                            </a>
+                            <!-- teehee blob button -->
+                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:100px; height:48px;">
+                                <svg viewBox="0 0 100 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+                                    <path fill="#E7F15A" d="M50,4 C64,4 82,8 90,18 C98,28 96,36 88,42 C80,48 64,48 50,48 C36,48 20,48 12,42 C4,36 4,28 10,18 C18,8 36,4 50,4 Z"/>
+                                </svg>
+                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">teehee</span>
+                            </span>
+                            <!-- Not an ads blob -->
+                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:110px; height:48px;">
+                                <svg viewBox="0 0 110 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+                                    <path fill="#E7F15A" d="M55,4 C70,4 90,8 100,18 C110,28 108,36 100,42 C92,48 72,48 55,48 C38,48 18,48 10,42 C2,36 2,28 10,18 C20,8 40,4 55,4 Z"/>
+                                </svg>
+                                <span style="position:relative; z-index:1; font-size:11px; font-weight:700; color:#1D292C;">Not an ads</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div><!-- /trans-content-bus -->
+
+                <!-- Bike & Bicycle tabs hidden (no content yet) -->
+                <div id="trans-content-bike" style="display:none;"></div>
+                <div id="trans-content-bicycle" style="display:none;"></div>
+
             </div>
         </section>
 
@@ -686,91 +783,119 @@ $activeId = $tableOfContents[0]['id'];
     <!-- Weather -->
     <section class="py-16 h-full" style="background:#F9FBDF;" id="weather">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-4"><?php echo $current_lang === 'en' ? "Weather in Ha Giang" : "Thời tiết ở Hà Giang" ?></h2>
 
-            <!-- <div class="flex gap-3 mb-4">
-                <img src="<?php echo esc_url($theme_uri . '/assets/icons/clock.svg'); ?>" alt="clock" />
-                07:00 14 Nov 2025
-            </div> -->
+            <h2 class="text-center font-black tracking-widest uppercase text-sm mb-2" style="letter-spacing:.15em; color:#1D292C;">
+                <?php echo $current_lang === 'en' ? 'WHEN IS THE BEST TO VISIT HA GIANG?' : 'NÊN ĐI HÀ GIANG MÙA NÀO?'; ?>
+            </h2>
 
+            <!-- Live weather strip -->
             <div
                 id="weather-data-root"
                 data-icon-root="<?php echo esc_url($icon_root_path); ?>"
-                class="grid grid-cols-1 md:grid-cols-3 divide-x-0 md:divide-x divide-[#8A8E8F] border-b border-[#8A8E8F] py-4">
-                <?php $index = 0;
-                foreach ($locations as $id => $location) : ?>
-                    <?php
-                    $border_class = ($index < count($locations) - 1) ? 'md:border-r border-[#8A8E8F] pr-4 md:pr-0' : 'pr-4 md:pr-0';
-                    $index++;
-                    ?>
-
-                    <div
-                        class="px-4 py-2"
-                        data-city="<?php echo esc_attr($location['api_query']); ?>"
-                        id="weather-card-<?php echo esc_attr($id); ?>">
-                        <h3 class="text-base font-bold mb-3"><?php echo esc_html($location['display']); ?></h3>
-                        <div class="flex items-center gap-8">
-                            <div class="flex flex-col">
-                                <img
-                                    id="icon-<?php echo esc_attr($id); ?>"
-                                    width="48"
-                                    height="48"
-                                    src="<?php echo esc_url($icon_root_path); ?>loading.svg"
-                                    alt="Loading..." />
-                                <span class="mt-3" id="condition-<?php echo esc_attr($id); ?>">Đang tải...</span>
-                            </div>
-                            <p id="temp-<?php echo esc_attr($id); ?>" class="text-5xl font-bold my-2">--°C</p>
-                        </div>
+                class="flex flex-wrap justify-center gap-8 py-6 mb-6 border-b border-[#8A8E8F]">
+                <?php foreach ($locations as $id => $location): ?>
+                <div class="text-center" data-city="<?php echo esc_attr($location['api_query']); ?>" id="weather-card-<?php echo esc_attr($id); ?>">
+                    <p class="text-sm font-semibold mb-2"><?php echo esc_html($location['display']); ?></p>
+                    <div class="flex items-center justify-center gap-3">
+                        <img id="icon-<?php echo esc_attr($id); ?>" width="40" height="40" src="<?php echo esc_url($icon_root_path); ?>loading.svg" alt="Loading..." />
+                        <p id="temp-<?php echo esc_attr($id); ?>" class="text-4xl font-bold">--°C</p>
                     </div>
+                    <span class="text-xs text-gray-500 mt-1 block" id="condition-<?php echo esc_attr($id); ?>">...</span>
+                </div>
                 <?php endforeach; ?>
             </div>
 
-            <div class="py-3" data-aos="fade-up" data-aos-duration="1000">
-                <h5 class="mb-3">
-                    <?php echo $current_lang === 'en' ? "When is the best to visit Ha Giang?" : "Nên đi Hà Giang mùa nào?" ?>
-                </h5>
+            <!-- Season cards — horizontal scroll with right arrow button -->
+            <?php
+            $seasons = [
+                [
+                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
+                    'title_en'=> 'Spring (February – Early April)',
+                    'title_vi'=> 'Xuân (Tháng 2 – Đầu tháng 4)',
+                    'desc_en' => 'Flowers season. You can easily bắt gặp blooming flowers along the road. Sometimes foggy and light rain. You should bring along light jackets as it can be cold at night.',
+                    'desc_vi' => 'Mùa hoa. Dọc đường dễ bắt gặp hoa nở rực rỡ. Đôi khi có sương mù và mưa nhẹ. Nên mang áo khoác nhẹ vì đêm có thể lạnh.',
+                ],
+                [
+                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
+                    'title_en'=> 'Summer',
+                    'title_vi'=> 'Hè',
+                    'desc_en' => 'Flowers season. You can easily bắt gặp blooming flowers along the road. Sometimes foggy and light rain. You should bring along light jackets as it can be cold at night.',
+                    'desc_vi' => 'Xanh mướt và tươi tốt. Nắng nhiều, đôi khi có mưa rào bất chợt. Mang kem chống nắng và áo mưa nhỏ.',
+                ],
+                [
+                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
+                    'title_en'=> 'August – September',
+                    'title_vi'=> 'Tháng 8 – Tháng 9',
+                    'desc_en' => 'Flowers season. You can easily bắt gặp blooming flowers along the road. Sometimes foggy and light rain. You should bring along light jackets as it can be cold at night.',
+                    'desc_vi' => 'Mùa lúa chín vàng. Cảnh đẹp nhất năm nhưng cần theo dõi thời tiết vì dễ có mưa lớn gây sạt lở.',
+                ],
+                [
+                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
+                    'title_en'=> 'Autumn',
+                    'title_vi'=> 'Thu',
+                    'desc_en' => 'Flowers season. You can easily bắt gặp blooming flowers along the road. Sometimes foggy and light rain. You should bring along light jackets as it can be cold at night.',
+                    'desc_vi' => 'Thời điểm lý tưởng nhất. Nắng đẹp, ít mưa. Hoa tam giác mạch nở rộ. Sáng sớm có thể săn biển mây.',
+                ],
+                [
+                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
+                    'title_en'=> 'Winter',
+                    'title_vi'=> 'Đông',
+                    'desc_en' => 'Flowers season. You can easily bắt gặp blooming flowers along the road. Sometimes foggy and light rain. You should bring along light jackets as it can be cold at night.',
+                    'desc_vi' => 'Lạnh, đôi khi có băng giá ở vùng cao. Mang đồ giữ nhiệt. Cuối tháng 12 có hoa cải vàng, tháng 1 có hoa mai anh đào.',
+                ],
+            ];
+            ?>
 
-                <p class="mb-3">
-                    <?php echo $current_lang === 'en' ? "Ha Giang has 4 distinct seasons in a year that welcomes guests at any time, as each season here carries a distinct beauty, promising unique experiences." : "Hà Giang có 4 mùa rõ rệt, mùa nào cũng có cái hay để bạn tới tham quan." ?>
-                </p>
+            <div class="relative">
+                <!-- Left scroll button -->
+                <button
+                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
+                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    aria-label="Scroll left"
+                >
+                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
 
-                <p class="mb-3">
-                    <strong><?php echo $current_lang === 'en' ? "Ha Giang in Spring (February – Early April)" : "Hà Giang vào mùa Xuân (Tháng 2 – Đầu tháng 4)" ?></strong>,
-                    <?php echo $current_lang === 'en' ? " when the rocky plateau awakens with vibrant colors: deep pink peach blossoms, and white plum and pear flowers blooming across the mountains. The weather during this time is cool, with light drizzles, and fog often blankets the mornings, creating an ethereal atmosphere. You should bring along light jackets as it can be cold at night." : " là lúc cao nguyên đá thức tỉnh với những sắc màu rực rỡ: sắc hồng thắm của hoa đào, sắc trắng tinh khôi của hoa mận, hoa lê nở rộ khắp các triền núi. Thời tiết lúc này mát mẻ, đôi khi có mưa xuân lưa thưa và sương mù bao phủ vào mỗi sáng sớm, tạo nên một không gian huyền ảo. Bạn nên mang theo áo khoác nhẹ vì đêm về trời vẫn còn se lạnh." ?>
-                </p>
-                <p class="mb-3">
-                    <?php echo $current_lang === 'en' ? "In contrast, " : "Ngược lại, " ?>
-                    <strong><?php echo $current_lang === 'en' ? "Summer (May – August)" : "Mùa Hè (Tháng 5 – Tháng 8)" ?></strong>
-                    <?php echo $current_lang === 'en' ? " is characterized by the lush green vitality of the foliage, with sunny days occasionally interrupted by sudden rain showers. Daytime temperatures can be high, but the evenings are pleasantly cool and breezy once the sun sets. Guests should prepare summer attire and use sun protection." : " Ngược lại với vẻ dịu dàng của mùa xuân, mùa hè là sự trỗi dậy mạnh mẽ của sức sống xanh mướt. Những ngày nắng vàng rực rỡ đôi khi được nối tiếp bởi những cơn mưa rào bất chợt. Nhiệt độ ban ngày có thể khá cao, nhưng ngay khi mặt trời lặn, không khí sẽ trở nên thoáng đãng và mát mẻ. Bạn nên chuẩn bị trang phục mùa hè và đừng quên bôi kem chống nắng nhé." ?>
-                </p>
-                <p class="mb-3">
-                    <?php echo $current_lang === 'en' ? "The transitional period, around late August to September, you should definitely need to check on weather regularly due to potential heavy rain, which might cause landslide. However, this is precisely the season of the magnificent rice harvest. The sight of entire hillsides of terraced fields simultaneously turning golden yellow creates a vibrant symphony across the vast mountains." : "Trong giai đoạn chuyển mùa, khoảng cuối tháng 8 đến tháng 9, bạn chắc chắn nên kiểm tra thời tiết thường xuyên do có khả năng mưa lớn, có thể gây sạt lở đất. Tuy nhiên, đây chính là mùa lúa chín tráng lệ. Khung cảnh cả sườn đồi ruộng bậc thang đồng loạt chuyển sang màu vàng óng ả tạo nên một bản giao hưởng sống động trên khắp núi rừng rộng lớn." ?>
-                </p>
-                <p class="mb-3">
-                    <strong><?php echo $current_lang === 'en' ? "The transitional period, around late August to September" : "Giai đoạn chuyển mùa (Cuối tháng 8 – Tháng 9)" ?></strong>
-                    <?php echo $current_lang === 'en' ? " you should definitely need to check on weather regularly due to potential heavy rain, which might cause landslide. However, this is precisely the season of the magnificent rice harvest. The sight of entire hillsides of terraced fields simultaneously turning golden yellow creates a vibrant symphony across the vast mountains." : " Bạn cần theo dõi dự báo thời tiết thường xuyên vì đây là thời điểm dễ có mưa lớn gây sạt lở. Tuy nhiên, đây lại chính là mùa vàng của những thửa ruộng bậc thang hùng vĩ. Cả một vùng đồi núi đồng loạt thay áo vàng óng, tạo nên một bản giao hưởng màu sắc rực rỡ giữa đại ngàn bao la." ?>
-                </p>
-                <p class="mb-3">
-                    <strong><?php echo $current_lang === 'en' ? "Late Autumn (Late September – End of November)" : "Hà Giang cuối Thu (Cuối tháng 9 – Cuối tháng 11)" ?></strong>
-                    <?php echo $current_lang === 'en' ? " is often considered the most ideal time. The weather is favorable, with little rain and beautiful sunshine. Notably, early mornings in the high valleys offer views of the sea of clouds rolling in. The highlands smell faintly of fresh hay, the Nho Que River dons its mythical jade-blue color, Buckwheat Flowers bloom in pink and white across the hillsides." : " Đây được coi là thời điểm lý tưởng nhất trong năm. Thời tiết vô cùng ủng hộ với nắng đẹp và ít mưa. Đặc biệt, bạn có thể săn được biển mây bồng bềnh tại các thung lũng cao vào sáng sớm. Cao nguyên đá lúc này phảng phất mùi rơm rạ mới, dòng sông Nho Quế khoác lên mình màu xanh ngọc bích huyền thoại, và hoa Tam Giác Mạch bắt đầu nở rộ sắc hồng trắng khắp các sườn đồi" ?>
-                </p>
-                <p>
-                    <?php echo $current_lang === 'en' ? "Finally, entering " : "Cuối cùng, bước vào " ?>
-                    <strong><?php echo $current_lang === 'en' ? "Winter (December – January)" : "Hà Giang mùa Đông (Tháng 12 – Tháng 1)" ?></strong>,
-                    <?php echo $current_lang === 'en' ? " Ha Giang quickly turns cold, with temperatures sometimes dropping below 10°C, even bringing frost and ice to the high mountain areas (thermal wear is essential). In the gloomy cold, the feeling of gathering around a village fire, savoring warm local dishes, provides a strange, comforting warmth. Late December also marks the season of charming Yellow Mustard Flowers, and January brings the Apricot Blossom season, though fleeting, it draws many visitors." : " Trời chuyển lạnh rất nhanh, nhiệt độ có lúc xuống dưới 0°, thậm chí xuất hiện băng giá ở các vùng núi cao (đồ giữ nhiệt là vật dụng không thể thiếu). Giữa cái lạnh giá, cảm giác được ngồi quây quần bên bếp lửa, nhấm nháp những món đặc sản ấm nóng sẽ mang lại sự ấm áp lạ kỳ. Cuối tháng 12 cũng là mùa hoa Cải Vàng duyên dáng, và tháng 1 đón mùa hoa mai anh đào rực rỡ tuy ngắn ngủi nhưng vẫn đủ sức níu chân biết bao lữ khách." ?>
-                </p>
-            </div>
+                <!-- Right scroll button -->
+                <button
+                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
+                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    aria-label="Scroll right"
+                >
+                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
-                <?php for ($i = 1; $i <= $image_grid_count; $i++) : ?>
-                    <div class="w-full overflow-hidden" data-aos="fade-up" data-aos-duration="<?php echo $i * 200 ?>">
-                        <img
-                            src="<?php echo esc_url($theme_uri . "/assets/images/ha-giang/weather-{$i}.png"); ?>"
-                            alt="Weather in Ha Giang <?php echo $i; ?>"
-                            class="w-full object-cover cursor-pointer" />
+                <!-- Scrollable row -->
+                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
+                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
+                    <?php foreach ($seasons as $s): ?>
+                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; background:#fff;">
+                        <!-- Image — 3:4 portrait ratio -->
+                        <div style="width:100%; padding-bottom:133%; position:relative; overflow:hidden;">
+                            <img
+                                src="<?php echo esc_url($s['img']); ?>"
+                                alt="<?php echo esc_attr($current_lang === 'en' ? $s['title_en'] : $s['title_vi']); ?>"
+                                style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;"
+                            />
+                        </div>
+                        <!-- Caption -->
+                        <div style="padding:14px 16px; background:#F9FBDF;">
+                            <p style="font-size:19px; font-weight:700; color:#7B63F7; margin:0 0 8px; line-height:1.3;">
+                                <?php echo $current_lang === 'en' ? $s['title_en'] : $s['title_vi']; ?>
+                            </p>
+                            <p style="font-size:15px; color:#1D292C; line-height:1.6; margin:0;">
+                                <?php echo $current_lang === 'en' ? $s['desc_en'] : $s['desc_vi']; ?>
+                            </p>
+                        </div>
                     </div>
-                <?php endfor; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -1231,6 +1356,36 @@ $activeId = $tableOfContents[0]['id'];
 
         fetchAllWeather();
     });
+</script>
+
+<script>
+function transTab(tab) {
+    ['bus','bike','bicycle'].forEach(function(t) {
+        var content = document.getElementById('trans-content-' + t);
+        if (content) content.style.display = (t === tab) ? '' : 'none';
+    });
+}
+
+// Mouse drag to scroll season cards
+(function() {
+    var el = document.getElementById('season-scroll');
+    if (!el) return;
+    var isDown = false, startX, scrollLeft;
+    el.addEventListener('mousedown', function(e) {
+        isDown = true;
+        el.classList.add('dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+    });
+    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
+    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
+    el.addEventListener('mousemove',  function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - el.offsetLeft;
+        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    });
+})();
 </script>
 
 <?php get_footer(); ?>

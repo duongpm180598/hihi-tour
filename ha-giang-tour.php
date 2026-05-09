@@ -11,6 +11,7 @@ $current_lang = pll_current_language('slug');
 $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
+// test duongpm
 
 // Danh sách các ảnh.
 $images = [
@@ -175,8 +176,7 @@ $activeId = $tableOfContents[0]['id'];
             <img
                 src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
                 alt="Ha Giang"
-                style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;"
-            />
+                style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
             <!-- subtle dark gradient at bottom so box text stays readable -->
             <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.45) 100%);"></div>
         </div>
@@ -198,7 +198,9 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- Safety -->
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                         </div>
                         <div>
                             <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Safety' : 'An toàn'; ?></p>
@@ -209,7 +211,10 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- Budget -->
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v2m0 8v2m-4-6h8M9 10h6"/></svg>
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v2m0 8v2m-4-6h8M9 10h6" />
+                            </svg>
                         </div>
                         <div>
                             <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Budget' : 'Chi phí'; ?></p>
@@ -220,7 +225,10 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- Accessible -->
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3" stroke-width="2"/></svg>
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                                <circle cx="12" cy="11" r="3" stroke-width="2" />
+                            </svg>
                         </div>
                         <div>
                             <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Accessible' : 'Dễ tiếp cận'; ?></p>
@@ -231,7 +239,10 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- Typical stay -->
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4M8 2v4M3 10h18" />
+                            </svg>
                         </div>
                         <div>
                             <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Typical stay' : 'Thời gian lý tưởng'; ?></p>
@@ -460,12 +471,16 @@ $activeId = $tableOfContents[0]['id'];
                 <div style="background:#E7F15A; border-radius:999px; padding:14px 36px; text-align:center; display:inline-block;">
                     <div class="flex items-center justify-center gap-3 mb-1">
                         <!-- left diamond -->
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7"><path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
+                            <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
+                        </svg>
                         <span style="font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#1D292C;">
                             <?php echo $current_lang === 'en' ? 'Ha Giang Gallery' : 'Ảnh Hà Giang'; ?>
                         </span>
                         <!-- right diamond -->
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7"><path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
+                            <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
+                        </svg>
                     </div>
                     <p style="font-size:12px; color:#1D292C; margin:0;">
                         <?php echo $current_lang === 'en' ? 'Photos I took. View and praise.' : 'Ảnh tôi chụp. Xem và khen đi.'; ?>
@@ -488,31 +503,31 @@ $activeId = $tableOfContents[0]['id'];
                     $is_last   = ($index === $visible_count - 1);
                 ?>
 
-                <?php if ($index === 0): ?>
-                <!-- Large left image — spans 2 rows -->
-                <div class="group cursor-pointer" style="grid-column:1; grid-row:1/3; overflow:hidden; position:relative;">
-                    <img src="<?php echo $image_url; ?>"
-                         alt="Ha Giang <?php echo $index+1; ?>"
-                         style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
-                         class="group-hover:scale-105" />
-                </div>
+                    <?php if ($index === 0): ?>
+                        <!-- Large left image — spans 2 rows -->
+                        <div class="group cursor-pointer" style="grid-column:1; grid-row:1/3; overflow:hidden; position:relative;">
+                            <img src="<?php echo $image_url; ?>"
+                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
+                                class="group-hover:scale-105" />
+                        </div>
 
-                <?php else: ?>
-                <!-- Smaller image -->
-                <div class="group cursor-pointer" style="overflow:hidden; position:relative; aspect-ratio:4/3;">
-                    <img src="<?php echo $image_url; ?>"
-                         alt="Ha Giang <?php echo $index+1; ?>"
-                         style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
-                         class="group-hover:scale-105" />
+                    <?php else: ?>
+                        <!-- Smaller image -->
+                        <div class="group cursor-pointer" style="overflow:hidden; position:relative; aspect-ratio:4/3;">
+                            <img src="<?php echo $image_url; ?>"
+                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
+                                class="group-hover:scale-105" />
 
-                    <?php if ($is_last && $remaining_count > 0): ?>
-                    <!-- +N overlay -->
-                    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center;">
-                        <span style="color:#fff; font-size:clamp(1.5rem,4vw,2.5rem); font-weight:800;">+<?php echo $remaining_count; ?></span>
-                    </div>
+                            <?php if ($is_last && $remaining_count > 0): ?>
+                                <!-- +N overlay -->
+                                <div style="position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center;">
+                                    <span style="color:#fff; font-size:clamp(1.5rem,4vw,2.5rem); font-weight:800;">+<?php echo $remaining_count; ?></span>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
-                </div>
-                <?php endif; ?>
 
                 <?php endforeach; ?>
 

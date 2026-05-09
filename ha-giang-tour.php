@@ -149,7 +149,7 @@ $activeId = $tableOfContents[0]['id'];
                 $isActive = $item['id'] === $activeId;
                 $classes = 'border-s-1 border-transparent transition-all duration-200';
                 if ($isActive) {
-                    $classes .= ' bg-[#FAF9F7] font-semibold border-l-1 border-l-[#8ca865]';
+                    $classes .= ' bg-[#F9FBDF] font-semibold border-l-1 border-l-[#7B63F7]';
                 } else {
                     $classes .= ' hover:bg-[#FAF9F7] hover:font-bold border-r-1 hover:border-l-[#8ca865]';
                 }
@@ -166,42 +166,106 @@ $activeId = $tableOfContents[0]['id'];
     </div>
 </div>
 <div class="gallery-container overflow-x-hidden">
-    <section class="pt-20 pb-16 bg-[#FAF9F7]" id="overview">
-        <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="absolute inset-x-0 md:bottom-5 rounded-2xl sm:h-80 xl:h-68 bg-[#EEF2E2] z-0"></div>
-            <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 p-8">
-                <div class="lg:col-span-8" data-aos="fade-up" data-aos-duration="1000">
-                    <?php if ($current_lang === 'vi') : ?>
 
-                        <h3 class="text-2xl mb-3 font-phudu font-bold uppercase">Khám phá</h3>
-                        <h1 class="text-4xl md:text-6xl font-bold font-delta-gothic text-[#8CA865] mb-12">
-                            Hà Giang
-                        </h1>
-                        <p class="mb-3 max-w-3xl">
-                            Từ 2017, Hi Hi đã tâm huyết tạo nên những hành trình chất lượng, tiêu biểu là cung đường Hà Giang Loop nổi tiếng.
-                        </p>
-                        <p>
-                            Tại Hi Hi Tour, chúng tôi chọn lối đi riêng, khám phá những con đường lạ xa rời dấu chân du lịch thông thường. Chúng tôi đưa bạn đắm mình vào bức tranh văn hóa bản địa đầy màu sắc với cam kết về một hành trình du lịch trách nhiệm
-                        </p>
-                    <?php else : ?>
-                        <h3 class="text-2xl mb-3 font-phudu font-bold uppercase">Explore the amazing</h3>
-                        <h1 class="text-4xl md:text-6xl font-bold font-delta-gothic text-[#8CA865] mb-12">
-                            Ha Giang
-                        </h1>
-                        <p class="mb-3 max-w-3xl">
-                            Since 2017, Hi Hi Tour has been dedicated to curating quality journeys, including the famous Ha Giang Loop. We connect you with the heart of Ha Giang through authentic encounters: sharing smiles with children, savoring traditional cuisine, and listening to ancient stories.
-                        </p>
-                        <p>
-                            At Hi Hi Tour, we forge our own path, exploring uncharted roads far from typical tourist trails, immersing you in a genuine cultural tapestry with a commitment to responsible travel.
-                        </p>
+    <!-- ── OVERVIEW: full-width hero image + summary box overlay ── -->
+    <section id="overview" style="position:relative; background:#1D292C;">
 
-                    <?php endif; ?>
-                </div>
+        <!-- Full-width banner image -->
+        <div style="width:100%; height:clamp(340px, 55vw, 680px); overflow:hidden; position:relative;">
+            <img
+                src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
+                alt="Ha Giang"
+                style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;"
+            />
+            <!-- subtle dark gradient at bottom so box text stays readable -->
+            <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.45) 100%);"></div>
+        </div>
 
-                <div class="lg:col-span-4" data-aos="fade-up" data-aos-duration="1000">
-                    <img src="<?php echo $theme_uri . '/assets/images/ha-giang/banner.png' ?>" alt="banner" />
+        <!-- Summary box — overlaid bottom-left on the image -->
+        <div style="position:absolute; bottom:32px; left:clamp(16px, 4vw, 64px); z-index:10; max-width:min(480px, calc(100% - 32px));">
+            <div style="background:#E7F15A; border-radius:12px; padding:20px 24px;">
+
+                <!-- Tagline -->
+                <p style="font-size:13px; color:#1D292C; margin-bottom:16px; line-height:1.7;">
+                    <?php echo $current_lang === 'en'
+                        ? "It's famous for a reason.<br>Amazing landscape.<br>Yes it's getting more and more crowded now. But still, I love Hà Giang."
+                        : "Nổi tiếng là có lý do.<br>Phong cảnh tuyệt đẹp.<br>Đúng là ngày càng đông hơn. Nhưng tôi vẫn yêu Hà Giang."; ?>
+                </p>
+
+                <!-- 2×2 info grid -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+
+                    <!-- Safety -->
+                    <div style="display:flex; align-items:flex-start; gap:10px;">
+                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Safety' : 'An toàn'; ?></p>
+                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Solo traveler safe, even for female. I do it all the time.' : 'An toàn cho khách đi một mình, kể cả nữ.'; ?></p>
+                        </div>
+                    </div>
+
+                    <!-- Budget -->
+                    <div style="display:flex; align-items:flex-start; gap:10px;">
+                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v2m0 8v2m-4-6h8M9 10h6"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Budget' : 'Chi phí'; ?></p>
+                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Typical cost $50 a day' : 'Khoảng 50 USD mỗi ngày'; ?></p>
+                        </div>
+                    </div>
+
+                    <!-- Accessible -->
+                    <div style="display:flex; align-items:flex-start; gap:10px;">
+                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3" stroke-width="2"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Accessible' : 'Dễ tiếp cận'; ?></p>
+                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Easy access from big cities.' : 'Dễ dàng từ các thành phố lớn.'; ?></p>
+                        </div>
+                    </div>
+
+                    <!-- Typical stay -->
+                    <div style="display:flex; align-items:flex-start; gap:10px;">
+                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4M8 2v4M3 10h18"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Typical stay' : 'Thời gian lý tưởng'; ?></p>
+                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Should be at least 3 days' : 'Nên đi ít nhất 3 ngày'; ?></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ── "Explore Ha Giang" text block below the hero ── -->
+    <section class="bg-[#FAF9F7] px-4 sm:px-6 lg:px-8 py-12">
+        <div class="container mx-auto max-w-3xl">
+            <?php if ($current_lang === 'vi') : ?>
+                <h3 class="text-2xl mb-2 font-phudu font-bold uppercase">Khám phá</h3>
+                <h2 class="text-4xl md:text-5xl font-bold font-delta-gothic text-[#7B63F7] mb-6">Hà Giang</h2>
+                <p class="mb-3 text-[#1D292C] leading-relaxed">
+                    Từ 2017, Hi Hi đã tâm huyết tạo nên những hành trình chất lượng, tiêu biểu là cung đường Hà Giang Loop nổi tiếng.
+                </p>
+                <p class="text-[#1D292C] leading-relaxed">
+                    Tại Hi Hi Tour, chúng tôi chọn lối đi riêng, khám phá những con đường lạ xa rời dấu chân du lịch thông thường. Chúng tôi đưa bạn đắm mình vào bức tranh văn hóa bản địa đầy màu sắc với cam kết về một hành trình du lịch trách nhiệm.
+                </p>
+            <?php else : ?>
+                <h3 class="text-2xl mb-2 font-phudu font-bold uppercase">Explore the amazing</h3>
+                <h2 class="text-4xl md:text-5xl font-bold font-delta-gothic text-[#7B63F7] mb-6">Ha Giang</h2>
+                <p class="mb-3 text-[#1D292C] leading-relaxed">
+                    Since 2017, Hi Hi Tour has been dedicated to curating quality journeys, including the famous Ha Giang Loop. We connect you with the heart of Ha Giang through authentic encounters: sharing smiles with children, savoring traditional cuisine, and listening to ancient stories.
+                </p>
+                <p class="text-[#1D292C] leading-relaxed">
+                    At Hi Hi Tour, we forge our own path, exploring uncharted roads far from typical tourist trails, immersing you in a genuine cultural tapestry with a commitment to responsible travel.
+                </p>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -223,8 +287,8 @@ $activeId = $tableOfContents[0]['id'];
                             <?php
                             $is_active = ($value == $default_plan);
                             $active_class = $is_active
-                                ? 'bg-black text-white'
-                                : 'bg-white text-gray-800 border border-gray-300 hover:bg-gray-50';
+                                ? 'bg-[#7B63F7] text-white rounded-full'
+                                : 'bg-white text-[#1D292C] border border-gray-300 hover:bg-gray-50 rounded-full';
                             ?>
                             <a
                                 data-plan-value="<?php echo esc_attr($value); ?>"
@@ -244,7 +308,7 @@ $activeId = $tableOfContents[0]['id'];
                             $border_top_right = ($index === count($default_days) - 1) ? 'rounded-tr-lg' : '';
                             $is_active = ($index === 0) ? 'border-b border-[#101F23]' : '';
                             ?>
-                            <li class="w-full bg-[#DEE9CA] flex-1 <?php echo $border_top_left;
+                            <li class="w-full bg-[#E7F15A] flex-1 <?php echo $border_top_left;
                                                                     echo $border_top_right ?>">
                                 <a
                                     data--index="<?php echo $index; ?>"
@@ -279,9 +343,9 @@ $activeId = $tableOfContents[0]['id'];
                 </div>
 
                 <div class="md:col-span-1">
-                    <div class="bg-[#DEE9CA] p-6 rounded-xl">
-                        <h2 class="text-2xl font-bold mb-4"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4"><?php echo $current_lang === 'en' ? "Per adult" : "một người lớn" ?></p>
+                    <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
+                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
+                        <p class="mb-4 opacity-80"><?php echo $current_lang === 'en' ? "Per adult" : "một người lớn" ?></p>
                         <?php
                         $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
@@ -336,7 +400,7 @@ $activeId = $tableOfContents[0]['id'];
                         </ul>
 
                         <a href="<?php echo esc_url(add_query_arg(array('tour' => 'cao_bang'), get_translated_permalink_by_slug('booking'))); ?>">
-                            <button class="cursor-pointer w-full py-3 bg-black text-white font-semibold rounded-lg hover:opacity-70 transition">
+                            <button class="cursor-pointer w-full py-3 font-semibold rounded-lg hover:opacity-80 transition" style="background:#E7F15A; color:#1D292C;">
                                 <?php echo $current_lang === 'en' ? 'Book now (you won\'t be charged yet)' : 'Đặt lịch ngay (không cần thanh toán)' ?>
                             </button>
                         </a>
@@ -388,51 +452,70 @@ $activeId = $tableOfContents[0]['id'];
     </section>
 
     <!-- gallery -->
-    <section class="pt-16 bg-white text-gray-800" id="gallery" data-aos="fade-up" data-aos-duration="1000">
+    <section class="py-16 bg-white" id="gallery" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 leading-tight">
-                <?php echo $current_lang === 'en' ? 'Ha Giang gallery' : 'Ảnh của Hà Giang' ?>
-            </h2>
-            <p class="text-lg text-gray-600 mb-8">
-                <?php echo $current_lang === 'en' ? "Gazing at the landscapes of Ha Giang, captured by us" : "Ngắm nhìn những khoảnh khắc chúng tôi ghi lại ở Hà Giang hùng vĩ" ?>
-            </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <?php
-                $total_images = count($images);
-                $remaining_count = $total_images - 5;
-                ?>
-
-                <?php foreach ($images as $index => $src) :
-                    $image_url = $theme_uri . $src;
-                    $is_visible = ($index < 5);
-                    $is_fifth = ($index === 4);
-                ?>
-
-                    <div class="relative w-full rounded-lg overflow-hidden shadow-md group cursor-pointer 
-                    <?php
-                    echo !$is_visible ? 'hidden' : ''; // Vẫn render nhưng ẩn khỏi giao diện
-                    echo ($index === 0) ? ' md:row-span-2' : '';
-                    echo ($index === 0 || $index === 1 || $index === 2) ? ' h-96' : ' h-64';
-                    ?> md:h-auto">
-
-                        <img
-                            data-src="<?php echo esc_url($image_url); ?>"
-                            src="<?php echo esc_url($image_url); ?>"
-                            alt="Ha Giang Scenery <?php echo $index + 1; ?>"
-                            class="w-full h-full object-fill transform transition-transform duration-300 group-hover:scale-105" />
-
-                        <?php if ($is_fifth && $remaining_count > 0) : ?>
-                            <div class="absolute inset-0 bg-black flex flex-col items-center justify-center transition-all duration-300 group-hover:bg-opacity-80 z-0 pointer-events-none" style="opacity: 0.7">
-                                <span class="text-white text-4xl font-bold">+<?php echo $remaining_count; ?></span>
-                            </div>
-                        <?php elseif ($is_visible) : ?>
-                            <div></div>
-                        <?php endif; ?>
-
+            <!-- Pill header badge -->
+            <div class="flex justify-center mb-8">
+                <div style="background:#E7F15A; border-radius:999px; padding:14px 36px; text-align:center; display:inline-block;">
+                    <div class="flex items-center justify-center gap-3 mb-1">
+                        <!-- left diamond -->
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7"><path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z"/></svg>
+                        <span style="font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#1D292C;">
+                            <?php echo $current_lang === 'en' ? 'Ha Giang Gallery' : 'Ảnh Hà Giang'; ?>
+                        </span>
+                        <!-- right diamond -->
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7"><path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z"/></svg>
                     </div>
+                    <p style="font-size:12px; color:#1D292C; margin:0;">
+                        <?php echo $current_lang === 'en' ? 'Photos I took. View and praise.' : 'Ảnh tôi chụp. Xem và khen đi.'; ?>
+                    </p>
+                </div>
+            </div>
+
+            <?php
+            $total_images   = count($images);
+            $visible_count  = 5;
+            $remaining_count = $total_images - $visible_count;
+            ?>
+
+            <!-- 3-col grid: col 1 spans 2 rows, cols 2-3 have 2 rows each -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto auto; gap:4px;">
+
+                <?php foreach ($images as $index => $src):
+                    if ($index >= $visible_count) break;
+                    $image_url = esc_url($theme_uri . $src);
+                    $is_last   = ($index === $visible_count - 1);
+                ?>
+
+                <?php if ($index === 0): ?>
+                <!-- Large left image — spans 2 rows -->
+                <div class="group cursor-pointer" style="grid-column:1; grid-row:1/3; overflow:hidden; position:relative;">
+                    <img src="<?php echo $image_url; ?>"
+                         alt="Ha Giang <?php echo $index+1; ?>"
+                         style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
+                         class="group-hover:scale-105" />
+                </div>
+
+                <?php else: ?>
+                <!-- Smaller image -->
+                <div class="group cursor-pointer" style="overflow:hidden; position:relative; aspect-ratio:4/3;">
+                    <img src="<?php echo $image_url; ?>"
+                         alt="Ha Giang <?php echo $index+1; ?>"
+                         style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
+                         class="group-hover:scale-105" />
+
+                    <?php if ($is_last && $remaining_count > 0): ?>
+                    <!-- +N overlay -->
+                    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center;">
+                        <span style="color:#fff; font-size:clamp(1.5rem,4vw,2.5rem); font-weight:800;">+<?php echo $remaining_count; ?></span>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
 
                 <?php endforeach; ?>
+
             </div>
         </div>
     </section>
@@ -483,7 +566,7 @@ $activeId = $tableOfContents[0]['id'];
                             class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
                         <div class="p-3">
                             <h3 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "On a motorbike" : "Bằng xe máy" ?></h3>
-                            <div class="flex gap-2 my-3 bg-[#FEEAC0] px-3 py-1 rounded items-center w-fit">
+                            <div class="flex gap-2 my-3 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
                                 <img width="24" height="24" src="<?php echo esc_url($icons['bike']); ?>" alt="Bike" />
                                 <span class="text-fg-brand-strong text-xs font-medium">
                                     <?php echo $current_lang === 'en' ? "Unique experience" : "Trải nghiệm nên có" ?>
@@ -512,13 +595,13 @@ $activeId = $tableOfContents[0]['id'];
                         <div class="p-3">
                             <h3 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Luxury limousine" : "Bằng xe ô tô" ?></h3>
                             <div class="flex gap-3 my-3">
-                                <div class="flex gap-2 bg-[#FEEAC0] px-3 py-1 rounded items-center w-fit">
+                                <div class="flex gap-2 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
                                     <img width="24" height="24" src="<?php echo esc_url($icons['family']); ?>" alt="Family" />
                                     <span class="text-fg-brand-strong text-xs font-medium ">
                                         <?php echo $current_lang === 'en' ? "Family friendly" : "Phù hợp gia đình" ?>
                                     </span>
                                 </div>
-                                <div class="flex gap-2 bg-[#FEEAC0] px-3 py-1 rounded items-center w-fit">
+                                <div class="flex gap-2 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
                                     <img width="24" height="24" src="<?php echo esc_url($icons['group']); ?>" alt="Group" />
                                     <span class="text-fg-brand-strong text-xs font-medium">
                                         <?php echo $current_lang === 'en' ? "Large group" : "Nhóm đông người" ?>
@@ -544,7 +627,7 @@ $activeId = $tableOfContents[0]['id'];
                             <h3 class="text-xl font-bold mb-2">
                                 <?php echo $current_lang === 'en' ? "Or maybe a combination of both" : "Hoặc là cả 2" ?>
                             </h3>
-                            <div class="flex gap-2 my-3 bg-[#FEEAC0] px-3 py-1 rounded items-center w-fit">
+                            <div class="flex gap-2 my-3 bg-[#E7F15A] px-3 py-1 rounded items-center w-fit">
                                 <span class="text-fg-brand-strong text-xs font-medium">
                                     <?php echo $current_lang === 'en' ? "Flexible" : "Linh hoạt" ?>
                                 </span>
@@ -587,7 +670,7 @@ $activeId = $tableOfContents[0]['id'];
     </div>
 
     <!-- Weather -->
-    <section class="py-16 bg-linear-to-b from-[#FEEAC0] to-[#FAF9F7] h-full" id="weather">
+    <section class="py-16 h-full" style="background:#F9FBDF;" id="weather">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold mb-4"><?php echo $current_lang === 'en' ? "Weather in Ha Giang" : "Thời tiết ở Hà Giang" ?></h2>
 
@@ -868,7 +951,7 @@ $activeId = $tableOfContents[0]['id'];
 </section> -->
 
     <!-- How to book us -->
-    <section class="bg-[#FFF7E6]" id="how-to-book">
+    <section style="background:#E7F15A;" id="how-to-book">
         <div class="container mx-auto px-4 py-12">
             <h2 class="text-3xl font-bold mb-8">
                 <?php echo $current_lang === 'en' ? "How to book us?" : "Làm thế nào để đặt tour?" ?>

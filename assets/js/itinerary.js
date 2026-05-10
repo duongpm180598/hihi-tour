@@ -1,4 +1,4 @@
-const pathname = window.location.pathname
+﻿const pathname = window.location.pathname
 
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang-tour')
@@ -224,11 +224,11 @@ if (vi) {
                         description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
                     },
                     {
-                        time: '15:00',
-                        description: `Chúng ta tiếp tục hành trình hướng về Du Già. Trên đường đi, chúng ta sẽ vui vẻ rẽ ngang để đảm bảo không bỏ lỡ bất kỳ vẻ đẹp thiên nhiên bất ngờ nào mà núi rừng ban tặng.`,
+                        time: '14:00',
+                        description: `Sau bữa trưa, chúng ta lên đường hướng về Du Già. Trên đường đi, chúng ta sẽ vui vẻ rẽ ngang để đảm bảo không bỏ lỡ bất kỳ vẻ đẹp thiên nhiên bất ngờ nào mà núi rừng ban tặng.`,
                     },
                     {
-                        time: '17:00',
+                        time: '16:00',
                         description: `Đến homestay Du Già, nhanh chóng nhận phòng và đi thẳng đến Thác Du Già. Nước tự nhiên ở đây luôn trong vắt và lạnh buốt, thác khá rộng, rất thích hợp để bạn thỏa sức bơi lội và thư giãn. (Đừng quên đồ bơi để tận hưởng trọn vẹn sự sảng khoái này!)`,
                     },
                     {
@@ -260,17 +260,17 @@ if (vi) {
                             'Thưởng thức bữa trưa gần Thành phố Hà Giang. Đây là bữa ăn chung cuối cùng của chúng ta, nơi chúng ta có thể lên kế hoạch cho chuyến phiêu lưu tiếp theo và chia sẻ những khoảnh khắc yêu thích của mình.',
                     },
                     {
-                        time: '15:00',
+                        time: '16:00',
                         description:
-                            'Chúng ta ghé thăm Cột mốc Km 0 để chụp bức ảnh cuối cùng, chính thức đánh dấu sự hoàn thành của chương này trong hành trình. Sau đó, chúng ta lên xe để trở về Hà Nội.',
+                            'Về đến Thành phố Hà Giang! Chúng ta ghé thăm Cột mốc Km 0 để chụp bức ảnh cuối cùng—lúc này vừa vắng vừa đẹp, chính thức đánh dấu sự hoàn thành của chương này trong hành trình.',
                     },
                     {
                         time: '17:00',
                         description:
-                            'Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!',
+                            'Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này! Đón xe về Hà Nội, thường có chuyến 4 rưỡi - 5h.',
                     },
                     {
-                        time: '21:00',
+                        time: '23:00',
                         description: 'Quý khách sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
                     },
                 ],
@@ -308,7 +308,7 @@ if (vi) {
                         description: `Sau khi nghỉ ngơi tại Yên Minh, hành trình của chúng ta tiếp tục hướng tới một trong những điểm dừng mang tính biểu tượng nhất của Hà Giang: Đèo Thẩm Mã. Vị trí này mang đến cho du khách một cái nhìn toàn cảnh ngoạn mục, cho phép chúng ta đánh giá trọn vẹn sự hùng vĩ của thiên nhiên khi những con đường núi quanh co uốn lượn duyên dáng như những dải lụa vắt qua những ngọn núi đá.`,
                     },
                     {
-                        time: '16:00',
+                        time: '15:00',
                         description: `Tiếp theo, chúng ta sẽ đưa quý khách đến Cột cờ Lũng Cú, nằm gần điểm cực Bắc thiêng liêng của Việt Nam. Dưới chân Cột cờ là Làng Lô Lô Chải quyến rũ. Ngôi làng này tự hào được công nhận là Làng Du lịch Tốt nhất Thế giới năm 2023 vì những nỗ lực nổi bật trong việc bảo tồn các giá trị truyền thống trong cả lối sống và thực hành du lịch bền vững.`,
                     },
                     {
@@ -343,8 +343,8 @@ if (vi) {
                         description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
                     },
                     {
-                        time: '15:00',
-                        description: `Sau bữa trưa, chúng ta bắt đầu hành trình trở về thành phố. Chúng ta sẽ dành thời gian đi dạo quanh, ngắm cảnh, hoặc chụp ảnh những khung cảnh tuyệt đẹp xung quanh.`,
+                        time: '14:00',
+                        description: `Sau bữa trưa, chúng ta lên đường quay về Thành phố Hà Giang. Chúng ta sẽ thoải mái dừng chân dọc đường để ngắm cảnh và chụp ảnh những khung cảnh tuyệt đẹp.`,
                     },
                     {
                         time: '17:00',
@@ -776,11 +776,11 @@ if (vi) {
                         description: 'We stop in Mèo Vạc Town for lunch.',
                     },
                     {
-                        time: '15:00',
+                        time: '14:00',
                         description: `We continue our journey toward Du Gia. Along the way, we’ll happily take detours to ensure we don't miss any unexpected natural beauty that the mountains offer.`,
                     },
                     {
-                        time: '17:00',
+                        time: '16:00',
                         description: `Arrive at the Du Gia homestay, quickly check-in, and head straight to the Du Gia Waterfall. The natural water here is always crystal clear and icy cold, and the falls are quite wide, making it perfect for you to freely swim and relax. (Don't forget your swimwear to fully enjoy this refreshment!)`,
                     },
                     {
@@ -793,7 +793,7 @@ if (vi) {
                     },
                 ],
 
-                //  3: Du Gia -> Ha Giang (Kết thúc)
+                //  3: Du Gia -> Ha Giang (End)
                 3: [
                     {
                         time: '08:00',
@@ -812,17 +812,17 @@ if (vi) {
                             'Enjoy lunch near Ha Giang City. This is our final shared meal, where we can plan our next adventure and share our favorite moments.',
                     },
                     {
-                        time: '15:00',
+                        time: '16:00',
                         description:
-                            'We visit the Zero Kilometer Marker for a final photo, officially marking the completion of this chapter of the journey. We then board the vehicle for the direct drive back to Hanoi.',
+                            'We arrive in Ha Giang City! We stop at the Zero Kilometer Marker for a final photo—the light at this hour is perfect and the crowd is thin—officially marking the completion of this chapter of the journey.',
                     },
                     {
                         time: '17:00',
                         description:
-                            'The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!',
+                            'The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads! Board your bus back to Hanoi — departures are typically around 4:30 – 5:00 PM.',
                     },
                     {
-                        time: '21:00',
+                        time: '23:00',
                         description: 'You will arrive in Ha Noi around this time. Goodbye and see you real soon!',
                     },
                 ],
@@ -860,7 +860,7 @@ if (vi) {
                         description: `After resting in Yen Minh, our journey continues toward one of Ha Giang's most iconic stops: Thẩm Mã Pass. This location offers guests a spectacular panoramic view, providing a full appreciation of nature's grandeur as the winding mountain roads curve gracefully like ribbons draped across the rocky mountains.`,
                     },
                     {
-                        time: '16:00',
+                        time: '15:00',
                         description: `Subsequently, we will take you to Lũng Cú Flagpole, located near the sacred northernmost point of Vietnam. At the foot of the Flagpole lies the charming Lô Lô Chải Village. This village was proudly recognized as the Best Tourism Village in the World in 2023 for its outstanding preservation of traditional values in both its lifestyle and sustainable tourism practices.`,
                     },
                     {
@@ -895,8 +895,8 @@ if (vi) {
                         description: 'We stop in Mèo Vạc Town for lunch.',
                     },
                     {
-                        time: '15:00',
-                        description: `After lunch, we begin our journey back to the city. We will take some time to stroll around, sightsee, or take photos of the stunning surroundings.`,
+                        time: '14:00',
+                        description: `After lunch, we begin our journey back to Ha Giang City. We will comfortably make stops along the way to enjoy scenic views and take photos.`,
                     },
                     {
                         time: '17:00',

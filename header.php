@@ -64,39 +64,27 @@
                 <a
                     href="<?php echo esc_url(home_url('/')); ?>"
                     class="text-2xl font-bold text-gray-800 hover:text-indigo-600 transition duration-150">
-                    <img width="48" height="48" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png' ?>" alt="logo" />
+                    <img width="48" height="48" src="<?php echo get_template_directory_uri() . '/assets/images/logo_new.png' ?>" alt="logo" />
                 </a>
             </div>
 
             <nav class="hidden md:flex flex-1 justify-center">
                 <a
-                    href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang-tour')); ?>"
-                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('ha-giang-tour')); ?>">
-                    Ha Giang Tour
-                </a>
-
-                <a
-                    href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang-tour')); ?>"
-                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('cao-bang-tour')); ?>">
-                    Cao Bang Tour
-                </a>
-
-                <a
-                    href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>"
-                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('cat-ba-tour')); ?>">
-                    Cat Ba Tour
-                </a>
-
-                <a
-                    href="<?php echo esc_url(get_translated_permalink_by_slug('helps')); ?>"
-                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('helps')); ?>">
-                    Helps
+                    href="<?php echo esc_url(home_url('/')); ?>"
+                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', is_front_page() ? 'border-2 border-[#474E50] py-1 px-3 bg-gray-100' : 'text-[#101F23] py-1 px-3 hover:bg-gray-50'); ?>">
+                    Explore the world
                 </a>
 
                 <a
                     href="<?php echo esc_url(get_translated_permalink_by_slug('hihi-go-to')); ?>"
                     class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('hihi-go-to')); ?>">
-                    Hihi go to
+                    Shower thoughts
+                </a>
+
+                <a
+                    href="<?php echo esc_url(get_translated_permalink_by_slug('helps')); ?>"
+                    class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', get_active_class('helps')); ?>">
+                    About us
                 </a>
             </nav>
 
@@ -161,33 +149,21 @@
                     <!-- Các Item Menu Mobile -->
                     <div class="flex flex-col space-y-2">
                         <a
-                            href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang-tour')); ?>"
-                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('ha-giang-tour')); ?>">
-                            Ha Giang Tour
-                        </a>
-
-                        <a
-                            href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang-tour')); ?>"
-                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('cao-bang-tour')); ?>">
-                            Cao Bang Tour
-                        </a>
-
-                        <a
-                            href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>"
-                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('cat-ba-tour')); ?>">
-                            Cat Ba Tour
-                        </a>
-
-                        <a
-                            href="<?php echo esc_url(get_translated_permalink_by_slug('helps')); ?>"
-                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('helps')); ?>">
-                            Helps
+                            href="<?php echo esc_url(home_url('/')); ?>"
+                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', is_front_page() ? 'border-2 border-[#474E50] bg-gray-100' : 'text-[#101F23] hover:bg-gray-50'); ?>">
+                            Explore the world
                         </a>
 
                         <a
                             href="<?php echo esc_url(get_translated_permalink_by_slug('hihi-go-to')); ?>"
                             class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('hihi-go-to')); ?>">
-                            Hihi go to
+                            Shower thoughts
+                        </a>
+
+                        <a
+                            href="<?php echo esc_url(get_translated_permalink_by_slug('helps')); ?>"
+                            class="<?php echo $common_class_mobile; ?> <?php echo str_replace('py-1 px-3', '', get_active_class('helps')); ?>">
+                            About us
                         </a>
                     </div>
                 </div>

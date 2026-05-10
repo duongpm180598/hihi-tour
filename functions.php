@@ -15,7 +15,7 @@ function hihi_scripts()
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
     wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.0', true);
-    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.0', true);
+    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.2', true);
     wp_enqueue_script('ionicons_script', '//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js');
     wp_enqueue_script('ionicons_esm_script', '//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js');
 }

@@ -167,95 +167,21 @@ $activeId = $tableOfContents[0]['id'];
 </div>
 <div class="gallery-container overflow-x-hidden">
 
-    <!-- ── OVERVIEW: full-width hero image + summary box overlay ── -->
-    <section id="overview" style="position:relative; background:#1D292C;">
+    <!-- ── OVERVIEW: full-width hero image ── -->
+    <section id="overview" style="position:relative;">
 
         <!-- Full-width banner image -->
-        <div style="width:100%; height:clamp(340px, 55vw, 680px); overflow:hidden; position:relative;">
+        <div style="width:100%; height:clamp(260px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
-            <!-- subtle dark gradient at bottom so box text stays readable -->
-            <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.45) 100%);"></div>
-        </div>
-
-        <!-- Summary box — overlaid bottom-left on the image -->
-        <div style="position:absolute; bottom:32px; left:clamp(16px, 4vw, 64px); z-index:10; max-width:min(480px, calc(100% - 32px));">
-            <div style="background:#E7F15A; border-radius:12px; padding:20px 24px;">
-
-                <!-- Tagline -->
-                <p style="font-size:13px; color:#1D292C; margin-bottom:16px; line-height:1.7;">
-                    <?php echo $current_lang === 'en'
-                        ? "It's famous for a reason.<br>Amazing landscape.<br>Yes it's getting more and more crowded now. But still, I love Hà Giang."
-                        : "Nổi tiếng là có lý do.<br>Phong cảnh tuyệt đẹp.<br>Đúng là ngày càng đông hơn. Nhưng tôi vẫn yêu Hà Giang."; ?>
-                </p>
-
-                <!-- 2×2 info grid -->
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
-
-                    <!-- Safety -->
-                    <div style="display:flex; align-items:flex-start; gap:10px;">
-                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Safety' : 'An toàn'; ?></p>
-                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Solo traveler safe, even for female. I do it all the time.' : 'An toàn cho khách đi một mình, kể cả nữ.'; ?></p>
-                        </div>
-                    </div>
-
-                    <!-- Budget -->
-                    <div style="display:flex; align-items:flex-start; gap:10px;">
-                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke-width="2" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v2m0 8v2m-4-6h8M9 10h6" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Budget' : 'Chi phí'; ?></p>
-                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Typical cost $50 a day' : 'Khoảng 50 USD mỗi ngày'; ?></p>
-                        </div>
-                    </div>
-
-                    <!-- Accessible -->
-                    <div style="display:flex; align-items:flex-start; gap:10px;">
-                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
-                                <circle cx="12" cy="11" r="3" stroke-width="2" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Accessible' : 'Dễ tiếp cận'; ?></p>
-                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Easy access from big cities.' : 'Dễ dàng từ các thành phố lớn.'; ?></p>
-                        </div>
-                    </div>
-
-                    <!-- Typical stay -->
-                    <div style="display:flex; align-items:flex-start; gap:10px;">
-                        <div style="width:30px; height:30px; border-radius:50%; background:#7B63F7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
-                                <rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4M8 2v4M3 10h18" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p style="font-size:13px; font-weight:700; color:#1D292C; margin:0 0 2px;"><?php echo $current_lang === 'en' ? 'Typical stay' : 'Thời gian lý tưởng'; ?></p>
-                            <p style="font-size:12px; color:#1D292C; line-height:1.5; margin:0;"><?php echo $current_lang === 'en' ? 'Should be at least 3 days' : 'Nên đi ít nhất 3 ngày'; ?></p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- ── "Explore Ha Giang" text block below the hero ── -->
-    <section class="bg-[#FAF9F7] px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- ── "Explore Ha Giang" text block — hidden per design ── -->
+    <section class="hidden">
         <div class="container mx-auto max-w-3xl">
             <?php if ($current_lang === 'vi') : ?>
                 <h3 class="text-2xl mb-2 font-phudu font-bold uppercase">Khám phá</h3>
@@ -280,13 +206,43 @@ $activeId = $tableOfContents[0]['id'];
     </section>
 
     <!-- Itinerary -->
-    <section class="pt-16" id="itinerary" data-aos="fade-up" data-aos-duration="1000">
+    <section class="pt-10 pb-16" id="itinerary" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-8">
-                <?php echo $current_lang === 'en' ? "Our Ha Giang Itinerary" : "Lịch trình Hà Giang" ?>
-            </h2>
 
-            <p class="text-base font-bold mb-2">
+            <!-- Section label -->
+            <p class="text-xs font-bold tracking-widest uppercase text-[#1D292C] mb-4"><?php echo $current_lang === 'en' ? 'Typical Ha Giang Itinerary' : 'Lịch trình Hà Giang điển hình'; ?></p>
+
+            <!-- Solo going / Book a tour tabs -->
+            <div class="flex border-b border-gray-200 mb-6" id="itinerary-mode-tabs">
+                <button
+                    id="tab-solo"
+                    class="itinerary-mode-tab pb-3 px-1 mr-8 text-sm font-semibold border-b-2 border-[#7B63F7] text-[#1D292C] transition-colors duration-150"
+                    data-mode="solo">
+                    <?php echo $current_lang === 'en' ? 'Solo going' : 'Tự đi'; ?>
+                </button>
+                <button
+                    id="tab-book"
+                    class="itinerary-mode-tab pb-3 px-1 mr-8 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#1D292C] transition-colors duration-150"
+                    data-mode="book">
+                    <?php echo $current_lang === 'en' ? 'Book a tour' : 'Đặt tour'; ?>
+                </button>
+            </div>
+
+            <!-- Solo going description -->
+            <p id="itinerary-solo-desc" class="text-sm text-[#474E50] mb-6 max-w-2xl leading-relaxed">
+                <?php echo $current_lang === 'en'
+                    ? 'Stick to big, visible road in Google Maps if you go alone - no guides or whatsoever. Locals are generally friendly but they don\'t usually know English, even basic English, even Vietnamese, especially elderly because Ha Giang is ---- of H\'Mong ethnic and some other ----. So don\'t wander too much if you don\'t know the road, it\'s dangerous. I still recommend hire a guide, they know best routes and manage time to explore.'
+                    : 'Nếu tự đi, hãy đi theo các con đường lớn, dễ tìm trên Google Maps. Người địa phương thân thiện nhưng thường không nói được tiếng Anh hay tiếng Kinh, đặc biệt là người lớn tuổi. Đừng đi lạc nếu bạn không biết đường - khá nguy hiểm. Tôi vẫn khuyên nên thuê hướng dẫn viên.'; ?>
+            </p>
+
+            <!-- Book a tour description (hidden by default) -->
+            <p id="itinerary-book-desc" class="hidden text-sm text-[#474E50] mb-6 max-w-2xl leading-relaxed">
+                <?php echo $current_lang === 'en'
+                    ? 'Book a guided Ha Giang loop tour with Hi Hi Tour. We handle all logistics - transport, accommodation, meals and easy drivers - so you can focus on the experience.'
+                    : 'Đặt tour Hà Giang Loop cùng Hi Hi Tour. Chúng tôi lo toàn bộ phương tiện, chỗ ở, ăn uống và người lái - để bạn chỉ cần tận hưởng.'; ?>
+            </p>
+
+            <p class="text-sm font-semibold text-[#1D292C] mb-3">
                 <?php echo $current_lang === 'en' ? "How many days do you want to do the loop?" : "Bạn muốn đi bao nhiêu ngày?" ?>
             </p>
 
@@ -1090,102 +1046,58 @@ $activeId = $tableOfContents[0]['id'];
 </section> -->
 
     <!-- How to book us -->
-    <section style="background:#E7F15A;" id="how-to-book">
-        <div class="container mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold mb-8">
-                <?php echo $current_lang === 'en' ? "How to book us?" : "Làm thế nào để đặt tour?" ?>
-            </h2>
-            <p>
-                <?php echo $current_lang === 'en' ? "Feel free to reach out to us using the options below. We’ll confirm all the necessary details. Alternatively, you can fill out the form in the Pricing section above and click 'Book Now.' Your order will be sent to us, and we’ll get in touch for more information—no charges will apply just yet. Rest assured, your information is secure with us." : "Vui lòng liên hệ với chúng tôi qua các lựa chọn bên dưới. Chúng tôi sẽ xác nhận tất cả các chi tiết cần thiết. Hoặc, bạn có thể điền vào biểu mẫu trong mục Bảng Giá ở trên và nhấp vào 'Đặt Tour Ngay'. Đơn đặt hàng của bạn sẽ được gửi đến chúng tôi và chúng tôi sẽ liên hệ lại để biết thêm thông tin—hiện tại chưa có chi phí nào được áp dụng. Hãy yên tâm, thông tin của bạn được bảo mật an toàn với chúng tôi." ?>
+    <!-- May be you will interest in -->
+    <section id="how-to-book" style="background:#E7F15A;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <p class="text-xs font-bold tracking-widest uppercase text-center text-[#1D292C] mb-3">
+                <?php echo $current_lang === 'en' ? 'May be you will interest in' : 'Có thể bạn cũng muốn khám phá'; ?>
+            </p>
+            <p class="text-sm text-center text-[#474E50] mb-10 max-w-2xl mx-auto">
+                <?php echo $current_lang === 'en'
+                    ? 'If you have ample time and seek deep cultural immersion, our extended tours are perfect. We offer diverse options to explore Northern Vietnam or create a custom itinerary to anywhere you desire.'
+                    : 'Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc hơn, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo.'; ?>
             </p>
 
-            <div class="max-w-5xl py-12">
-                <div class="relative flex justify-between items-start pt-6">
-                    <div class="absolute top-1/2 left-0 w-[70%] h-1 bg-[#F9BB32] transform -translate-y-1/2"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['emoji']); ?>" alt="Emoji Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Contact us" : "Liên hệ" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['receipt']); ?>" alt="Receipt Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Tour confirmation" : "Xác nhận tour" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['payment']); ?>" alt="Payment Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "D-Day! Pay on arrival!" : "Tới ngày là đi! Đến nơi mới trả tiền!" ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Contact us now" : "Liên hệ với chúng tôi ngay" ?></h2>
-            <p class="mb-4"><?php echo $current_lang === 'en' ? "Click the link or scan the QR code below" : "Bấm vào dường link hoặc quét mã QR bên dưới" ?></p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['whatsapp']); ?>" alt="Whatsapp Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">WhatsApp</p>
-                            <a href="https://wa.me/84936766696" target="_blank" class="hover:underline">+84 936766696</a>
-                        </div>
-                    </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
+                <!-- Cao Bang -->
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang-tour')); ?>" class="group block">
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['whatsapp_qr']); ?>"
-                            alt="whatsapp QR" />
-                    <?php endif; ?>
-                </div>
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Instagram</p>
-                            <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="hover:underline">@mr_hi_hi_04</a>
-                        </div>
+                            src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
+                            alt="Cao Bang"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Cao Bang' : 'Cao Bằng'; ?>
+                    </p>
+                </a>
+
+                <!-- Cat Ba -->
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['instagram_qr']); ?>"
-                            alt="Instagram QR" />
-                    <?php endif; ?>
-                </div>
+                            src="<?php echo esc_url($theme_uri . '/assets/images/cat_ba_island.jpg'); ?>"
+                            alt="Cat Ba"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Cat Ba' : 'Cát Bà'; ?>
+                    </p>
+                </a>
 
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Facebook</p>
-                            <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="hover:underline">www.facebook.com/ps.r.sau</a>
+                <!-- Mu Cang Chai (coming soon) -->
+                <a href="#" class="group block opacity-70 cursor-not-allowed">
+                    <div class="overflow-hidden rounded-xl mb-3 bg-[#d4e04d]" style="aspect-ratio:4/3;">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <span class="text-[#1D292C] text-sm font-medium"><?php echo $current_lang === 'en' ? 'Coming soon' : 'Sắp ra mắt'; ?></span>
                         </div>
                     </div>
-                    <?php if (isset($qrs['facebook_qr'])) : ?>
-                        <img width="240" height="240" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" />
-                    <?php endif; ?>
-                </div>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Mù Cang Chải' : 'Mù Cang Chải'; ?>
+                    </p>
+                </a>
+
             </div>
         </div>
     </section>
@@ -1384,6 +1296,26 @@ function transTab(tab) {
         e.preventDefault();
         var x = e.pageX - el.offsetLeft;
         el.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    });
+})();
+
+// Solo going / Book a tour tab switcher
+(function() {
+    var tabs = document.querySelectorAll('.itinerary-mode-tab');
+    var soloDesc = document.getElementById('itinerary-solo-desc');
+    var bookDesc = document.getElementById('itinerary-book-desc');
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            tabs.forEach(function(t) {
+                t.classList.remove('border-[#7B63F7]', 'text-[#1D292C]');
+                t.classList.add('border-transparent', 'text-gray-400');
+            });
+            this.classList.remove('border-transparent', 'text-gray-400');
+            this.classList.add('border-[#7B63F7]', 'text-[#1D292C]');
+            var mode = this.getAttribute('data-mode');
+            if (soloDesc) soloDesc.classList.toggle('hidden', mode !== 'solo');
+            if (bookDesc) bookDesc.classList.toggle('hidden', mode !== 'book');
+        });
     });
 })();
 </script>

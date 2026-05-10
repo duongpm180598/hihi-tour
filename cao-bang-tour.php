@@ -836,103 +836,58 @@ $activeId = $tableOfContents[0]['id'];
     </div>
 </section> -->
 
-    <!-- How to book us -->
-    <section class="bg-[#FFF7E6]" id="how-to-book">
-        <div class="container mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold mb-8">
-                <?php echo $current_lang === 'en' ? "How to book us?" : "Làm thế nào để đặt tour?" ?>
-            </h2>
-            <p>
-                <?php echo $current_lang === 'en' ? "Feel free to reach out to us using the options below. We’ll confirm all the necessary details. Alternatively, you can fill out the form in the Pricing section above and click 'Book Now.' Your order will be sent to us, and we’ll get in touch for more information—no charges will apply just yet. Rest assured, your information is secure with us." : "Vui lòng liên hệ với chúng tôi qua các lựa chọn bên dưới. Chúng tôi sẽ xác nhận tất cả các chi tiết cần thiết. Hoặc, bạn có thể điền vào biểu mẫu trong mục Bảng Giá ở trên và nhấp vào 'Đặt Tour Ngay'. Đơn đặt hàng của bạn sẽ được gửi đến chúng tôi và chúng tôi sẽ liên hệ lại để biết thêm thông tin—hiện tại chưa có chi phí nào được áp dụng. Hãy yên tâm, thông tin của bạn được bảo mật an toàn với chúng tôi." ?>
+    <!-- May be you will interest in -->
+    <section id="how-to-book" style="background:#E7F15A;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <p class="text-xs font-bold tracking-widest uppercase text-center text-[#1D292C] mb-3">
+                <?php echo $current_lang === 'en' ? 'May be you will interest in' : 'Có thể bạn cũng muốn khám phá'; ?>
+            </p>
+            <p class="text-sm text-center text-[#474E50] mb-10 max-w-2xl mx-auto">
+                <?php echo $current_lang === 'en'
+                    ? 'If you have ample time and seek deep cultural immersion, our extended tours are perfect. We offer diverse options to explore Northern Vietnam or create a custom itinerary to anywhere you desire.'
+                    : 'Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc hơn, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo.'; ?>
             </p>
 
-            <div class="max-w-5xl py-12">
-                <div class="relative flex justify-between items-start pt-6">
-                    <div class="absolute top-1/2 left-0 w-[70%] h-1 bg-[#F9BB32] transform -translate-y-1/2"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['emoji']); ?>" alt="Emoji Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Contact us" : "Liên hệ" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['receipt']); ?>" alt="Receipt Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Tour confirmation" : "Xác nhận tour" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['payment']); ?>" alt="Payment Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "D-Day! Pay on arrival!" : "Tới ngày là đi! Đến nơi mới trả tiền!" ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Contact us now" : "Liên hệ với chúng tôi ngay" ?></h2>
-            <p class="mb-4"><?php echo $current_lang === 'en' ? "Click the link or scan the QR code below" : "Bấm vào dường link hoặc quét mã QR bên dưới" ?></p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['whatsapp']); ?>" alt="Whatsapp Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">WhatsApp</p>
-                            <a href="https://wa.me/84936766696" target="_blank" class="hover:underline">+84 936766696</a>
-                        </div>
-                    </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
+                <!-- Ha Giang -->
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang-tour')); ?>" class="group block">
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['whatsapp_qr']); ?>"
-                            alt="whatsapp QR" />
-                    <?php endif; ?>
-                </div>
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Instagram</p>
-                            <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="hover:underline">@mr_hi_hi_04</a>
-                        </div>
+                            src="<?php echo esc_url($theme_uri . '/assets/images/ha_giang_loop.jpg'); ?>"
+                            alt="Ha Giang"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Ha Giang' : 'Hà Giang'; ?>
+                    </p>
+                </a>
+
+                <!-- Cat Ba -->
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['instagram_qr']); ?>"
-                            alt="Instagram QR" />
-                    <?php endif; ?>
-                </div>
+                            src="<?php echo esc_url($theme_uri . '/assets/images/cat_ba_island.jpg'); ?>"
+                            alt="Cat Ba"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Cat Ba' : 'Cát Bà'; ?>
+                    </p>
+                </a>
 
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Facebook</p>
-                            <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="hover:underline">www.facebook.com/ps.r.sau</a>
+                <!-- Mu Cang Chai (coming soon) -->
+                <a href="#" class="group block opacity-70 cursor-not-allowed">
+                    <div class="overflow-hidden rounded-xl mb-3 bg-[#d4e04d]" style="aspect-ratio:4/3;">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <span class="text-[#1D292C] text-sm font-medium"><?php echo $current_lang === 'en' ? 'Coming soon' : 'Sắp ra mắt'; ?></span>
                         </div>
                     </div>
-                    <?php if (isset($qrs['facebook_qr'])) : ?>
-                        <img width="240" height="240" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" />
-                    <?php endif; ?>
-                </div>
+                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
+                        <?php echo $current_lang === 'en' ? 'Mù Cang Chải' : 'Mù Cang Chải'; ?>
+                    </p>
+                </a>
+
             </div>
         </div>
     </section>

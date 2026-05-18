@@ -14,45 +14,44 @@ if (vi) {
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
+                        description: 'Lên xe giường nằm đi Hà Giang.',
                     },
-                    { time: '03:00', description: 'Đến Thành phố Hà Giang, nhân viên của chúng tôi sẽ hướng dẫn quý khách nhận phòng và nghỉ ngơi.' },
+                    {
+                        time: '03:00',
+                        description: 'Trung tâm thành phố. Nghỉ lại tại chỗ thuê xe máy.',
+                    },
                 ],
 
                 // Ngày 1: Hà Giang -> Đồng Văn
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Gặp gỡ hướng dẫn viên và tài xế của Hi Hi tour. Thưởng thức bữa sáng đơn giản nhưng ý nghĩa, nạp đầy đủ năng lượng và sẵn sàng để bị rung động bởi vẻ đẹp thiên nhiên sắp tới.',
+                        description: 'Ăn sáng.',
                     },
                     {
                         time: '09:00',
-                        description: `Cùng nhau, chúng ta bắt đầu hành trình tuyệt vời. Chúng ta sẽ không vội vã. Thay vào đó, chúng ta sẽ tận dụng khoảnh khắc để dừng chân tại các điểm ngắm cảnh và đi sâu vào các làng bản địa phương để cảm nhận nhịp sống chân thực nhất của các cộng đồng dân tộc.`,
+                        description: 'TP. Hà Giang - Quản Bạ - Yên Minh. Thích đâu dừng đó.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Dừng chân tại Yên Minh và thưởng thức bữa trưa ngon miệng với các món ăn địa phương chân thực. Thưởng thức trọn vẹn hương vị núi rừng.<br/>Sau bữa trưa, chúng ta sẽ có một quãng nghỉ ngắn khoảng 15 - 30 phút trước khi tiếp tục hành trình.',
+                        description: 'Ăn trưa ở thị trấn Yên Minh.',
                     },
                     {
                         time: '14:00',
-                        description: `Chúng ta tiếp tục từ Yên Minh hướng về Đồng Văn. Hãy chuẩn bị máy ảnh—khung cảnh trở nên ấn tượng và ngoạn mục hơn khi chúng ta lên cao.<br/>Hành trình từ Yên Minh đến Đồng Văn là một bản giao hưởng của những dãy núi đá. Mỗi khúc cua, mỗi con đèo, đều mở ra một cảnh đẹp ngoạn mục mới, khiến chúng ta không ngừng thốt lên kinh ngạc trước sự hùng vĩ của thiên nhiên.`,
+                        description: 'Yên Minh - Đồng Văn.',
                     },
                     {
                         time: '17:00',
-                        description: `Đến Đồng Văn và nhận phòng tại homestay ấm cúng của bạn. Hãy dành thời gian này để thư giãn, sảng khoái và đắm mình trong không khí yên bình của phố cổ.`,
+                        description: 'Tới Đồng Văn. Check-in homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng tại một nhà hàng địa phương, nếm thử các đặc sản núi rừng ngon nhất của khu vực. Nếu bạn có thể uống, chúng tôi rất sẵn lòng chia sẻ vài chén vui vẻ cùng nhau. Hà Giang nổi tiếng với các loại rượu tự nấu độc đáo ủ từ nguyên liệu rừng, như rượu ngô men lá hoặc rượu chuối. Nếu bạn không uống rượu, điều đó hoàn toàn ổn—chúng tôi chỉ đơn giản mời bạn đắm mình vào không khí nhộn nhịp và sự đồng hành tốt đẹp xung quanh chúng ta.`,
+                        description: 'Ăn tối ở phố cổ Đồng Văn tại các nhà hàng bản địa. Ăn lẩu gà đen, thắng cố, ăn vặt linh tinh.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối là của bạn! Tản bộ qua Phố cổ Đồng Văn dưới ánh sao. Hầu như mỗi đêm, bạn sẽ bắt gặp một buổi giao lưu văn hóa cộng đồng sôi động với âm nhạc và lửa trại, hoặc bạn có thể tìm một góc yên tĩnh để uống một ly và suy ngẫm về những cảnh tượng tuyệt vời trong ngày.',
+                        description: 'Buổi tối (đặc biệt là cuối tuần) ở Đồng Văn có đốt lửa trại, mọi người cùng nhau ca hát, nhảy múa khá là vui nhộn. Đi dạo quanh phố cổ nhỏ nhỏ cũng vui vui, còn có thể đi mát-xa ở các nhà trong phố nữa siêu thích.',
                     },
                 ],
 
@@ -60,39 +59,36 @@ if (vi) {
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng tại Đồng Văn. Thực đơn ở đây có sự kết hợp giữa hương vị truyền thống địa phương và các món ăn quốc tế, đảm bảo bạn được nạp đầy năng lượng cho ngày mới.',
+                        description: 'Ăn sáng ở Đồng Văn.',
                     },
                     {
                         time: '09:00',
-                        description: `Chuyến đi được mong chờ nhất! Chúng ta bắt đầu hành trình vượt qua Đèo Mã Pì Lèng—được công nhận là một trong "Tứ Đại Đỉnh Đèo của Việt Nam." Hãy chuẩn bị để choáng ngợp trước khung cảnh hùng vĩ. Ở đây, bạn sẽ nhận thấy một sự thay đổi rõ rệt: sự xuất hiện của những ngọn núi đá vôi lởm chởm đặc trưng "tai mèo" (núi đá tai mèo) của Mèo Vạc, khác biệt rõ rệt so với cảnh quan ngày đầu tiên. Cảnh tượng này thực sự minh chứng tại sao Hà Giang được mệnh danh là nơi "đá nở hoa."`,
+                        description: 'Qua đèo Mã Pí Lèng, một trong tứ đại đỉnh đèo ở Việt Nam. Siêu đẹp siêu thích. Có thể dừng lại ở đỉnh đèo ngắm cảnh.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
+                        description: 'Dừng lại ăn trưa ở thị trấn Mèo Vạc.',
                     },
                     {
                         time: '14:00',
-                        description: `Trải nghiệm trái tim Hà Giang - Sông Nho Quế. Đây là điểm đến bạn không thể bỏ lỡ! Chúng ta sẽ đi xuống bến thuyền để tận hưởng chuyến đi trên Sông Nho Quế. Trên bờ sông sừng sững một ngọn núi cao từ 700 đến 900 mét, tạo thành hẻm vực Tu Sản. Đứng dưới lòng sông, bạn sẽ cảm thấy một sự nhỏ bé trước thiên nhiên hùng vĩ như vậy. Đặc biệt vào mùa Thu và Đông, nước sông mang một màu xanh ngọc bích độc đáo, tuyệt đẹp.`,
+                        description: 'Ngược về bến thuyền sông Nho Quế. 120k/người, đi thuyền khoảng 30 - 45 phút.',
                     },
                     {
                         time: '15:00',
-                        description:
-                            'Sau khi lên bờ, chúng ta sẽ dành thời gian đi dạo quanh, ngắm cảnh, hoặc chụp ảnh những khung cảnh tuyệt đẹp xung quanh.',
+                        description: 'Đi loanh quanh khu này, đường nào đẹp thì rẽ.',
                     },
                     {
                         time: '17:00',
-                        description: `Nhận phòng tại homestay yên bình ở Mèo Vạc. Dành chút thời gian để thư giãn và cảm nhận không khí tĩnh lặng, đối lập với không khí sôi động hơn ở Đồng Văn.`,
+                        description: 'Về homestay. Có thể ở làng du lịch H\'Mong hoặc ở trong thị trấn, 2 nơi này cách nhau 3km thôi.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng với ẩm thực đặc trưng của Mèo Vạc.`,
+                        description: 'Ăn tối ở homestay (nếu có) hoặc ăn ở thị trấn.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối ở Mèo Vạc mang lại cảm giác thân mật và yên bình hơn. Đặc biệt vào cuối tuần, bạn thường có cơ hội tham gia các buổi biểu diễn văn hóa nhỏ và lửa trại, mang đến hương vị đậm đà của văn hóa vùng cao Việt Nam.',
+                        description: 'Buổi tối ở Mèo Vạc sẽ yên bình hơn Đồng Văn dù cũng vẫn có các hoạt động văn nghệ giao lưu.',
                     },
                 ],
 
@@ -100,32 +96,32 @@ if (vi) {
                 3: [
                     {
                         time: '08:00',
-                        description: `Nếu chuyến đi của bạn rơi vào Chủ Nhật, chúng ta sẽ bắt đầu ngày mới bằng việc ghé thăm Chợ phiên Mèo Vạc—một trong những chợ vùng cao lớn và sôi động nhất. Đây là một cuộc tụ họp lớn của người dân địa phương trong trang phục truyền thống, trao đổi hàng hóa và duy trì các phong tục độc đáo. Hãy dùng bữa sáng ngay tại chợ cùng chúng tôi để cảm nhận năng lượng nhộn nhịp và nét quyến rũ chân thực, hiếm có này.`,
+                        description: 'Nếu ngày này là Chủ Nhật, phải đi chợ phiên Mèo Vạc! Phải đi! Một trong những chợ phiên lớn ở vùng cao Hà Giang, bán rất nhiều đồ hay ho, đồ ăn sáng trong chợ siêu ngon siêu bản địa. Phải thử phở lợn, phở gà đen, xôi,...',
                     },
                     {
                         time: '10:00',
-                        description: `Sau khi nói lời tạm biệt Mèo Vạc (hoặc sau bữa sáng nếu không phải Chủ Nhật), chúng ta sẽ lên đường hướng về Du Già. Tuyến đường của chúng ta sẽ đi qua những con đường nhỏ uốn lượn qua các thôn bản, nơi bạn có thể tận mắt chứng kiến cảnh quan của những cánh đồng lúa và đồi hoa theo mùa, mang lại cảm giác thư giãn và khám phá liên tục.`,
+                        description: 'Về Du Già theo đường qua cua chữ M.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: `Chúng ta sẽ dừng lại ăn trưa tại một điểm ngắm cảnh nổi tiếng: Đường hình chữ M. Từ đây, bạn sẽ thấy con đường uốn lượn nhẹ nhàng như một sợi chỉ thêu vắt ngang sườn núi. Bữa trưa tại đây mang đến một trải nghiệm vừa ngon miệng vừa mãn nhãn.`,
+                        description: 'Ăn trưa ở cua chữ M, view đẹp.',
                     },
                     {
                         time: '14:00',
-                        description: `Chúng ta tiếp tục hành trình hướng về Du Già. Trên đường đi, chúng ta sẽ vui vẻ rẽ ngang để đảm bảo không bỏ lỡ bất kỳ vẻ đẹp thiên nhiên bất ngờ nào mà núi rừng ban tặng.`,
+                        description: 'Tiếp tục về Du Già.',
                     },
                     {
                         time: '16:00',
-                        description: `Đến homestay Du Già, nhanh chóng nhận phòng và đi thẳng đến Thác Du Già. Nước tự nhiên ở đây luôn trong vắt và lạnh buốt, thác khá rộng, rất thích hợp để bạn thỏa sức bơi lội và thư giãn. (Đừng quên đồ bơi để tận hưởng trọn vẹn sự sảng khoái này!)`,
+                        description: 'Đến Du Già, check-in homestay. Nếu thích tắm thác có thể ghé thác Du Già, khá là đông vui du khách tắm ở đây.',
                     },
                     {
                         time: '17:00 - 18:00',
-                        description: `Trở về homestay. Tắm rửa và cùng nhau thưởng thức bữa tối với các món ăn "cây nhà lá vườn" đậm đà hương vị địa phương, tạo ra một cảm giác ấm cúng, như ở nhà. Buổi tối ở Du Già thường vui vẻ và sôi động, đặc trưng của cộng đồng du lịch bụi. Bạn có thể dễ dàng kết bạn và giao lưu tại các homestay khác, hát karaoke, hoặc đơn giản là tìm một quán cà phê nhỏ để tận hưởng sự yên bình dưới ánh sao núi.`,
+                        description: 'Về homestay ăn tối.',
                     },
                     {
                         time: 'Night time',
-                        description: `Buổi tối ở Du Già thường vui vẻ và sôi động, đặc trưng của cộng đồng du lịch bụi. Bạn có thể dễ dàng kết bạn và giao lưu tại các homestay khác, hát karaoke, hoặc đơn giản là tìm một quán cà phê nhỏ để tận hưởng sự yên bình dưới ánh sao núi.`,
+                        description: 'Có thể dạo quanh làng Du Già, có một vài quán cà phê và thậm chí là nhiều quán bar dưới tầng hầm, mọi người rất hay hát karaoke ở đấy.',
                     },
                 ],
 
@@ -133,26 +129,28 @@ if (vi) {
                 4: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng yên bình ở Du Già, hít thở những hơi thở trong lành cuối cùng của không khí núi rừng. Đây là khoảnh khắc hoàn hảo để tận hưởng sự tĩnh lặng trước khi trở lại nhịp sống hối hả của thành phố.',
+                        description: 'Ăn sáng ở Du Già.',
                     },
                     {
                         time: '09:00',
-                        description: `Chúng ta rời Du Già, biết rằng những kỷ niệm chúng ta tạo ra vẫn còn ở lại đây, và bắt đầu lái xe về Thành phố Hà Giang. Hãy chú ý sự thay đổi dần dần của cảnh quan khi chúng ta rời khỏi thung lũng và các khu vực núi đá cao. Chúng ta sẽ dừng lại ở một điểm ngắm cảnh đẹp trên đường. Tận dụng khoảnh khắc cuối cùng này để chiêm ngưỡng và hứa với những ngọn núi hùng vĩ rằng chúng ta sẽ quay lại khám phá chúng một lần nữa.`,
+                        description: 'Về thành phố theo google map. Hỏi homestay trước xem đường nào đang đẹp không bị sạt thì đi.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Thưởng thức bữa trưa gần Thành phố Hà Giang. Đây là bữa ăn chung cuối cùng của chúng ta, nơi chúng ta có thể lên kế hoạch cho chuyến phiêu lưu tiếp theo và chia sẻ những khoảnh khắc yêu thích của mình.',
+                        description: 'Ăn trưa.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Ghé check-in km0. Giờ này check-in vừa vắng vừa đẹp.',
                     },
                     {
                         time: '17:00',
-                        description: `Chúng ta ghé thăm Cột mốc Km 0 để chụp bức ảnh cuối cùng, chính thức đánh dấu sự hoàn thành của chương này trong hành trình. Sau đó, chúng ta lên xe để trở về Hà Nội. Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!`,
+                        description: 'Kết thúc hành trình. Đón xe về Hà Nội, thường có chuyến 4 rưỡi - 5h.',
                     },
                     {
                         time: '23:00',
-                        description: 'Quý khách sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
+                        description: 'Về đến Hà Nội.',
                     },
                 ],
             },
@@ -160,7 +158,7 @@ if (vi) {
                 // Ngày 0: Hà Nội -> Hà Giang
                 0: [
                     {
-                        time: '0:00',
+                        time: '21:00',
                         description:
                             'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
                     },
@@ -276,89 +274,88 @@ if (vi) {
                 ],
             },
             2: {
-                // Ngày 0: Hà Nội -> Hà Giang (Giống như mẫu bạn cung cấp)
+                // Ngày 0: Hà Nội -> Hà Giang
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
+                        description: 'Lên xe giường nằm đi Hà Giang.',
                     },
-                    { time: '03:00', description: 'Đến Thành phố Hà Giang, nhân viên của chúng tôi sẽ hướng dẫn quý khách nhận phòng và nghỉ ngơi.' },
+                    {
+                        time: '03:00',
+                        description: 'Trung tâm thành phố. Nghỉ lại tại chỗ thuê xe máy.',
+                    },
                 ],
 
                 // Ngày 1: Hà Giang -> Đồng Văn
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Gặp gỡ hướng dẫn viên và tài xế của Hi Hi tour. Thưởng thức bữa sáng đơn giản nhưng ý nghĩa, nạp đầy đủ năng lượng và sẵn sàng để bị rung động bởi vẻ đẹp thiên nhiên sắp tới.',
+                        description: 'Ăn sáng.',
                     },
                     {
                         time: '09:00',
-                        description: `Cùng nhau, chúng ta bắt đầu hành trình tuyệt vời. Chúng ta sẽ không vội vã. Thay vào đó, chúng ta sẽ tận dụng khoảnh khắc để dừng chân tại các điểm ngắm cảnh và đi sâu vào các làng bản địa phương để cảm nhận nhịp sống chân thực nhất của các cộng đồng dân tộc.`,
+                        description: 'TP. Hà Giang - Quản Bạ - Yên Minh. Thích đâu dừng đó.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Dừng chân tại Yên Minh và thưởng thức bữa trưa ngon miệng với các món ăn địa phương chân thực. Thưởng thức trọn vẹn hương vị núi rừng.<br/>Sau bữa trưa, chúng ta sẽ có một quãng nghỉ ngắn khoảng 15 - 30 phút trước khi tiếp tục hành trình.',
+                        description: 'Ăn trưa ở thị trấn Yên Minh.',
                     },
                     {
                         time: '14:00',
-                        description: `Sau khi nghỉ ngơi tại Yên Minh, hành trình của chúng ta tiếp tục hướng tới một trong những điểm dừng mang tính biểu tượng nhất của Hà Giang: Đèo Thẩm Mã. Vị trí này mang đến cho du khách một cái nhìn toàn cảnh ngoạn mục, cho phép chúng ta đánh giá trọn vẹn sự hùng vĩ của thiên nhiên khi những con đường núi quanh co uốn lượn duyên dáng như những dải lụa vắt qua những ngọn núi đá.`,
+                        description: 'Qua dốc Thẩm Mã. Rất nhiều khách du lịch. Thích thì dừng cũng được.',
                     },
                     {
                         time: '15:00',
-                        description: `Tiếp theo, chúng ta sẽ đưa quý khách đến Cột cờ Lũng Cú, nằm gần điểm cực Bắc thiêng liêng của Việt Nam. Dưới chân Cột cờ là Làng Lô Lô Chải quyến rũ. Ngôi làng này tự hào được công nhận là Làng Du lịch Tốt nhất Thế giới năm 2023 vì những nỗ lực nổi bật trong việc bảo tồn các giá trị truyền thống trong cả lối sống và thực hành du lịch bền vững.`,
+                        description: 'Đi thẳng lên cột cờ Lũng Cú, chân cột cờ là làng Lô Lô Chải. Chú ý nếu book homestay ở Đồng Văn thì phải lên đây trước 3h chiều và bắt đầu về trước 4h không thì trời tối quá, đi nguy hiểm.',
                     },
                     {
                         time: '17:00',
-                        description: `Đến Đồng Văn và nhận phòng tại homestay ấm cúng của bạn. Hãy dành thời gian này để thư giãn, sảng khoái và đắm mình trong không khí yên bình của phố cổ.`,
+                        description: 'Về đến Đồng Văn, check-in homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng tại một nhà hàng địa phương, nếm thử các đặc sản núi rừng ngon nhất của khu vực.<br/>Nếu bạn có thể uống, chúng tôi rất sẵn lòng chia sẻ vài chén vui vẻ cùng nhau. Hà Giang nổi tiếng với các loại rượu tự nấu độc đáo ủ từ nguyên liệu rừng, như rượu ngô men lá hoặc rượu chuối. Nếu bạn không uống rượu, điều đó hoàn toàn ổn—chúng tôi chỉ đơn giản mời bạn đắm mình vào không khí nhộn nhịp và sự đồng hành tốt đẹp xung quanh chúng ta.`,
+                        description: 'Ăn tối ở phố cổ Đồng Văn tại các nhà hàng bản địa. Ăn lẩu gà đen, thắng cố, ăn vặt linh tinh.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối là của bạn! Tản bộ qua Phố cổ Đồng Văn dưới ánh sao. Hầu như mỗi đêm, bạn sẽ bắt gặp một buổi giao lưu văn hóa cộng đồng sôi động với âm nhạc và lửa trại, hoặc bạn có thể tìm một góc yên tĩnh để uống một ly và suy ngẫm về những cảnh tượng tuyệt vời trong ngày.',
+                        description: 'Buổi tối (đặc biệt là cuối tuần) ở Đồng Văn có đốt lửa trại, mọi người cùng nhau ca hát, nhảy múa khá là vui nhộn. Đi dạo quanh phố cổ nhỏ nhỏ cũng vui vui, còn có thể đi mát-xa ở các nhà trong phố nữa siêu thích.',
                     },
                 ],
 
-                // Ngày 2: Đồng Văn -> Hà Giang (Kết thúc)
+                // Ngày 2: Đồng Văn -> Mèo Vạc (Gần Sông Nho Quế) -> Hà Giang
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng tại Đồng Văn. Thực đơn ở đây có sự kết hợp giữa hương vị truyền thống địa phương và các món ăn quốc tế, đảm bảo bạn được nạp đầy năng lượng cho ngày mới.',
+                        description: 'Ăn sáng ở Đồng Văn.',
                     },
                     {
                         time: '09:00',
-                        description: `Chuyến đi được mong chờ nhất! Chúng ta bắt đầu hành trình vượt qua Đèo Mã Pì Lèng—được công nhận là một trong "Tứ Đại Đỉnh Đèo của Việt Nam." Tiếp theo, chúng ta sẽ đi thẳng về phía bến Sông Nho Quế, trái tim ngọc bích của Hà Giang—đây là điểm đến bạn không thể bỏ lỡ! Chúng ta sẽ đi xuống bến thuyền để tận hưởng chuyến đi trên Sông Nho Quế. Trên bờ sông sừng sững một ngọn núi cao từ 700 đến 900 mét, tạo thành hẻm vực Tu Sản. Đứng dưới lòng sông, bạn sẽ cảm thấy một sự nhỏ bé trước thiên nhiên hùng vĩ như vậy. Đặc biệt vào mùa Thu và Đông, nước sông mang một màu xanh ngọc bích độc đáo, tuyệt đẹp.`,
+                        description: 'Đi xuống bến thuyền sông Nho Quế. 120k/người, đi thuyền khoảng 30 - 45 phút.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
+                        description: 'Ăn trưa ở thị trấn Mèo Vạc. Hoặc có thể đặt trước ăn trưa ở nhà hàng ở ngay hẻm Tu Sản luôn.',
                     },
                     {
                         time: '14:00',
-                        description: `Sau bữa trưa, chúng ta lên đường quay về Thành phố Hà Giang. Chúng ta sẽ thoải mái dừng chân dọc đường để ngắm cảnh và chụp ảnh những khung cảnh tuyệt đẹp.`,
+                        description: 'Lên đường quay về thành phố Hà Giang.',
                     },
                     {
                         time: '17:00',
-                        description: `Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!`,
+                        description: 'Kết thúc hành trình. Đón xe về Hà Nội, thường có chuyến 4 rưỡi - 5h.',
                     },
                     {
                         time: '23:00',
-                        description: 'Chúng ta sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
+                        description: 'Về đến Hà Nội.',
                     },
                 ],
             },
         }
     } else {
         ALL_ITINERARY_PLANS_DATA = {
+
             3: {
                 //  0: Ha Noi -> Cao Bang
                 0: [
@@ -563,48 +560,48 @@ if (vi) {
     if (isHaGiang) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
+                // Day 0: Hanoi -> Ha Giang
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
+                        description: 'Board the sleeper bus to Ha Giang.',
                     },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
                 ],
 
                 //  1: Ha Giang -> Dong Van
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
+                        description: 'Breakfast.',
                     },
                     {
                         time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
+                        description: 'Travel from Ha Giang City to Quan Ba and Yen Minh. Stop anywhere that looks interesting.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
+                        description: 'Lunch in Yen Minh Town.',
                     },
                     {
                         time: '14:00',
-                        description: `We press on from Yen Minh toward Dong Van. Prepare your camera—the vistas become more dramatic and breathtaking as we gain elevation.<br/>The journey from Yen Minh to Dong Van is a symphony of rock mountains. Every curve, every pass, reveals a new breathtaking vista, prompting endless exclamations of wonder at nature's grandeur.`,
+                        description: 'Travel from Yen Minh to Dong Van.',
                     },
                     {
                         time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
+                        description: 'Arrive in Dong Van. Check in to the homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties. If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
+                        description: 'Dinner in Dong Van Old Quarter at local restaurants. Try black chicken hotpot, thang co, and local snacks.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'The evening is yours! Stroll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
+                        description: 'At night, especially on weekends, Dong Van has campfires, singing, and dancing activities. Walking around the old quarter is also enjoyable, and local massage services are available in town.',
                     },
                 ],
 
@@ -612,39 +609,36 @@ if (vi) {
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
+                        description: 'Breakfast in Dong Van.',
                     },
                     {
                         time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Prepare to be overwhelmed by the majestic scenery. Here, you will notice a clear shift: the emergence of the characteristic "cat-ear" jagged limestone mountains (núi đá tai mèo) of Mèo Vạc, distinctly different from the first 's landscape. This sight truly exemplifies why Hà Giang is known as the place where "flowers grow on stones."`,
+                        description: 'Cross Ma Pi Leng Pass, one of the four greatest mountain passes in Vietnam. Stop at the top for scenic views.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
+                        description: 'Lunch stop in Meo Vac Town.',
                     },
                     {
                         time: '14:00',
-                        description: `Experience Hà Giang heart - Nho Quế river. This is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
+                        description: 'Head to the Nho Que River boat station. Boat ticket: around 120,000 VND per person for a 30–45 minute ride.',
                     },
                     {
                         time: '15:00',
-                        description:
-                            'After disembarking, we will take some time to stroll around, sightsee, or take photos of the stunning surroundings.',
+                        description: 'Explore the surrounding area and take any beautiful roads along the way.',
                     },
                     {
                         time: '17:00',
-                        description: `Settle into your peaceful homestay in Mèo Vạc. Take a moment to relax and feel the calm atmosphere, a contrast to the livelier atmosphere of Dong Van.`,
+                        description: "Return to the homestay. You can stay in the H'Mong tourism village or in town, about 3 km apart.",
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner featuring Mèo Vạc's distinctive cuisine.`,
+                        description: 'Dinner at the homestay or in town.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Evenings in Mèo Vạc offer a more intimate and peaceful feeling. Especially on weekends, you often have the chance to attend small cultural performances and bonfires, providing a rich taste of Vietnamese highlands culture.',
+                        description: 'Meo Vac is quieter and more peaceful than Dong Van, though cultural exchange activities are still available.',
                     },
                 ],
 
@@ -652,32 +646,32 @@ if (vi) {
                 3: [
                     {
                         time: '08:00',
-                        description: `If your trip falls on a Sun, we'll begin the  by visiting the Mèo Vạc Fair Market—one of the largest and most vibrant highland markets. This is a massive gathering of local people in their traditional attire, trading goods, and maintaining unique customs. Join us for breakfast right in the market to feel the bustling energy and this rare, authentic charm.`,
+                        description: 'If it is Sunday, visit the Meo Vac weekend market. One of the largest highland markets in Ha Giang with unique local products and delicious traditional breakfast dishes such as pork pho, black chicken pho, and sticky rice.',
                     },
                     {
                         time: '10:00',
-                        description: `After saying goodbye to Me Vạc (or after breakfast if it's not Sun), we'll hit the road toward Du Gia. Our route will take us through small roads winding through hamlets, where you can witness firsthand the scenery of seasonal rice fields and flower hills, offering a continuous feeling of relaxation and discovery.`,
+                        description: 'Travel to Du Gia via the M-shaped curve road.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: `We'll pause for lunch at a famous viewpoint: the "M-Bend" Road. From here, you'll see the road gently curve like an embroidered thread stretched across the mountainside. Lunch here provides an experience that is both delicious and visually stunning.`,
+                        description: 'Lunch at the M-shaped curve viewpoint with a beautiful view.',
                     },
                     {
                         time: '14:00',
-                        description: `We continue our journey toward Du Gia. Along the way, we’ll happily take detours to ensure we don't miss any unexpected natural beauty that the mountains offer.`,
+                        description: 'Continue to Du Gia.',
                     },
                     {
                         time: '16:00',
-                        description: `Arrive at the Du Gia homestay, quickly check-in, and head straight to the Du Gia Waterfall. The natural water here is always crystal clear and icy cold, and the falls are quite wide, making it perfect for you to freely swim and relax. (Don't forget your swimwear to fully enjoy this refreshment!)`,
+                        description: 'Arrive in Du Gia and check in to the homestay. Visit Du Gia Waterfall if you would like to swim.',
                     },
                     {
                         time: '17:00 - 18:00',
-                        description: `Return to the homestay. Wash up and enjoy dinner together featuring "home-cooked" dishes rich in local flavors, creating a wonderfully cozy, home-away-from-home feeling. The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
+                        description: 'Return to the homestay for dinner.',
                     },
                     {
                         time: 'Night time',
-                        description: `The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
+                        description: 'Walk around Du Gia Village. There are several cafes and even underground bars where people often sing karaoke.',
                     },
                 ],
 
@@ -685,231 +679,226 @@ if (vi) {
                 4: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy a serene breakfast in Du Gia, taking in the mountain air’s final clean breaths. This is the perfect moment to savor the stillness before returning to the hustle of city life.',
+                        description: 'Breakfast in Du Gia.',
                     },
                     {
                         time: '09:00',
-                        description: `We leave Du Gia, knowing the memories we made remain here, and begin our drive toward Ha Giang City. Notice the gradual shift in scenery as we leave the valley and the high rocky areas behind. We will make a stop at a beautiful viewing point along the way. Take advantage of this final moment to admire and promise the majestic mountains that we will be back to explore them again.`,
+                        description: 'Return to the city following Google Maps. Ask the homestay which roads are in good condition and free from landslides.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Enjoy lunch near Ha Giang City. This is our final shared meal, where we can plan our next adventure and share our favorite moments.',
+                        description: 'Lunch.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Visit Km0 landmark for photos. This time is usually less crowded and good for pictures.',
                     },
                     {
                         time: '17:00',
-                        description: `We visit the Zero Kilometer Marker for a final photo, officially marking the completion of this chapter of the journey. We then board the vehicle for the direct drive back to Hanoi. The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!`,
+                        description: 'End of the journey. Take the bus back to Hanoi. Most buses depart around 4:30 PM – 5:00 PM.',
                     },
                     {
                         time: '23:00',
-                        description: 'You will arrive in Ha Noi around this time. Goodbye and see you real soon!',
+                        description: 'Arrive in Hanoi.',
                     },
                 ],
             },
             3: {
-                //  0: Ha Noi -> Ha Giang (Giống như mẫu bạn cung cấp)
-                0: [
-                    {
-                        time: '0:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
-                    },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
-                ],
-
-                //  1: Ha Giang -> Dong Van
-                1: [
-                    {
-                        time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
-                    },
-                    {
-                        time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
-                    },
-                    {
-                        time: '13:00',
-                        short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
-                    },
-                    {
-                        time: '14:00',
-                        description: `We press on from Yen Minh toward Dong Van. Prepare your camera—the vistas become more dramatic and breathtaking as we gain elevation.<br/>The journey from Yen Minh to Dong Van is a symphony of rock mountains. Every curve, every pass, reveals a new breathtaking vista, prompting endless exclamations of wonder at nature's grandeur.`,
-                    },
-                    {
-                        time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
-                    },
-                    {
-                        time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties.<br/>If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
-                    },
-                    {
-                        time: 'Night time',
-                        description:
-                            'The evening is yours! Stoll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
-                    },
-                ],
-
-                //  2: Dong Van -> Du Gia
-                2: [
-                    {
-                        time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
-                    },
-                    {
-                        time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Prepare to be overwhelmed by the majestic scenery. Here, you will notice a clear shift: the emergence of the characteristic "cat-ear" jagged limestone mountains (núi đá tai mèo) of Mèo Vạc, distinctly different from the first 's landscape. This sight truly exemplifies why Hà Giang is known as the place where "flowers grow on stones."`,
-                    },
-                    {
-                        time: '11:00',
-                        description: `Experience Hà Giang heart - Nho Quế river.<br/>This is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
-                    },
-                    {
-                        time: '13:00',
-                        short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
-                    },
-                    {
-                        time: '14:00',
-                        description: `We continue our journey toward Du Gia. Along the way, we’ll happily take detours to ensure we don't miss any unexpected natural beauty that the mountains offer.`,
-                    },
-                    {
-                        time: '16:00',
-                        description: `Arrive at the Du Gia homestay, quickly check-in, and head straight to the Du Gia Waterfall. The natural water here is always crystal clear and icy cold, and the falls are quite wide, making it perfect for you to freely swim and relax. (Don't forget your swimwear to fully enjoy this refreshment!)`,
-                    },
-                    {
-                        time: '19:00',
-                        description: `Return to the homestay. Wash up and enjoy dinner together featuring "home-cooked" dishes rich in local flavors, creating a wonderfully cozy, home-away-from-home feeling.`,
-                    },
-                    {
-                        time: 'Night time',
-                        description: `The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
-                    },
-                ],
-
-                //  3: Du Gia -> Ha Giang (End)
-                3: [
-                    {
-                        time: '08:00',
-                        description:
-                            'Enjoy breakfast in Du Gia. You can take some time to stroll around, sightsee, or take photos of the stunning surroundings.',
-                    },
-                    {
-                        time: '09:00',
-                        description:
-                            'We leave Du Gia, knowing the memories we made remain here, and begin our drive toward Ha Giang City. Notice the gradual shift in scenery as we leave the valley and the high rocky areas behind. We will make a stop at a beautiful viewing point along the way. Take advantage of this final moment to admire and promise the majestic mountains that we will be back to explore them again.',
-                    },
-                    {
-                        time: '13:00',
-                        short: 'Lunch time',
-                        description:
-                            'Enjoy lunch near Ha Giang City. This is our final shared meal, where we can plan our next adventure and share our favorite moments.',
-                    },
-                    {
-                        time: '16:00',
-                        description:
-                            'We arrive in Ha Giang City! We stop at the Zero Kilometer Marker for a final photo—the light at this hour is perfect and the crowd is thin—officially marking the completion of this chapter of the journey.',
-                    },
-                    {
-                        time: '17:00',
-                        description:
-                            'The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads! Board your bus back to Hanoi — departures are typically around 4:30 – 5:00 PM.',
-                    },
-                    {
-                        time: '23:00',
-                        description: 'You will arrive in Ha Noi around this time. Goodbye and see you real soon!',
-                    },
-                ],
-            },
-            2: {
-                //  0: Ha Noi -> Ha Giang (Giống như mẫu bạn cung cấp)
+                // Day 0: Hanoi -> Ha Giang
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
+                        description: 'Board the sleeper bus to Ha Giang.',
                     },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
                 ],
 
-                //  1: Ha Giang -> Dong Van
+                // Day 1: Ha Giang -> Dong Van
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
+                        description: 'Have breakfast.',
                     },
                     {
                         time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
+                        description: 'Travel from Ha Giang City to Quan Ba to Yen Minh. Stop anywhere you like along the way.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
+                        description: 'Have lunch in Yen Minh town.',
                     },
                     {
                         time: '14:00',
-                        description: `After resting in Yen Minh, our journey continues toward one of Ha Giang's most iconic stops: Thẩm Mã Pass. This location offers guests a spectacular panoramic view, providing a full appreciation of nature's grandeur as the winding mountain roads curve gracefully like ribbons draped across the rocky mountains.`,
-                    },
-                    {
-                        time: '15:00',
-                        description: `Subsequently, we will take you to Lũng Cú Flagpole, located near the sacred northernmost point of Vietnam. At the foot of the Flagpole lies the charming Lô Lô Chải Village. This village was proudly recognized as the Best Tourism Village in the World in 2023 for its outstanding preservation of traditional values in both its lifestyle and sustainable tourism practices.`,
+                        description: 'Continue from Yen Minh to Dong Van.',
                     },
                     {
                         time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
+                        description: 'Arrive in Dong Van and check in to the homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties.<br/>If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
+                        description: 'Have dinner in Dong Van Old Quarter at local restaurants. Try black chicken hotpot, thang co, and local street snacks.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'The evening is yours! Stoll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
+                        description: 'In the evening, especially on weekends, Dong Van often has campfires where people sing and dance together. Walking around the small old quarter is also enjoyable, and you can even get a massage at local houses in the area.',
                     },
                 ],
 
-                //  2: Dong Van -> Ha Giang (Kết thúc)
+                // Day 2: Dong Van -> Du Gia
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
+                        description: 'Have breakfast in Dong Van.',
                     },
                     {
                         time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Next, we will immediately head towards the Nho Quế River pier, the emerald heart of Hà Giang—this is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
+                        description: 'Cross Ma Pi Leng Pass, one of the four greatest mountain passes in Vietnam. It is incredibly beautiful. You can stop at the top of the pass to enjoy the view.',
+                    },
+                    {
+                        time: '11:00',
+                        description: 'Go down to the Nho Que River boat station. Ticket price is around 120,000 VND per person, and the boat ride lasts about 30 to 45 minutes.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
+                        description: 'Have lunch in Meo Vac town, or pre-order lunch at a restaurant near Tu San Alley.',
                     },
                     {
                         time: '14:00',
-                        description: `After lunch, we begin our journey back to Ha Giang City. We will comfortably make stops along the way to enjoy scenic views and take photos.`,
+                        description: 'Head back to Du Gia.',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Check in to the homestay. If you arrive early and have extra time, visit Du Gia Waterfall where you can swim and relax.',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Have dinner at the homestay.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'You can walk around Du Gia village. There are a few cafes and even some basement bars where people often sing karaoke.',
+                    },
+                ],
+
+                // Day 3: Du Gia -> Ha Giang City
+                3: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast in Du Gia.',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Return to the city following Google Maps. Ask your homestay which roads are currently safe and free from landslides before departing.',
+                    },
+                    {
+                        time: '13:00',
+                        short: 'Lunch time',
+                        description: 'Have lunch.',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Arrive back in Ha Giang City and stop by Km0 for check-in photos. This time of day is usually less crowded and very beautiful.',
                     },
                     {
                         time: '17:00',
-                        description: `The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!`,
+                        description: 'End of the journey. Take the bus back to Hanoi, usually departing around 4:30 PM to 5:00 PM.',
                     },
                     {
                         time: '23:00',
-                        description: 'We will arrive in Ha Noi around this time. Goodbye and see you real soon!',
+                        description: 'Arrive back in Hanoi.',
+                    },
+                ],
+            },
+
+            2: {
+                // Day 0: Hanoi -> Ha Giang
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Board the sleeper bus to Ha Giang.',
+                    },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
+                ],
+
+                // Day 1: Ha Giang -> Dong Van
+                1: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast.',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Travel from Ha Giang City to Quan Ba to Yen Minh. Stop anywhere you like for sightseeing and photos.',
+                    },
+                    {
+                        time: '13:00',
+                        short: 'Lunch time',
+                        description: 'Have lunch in Yen Minh town.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Pass through Tham Ma Slope. There are many tourists here. Stop anywhere you like for photos.',
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Continue to Lung Cu Flag Tower. At the foot of the tower is Lo Lo Chai Village where you can walk around and relax.',
+                    },
+                    {
+                        time: '17:00',
+                        description: 'Arrive in Dong Van and check in to the homestay.',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Have dinner in Dong Van Old Quarter at local restaurants. Try local specialties and street food.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'In the evening, especially on weekends, Dong Van often has campfires, music, and dancing activities. Walking around the old quarter is also very enjoyable.',
+                    },
+                ],
+
+                // Day 2: Dong Van -> Meo Vac (near Nho Que River) -> Ha Giang
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast in Dong Van.',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Go down to the Nho Que River boat station. The ticket costs around 120,000 VND per person and the boat trip lasts about 30 to 45 minutes.',
+                    },
+                    {
+                        time: '13:00',
+                        short: 'Lunch time',
+                        description: 'Have lunch in Meo Vac town, or pre-order lunch at a restaurant near Tu San Alley.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Start the journey back to Ha Giang City.',
+                    },
+                    {
+                        time: '17:00',
+                        description: 'End of the trip. Take the bus back to Hanoi, usually departing around 4:30 PM to 5:00 PM.',
+                    },
+                    {
+                        time: '23:00',
+                        description: 'Arrive back in Hanoi.',
                     },
                 ],
             },
         }
     } else {
+
         ALL_ITINERARY_PLANS_DATA = {
             3: {
                 //  0: Ha Noi -> Cao Bang

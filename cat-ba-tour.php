@@ -60,10 +60,7 @@ $faqs_data = [
         'q' => 'faq_q_seasick',
         'a' => 'faq_a_seasick',
     ],
-    [
-        'q' => 'faq_q_cancel',
-        'a' => 'faq_a_cancel',
-    ],
+
     [
         'q' => 'faq_q_tip',
         'a' => 'faq_a_tip',

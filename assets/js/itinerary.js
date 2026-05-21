@@ -1,4 +1,4 @@
-﻿const pathname = window.location.pathname
+const pathname = window.location.pathname
 
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang-tour')

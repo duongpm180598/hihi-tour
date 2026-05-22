@@ -99,62 +99,203 @@ $faqs_data = [
 $highlights = [
     [
         'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
+        ],
+        'category' => 'viewpoints',
         'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
         'title_en' => $t['ha_giang']['highlight_item_0_title'],
-'title_vi' => $t['ha_giang']['highlight_item_0_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_0_title'],
         'desc_en' => $t['ha_giang']['highlight_item_0_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
         'span'     => 'tall',
     ],
     [
         'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
+        ],
+        'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
         'title_en' => $t['ha_giang']['highlight_item_1_title'],
-'title_vi' => $t['ha_giang']['highlight_item_1_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_1_title'],
         'desc_en' => $t['ha_giang']['highlight_item_1_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
         'span'     => 'normal',
     ],
     [
         'img'      => '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
+            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
+            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
+        ],
+        'category' => 'viewpoints',
         'tag_en' => $t['ha_giang']['highlight_item_2_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
         'title_en' => $t['ha_giang']['highlight_item_2_title'],
-'title_vi' => $t['ha_giang']['highlight_item_2_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_2_title'],
         'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
         'span'     => 'normal',
     ],
     [
         'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+        ],
+        'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
         'title_en' => $t['ha_giang']['highlight_item_3_title'],
-'title_vi' => $t['ha_giang']['highlight_item_3_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_3_title'],
         'desc_en' => $t['ha_giang']['highlight_item_3_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
         'span'     => 'tall',
     ],
     [
         'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
+            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
+        ],
+        'category' => 'food',
         'tag_en' => $t['ha_giang']['highlight_item_4_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
         'title_en' => $t['ha_giang']['highlight_item_4_title'],
-'title_vi' => $t['ha_giang']['highlight_item_4_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_4_title'],
         'desc_en' => $t['ha_giang']['highlight_item_4_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
         'span'     => 'normal',
     ],
     [
         'img'      => '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+        ],
+        'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
-'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
         'title_en' => $t['ha_giang']['highlight_item_5_title'],
-'title_vi' => $t['ha_giang']['highlight_item_5_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_5_title'],
         'desc_en' => $t['ha_giang']['highlight_item_5_desc'],
-'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
+        ],
+        'category' => 'viewpoints',
+        'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_6_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_6_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_6_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_6_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_6_desc'],
+        'span'     => 'tall',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
+        ],
+        'category' => 'nature',
+        'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_7_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_7_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_7_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_7_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_7_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+        ],
+        'category' => 'nature',
+        'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_8_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_8_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_8_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_8_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_8_desc'],
+        'span'     => 'tall',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
+        ],
+        'category' => 'viewpoints',
+        'tag_en'   => $t['ha_giang']['highlight_item_9_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_9_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_9_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_9_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_9_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_9_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/gallery-2.webp',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/gallery-2.webp',
+            '/assets/images/ha-giang/gallery/gallery-4.webp',
+        ],
+        'category' => 'viewpoints',
+        'tag_en'   => $t['ha_giang']['highlight_item_10_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_10_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_10_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_10_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_10_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_10_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
+            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
+        ],
+        'category' => 'food',
+        'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_11_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_11_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_11_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_11_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_11_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/gallery/gallery-6.webp',
+        'imgs'     => [
+            '/assets/images/ha-giang/gallery/gallery-6.webp',
+            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        ],
+        'category' => 'nature',
+        'tag_en'   => $t['ha_giang']['highlight_item_12_tag'],
+        'tag_vi'   => $t['ha_giang']['highlight_item_12_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_12_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_12_title'],
+        'desc_en'  => $t['ha_giang']['highlight_item_12_desc'],
+        'desc_vi'  => $t['ha_giang']['highlight_item_12_desc'],
         'span'     => 'normal',
     ],
 ];
@@ -1009,12 +1150,37 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo $t['ha_giang']['highlight_desc']; ?>
             </p>
 
+            <!-- Category filter tabs -->
+            <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+                <?php
+                $hl_tabs = [
+                    'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',
+                    'viewpoints' => $current_lang === 'en' ? 'View points'   : 'Điểm quan sát',
+                    'food'       => $current_lang === 'en' ? 'Food'           : 'Ẩm thực',
+                    'nature'     => $current_lang === 'en' ? 'Nature to go'  : 'Thiên nhiên',
+                ];
+                foreach ($hl_tabs as $key => $label):
+                    $is_active = ($key === 'all');
+                ?>
+                <button
+                    class="hl-tab"
+                    data-cat="<?php echo $key; ?>"
+                    style="<?php echo $is_active
+                        ? 'background:#7B63F7; color:#fff; border:1.5px solid #7B63F7;'
+                        : 'background:transparent; color:#1D292C; border:1.5px solid #A1A4A3;'; ?>
+                        padding:6px 18px; border-radius:999px; font-size:13px; font-weight:600;
+                        cursor:pointer; transition:all .15s; font-family:Inter,sans-serif;"
+                ><?php echo $label; ?></button>
+                <?php endforeach; ?>
+            </div>
+
             <!-- 3-column grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="highlight-grid">
                 <?php foreach ($highlights as $i => $h): ?>
                 <div
                     class="highlight-card group cursor-pointer rounded-xl overflow-hidden relative"
                     data-index="<?php echo $i; ?>"
+                    data-category="<?php echo esc_attr($h['category']); ?>"
                     onclick="openHighlight(<?php echo $i; ?>)"
                     role="button"
                     tabindex="0"
@@ -1055,7 +1221,8 @@ $activeId = $tableOfContents[0]['id'];
         style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(29,41,44,.7); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px;"
         onclick="if(event.target===this) closeHighlight()"
     >
-        <div style="background:#F2F2F0; border-radius:16px; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3);">
+        <div style="background:#F2F2F0; border-radius:16px; max-width:860px; width:100%; height:480px; max-height:90vh; overflow:hidden; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3); display:flex; flex-direction:row;">
+            <!-- Close -->
             <button
                 onclick="closeHighlight()"
                 aria-label="Close"
@@ -1065,16 +1232,40 @@ $activeId = $tableOfContents[0]['id'];
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
-            <div style="width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:16px 16px 0 0;">
-                <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />
+            <!-- Image — left column (per-card slideshow) -->
+            <div style="flex:0 0 45%; height:100%; overflow:hidden; border-radius:16px 0 0 16px; position:relative;">
+                <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity .2s;" />
+                <!-- Prev image arrow -->
+                <button
+                    id="img-prev-btn"
+                    onclick="navHighlightImg(-1)"
+                    aria-label="Previous image"
+                    style="display:none; position:absolute; left:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
+                >
+                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <!-- Next image arrow -->
+                <button
+                    id="img-next-btn"
+                    onclick="navHighlightImg(1)"
+                    aria-label="Next image"
+                    style="display:none; position:absolute; right:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
+                >
+                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
+                </button>
+                <!-- Dot indicators -->
+                <div id="img-dots" style="position:absolute; bottom:12px; left:0; right:0; display:none; justify-content:center; gap:6px; z-index:5;"></div>
             </div>
-            <div style="padding:20px 24px 28px;">
-                <div style="display:inline-block; background:#E7F15A; border-radius:999px; padding:3px 12px; margin-bottom:10px;">
-                    <span id="modal-tag" style="font-size:11px; font-weight:700; color:#1D292C;"></span>
+            <!-- Text — right column -->
+            <div style="flex:1; overflow-y:auto; padding:32px 28px 28px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                    <div style="display:inline-block; background:#E7F15A; border-radius:999px; padding:3px 12px; margin-bottom:12px;">
+                        <span id="modal-tag" style="font-size:11px; font-weight:700; color:#1D292C;"></span>
+                    </div>
+                    <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0 0 12px; line-height:1.3;"></h3>
+                    <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
                 </div>
-                <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0 0 10px; line-height:1.3;"></h3>
-                <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0 0 20px;"></p>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px;">
                     <button onclick="navHighlight(-1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
                         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
                         <?php echo $t['ha_giang']['carousel_prev']; ?>
@@ -1114,14 +1305,6 @@ $activeId = $tableOfContents[0]['id'];
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
                 <?php echo $t['ha_giang']['culture_market_desc'] ?>
             </p>
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_bonfire_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_bonfire_desc'] ?>
-            </p>
-
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
@@ -1164,10 +1347,10 @@ $activeId = $tableOfContents[0]['id'];
     <!-- May be you will interest in -->
     <section id="how-to-book" style="background:#E7F15A;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <p class="text-xs font-bold tracking-widest uppercase text-center text-[#1D292C] mb-3">
+            <p style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;" class="mb-3">
                 <?php echo $t['ha_giang']['related_title']; ?>
             </p>
-            <p style="font-size:15px; color:#474E50;" class="text-center mb-10 max-w-2xl mx-auto">
+            <p style="font-size:15px; color:#474E50;" class="mb-10">
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
 
@@ -1475,6 +1658,35 @@ function transTab(tab) {
     });
 })();
 
+// ── Highlight category filter ──
+(function() {
+    var tabs  = document.querySelectorAll('.hl-tab');
+    var cards = document.querySelectorAll('#highlight-grid .highlight-card');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var cat = tab.getAttribute('data-cat');
+
+            // Update tab styles
+            tabs.forEach(function(t) {
+                var active = t === tab;
+                t.style.background    = active ? '#7B63F7' : 'transparent';
+                t.style.color         = active ? '#fff'    : '#1D292C';
+                t.style.borderColor   = active ? '#7B63F7' : '#A1A4A3';
+            });
+
+            // Show / hide cards
+            cards.forEach(function(card) {
+                var match = (cat === 'all') || (card.getAttribute('data-category') === cat);
+                card.style.transition  = 'opacity .2s, transform .2s';
+                card.style.opacity     = match ? '1' : '0.15';
+                card.style.pointerEvents = match ? '' : 'none';
+                card.style.transform   = match ? '' : 'scale(.97)';
+            });
+        });
+    });
+})();
+
 // ── Download dropdown: close on outside click ──
 document.addEventListener('click', function(e) {
     var wrap = document.getElementById('itinerary-download-wrap');
@@ -1489,9 +1701,13 @@ document.addEventListener('click', function(e) {
     var lang = document.documentElement.lang || (window.location.pathname.includes('/vi') ? 'vi' : 'en');
 
     var data = <?php
-        $js_highlights = array_map(function($h) {
+        $js_highlights = array_map(function($h) use ($theme_uri) {
+            $base_uri = get_template_directory_uri();
+            $imgs = isset($h['imgs'])
+                ? array_map(function($p) use ($base_uri) { return $base_uri . $p; }, $h['imgs'])
+                : [$base_uri . $h['img']];
             return [
-                'img'      => get_template_directory_uri() . $h['img'],
+                'imgs'     => $imgs,
                 'tag_en'   => $h['tag_en'],
                 'tag_vi'   => $h['tag_vi'],
                 'title_en' => $h['title_en'],
@@ -1503,26 +1719,58 @@ document.addEventListener('click', function(e) {
         echo json_encode($js_highlights, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
     ?>;
 
-    var current = 0;
-    var modal   = document.getElementById('highlights-modal');
+    var current    = 0;  // card index
+    var imgCurrent = 0;  // image index within current card
+    var modal      = document.getElementById('highlights-modal');
+    var modalImg   = document.getElementById('modal-img');
+    var imgPrevBtn = document.getElementById('img-prev-btn');
+    var imgNextBtn = document.getElementById('img-next-btn');
+    var dotsEl     = document.getElementById('img-dots');
 
-    function render(i) {
+    function renderDots(imgs, active) {
+        dotsEl.innerHTML = '';
+        if (imgs.length <= 1) { dotsEl.style.display = 'none'; imgPrevBtn.style.display = 'none'; imgNextBtn.style.display = 'none'; return; }
+        dotsEl.style.display = 'flex';
+        imgPrevBtn.style.display = 'flex';
+        imgNextBtn.style.display = 'flex';
+        imgs.forEach(function(_, idx) {
+            var dot = document.createElement('span');
+            dot.style.cssText = 'width:7px; height:7px; border-radius:50%; background:' + (idx === active ? '#fff' : 'rgba(255,255,255,.45)') + '; cursor:pointer; transition:background .15s; display:inline-block;';
+            dot.addEventListener('click', function() { setImg(idx); });
+            dotsEl.appendChild(dot);
+        });
+    }
+
+    function setImg(imgIdx) {
+        var imgs = data[current].imgs;
+        imgCurrent = (imgIdx + imgs.length) % imgs.length;
+        modalImg.style.opacity = '0';
+        setTimeout(function() {
+            modalImg.src = imgs[imgCurrent];
+            modalImg.style.opacity = '1';
+        }, 100);
+        renderDots(imgs, imgCurrent);
+    }
+
+    function renderCard(i) {
         var h = data[i];
         var isEn = lang !== 'vi';
-        document.getElementById('modal-img').src         = h.img;
+        imgCurrent = 0;
+        modalImg.src = h.imgs[0];
+        modalImg.style.opacity = '1';
         document.getElementById('modal-img').alt         = isEn ? h.title_en : h.title_vi;
         document.getElementById('modal-tag').textContent  = isEn ? h.tag_en   : h.tag_vi;
         document.getElementById('modal-title').textContent = isEn ? h.title_en : h.title_vi;
         document.getElementById('modal-desc').textContent  = isEn ? h.desc_en  : h.desc_vi;
         document.getElementById('modal-counter').textContent = (i + 1) + ' / ' + data.length;
+        renderDots(h.imgs, 0);
     }
 
     window.openHighlight = function(i) {
         current = i;
-        render(current);
+        renderCard(current);
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        // focus trap
         setTimeout(function() { modal.querySelector('button').focus(); }, 50);
     };
 
@@ -1531,17 +1779,23 @@ document.addEventListener('click', function(e) {
         document.body.style.overflow = '';
     };
 
+    // Card navigation (text panel buttons)
     window.navHighlight = function(dir) {
         current = (current + dir + data.length) % data.length;
-        render(current);
+        renderCard(current);
     };
 
-    // keyboard nav
+    // Image navigation within current card (image panel arrows)
+    window.navHighlightImg = function(dir) {
+        setImg(imgCurrent + dir);
+    };
+
+    // Keyboard: ←/→ = image nav; Shift+←/→ = card nav; Esc = close
     document.addEventListener('keydown', function(e) {
         if (modal.style.display !== 'flex') return;
-        if (e.key === 'Escape')      closeHighlight();
-        if (e.key === 'ArrowRight')  navHighlight(1);
-        if (e.key === 'ArrowLeft')   navHighlight(-1);
+        if (e.key === 'Escape') { closeHighlight(); return; }
+        if (e.key === 'ArrowRight') { e.shiftKey ? navHighlight(1)  : navHighlightImg(1);  }
+        if (e.key === 'ArrowLeft')  { e.shiftKey ? navHighlight(-1) : navHighlightImg(-1); }
     });
 
     // keyboard activation for cards

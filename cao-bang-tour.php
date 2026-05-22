@@ -84,10 +84,7 @@ $faqs_data = [
         'q' => 'faq_q_packing_caobang',
         'a' => 'faq_a_packing_caobang',
     ],
-    [
-        'q' => 'faq_q_cancel',
-        'a' => 'faq_a_cancel',
-    ],
+
     [
         'q' => 'faq_q_tip',
         'a' => 'faq_a_tip',

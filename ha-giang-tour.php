@@ -365,11 +365,6 @@ $activeId = $tableOfContents[0]['id'];
                             </li>
                         </ul>
 
-                        <a href="<?php echo esc_url(add_query_arg(array('tour' => 'cao_bang'), get_translated_permalink_by_slug('booking'))); ?>">
-                            <button class="cursor-pointer w-full py-3 font-semibold rounded-lg hover:opacity-80 transition" style="background:#E7F15A; color:#1D292C;">
-                                <?php echo $current_lang === 'en' ? 'Book now (you won\'t be charged yet)' : 'Đặt lịch ngay (không cần thanh toán)' ?>
-                            </button>
-                        </a>
 
                     </div>
 
@@ -709,31 +704,6 @@ $activeId = $tableOfContents[0]['id'];
             </div>
         </section>
 
-        <section class="mb-8 md:mb-16" data-aos="fade-up" data-aos-duration="1000" id="accomodations">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div class="overflow-hidden group">
-                        <img
-                            src="<?php echo get_template_directory_uri() . '/assets/images/ha-giang/room-2.png' ?>"
-                            alt="Ha giang hotel"
-                            class="w-full object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-2xl" />
-                        <p class="text-center text-[#74797A] text-sm my-2">
-                            <?php echo $current_lang === 'en' ? "The image is for illustrative purpose only" : "Ảnh mang tính chất minh họa" ?>
-                        </p>
-                    </div>
-
-                    <div class="w-full">
-                        <h2 class="text-3xl font-bold mb-4 ">
-                            <?php echo $current_lang === 'en' ? "Where you will spend the nights" : "Nơi ngủ nghỉ" ?>
-                        </h2>
-                        <p>
-                            <?php echo $current_lang === 'en' ? "You will have your own room! <br />
-                        Throughout your journey, you will always be provided with private accommodation in all homestays and hotels. This ensures you have a cozy, comfortable, and quiet space to relax and fully recharge after a long day conquering the majestic routes of Ha Giang." : "Bạn sẽ có phòng riêng!<br />Trong suốt hành trình, chúng tôi sẽ đặt phòng riêng tại tất cả các khách sạn, homestay mà bạn nghỉ tại. Đảm bảo cho bạn không gian riêng tư, thoải mái sau hành trình dài." ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- Weather -->

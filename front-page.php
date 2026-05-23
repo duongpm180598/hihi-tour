@@ -6,6 +6,8 @@ $theme_uri    = get_template_directory_uri();
 $HaGiangLoop = $theme_uri . '/assets/images/ha-giang/ha_giang_loop.jpg';
 $CaoBangTrip = $theme_uri . '/assets/images/cao-bang/cao_bang.jpg';
 $CatBaIsland = $theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg';
+$HueImperialPalace = $theme_uri . '/assets/images/hue/imperial-palace.webp';
+$MuCangChaiHarvest = $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp';
 
 $qrs = [
     'whatsapp_qr'  => $theme_uri . '/assets/images/whatsapp_qr.jpg',
@@ -39,7 +41,7 @@ $svg_boat = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" view
 // types: transport array
 $destinations = [
     [
-        'slug'  => 'ha-giang-tour',
+        'slug'  => 'ha-giang',
         'en'    => 'Hà Giang', 'vi' => 'Hà Giang',
         'img'   => $HaGiangLoop,
         'geo'   => 'vietnam',
@@ -49,7 +51,7 @@ $destinations = [
         'kw_vi' => 'hà giang vòng lặp xe máy núi miền bắc việt nam hùng vĩ ruộng bậc thang',
     ],
     [
-        'slug'  => 'cao-bang-tour',
+        'slug'  => 'cao-bang',
         'en'    => 'Cao Bằng', 'vi' => 'Cao Bằng',
         'img'   => $CaoBangTrip,
         'geo'   => 'vietnam',
@@ -61,7 +63,7 @@ $destinations = [
     [
         'slug'  => null,
         'en'    => 'Huế', 'vi' => 'Huế',
-        'img'   => null,
+        'img'   => $HueImperialPalace,
         'geo'   => 'vietnam',
         'topo'  => ['city', 'sea'],
         'types' => ['car', 'boat'],
@@ -89,7 +91,7 @@ $destinations = [
         'kw_vi' => 'sapa ruộng bậc thang trekking tây bắc việt nam fansipan',
     ],
     [
-        'slug'  => null,
+        'slug'  => 'ninh-thuan',
         'en'    => 'Ninh Thuận', 'vi' => 'Ninh Thuận',
         'img'   => null,
         'geo'   => 'vietnam',
@@ -149,9 +151,9 @@ $destinations = [
         'kw_vi' => 'tà xùa săn mây tây bắc việt nam núi',
     ],
     [
-        'slug'  => null,
+        'slug'  => 'mu-cang-chai',
         'en'    => 'Mù Cang Chải', 'vi' => 'Mù Cang Chải',
-        'img'   => null,
+        'img'   => $MuCangChaiHarvest,
         'geo'   => 'vietnam',
         'topo'  => ['mountain'],
         'types' => ['bike'],

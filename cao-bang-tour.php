@@ -848,7 +848,7 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 <!-- Ha Giang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang-tour')); ?>" class="group block">
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang')); ?>" class="group block">
                     <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
                             src="<?php echo esc_url($theme_uri . '/assets/images/ha_giang_loop.jpg'); ?>"
@@ -864,7 +864,7 @@ $activeId = $tableOfContents[0]['id'];
                 <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
                     <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cat_ba_island.jpg'); ?>"
+                            src="<?php echo esc_url($theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg'); ?>"
                             alt="Cat Ba"
                             class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
@@ -875,10 +875,11 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Mu Cang Chai (coming soon) -->
                 <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3 bg-[#d4e04d]" style="aspect-ratio:4/3;">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <span class="text-[#1D292C] text-sm font-medium"><?php echo $current_lang === 'en' ? 'Coming soon' : 'Sắp ra mắt'; ?></span>
-                        </div>
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
+                        <img
+                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
+                            alt="Mu Cang Chai"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
                     <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
                         <?php echo $current_lang === 'en' ? 'Mù Cang Chải' : 'Mù Cang Chải'; ?>

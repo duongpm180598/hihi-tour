@@ -98,11 +98,9 @@ $faqs_data = [
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/ha_giang_loop.jpg',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
+            '/assets/images/ha-giang/ha_giang_loop.jpg',
         ],
         'category' => 'viewpoints',
         'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
@@ -145,10 +143,10 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/ha_giang_deo_gio.jpg',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+            '/assets/images/ha-giang/ha_giang_deo_gio.jpg',
+            '/assets/images/ha-giang/ha_giang_deo_gio2.jpg',
         ],
         'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
@@ -177,10 +175,9 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/xa_phin_ha_giang_mua_lua.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+            '/assets/images/ha-giang/xa_phin_ha_giang_mua_lua.webp',
         ],
         'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
@@ -192,10 +189,9 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/ma_pi_leng_nho_que.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
+            '/assets/images/ha-giang/ma_pi_leng_nho_que.webp',
         ],
         'category' => 'viewpoints',
         'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
@@ -207,10 +203,11 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/nho_que.webp',
         'imgs'     => [
+            '/assets/images/ha-giang/nho_que.webp',
+            '/assets/images/ha-giang/nho_que1.webp',
             '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
         ],
         'category' => 'nature',
         'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
@@ -222,10 +219,12 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/ha_giang_du_gia.webp',
         'imgs'     => [
+            '/assets/images/ha-giang/ha_giang_du_gia.webp',
+            '/assets/images/ha-giang/ha_giang_du_gia2.webp',
             '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+            '/assets/images/ha-giang/du_gia_du_tien.webp',
         ],
         'category' => 'nature',
         'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
@@ -1204,7 +1203,7 @@ $activeId = $tableOfContents[0]['id'];
         style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(29,41,44,.7); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px;"
         onclick="if(event.target===this) closeHighlight()"
     >
-        <div style="background:#F2F2F0; border-radius:16px; max-width:860px; width:100%; height:480px; max-height:90vh; overflow:hidden; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3); display:flex; flex-direction:row;">
+        <div style="background:#F2F2F0; border-radius:16px; max-width:860px; width:100%; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3); display:flex; flex-direction:column;">
             <!-- Close -->
             <button
                 onclick="closeHighlight()"
@@ -1215,32 +1214,15 @@ $activeId = $tableOfContents[0]['id'];
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
-            <!-- Image — left column (per-card slideshow) -->
-            <div style="flex:0 0 45%; height:100%; overflow:hidden; border-radius:16px 0 0 16px; position:relative;">
-                <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity .2s;" />
-                <!-- Prev image arrow -->
-                <button
-                    id="img-prev-btn"
-                    onclick="navHighlightImg(-1)"
-                    aria-label="Previous image"
-                    style="display:none; position:absolute; left:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
-                >
-                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <!-- Next image arrow -->
-                <button
-                    id="img-next-btn"
-                    onclick="navHighlightImg(1)"
-                    aria-label="Next image"
-                    style="display:none; position:absolute; right:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
-                >
-                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
-                </button>
-                <!-- Dot indicators -->
-                <div id="img-dots" style="position:absolute; bottom:12px; left:0; right:0; display:none; justify-content:center; gap:6px; z-index:5;"></div>
+            <!-- Image preview -->
+            <div style="width:100%; padding:18px 18px 0;">
+                <div style="height:min(46vh, 380px); min-height:240px; overflow:hidden; border-radius:14px; position:relative; background:#1D292C;">
+                    <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity .2s;" />
+                </div>
+                <div id="img-thumbs" style="display:none; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px;"></div>
             </div>
-            <!-- Text — right column -->
-            <div style="flex:1; overflow-y:auto; padding:32px 28px 28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <!-- Text -->
+            <div style="overflow-y:auto; padding:18px 28px 24px; display:flex; flex-direction:column;">
                 <div>
                     <div style="display:inline-block; background:#E7F15A; border-radius:999px; padding:3px 12px; margin-bottom:12px;">
                         <span id="modal-tag" style="font-size:11px; font-weight:700; color:#1D292C;"></span>
@@ -1248,7 +1230,7 @@ $activeId = $tableOfContents[0]['id'];
                     <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0 0 12px; line-height:1.3;"></h3>
                     <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
                 </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:12px;">
                     <button onclick="navHighlight(-1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
                         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
                         <?php echo $t['ha_giang']['carousel_prev']; ?>
@@ -1340,7 +1322,7 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 <!-- Cao Bang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang-tour')); ?>" class="group block">
+                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang')); ?>" class="group block">
                     <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
                             src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
@@ -1356,7 +1338,7 @@ $activeId = $tableOfContents[0]['id'];
                 <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
                     <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
                         <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cat_ba_island.jpg'); ?>"
+                            src="<?php echo esc_url($theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg'); ?>"
                             alt="Cat Ba"
                             class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
@@ -1367,10 +1349,11 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Mu Cang Chai (coming soon) -->
                 <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3 bg-[#d4e04d]" style="aspect-ratio:4/3;">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <span class="text-[#1D292C] text-sm font-medium"><?php echo $t['ha_giang']['related_coming_soon']; ?></span>
-                        </div>
+                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
+                        <img
+                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
+                            alt="Mu Cang Chai"
+                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
                     </div>
                     <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
                         <?php echo $t['ha_giang']['related_mucangchai']; ?>
@@ -1706,21 +1689,19 @@ document.addEventListener('click', function(e) {
     var imgCurrent = 0;  // image index within current card
     var modal      = document.getElementById('highlights-modal');
     var modalImg   = document.getElementById('modal-img');
-    var imgPrevBtn = document.getElementById('img-prev-btn');
-    var imgNextBtn = document.getElementById('img-next-btn');
-    var dotsEl     = document.getElementById('img-dots');
+    var thumbsEl   = document.getElementById('img-thumbs');
 
-    function renderDots(imgs, active) {
-        dotsEl.innerHTML = '';
-        if (imgs.length <= 1) { dotsEl.style.display = 'none'; imgPrevBtn.style.display = 'none'; imgNextBtn.style.display = 'none'; return; }
-        dotsEl.style.display = 'flex';
-        imgPrevBtn.style.display = 'flex';
-        imgNextBtn.style.display = 'flex';
-        imgs.forEach(function(_, idx) {
-            var dot = document.createElement('span');
-            dot.style.cssText = 'width:7px; height:7px; border-radius:50%; background:' + (idx === active ? '#fff' : 'rgba(255,255,255,.45)') + '; cursor:pointer; transition:background .15s; display:inline-block;';
-            dot.addEventListener('click', function() { setImg(idx); });
-            dotsEl.appendChild(dot);
+    function renderThumbs(imgs, active) {
+        thumbsEl.innerHTML = '';
+        thumbsEl.style.display = 'flex';
+        imgs.forEach(function(src, idx) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.setAttribute('aria-label', 'Preview image ' + (idx + 1));
+            thumb.style.cssText = 'flex:0 0 74px; width:74px; height:54px; border-radius:8px; overflow:hidden; padding:0; border:' + (idx === active ? '2px solid #1D292C' : '2px solid transparent') + '; background:none; cursor:pointer;';
+            thumb.innerHTML = '<img src="' + src + '" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">';
+            thumb.addEventListener('click', function() { setImg(idx); });
+            thumbsEl.appendChild(thumb);
         });
     }
 
@@ -1732,7 +1713,7 @@ document.addEventListener('click', function(e) {
             modalImg.src = imgs[imgCurrent];
             modalImg.style.opacity = '1';
         }, 100);
-        renderDots(imgs, imgCurrent);
+        renderThumbs(imgs, imgCurrent);
     }
 
     function renderCard(i) {
@@ -1746,7 +1727,7 @@ document.addEventListener('click', function(e) {
         document.getElementById('modal-title').textContent = isEn ? h.title_en : h.title_vi;
         document.getElementById('modal-desc').textContent  = isEn ? h.desc_en  : h.desc_vi;
         document.getElementById('modal-counter').textContent = (i + 1) + ' / ' + data.length;
-        renderDots(h.imgs, 0);
+        renderThumbs(h.imgs, 0);
     }
 
     window.openHighlight = function(i) {
@@ -1768,17 +1749,12 @@ document.addEventListener('click', function(e) {
         renderCard(current);
     };
 
-    // Image navigation within current card (image panel arrows)
-    window.navHighlightImg = function(dir) {
-        setImg(imgCurrent + dir);
-    };
-
-    // Keyboard: ←/→ = image nav; Shift+←/→ = card nav; Esc = close
+    // Keyboard: ←/→ = card nav; Esc = close
     document.addEventListener('keydown', function(e) {
         if (modal.style.display !== 'flex') return;
         if (e.key === 'Escape') { closeHighlight(); return; }
-        if (e.key === 'ArrowRight') { e.shiftKey ? navHighlight(1)  : navHighlightImg(1);  }
-        if (e.key === 'ArrowLeft')  { e.shiftKey ? navHighlight(-1) : navHighlightImg(-1); }
+        if (e.key === 'ArrowRight') { navHighlight(1); }
+        if (e.key === 'ArrowLeft')  { navHighlight(-1); }
     });
 
     // keyboard activation for cards

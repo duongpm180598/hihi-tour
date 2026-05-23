@@ -1,7 +1,7 @@
 const pathname = window.location.pathname
 
 const isCatBa = pathname.includes('/cat-ba-tour')
-const isHaGiang = pathname.includes('/ha-giang-tour')
+const isHaGiang = pathname.includes('/ha-giang')
 const vi = pathname.includes('/vi')
 
 let ALL_ITINERARY_PLANS_DATA = {}

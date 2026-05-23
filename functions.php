@@ -27,6 +27,46 @@ function hihi_scripts()
 
 add_action('wp_enqueue_scripts', 'hihi_scripts');
 
+function hihi_sync_tour_page_slugs()
+{
+    $template_slugs = [
+        'ha-giang-tour.php' => 'ha-giang',
+        'cao-bang-tour.php' => 'cao-bang',
+        'ninh-thuan.php' => 'ninh-thuan',
+        'mu-cang-chai.php' => 'mu-cang-chai',
+    ];
+
+    foreach ($template_slugs as $template => $slug) {
+        $pages = get_posts([
+            'post_type' => 'page',
+            'post_status' => ['publish', 'draft', 'pending', 'private'],
+            'posts_per_page' => -1,
+            'fields' => 'ids',
+            'meta_key' => '_wp_page_template',
+            'meta_value' => $template,
+        ]);
+
+        foreach ($pages as $page_id) {
+            $page = get_post($page_id);
+            if (!$page || $page->post_name === $slug) {
+                continue;
+            }
+
+            $existing = get_page_by_path($slug);
+            if ($existing && (int) $existing->ID !== (int) $page_id) {
+                continue;
+            }
+
+            wp_update_post([
+                'ID' => $page_id,
+                'post_name' => $slug,
+            ]);
+        }
+    }
+}
+
+add_action('init', 'hihi_sync_tour_page_slugs', 20);
+
 function post_feature_image_setup()
 {
     add_theme_support('title-tag');

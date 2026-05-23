@@ -3,9 +3,9 @@
 $current_lang = pll_current_language('slug');
 $theme_uri    = get_template_directory_uri();
 
-$HaGiangLoop = $theme_uri . '/assets/images/ha_giang_loop.jpg';
-$CaoBangTrip = $theme_uri . '/assets/images/cao_bang.jpg';
-$CatBaIsland = $theme_uri . '/assets/images/cat_ba_island.jpg';
+$HaGiangLoop = $theme_uri . '/assets/images/ha-giang/ha_giang_loop.jpg';
+$CaoBangTrip = $theme_uri . '/assets/images/cao-bang/cao_bang.jpg';
+$CatBaIsland = $theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg';
 
 $qrs = [
     'whatsapp_qr'  => $theme_uri . '/assets/images/whatsapp_qr.jpg',
@@ -22,16 +22,16 @@ $social = [
 // Sea  = blue island/palm  #2563EB
 // Mountain = green peaks   #16A34A
 // City = purple buildings  #7B63F7
-$svg_topo_sea = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="#2563EB" aria-label="Sea"><path d="M12 2C9.5 2 7.5 4 7.5 6.5c0 1.5.7 2.8 1.8 3.7L12 12l2.7-1.8c1.1-.9 1.8-2.2 1.8-3.7C16.5 4 14.5 2 12 2z"/><path d="M2 17c1 0 1.5.5 2.5.5S6 17 7 17s1.5.5 2.5.5S11 17 12 17s1.5.5 2.5.5S16 17 17 17s1.5.5 2.5.5S21 17 22 17v2c-1 0-1.5.5-2.5.5S18 19 17 19s-1.5.5-2.5.5S13 19 12 19s-1.5.5-2.5.5S8 19 7 19s-1.5.5-2.5.5S3 19 2 19v-2z"/><path d="M2 21c1 0 1.5.5 2.5.5S6 21 7 21s1.5.5 2.5.5S11 21 12 21s1.5.5 2.5.5S16 21 17 21s1.5.5 2.5.5S21 21 22 21v1H2v-1z"/></svg>';
+$svg_topo_sea = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#2563EB" aria-label="Sea"><path d="M12 2C9.5 2 7.5 4 7.5 6.5c0 1.5.7 2.8 1.8 3.7L12 12l2.7-1.8c1.1-.9 1.8-2.2 1.8-3.7C16.5 4 14.5 2 12 2z"/><path d="M2 17c1 0 1.5.5 2.5.5S6 17 7 17s1.5.5 2.5.5S11 17 12 17s1.5.5 2.5.5S16 17 17 17s1.5.5 2.5.5S21 17 22 17v2c-1 0-1.5.5-2.5.5S18 19 17 19s-1.5.5-2.5.5S13 19 12 19s-1.5.5-2.5.5S8 19 7 19s-1.5.5-2.5.5S3 19 2 19v-2z"/><path d="M2 21c1 0 1.5.5 2.5.5S6 21 7 21s1.5.5 2.5.5S11 21 12 21s1.5.5 2.5.5S16 21 17 21s1.5.5 2.5.5S21 21 22 21v1H2v-1z"/></svg>';
 
-$svg_topo_mountain = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="#16A34A" aria-label="Mountain"><path d="M1 21L9 5l4 8 2-3 8 11H1z"/><circle cx="18" cy="5" r="2"/></svg>';
+$svg_topo_mountain = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#16A34A" aria-label="Mountain"><path d="M1 21L9 5l4 8 2-3 8 11H1z"/><circle cx="18" cy="5" r="2"/></svg>';
 
-$svg_topo_city = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="#7B63F7" aria-label="City"><path d="M3 21V7l6-4v18H3zm6 0V3l6 4v14H9zm6 0V9l6 2v10h-6z"/></svg>';
+$svg_topo_city = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#7B63F7" aria-label="City"><path d="M3 21V7l6-4v18H3zm6 0V3l6 4v14H9zm6 0V9l6 2v10h-6z"/></svg>';
 
 // ── Transport icon SVGs ───────────────────────────────────────────────────────
-$svg_bike = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>';
-$svg_car  = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9l2-4h14l2 4v6a2 2 0 0 1-2 2z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg>';
-$svg_boat = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1"/><path d="M4 18l-1-5h18l-2 5"/><path d="M12 2v8"/><path d="M6.8 15L12 2l5.2 13"/></svg>';
+$svg_bike = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>';
+$svg_car  = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9l2-4h14l2 4v6a2 2 0 0 1-2 2z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg>';
+$svg_boat = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1"/><path d="M4 18l-1-5h18l-2 5"/><path d="M12 2v8"/><path d="M6.8 15L12 2l5.2 13"/></svg>';
 
 // ── Destination data ──────────────────────────────────────────────────────────
 // geo:  'vietnam' | 'sea' | 'europe'

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Ha Giang Tour
+Template Name: Mu Cang Chai
 Template Post Type: page
 */
 ?>
@@ -540,18 +540,16 @@ $activeId = $tableOfContents[0]['id'];
                                 class="hidden absolute right-0 mt-1 z-20"
                                 style="width:200px; background:#F2F2F0; border-radius:12px; box-shadow:0 4px 16px rgba(29,41,44,.15); overflow:hidden;"
                             >
-                                <a
-                                    href="<?php echo esc_url(get_theme_file_uri('/assets/itinerary/Ha_Giang_schedule.xlsx')); ?>"
-                                    download="Ha_Giang_schedule.xlsx"
-                                    onclick="document.getElementById('itinerary-download-menu').classList.add('hidden');"
-                                    style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s; text-decoration:none;"
+                                <button
+                                    onclick="alert('Download XLSX coming soon'); document.getElementById('itinerary-download-menu').classList.add('hidden');"
+                                    style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s;"
                                     onmouseover="this.style.background='#F9FBDF'" onmouseout="this.style.background='none'"
                                 >
                                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
                                     <?php echo $t['ha_giang']['itinerary_download_xlsx']; ?>
-                                </a>
+                                </button>
                                 <button
                                     onclick="alert('Add to Google Drive coming soon'); document.getElementById('itinerary-download-menu').classList.add('hidden');"
                                     style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s;"

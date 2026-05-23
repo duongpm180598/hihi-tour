@@ -1,0 +1,92 @@
+/* ============================================================
+   Ha Giang Tour — Vibe Card
+   Styles for the overview hero vibe card component
+   ============================================================ */
+
+/* Desktop: absolute over hero image */
+.vibe-card {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: 600px;
+    max-width: calc(100% - 48px);
+    background: #E7F15A;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .28);
+}
+
+.vibe-card__header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #1D292C;
+    opacity: .6;
+    margin: 0 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.vibe-card__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+}
+
+.vibe-card__item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.vibe-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #7B63F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.vibe-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.vibe-card__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1D292C;
+    line-height: 1.2;
+}
+
+.vibe-card__val {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #1D292C;
+    opacity: .75;
+    line-height: 1.4;
+}
+
+/* Mobile: static, centered below hero */
+@media (max-width: 767px) {
+    .vibe-card {
+        width: auto;
+        max-width: 100%;
+        margin: 0 16px;
+        border-radius: 14px;
+        padding: 20px;
+        transform: translateY(-12px);
+    }
+
+    .vibe-card__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 20px;
+    }
+}

@@ -9,6 +9,11 @@ function hihi_scripts()
     wp_enqueue_style('font-custom', '//fonts.googleapis.com/css2?family=Phudu:wght@500;600;700;800&family=Dela+Gothic+One:wght@400&display=swap');
     wp_enqueue_style('aos_style', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
+    // Ha Giang page — chỉ load khi dùng template ha-giang-tour.php
+    if (is_page_template('ha-giang-tour.php')) {
+        wp_enqueue_style('ha_giang_style', get_theme_file_uri('/assets/css/ha-giang.css'));
+    }
+
     wp_enqueue_script('jquery');
     wp_enqueue_script('aos_script', 'https://unpkg.com/aos@2.3.4/dist/aos.js');
     wp_enqueue_script('flatpickr_script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), '4.6.13', true);

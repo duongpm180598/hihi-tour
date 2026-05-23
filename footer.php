@@ -7,7 +7,7 @@ $icons = [
     'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
     'instagram' => $theme_uri . '/assets/images/instagram.png',
     'facebook'  => $theme_uri . '/assets/images/facebook.png',
-    'cat'       => $theme_uri . '/assets/images/cat-mascot.png',
+    'cat'       => $theme_uri . '/assets/images/mascot_cat.png',
 ];
 ?>
 <div class="fixed w-12 h-12 z-50" style="bottom: 40px; right: 20px;">
@@ -18,9 +18,9 @@ $icons = [
     </a>
 </div>
 
-<footer style="background-color: #7B63F7;" class="text-white overflow-hidden">
+<footer style="background-color: #7B63F7;" class="relative text-white overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative flex flex-col md:flex-row items-start md:items-center py-8 gap-10">
+        <div class="relative flex flex-col md:flex-row items-start md:items-center py-8 gap-10" style="gap: 10px;">
 
             <!-- Left: Brand + contact info -->
             <div class="flex-shrink-0 space-y-3 z-10 min-w-[200px]">
@@ -71,20 +71,13 @@ $icons = [
             </div>
 
             <!-- Right: Large watermark text + cat mascot -->
-            <div class="hidden md:flex flex-1 items-end justify-end self-stretch relative overflow-hidden">
-                <!-- Cat mascot: sits just above the baseline, overlapping the text -->
+            <!-- Cat mascot: absolute, dính sát mép dưới của footer -->
+            <div class="hidden md:block" style="position: absolute; bottom: -30px; right: 0; z-index: 10; pointer-events: none;">
                 <img
                     src="<?php echo esc_url($icons['cat']); ?>"
                     alt="cari wiki cat mascot"
-                    class="relative z-10 h-28 w-auto object-contain self-end"
-                    style="margin-bottom: -2px; filter: brightness(0) invert(1);"
+                    style="max-width: 480px; width: auto; object-fit: contain; object-position: bottom; display: block;"
                 />
-                <!-- Large "cari wiki" watermark text -->
-                <span
-                    class="font-black text-white leading-none select-none self-end"
-                    style="font-size: clamp(3.5rem, 7vw, 6.5rem); letter-spacing: -0.02em;"
-                    aria-hidden="true"
-                >cari wiki</span>
             </div>
 
         </div>

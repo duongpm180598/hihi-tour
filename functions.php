@@ -9,8 +9,8 @@ function hihi_scripts()
     wp_enqueue_style('font-custom', '//fonts.googleapis.com/css2?family=Phudu:wght@500;600;700;800&family=Dela+Gothic+One:wght@400&display=swap');
     wp_enqueue_style('aos_style', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
-    // Ha Giang page — chỉ load khi dùng template ha-giang-tour.php
-    if (is_page_template('ha-giang-tour.php')) {
+    // Ha Giang layout pages
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php')) {
         wp_enqueue_style('ha_giang_style', get_theme_file_uri('/assets/css/ha-giang.css'));
     }
 
@@ -78,6 +78,27 @@ add_action('after_setup_theme', 'post_feature_image_setup');
 // get lang by permalink
 function get_translated_permalink_by_slug($slug) {
     $page = get_page_by_path($slug);
+    if (!$page) {
+        $template_by_slug = [
+            'ha-giang' => 'ha-giang-tour.php',
+            'cao-bang' => 'cao-bang-tour.php',
+            'ninh-thuan' => 'ninh-thuan.php',
+            'mu-cang-chai' => 'mu-cang-chai.php',
+            'cat-ba-tour' => 'cat-ba-tour.php',
+        ];
+
+        if (!empty($template_by_slug[$slug])) {
+            $pages = get_posts([
+                'post_type' => 'page',
+                'post_status' => ['publish', 'draft', 'pending', 'private'],
+                'posts_per_page' => 1,
+                'meta_key' => '_wp_page_template',
+                'meta_value' => $template_by_slug[$slug],
+            ]);
+            $page = $pages[0] ?? null;
+        }
+    }
+
     if (!$page) return '#';
 
     $page_id = $page->ID;
@@ -91,6 +112,78 @@ function get_translated_permalink_by_slug($slug) {
     }
 
     return get_permalink($page_id);
+}
+
+function hihi_related_destinations($current_slug)
+{
+    $theme_uri = get_template_directory_uri();
+    $destinations = [
+        'ha-giang' => [
+            'slug' => 'ha-giang',
+            'label_en' => 'Ha Giang',
+            'label_vi' => 'Hà Giang',
+            'img' => $theme_uri . '/assets/images/ha-giang/ha_giang_loop.jpg',
+        ],
+        'cao-bang' => [
+            'slug' => 'cao-bang',
+            'label_en' => 'Cao Bang',
+            'label_vi' => 'Cao Bằng',
+            'img' => $theme_uri . '/assets/images/cao-bang/cao_bang.jpg',
+        ],
+        'cat-ba-tour' => [
+            'slug' => 'cat-ba-tour',
+            'label_en' => 'Cat Ba',
+            'label_vi' => 'Cát Bà',
+            'img' => $theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg',
+        ],
+        'ninh-thuan' => [
+            'slug' => 'ninh-thuan',
+            'label_en' => 'Ninh Thuan',
+            'label_vi' => 'Ninh Thuận',
+            'img' => $theme_uri . '/assets/images/ninh-thuan/bai-da-trung.webp',
+        ],
+        'mu-cang-chai' => [
+            'slug' => 'mu-cang-chai',
+            'label_en' => 'Mu Cang Chai',
+            'label_vi' => 'Mù Cang Chải',
+            'img' => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
+        ],
+    ];
+
+    $related = [
+        'ha-giang' => ['cao-bang', 'mu-cang-chai', 'cat-ba-tour'],
+        'cao-bang' => ['ha-giang', 'cat-ba-tour', 'mu-cang-chai'],
+        'cat-ba-tour' => ['ninh-thuan', 'cao-bang', 'ha-giang'],
+        'ninh-thuan' => ['cat-ba-tour', 'mu-cang-chai', 'ha-giang'],
+        'mu-cang-chai' => ['ha-giang', 'cao-bang', 'ninh-thuan'],
+    ];
+
+    $lang = function_exists('pll_current_language') ? pll_current_language('slug') : 'vi';
+    $items = $related[$current_slug] ?? array_values(array_diff(array_keys($destinations), [$current_slug]));
+
+    echo '<div class="grid grid-cols-1 md:grid-cols-3 gap-6">';
+    foreach (array_slice($items, 0, 3) as $slug) {
+        if (!isset($destinations[$slug])) {
+            continue;
+        }
+
+        $destination = $destinations[$slug];
+        $label = $lang === 'en' ? $destination['label_en'] : $destination['label_vi'];
+        ?>
+        <a href="<?php echo esc_url(get_translated_permalink_by_slug($destination['slug'])); ?>" class="group block">
+            <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
+                <img
+                    src="<?php echo esc_url($destination['img']); ?>"
+                    alt="<?php echo esc_attr($label); ?>"
+                    class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
+                <?php echo esc_html($label); ?>
+            </p>
+        </a>
+        <?php
+    }
+    echo '</div>';
 }
 
 // load lang

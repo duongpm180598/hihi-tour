@@ -98,9 +98,10 @@ $faqs_data = [
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/ha-giang/ha_giang_loop.jpg',
+        'img'      => '/assets/images/ha-giang/sang-tung.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/ha_giang_loop.jpg',
+            '/assets/images/ha-giang/sang-tung.webp',
+            '/assets/images/ha-giang/sang-tung2.webp',
         ],
         'category' => 'viewpoints',
         'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
@@ -112,10 +113,10 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/ha-giang-pho-cao-lua.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
+            '/assets/images/ha-giang/ha-giang-pho-cao-lua.webp',
+            '/assets/images/ha-giang/ha-giang-pho-cao-dong.webp',
         ],
         'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
@@ -140,6 +141,21 @@ $highlights = [
         'title_vi' => $t['ha_giang']['highlight_item_2_title'],
         'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
         'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/ha-giang/cua-chu-m.webp',
+        'imgs'     => [
+            '/assets/images/ha-giang/cua-chu-m.webp',
+            '/assets/images/ha-giang/cua-chu-m-thung-lung.webp',
+        ],
+        'category' => 'viewpoints',
+        'tag_en' => 'Viewpoint',
+        'tag_vi' => 'Điểm ngắm',
+        'title_en' => 'cua chữ M',
+        'title_vi' => 'cua chữ M',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
         'span'     => 'normal',
     ],
     [
@@ -175,8 +191,9 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/xa_phin_ha_giang_mua_lua.webp',
+        'img'      => '/assets/images/ha-giang/lang-reu-xa-phin.webp',
         'imgs'     => [
+            '/assets/images/ha-giang/lang-reu-xa-phin.webp',
             '/assets/images/ha-giang/xa_phin_ha_giang_mua_lua.webp',
         ],
         'category' => 'nature',
@@ -225,6 +242,8 @@ $highlights = [
             '/assets/images/ha-giang/ha_giang_du_gia2.webp',
             '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
             '/assets/images/ha-giang/du_gia_du_tien.webp',
+            '/assets/images/ha-giang/du_gia_homestay.webp',
+            '/assets/images/ha-giang/du_gia_panorama.webp',
         ],
         'category' => 'nature',
         'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
@@ -391,51 +410,33 @@ $activeId = $tableOfContents[0]['id'];
 
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
-
-            <div class="vibe-card">
-                <p class="vibe-card__header">
-                    <?php echo $t['ha_giang']['hero_vibe_title']; ?>
-                </p>
-                <?php
-                $vibes = [
-                    [
-                        'icon'  => 'human',
-                        'title' => $t['ha_giang']['hero_vibe_0_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_0_val'],
-                    ],
-                    [
-                        'icon'  => 'money',
-                        'title' => $t['ha_giang']['hero_vibe_1_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_1_val'],
-                    ],
-                    [
-                        'icon'  => 'globe',
-                        'title' => $t['ha_giang']['hero_vibe_2_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_2_val'],
-                    ],
-                    [
-                        'icon'  => 'clock',
-                        'title' => $t['ha_giang']['hero_vibe_3_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_3_val'],
-                    ],
-                ];
-                ?>
-                <div class="vibe-card__grid">
-                    <?php foreach ($vibes as $v):
-                        $icon_url = esc_url($theme_uri . '/assets/icons/' . $v['icon'] . '.svg');
-                    ?>
-                    <div class="vibe-card__item">
-                        <div class="vibe-card__icon">
-                            <img src="<?php echo $icon_url; ?>" alt="" width="18" height="18" style="filter:brightness(0) invert(1);" aria-hidden="true" />
-                        </div>
-                        <div class="vibe-card__text">
-                            <span class="vibe-card__title"><?php echo esc_html($v['title']); ?></span>
-                            <span class="vibe-card__val"><?php echo esc_html($v['val']); ?></span>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+            <?php
+            $vibe_title = $t['ha_giang']['hero_vibe_title'];
+            $vibe_items = [
+                [
+                    'icon'  => 'human',
+                    'title' => $t['ha_giang']['hero_vibe_0_title'],
+                    'val'   => $t['ha_giang']['hero_vibe_0_val'],
+                ],
+                [
+                    'icon'  => 'money',
+                    'title' => $t['ha_giang']['hero_vibe_1_title'],
+                    'val'   => $t['ha_giang']['hero_vibe_1_val'],
+                ],
+                [
+                    'icon'  => 'globe',
+                    'title' => $t['ha_giang']['hero_vibe_2_title'],
+                    'val'   => $t['ha_giang']['hero_vibe_2_val'],
+                ],
+                [
+                    'icon'  => 'clock',
+                    'title' => $t['ha_giang']['hero_vibe_3_title'],
+                    'val'   => $t['ha_giang']['hero_vibe_3_val'],
+                ],
+            ];
+            include get_template_directory() . '/components/vibe-card.php';
+            unset($vibe_title, $vibe_items, $vibe_class);
+            ?>
             <!-- /vibe card -->
 
         </div>
@@ -1319,48 +1320,7 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Cao Bang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
-                            alt="Cao Bang"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_caobang']; ?>
-                    </p>
-                </a>
-
-                <!-- Cat Ba -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg'); ?>"
-                            alt="Cat Ba"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_catba']; ?>
-                    </p>
-                </a>
-
-                <!-- Mu Cang Chai (coming soon) -->
-                <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
-                            alt="Mu Cang Chai"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_mucangchai']; ?>
-                    </p>
-                </a>
-
-            </div>
+            <?php hihi_related_destinations('ha-giang'); ?>
         </div>
     </section>
 

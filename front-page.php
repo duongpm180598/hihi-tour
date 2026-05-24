@@ -8,6 +8,9 @@ $CaoBangTrip = $theme_uri . '/assets/images/cao-bang/cao_bang.jpg';
 $CatBaIsland = $theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg';
 $HueImperialPalace = $theme_uri . '/assets/images/hue/imperial-palace.webp';
 $MuCangChaiHarvest = $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp';
+$NinhThuanBaiDaTrung = $theme_uri . '/assets/images/ninh-thuan/bai-da-trung.webp';
+$NhaTrangSunrise = $theme_uri . '/assets/images/nha-trang/sunrise-nha-trang.webp';
+$TaiwanTaipei101 = $theme_uri . '/assets/images/taiwan/taipei-101.webp';
 
 $qrs = [
     'whatsapp_qr'  => $theme_uri . '/assets/images/whatsapp_qr.jpg',
@@ -73,7 +76,7 @@ $destinations = [
     [
         'slug'  => null,
         'en'    => 'Nha Trang', 'vi' => 'Nha Trang',
-        'img'   => null,
+        'img'   => $NhaTrangSunrise,
         'geo'   => 'vietnam',
         'topo'  => ['sea', 'city'],
         'types' => ['car', 'boat'],
@@ -93,7 +96,7 @@ $destinations = [
     [
         'slug'  => 'ninh-thuan',
         'en'    => 'Ninh Thuận', 'vi' => 'Ninh Thuận',
-        'img'   => null,
+        'img'   => $NinhThuanBaiDaTrung,
         'geo'   => 'vietnam',
         'topo'  => ['sea', 'mountain'],
         'types' => ['bike'],
@@ -183,7 +186,7 @@ $destinations = [
     [
         'slug'  => null,
         'en'    => 'Đài Loan', 'vi' => 'Đài Loan',
-        'img'   => null,
+        'img'   => $TaiwanTaipei101,
         'geo'   => 'sea',
         'topo'  => ['mountain', 'city', 'sea'],
         'types' => ['bike', 'boat'],

@@ -1337,48 +1337,7 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Cao Bang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
-                            alt="Cao Bang"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_caobang']; ?>
-                    </p>
-                </a>
-
-                <!-- Cat Ba -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg'); ?>"
-                            alt="Cat Ba"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_catba']; ?>
-                    </p>
-                </a>
-
-                <!-- Mu Cang Chai (coming soon) -->
-                <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
-                            alt="Mu Cang Chai"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_mucangchai']; ?>
-                    </p>
-                </a>
-
-            </div>
+            <?php hihi_related_destinations('ninh-thuan'); ?>
         </div>
     </section>
 

@@ -20,7 +20,7 @@ $icons = [
 
 <footer style="background-color: #7B63F7;" class="relative text-white overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative flex flex-col md:flex-row items-start md:items-center py-8 gap-10" style="gap: 10px;">
+        <div class="relative flex flex-col md:flex-row items-start md:items-center py-8 gap-10" style="gap: 24px;">
 
             <!-- Left: Brand + contact info -->
             <div class="flex-shrink-0 space-y-3 z-10 min-w-[200px]">

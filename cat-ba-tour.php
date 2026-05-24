@@ -424,56 +424,15 @@ $activeId = $tableOfContents[0]['id'];
     <section id="how-to-book" style="background:#E7F15A;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <p class="text-xs font-bold tracking-widest uppercase text-center text-[#1D292C] mb-3">
-                <?php echo $current_lang === 'en' ? 'May be you will interest in' : 'Có thể bạn cũng muốn khám phá'; ?>
+                <?php echo $t['ha_giang']['related_title'] ?? ($current_lang === 'en' ? 'You might also like' : 'Có thể bạn cũng muốn khám phá'); ?>
             </p>
             <p class="text-sm text-center text-[#474E50] mb-10 max-w-2xl mx-auto">
-                <?php echo $current_lang === 'en'
-                    ? 'If you have ample time and seek deep cultural immersion, our extended tours are perfect. We offer diverse options to explore Northern Vietnam or create a custom itinerary to anywhere you desire.'
-                    : 'Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc hơn, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo.'; ?>
+                <?php echo $t['ha_giang']['related_desc'] ?? ($current_lang === 'en'
+                    ? 'If you have ample time and seek deep cultural immersion, our extended tours are perfect.'
+                    : 'Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc hơn, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo.'); ?>
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Ha Giang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('ha-giang')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/ha_giang_loop.jpg'); ?>"
-                            alt="Ha Giang"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
-                        <?php echo $current_lang === 'en' ? 'Ha Giang' : 'Hà Giang'; ?>
-                    </p>
-                </a>
-
-                <!-- Cao Bang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
-                            alt="Cao Bang"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
-                        <?php echo $current_lang === 'en' ? 'Cao Bang' : 'Cao Bằng'; ?>
-                    </p>
-                </a>
-
-                <!-- Mu Cang Chai (coming soon) -->
-                <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
-                            alt="Mu Cang Chai"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p class="font-bold text-base uppercase tracking-wide text-[#1D292C]">
-                        <?php echo $current_lang === 'en' ? 'Mù Cang Chải' : 'Mù Cang Chải'; ?>
-                    </p>
-                </a>
-
-            </div>
+            <?php hihi_related_destinations('cat-ba-tour'); ?>
         </div>
     </section>
 

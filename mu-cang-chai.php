@@ -11,6 +11,9 @@ $current_lang = pll_current_language('slug');
 $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
+$mu_cang_chai_replace = function($text) {
+    return str_replace(['Ha Giang', 'Hà Giang', 'ha giang'], ['Mu Cang Chai', 'Mù Cang Chải', 'mu cang chai'], $text);
+};
 
 // Danh sách các ảnh.
 $images = [
@@ -42,17 +45,15 @@ $all_gallery_images = array_map(function($file) use ($theme_uri) {
 // itinerary
 $plan_options = [
     '4' => $t['ha_giang']['itinerary_plan_1'],
-    '3' => $t['ha_giang']['itinerary_plan_2'],
-    '2' => $t['ha_giang']['itinerary_plan_3'],
 ];
 $default_plan = '4';
 $default_days_count = intval($default_plan);
 $default_days = range(0, $default_days_count);
 
 $locations = [
-    'hagiang' => ['display' => $t['ha_giang']['weather_loc_1'], 'api_query' => 'latitude=22.8407&longitude=104.9881&current=temperature_2m,relative_humidity_2m'],
-    'dongvan' => ['display' => $t['ha_giang']['weather_loc_2'], 'api_query' => 'latitude=23.2779&longitude=105.358&current=temperature_2m,relative_humidity_2m'],
-    'meovac'  => ['display' => $t['ha_giang']['weather_loc_3'], 'api_query' => 'latitude=23.1618&longitude=105.4056&current=temperature_2m,relative_humidity_2m'],
+    'mucangchai' => ['display' => $current_lang === 'en' ? 'Mu Cang Chai town' : 'Thị trấn Mù Cang Chải', 'api_query' => 'latitude=21.821421&longitude=104.126365&current=temperature_2m,relative_humidity_2m'],
+    'tule' => ['display' => $current_lang === 'en' ? 'Tu Le' : 'Tú Lệ', 'api_query' => 'latitude=21.772841&longitude=104.265434&current=temperature_2m,relative_humidity_2m'],
+    'lungcung'  => ['display' => $current_lang === 'en' ? 'Lung Cung' : 'Lùng Cúng', 'api_query' => 'latitude=21.858880&longitude=104.233601&current=temperature_2m,relative_humidity_2m'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -98,204 +99,77 @@ $faqs_data = [
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
+        'img'      => '/assets/images/mu-cang-chai/tu_le.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
+            '/assets/images/mu-cang-chai/tu_le.webp',
+            '/assets/images/mu-cang-chai/mu_cang_chai_tu_le.webp',
+            '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
+        ],
+        'category' => 'nature',
+        'tag_en' => 'Valley',
+        'tag_vi' => 'Thung lũng',
+        'title_en' => 'Tú Lệ',
+        'title_vi' => 'Tú Lệ',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
+        'imgs'     => [
+            '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
+            '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
         ],
         'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_0_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_0_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_0_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
+        'tag_en' => 'Pass',
+        'tag_vi' => 'Đèo',
+        'title_en' => 'Khau Phạ',
+        'title_vi' => 'Khau Phạ',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
+        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_1_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_1_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_1_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
-            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
+            '/assets/images/mu-cang-chai/mu_cang_chai.webp',
+            '/assets/images/mu-cang-chai/mu_cang_chai_ngoi_nha_nho.webp',
         ],
         'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_2_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_2_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_2_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
+        'tag_en' => 'Terraces',
+        'tag_vi' => 'Ruộng bậc thang',
+        'title_en' => 'Khau Mang Thượng',
+        'title_vi' => 'Khau Mang Thượng',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
+        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+            '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
         ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_3_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_3_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_3_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
+        'category' => 'culture',
+        'tag_en' => 'Village',
+        'tag_vi' => 'Bản làng',
+        'title_en' => 'Kim Nọi',
+        'title_vi' => 'Kim Nọi',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+        'img'      => '/assets/images/mu-cang-chai/mo_de_to_day.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-        ],
-        'category' => 'food',
-        'tag_en' => $t['ha_giang']['highlight_item_4_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_4_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_4_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_4_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
+            '/assets/images/mu-cang-chai/mo_de_to_day.webp',
         ],
         'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_5_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_5_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_5_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_6_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_6_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_6_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_6_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_6_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_7_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_7_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_7_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_7_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_7_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_8_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_8_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_8_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_8_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_8_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_9_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_9_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_9_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_9_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_9_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_9_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/gallery-2.webp',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/gallery-2.webp',
-            '/assets/images/ha-giang/gallery/gallery-4.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_10_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_10_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_10_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_10_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_10_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_10_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-        ],
-        'category' => 'food',
-        'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_11_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_11_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_11_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_11_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_11_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/gallery-6.webp',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/gallery-6.webp',
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_12_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_12_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_12_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_12_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_12_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_12_desc'],
+        'tag_en' => 'Flowers',
+        'tag_vi' => 'Hoa',
+        'title_en' => 'Mồ Dề',
+        'title_vi' => 'Mồ Dề',
+        'desc_en' => 'Description placeholder.',
+        'desc_vi' => 'Description placeholder.',
         'span'     => 'normal',
     ],
 ];
@@ -386,57 +260,39 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
-                alt="Ha Giang"
+                src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp'); ?>"
+                alt="Mu Cang Chai"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
-
-            <div class="vibe-card">
-                <p class="vibe-card__header">
-                    <?php echo $t['ha_giang']['hero_vibe_title']; ?>
-                </p>
-                <?php
-                $vibes = [
-                    [
-                        'icon'  => 'human',
-                        'title' => $t['ha_giang']['hero_vibe_0_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_0_val'],
-                    ],
-                    [
-                        'icon'  => 'money',
-                        'title' => $t['ha_giang']['hero_vibe_1_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_1_val'],
-                    ],
-                    [
-                        'icon'  => 'globe',
-                        'title' => $t['ha_giang']['hero_vibe_2_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_2_val'],
-                    ],
-                    [
-                        'icon'  => 'clock',
-                        'title' => $t['ha_giang']['hero_vibe_3_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_3_val'],
-                    ],
-                ];
-                ?>
-                <div class="vibe-card__grid">
-                    <?php foreach ($vibes as $v):
-                        $icon_url = esc_url($theme_uri . '/assets/icons/' . $v['icon'] . '.svg');
-                    ?>
-                    <div class="vibe-card__item">
-                        <div class="vibe-card__icon">
-                            <img src="<?php echo $icon_url; ?>" alt="" width="18" height="18" style="filter:brightness(0) invert(1);" aria-hidden="true" />
-                        </div>
-                        <div class="vibe-card__text">
-                            <span class="vibe-card__title"><?php echo esc_html($v['title']); ?></span>
-                            <span class="vibe-card__val"><?php echo esc_html($v['val']); ?></span>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+            <?php
+            $vibe_title = $current_lang === 'en' ? 'Mu Cang Chai at a glance' : 'Mù Cang Chải trong một nhịp nhìn';
+            $vibe_items = [
+                [
+                    'icon'  => 'human',
+                    'title' => $current_lang === 'en' ? 'trip style' : 'kiểu đi',
+                    'val'   => $current_lang === 'en' ? 'rice terraces, slow roads' : 'ruộng bậc thang, đường chậm',
+                ],
+                [
+                    'icon'  => 'money',
+                    'title' => $current_lang === 'en' ? 'budget' : 'ngân sách',
+                    'val'   => $current_lang === 'en' ? 'easy to plan' : 'dễ tính trước',
+                ],
+                [
+                    'icon'  => 'globe',
+                    'title' => $current_lang === 'en' ? 'best for' : 'hợp với',
+                    'val'   => $current_lang === 'en' ? 'harvest season views' : 'mùa vàng và thung lũng',
+                ],
+                [
+                    'icon'  => 'clock',
+                    'title' => $current_lang === 'en' ? 'pace' : 'nhịp đi',
+                    'val'   => $current_lang === 'en' ? '4 days, 3 nights' : '4 ngày, 3 đêm',
+                ],
+            ];
+            include get_template_directory() . '/components/vibe-card.php';
+            unset($vibe_title, $vibe_items, $vibe_class);
+            ?>
             <!-- /vibe card -->
 
         </div>
@@ -450,10 +306,10 @@ $activeId = $tableOfContents[0]['id'];
                 <span style="font-size:4rem; line-height:1; color:#7B63F7; font-family:Georgia,serif; flex-shrink:0; margin-top:-8px;">"</span>
                 <div>
                     <p class="text-lg font-semibold text-[#1D292C] leading-relaxed mb-3">
-                        <?php echo $t['ha_giang']['hero_quote']; ?>
+                        <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['hero_quote'])); ?>
                     </p>
                     <p style="font-size:15px; color:#474E50;">
-                        — <?php echo $t['ha_giang']['hero_quote_author']; ?>
+                        — <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['hero_quote_author'])); ?>
                     </p>
                 </div>
             </div>
@@ -466,7 +322,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></p>
+            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $current_lang === 'en' ? 'Mu Cang Chai itinerary' : 'Lịch trình Mù Cang Chải'; ?></p>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -486,37 +342,23 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- Solo going description -->
             <p id="itinerary-solo-desc" style="font-size:15px; color:#474E50;" class="mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_solo']; ?>
+                <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['itinerary_desc_solo'])); ?>
             </p>
 
             <!-- Book a tour description (hidden by default) -->
             <p id="itinerary-book-desc" style="font-size:15px; color:#474E50;" class="hidden mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_book']; ?>
+                <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['itinerary_desc_book'])); ?>
             </p>
 
             <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo $t['ha_giang']['itinerary_prompt'] ?>
+                <?php echo $current_lang === 'en' ? '4 days, 3 nights' : '4 ngày, 3 đêm'; ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="md:col-span-2 mb-8">
-                    <!-- Pills row + Download dropdown on the right -->
+                    <!-- Download dropdown on the right -->
                     <div class="flex items-center justify-between gap-2 mb-6">
-                        <div id="itinerary-plans" class="flex flex-wrap gap-2">
-                            <?php foreach ($plan_options as $value => $text) : ?>
-                                <?php
-                                $is_active = ($value == $default_plan);
-                                $active_class = $is_active
-                                    ? 'bg-[#7B63F7] text-white rounded-full'
-                                    : 'bg-white text-[#1D292C] border border-gray-300 hover:bg-gray-50 rounded-full';
-                                ?>
-                                <a
-                                    data-plan-value="<?php echo esc_attr($value); ?>"
-                                    class="plan-pill inline-block cursor-pointer py-2 px-4 rounded-lg text-sm font-medium transition duration-200 <?php echo $active_class; ?>">
-                                    <?php echo esc_html($text); ?>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
+                        <div id="itinerary-plans" class="hidden"></div>
 
                         <!-- Download dropdown — Filled button per COMPONENTS.md §3.1 -->
                         <div class="relative flex-shrink-0" id="itinerary-download-wrap">
@@ -742,10 +584,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="Mu Cang Chai photo <?php echo $index + 1; ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="Mu Cang Chai <?php echo $index + 1; ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -759,10 +601,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo ($is_last && $remaining_count > 0) ? $visible_count : $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="Mu Cang Chai photo <?php echo $index + 1; ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="Mu Cang Chai <?php echo $index + 1; ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -1027,39 +869,25 @@ $activeId = $tableOfContents[0]['id'];
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_0_title'],
-'title_vi' => $t['ha_giang']['weather_season_0_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_0_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
+                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
+                    'title_en' => 'Mùa lúa chín',
+                    'title_vi' => 'Mùa lúa chín',
+                    'desc_en' => 'Terraced fields turn gold across Mu Cang Chai.',
+                    'desc_vi' => 'Ruộng bậc thang chuyển vàng khắp Mù Cang Chải.',
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
-                    'title_en' => $t['ha_giang']['weather_season_1_title'],
-'title_vi' => $t['ha_giang']['weather_season_1_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_1_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
+                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp',
+                    'title_en' => 'Mùa hoa Tớ Dày',
+                    'title_vi' => 'Mùa hoa Tớ Dày',
+                    'desc_en' => 'Pink blossoms light up the hills in the cooler months.',
+                    'desc_vi' => 'Hoa Tớ Dày hồng lên trên sườn núi vào những tháng lạnh.',
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
-                    'title_en' => $t['ha_giang']['weather_season_2_title'],
-'title_vi' => $t['ha_giang']['weather_season_2_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_2_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
-                    'title_en' => $t['ha_giang']['weather_season_3_title'],
-'title_vi' => $t['ha_giang']['weather_season_3_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_3_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_4_title'],
-'title_vi' => $t['ha_giang']['weather_season_4_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_4_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_4_desc'],
+                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai.webp',
+                    'title_en' => 'Others',
+                    'title_vi' => 'Others',
+                    'desc_en' => 'Green rice season, cloudy passes, and slower village days.',
+                    'desc_vi' => 'Mùa lúa xanh, đèo mây và những ngày bản làng chậm rãi.',
                 ],
             ];
             ?>
@@ -1335,48 +1163,7 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Cao Bang -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cao-bang')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cao_bang.jpg'); ?>"
-                            alt="Cao Bang"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_caobang']; ?>
-                    </p>
-                </a>
-
-                <!-- Cat Ba -->
-                <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" class="group block">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg'); ?>"
-                            alt="Cat Ba"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_catba']; ?>
-                    </p>
-                </a>
-
-                <!-- Mu Cang Chai (coming soon) -->
-                <a href="#" class="group block opacity-70 cursor-not-allowed">
-                    <div class="overflow-hidden rounded-xl mb-3" style="aspect-ratio:4/3;">
-                        <img
-                            src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp'); ?>"
-                            alt="Mu Cang Chai"
-                            class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
-                    </div>
-                    <p style="font-size:15px; font-weight:700; text-transform:uppercase; color:#1D292C;">
-                        <?php echo $t['ha_giang']['related_mucangchai']; ?>
-                    </p>
-                </a>
-
-            </div>
+            <?php hihi_related_destinations('mu-cang-chai'); ?>
         </div>
     </section>
 
@@ -1802,7 +1589,7 @@ document.addEventListener('click', function(e) {
 
     function galRender(i) {
         document.getElementById('gal-modal-img').src = galleryImages[i];
-        document.getElementById('gal-modal-img').alt = 'Ha Giang ' + (i + 1);
+        document.getElementById('gal-modal-img').alt = 'Mu Cang Chai ' + (i + 1);
         document.getElementById('gal-modal-counter').textContent = (i + 1) + ' / ' + galleryImages.length;
     }
 

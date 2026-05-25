@@ -102,6 +102,7 @@ $highlights = [
         'imgs'     => [
             '/assets/images/ha-giang/sang-tung.webp',
             '/assets/images/ha-giang/sang-tung2.webp',
+            '/assets/images/ha-giang/sang-tung-360.webp',
         ],
         'category' => 'viewpoints',
         'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
@@ -113,10 +114,11 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/ha-giang/ha-giang-pho-cao-lua.webp',
+        'img'      => '/assets/images/ha-giang/gallery/nha-pho-cao.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/ha-giang-pho-cao-lua.webp',
-            '/assets/images/ha-giang/ha-giang-pho-cao-dong.webp',
+            '/assets/images/ha-giang/gallery/nha-pho-cao.webp',
+            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
+            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
         ],
         'category' => 'nature',
         'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
@@ -128,10 +130,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
+        'img'      => '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
             '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
         ],
         'category' => 'viewpoints',
@@ -206,9 +206,9 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/ma_pi_leng_nho_que.webp',
+        'img'      => '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
         'imgs'     => [
-            '/assets/images/ha-giang/ma_pi_leng_nho_que.webp',
+            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
         ],
         'category' => 'viewpoints',
         'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],

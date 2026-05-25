@@ -9,51 +9,53 @@ Template Post Type: page
 <?php
 $current_lang = pll_current_language('slug');
 $t = load_lang();
+$mcc = $t['mu_cang_chai'];
 
 $theme_uri = get_template_directory_uri();
-$mu_cang_chai_replace = function($text) {
-    return str_replace(['Ha Giang', 'Hà Giang', 'ha giang'], ['Mu Cang Chai', 'Mù Cang Chải', 'mu cang chai'], $text);
-};
 
 // Danh sách các ảnh.
 $images = [
-    '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
-    '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-    '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
+    '/assets/images/mu-cang-chai/tu_le.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
+    '/assets/images/mu-cang-chai/gat-lua-mcc.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
+    '/assets/images/mu-cang-chai/lao-chai-mu-cang-chai.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai_ngoi_nha_nho.webp',
+    '/assets/images/mu-cang-chai/mo_de_to_day.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
+    '/assets/images/mu-cang-chai/mo-de-2.webp',
+    '/assets/images/mu-cang-chai/tu-le-ben-duong.webp',
+    '/assets/images/mu-cang-chai/khau-mang-thuong (3).webp',
+    '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
+    '/assets/images/mu-cang-chai/nui-ho-tu-le.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
+    '/assets/images/mu-cang-chai/tu-le-mua-dong.webp',
+    '/assets/images/mu-cang-chai/hang-gang-mu-cang-chai.webp',
+    '/assets/images/mu-cang-chai/khau-mang-thuong (2).webp',
+    '/assets/images/mu-cang-chai/co-be-vung-cao.webp',
+    '/assets/images/mu-cang-chai/mu_cang_chai.webp',
 ];
 
 // Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/ha-giang/gallery/';
+$gallery_dir   = get_template_directory() . '/assets/images/mu-cang-chai/';
 $gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
 sort($gallery_files);
 $all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/ha-giang/gallery/' . basename($file);
+    return $theme_uri . '/assets/images/mu-cang-chai/' . basename($file);
 }, $gallery_files);
 
 // itinerary
 $plan_options = [
-    '4' => $t['ha_giang']['itinerary_plan_1'],
+    '4' => $mcc['itinerary_plan_0'],
 ];
 $default_plan = '4';
 $default_days_count = intval($default_plan);
-$default_days = range(0, $default_days_count);
+$default_days = range(0, $default_days_count - 1);
 
 $locations = [
-    'mucangchai' => ['display' => $current_lang === 'en' ? 'Mu Cang Chai town' : 'Thị trấn Mù Cang Chải', 'api_query' => 'latitude=21.821421&longitude=104.126365&current=temperature_2m,relative_humidity_2m'],
-    'tule' => ['display' => $current_lang === 'en' ? 'Tu Le' : 'Tú Lệ', 'api_query' => 'latitude=21.772841&longitude=104.265434&current=temperature_2m,relative_humidity_2m'],
-    'lungcung'  => ['display' => $current_lang === 'en' ? 'Lung Cung' : 'Lùng Cúng', 'api_query' => 'latitude=21.858880&longitude=104.233601&current=temperature_2m,relative_humidity_2m'],
+    'mucangchai' => ['display' => $mcc['weather_loc_0'], 'api_query' => 'latitude=21.821421&longitude=104.126365'],
+    'tule' => ['display' => $mcc['weather_loc_1'], 'api_query' => 'latitude=21.772841&longitude=104.265434'],
+    'lungcung'  => ['display' => $mcc['weather_loc_2'], 'api_query' => 'latitude=21.858880&longitude=104.233601'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -106,12 +108,12 @@ $highlights = [
             '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
         ],
         'category' => 'nature',
-        'tag_en' => 'Valley',
-        'tag_vi' => 'Thung lũng',
-        'title_en' => 'Tú Lệ',
-        'title_vi' => 'Tú Lệ',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $mcc['highlight_item_0_tag'],
+        'tag_vi' => $mcc['highlight_item_0_tag'],
+        'title_en' => $mcc['highlight_item_0_title'],
+        'title_vi' => $mcc['highlight_item_0_title'],
+        'desc_en' => $mcc['highlight_item_0_desc'],
+        'desc_vi' => $mcc['highlight_item_0_desc'],
         'span'     => 'normal',
     ],
     [
@@ -121,12 +123,12 @@ $highlights = [
             '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
         ],
         'category' => 'viewpoints',
-        'tag_en' => 'Pass',
-        'tag_vi' => 'Đèo',
-        'title_en' => 'Khau Phạ',
-        'title_vi' => 'Khau Phạ',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $mcc['highlight_item_1_tag'],
+        'tag_vi' => $mcc['highlight_item_1_tag'],
+        'title_en' => $mcc['highlight_item_1_title'],
+        'title_vi' => $mcc['highlight_item_1_title'],
+        'desc_en' => $mcc['highlight_item_1_desc'],
+        'desc_vi' => $mcc['highlight_item_1_desc'],
         'span'     => 'tall',
     ],
     [
@@ -136,12 +138,12 @@ $highlights = [
             '/assets/images/mu-cang-chai/mu_cang_chai_ngoi_nha_nho.webp',
         ],
         'category' => 'viewpoints',
-        'tag_en' => 'Terraces',
-        'tag_vi' => 'Ruộng bậc thang',
-        'title_en' => 'Khau Mang Thượng',
-        'title_vi' => 'Khau Mang Thượng',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $mcc['highlight_item_2_tag'],
+        'tag_vi' => $mcc['highlight_item_2_tag'],
+        'title_en' => $mcc['highlight_item_2_title'],
+        'title_vi' => $mcc['highlight_item_2_title'],
+        'desc_en' => $mcc['highlight_item_2_desc'],
+        'desc_vi' => $mcc['highlight_item_2_desc'],
         'span'     => 'normal',
     ],
     [
@@ -150,12 +152,12 @@ $highlights = [
             '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
         ],
         'category' => 'culture',
-        'tag_en' => 'Village',
-        'tag_vi' => 'Bản làng',
-        'title_en' => 'Kim Nọi',
-        'title_vi' => 'Kim Nọi',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $mcc['highlight_item_3_tag'],
+        'tag_vi' => $mcc['highlight_item_3_tag'],
+        'title_en' => $mcc['highlight_item_3_title'],
+        'title_vi' => $mcc['highlight_item_3_title'],
+        'desc_en' => $mcc['highlight_item_3_desc'],
+        'desc_vi' => $mcc['highlight_item_3_desc'],
         'span'     => 'tall',
     ],
     [
@@ -164,12 +166,12 @@ $highlights = [
             '/assets/images/mu-cang-chai/mo_de_to_day.webp',
         ],
         'category' => 'nature',
-        'tag_en' => 'Flowers',
-        'tag_vi' => 'Hoa',
-        'title_en' => 'Mồ Dề',
-        'title_vi' => 'Mồ Dề',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $mcc['highlight_item_4_tag'],
+        'tag_vi' => $mcc['highlight_item_4_tag'],
+        'title_en' => $mcc['highlight_item_4_title'],
+        'title_vi' => $mcc['highlight_item_4_title'],
+        'desc_en' => $mcc['highlight_item_4_desc'],
+        'desc_vi' => $mcc['highlight_item_4_desc'],
         'span'     => 'normal',
     ],
 ];
@@ -261,33 +263,33 @@ $activeId = $tableOfContents[0]['id'];
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp'); ?>"
-                alt="Mu Cang Chai"
+                alt="<?php echo esc_attr($mcc['hero_image_alt']); ?>"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
-            $vibe_title = $current_lang === 'en' ? 'Mu Cang Chai at a glance' : 'Mù Cang Chải trong một nhịp nhìn';
+            $vibe_title = $mcc['hero_vibe_title'];
             $vibe_items = [
                 [
                     'icon'  => 'human',
-                    'title' => $current_lang === 'en' ? 'trip style' : 'kiểu đi',
-                    'val'   => $current_lang === 'en' ? 'rice terraces, slow roads' : 'ruộng bậc thang, đường chậm',
+                    'title' => $mcc['hero_vibe_0_title'],
+                    'val'   => $mcc['hero_vibe_0_val'],
                 ],
                 [
                     'icon'  => 'money',
-                    'title' => $current_lang === 'en' ? 'budget' : 'ngân sách',
-                    'val'   => $current_lang === 'en' ? 'easy to plan' : 'dễ tính trước',
+                    'title' => $mcc['hero_vibe_1_title'],
+                    'val'   => $mcc['hero_vibe_1_val'],
                 ],
                 [
                     'icon'  => 'globe',
-                    'title' => $current_lang === 'en' ? 'best for' : 'hợp với',
-                    'val'   => $current_lang === 'en' ? 'harvest season views' : 'mùa vàng và thung lũng',
+                    'title' => $mcc['hero_vibe_2_title'],
+                    'val'   => $mcc['hero_vibe_2_val'],
                 ],
                 [
                     'icon'  => 'clock',
-                    'title' => $current_lang === 'en' ? 'pace' : 'nhịp đi',
-                    'val'   => $current_lang === 'en' ? '4 days, 3 nights' : '4 ngày, 3 đêm',
+                    'title' => $mcc['hero_vibe_3_title'],
+                    'val'   => $mcc['hero_vibe_3_val'],
                 ],
             ];
             include get_template_directory() . '/components/vibe-card.php';
@@ -306,10 +308,10 @@ $activeId = $tableOfContents[0]['id'];
                 <span style="font-size:4rem; line-height:1; color:#7B63F7; font-family:Georgia,serif; flex-shrink:0; margin-top:-8px;">"</span>
                 <div>
                     <p class="text-lg font-semibold text-[#1D292C] leading-relaxed mb-3">
-                        <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['hero_quote'])); ?>
+                        <?php echo esc_html($mcc['hero_quote']); ?>
                     </p>
                     <p style="font-size:15px; color:#474E50;">
-                        — <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['hero_quote_author'])); ?>
+                        — <?php echo esc_html($mcc['hero_quote_author']); ?>
                     </p>
                 </div>
             </div>
@@ -322,7 +324,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $current_lang === 'en' ? 'Mu Cang Chai itinerary' : 'Lịch trình Mù Cang Chải'; ?></p>
+            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo esc_html($mcc['itinerary_title']); ?></p>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -342,16 +344,16 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- Solo going description -->
             <p id="itinerary-solo-desc" style="font-size:15px; color:#474E50;" class="mb-6 max-w-2xl leading-relaxed">
-                <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['itinerary_desc_solo'])); ?>
+                <?php echo esc_html($mcc['itinerary_desc_solo']); ?>
             </p>
 
             <!-- Book a tour description (hidden by default) -->
             <p id="itinerary-book-desc" style="font-size:15px; color:#474E50;" class="hidden mb-6 max-w-2xl leading-relaxed">
-                <?php echo esc_html($mu_cang_chai_replace($t['ha_giang']['itinerary_desc_book'])); ?>
+                <?php echo esc_html($mcc['itinerary_desc_book']); ?>
             </p>
 
             <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo $current_lang === 'en' ? '4 days, 3 nights' : '4 ngày, 3 đêm'; ?>
+                <?php echo esc_html($mcc['itinerary_prompt']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -441,10 +443,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['itinerary']); ?>" alt="itinerary" />
                         <div class="flex flex-col">
                             <span class="font-bold">
-                                <?php echo $t['ha_giang']['itinerary_note_ref'] ?>
+                                <?php echo esc_html($mcc['itinerary_note_ref']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_note_target'] ?>
+                                <?php echo esc_html($mcc['itinerary_note_target']); ?>
                             </span>
                         </div>
                     </div>
@@ -549,14 +551,14 @@ $activeId = $tableOfContents[0]['id'];
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                         <span class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C;">
-                            <?php echo $t['ha_giang']['gallery_title']; ?>
+                            <?php echo esc_html($mcc['gallery_title']); ?>
                         </span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                     </div>
                     <p style="font-size:12px; color:#1D292C; margin:0;">
-                        <?php echo $t['ha_giang']['gallery_desc']; ?>
+                        <?php echo esc_html($mcc['gallery_desc']); ?>
                     </p>
                 </div>
             </div>
@@ -584,10 +586,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Mu Cang Chai photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($mcc['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Mu Cang Chai <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($mcc['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -601,10 +603,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo ($is_last && $remaining_count > 0) ? $visible_count : $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Mu Cang Chai photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($mcc['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Mu Cang Chai <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($mcc['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -631,7 +633,7 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Section heading -->
                 <h3 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                    <?php echo $t['ha_giang']['transport_title']; ?>
+                    <?php echo esc_html($mcc['transport_title']); ?>
                 </h3>
 
                 <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
@@ -649,7 +651,7 @@ $activeId = $tableOfContents[0]['id'];
                         <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
                             <path fill="#7B63F7" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
                         </svg>
-                        <span class="relative z-10"><?php echo $t['ha_giang']['transport_tab_bus']; ?></span>
+                        <span class="relative z-10"><?php echo esc_html($mcc['transport_tab_bus']); ?></span>
                     </button>
 
                     <!-- Inactive tab: Bikes — hidden -->
@@ -661,7 +663,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <!-- Intro text -->
                     <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
-                        <?php echo $t['ha_giang']['transport_intro']; ?>
+                        <?php echo esc_html($mcc['transport_intro']); ?>
                     </p>
 
                     <!-- 3-column bus type cards -->
@@ -674,45 +676,21 @@ $activeId = $tableOfContents[0]['id'];
 
                         $bus_types = [
                             [
-                                'label_en' => $t['ha_giang']['transport_bus_0_label'],
-'label_vi' => $t['ha_giang']['transport_bus_0_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_0_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_0_badge'],
+                                'label' => $mcc['transport_bus_0_label'],
+                                'badge' => $mcc['transport_bus_0_badge'],
                                 'img'       => get_template_directory_uri() . '/assets/images/ha-giang/vip.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_0_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_0_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_0_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_0_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_0_price'],
-'price_vi' => $t['ha_giang']['transport_bus_0_price'],
+                                'desc' => $mcc['transport_bus_0_desc'],
+                                'rows' => $mcc['transport_bus_0_rows'],
+                                'price' => $mcc['transport_bus_0_price'],
                                 'seats'     => 2,
                             ],
                             [
-                                'label_en' => $t['ha_giang']['transport_bus_1_label'],
-'label_vi' => $t['ha_giang']['transport_bus_1_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_1_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_1_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/normal.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_1_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_1_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_1_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_1_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_1_price'],
-'price_vi' => $t['ha_giang']['transport_bus_1_price'],
-                                'seats'     => 3,
-                            ],
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_2_label'],
-'label_vi' => $t['ha_giang']['transport_bus_2_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_2_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_2_badge'],
+                                'label' => $mcc['transport_bus_2_label'],
+                                'badge' => $mcc['transport_bus_2_badge'],
                                 'img'       => get_template_directory_uri() . '/assets/images/ha-giang/economy.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_2_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_2_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_2_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_2_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_2_price'],
-'price_vi' => $t['ha_giang']['transport_bus_2_price'],
+                                'desc' => $mcc['transport_bus_2_desc'],
+                                'rows' => $mcc['transport_bus_2_rows'],
+                                'price' => $mcc['transport_bus_2_price'],
                                 'seats'     => 3,
                             ],
                         ];
@@ -727,7 +705,7 @@ $activeId = $tableOfContents[0]['id'];
                             <div style="position:relative; margin-bottom:8px;">
                                 <img
                                     src="<?php echo esc_url($bt['img']); ?>"
-                                    alt="<?php echo esc_attr($bt['badge_en']); ?>"
+                                    alt="<?php echo esc_attr($bt['badge']); ?>"
                                     class="w-full object-cover rounded-lg"
                                     style="height:220px; object-fit:cover;"
                                 />
@@ -735,22 +713,22 @@ $activeId = $tableOfContents[0]['id'];
                                 <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
                                     <?php echo $blob_yellow; ?>
                                     <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
-                                        <?php echo $current_lang === 'en' ? $bt['badge_en'] : $bt['badge_vi']; ?>
+                                        <?php echo esc_html($bt['badge']); ?>
                                     </span>
                                 </div>
                                 <p class="text-center text-xs mt-1" style="color:#74797A;">
-                                    <?php echo $t['ha_giang']['transport_image_note']; ?>
+                                    <?php echo esc_html($mcc['transport_image_note']); ?>
                                 </p>
                             </div>
 
                             <!-- Card label -->
                             <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
-                                <?php echo $current_lang === 'en' ? $bt['label_en'] : $bt['label_vi']; ?>
+                                <?php echo esc_html($bt['label']); ?>
                             </h3>
 
                             <!-- Description -->
                             <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']; ?>
+                                <?php echo wp_kses_post($bt['desc']); ?>
                             </p>
 
                             <!-- Seat rows indicator -->
@@ -769,7 +747,7 @@ $activeId = $tableOfContents[0]['id'];
                                     <?php endfor; ?>
                                 </div>
                                 <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['rows_en'] : $bt['rows_vi']; ?>
+                                    <?php echo esc_html($bt['rows']); ?>
                                 </span>
                             </div>
 
@@ -781,7 +759,7 @@ $activeId = $tableOfContents[0]['id'];
                                     <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
                                 </svg>
                                 <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['price_en'] : $bt['price_vi']; ?>
+                                    <?php echo esc_html($bt['price']); ?>
                                 </span>
                             </div>
                         </div>
@@ -791,7 +769,7 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- See article link -->
                     <p class="text-center mb-10">
                         <a href="#" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
-                            <?php echo $t['ha_giang']['transport_guide_link']; ?>
+                            <?php echo esc_html($mcc['transport_guide_link']); ?>
                         </a>
                     </p>
 
@@ -799,10 +777,10 @@ $activeId = $tableOfContents[0]['id'];
                     <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
                         <div class="flex-1">
                             <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
-                                <?php echo $t['ha_giang']['transport_book_title']; ?>
+                                <?php echo esc_html($mcc['transport_book_title']); ?>
                             </h4>
                             <p style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $t['ha_giang']['transport_book_desc']; ?>
+                                <?php echo wp_kses_post($mcc['transport_book_desc']); ?>
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-3 flex-shrink-0">
@@ -870,56 +848,34 @@ $activeId = $tableOfContents[0]['id'];
             $seasons = [
                 [
                     'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
-                    'title_en' => 'Mùa lúa chín',
-                    'title_vi' => 'Mùa lúa chín',
-                    'desc_en' => 'Terraced fields turn gold across Mu Cang Chai.',
-                    'desc_vi' => 'Ruộng bậc thang chuyển vàng khắp Mù Cang Chải.',
+                    'title_en' => $mcc['weather_season_0_title'],
+                    'title_vi' => $mcc['weather_season_0_title'],
+                    'desc_en' => $mcc['weather_season_0_desc'],
+                    'desc_vi' => $mcc['weather_season_0_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp',
-                    'title_en' => 'Mùa hoa Tớ Dày',
-                    'title_vi' => 'Mùa hoa Tớ Dày',
-                    'desc_en' => 'Pink blossoms light up the hills in the cooler months.',
-                    'desc_vi' => 'Hoa Tớ Dày hồng lên trên sườn núi vào những tháng lạnh.',
+                    'title_en' => $mcc['weather_season_1_title'],
+                    'title_vi' => $mcc['weather_season_1_title'],
+                    'desc_en' => $mcc['weather_season_1_desc'],
+                    'desc_vi' => $mcc['weather_season_1_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai.webp',
-                    'title_en' => 'Others',
-                    'title_vi' => 'Others',
-                    'desc_en' => 'Green rice season, cloudy passes, and slower village days.',
-                    'desc_vi' => 'Mùa lúa xanh, đèo mây và những ngày bản làng chậm rãi.',
+                    'title_en' => $mcc['weather_season_2_title'],
+                    'title_vi' => $mcc['weather_season_2_title'],
+                    'desc_en' => $mcc['weather_season_2_desc'],
+                    'desc_vi' => $mcc['weather_season_2_desc'],
                 ],
             ];
             ?>
 
             <div class="relative">
-                <!-- Left scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
-                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll left"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Right scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
-                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll right"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-
                 <!-- Scrollable row -->
-                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
+                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
                     <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
                     <?php foreach ($seasons as $s): ?>
-                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="flex:0 0 calc((100% - 2 * 12px) / 3); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -1240,7 +1196,10 @@ $activeId = $tableOfContents[0]['id'];
                 return;
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?${query}&current=temperature_2m,is_day,weather_code&timezone=auto`;
+            const params = new URLSearchParams(query);
+            params.set('current', 'temperature_2m,is_day,weather_code');
+            params.set('timezone', 'auto');
+            const url = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
 
             try {
                 const response = await fetch(url);
@@ -1248,9 +1207,13 @@ $activeId = $tableOfContents[0]['id'];
 
                 const data = await response.json();
 
-                const currentTemp = Math.round(data.current.temperature_2m);
-                const weatherCode = data.current.weather_code;
-                const isDay = data.current.is_day === 1;
+                const currentTemp = Math.round(Number(data.current.temperature_2m));
+                const weatherCode = Number(data.current.weather_code);
+                const isDay = Number(data.current.is_day) === 1;
+
+                if (!Number.isFinite(currentTemp) || !Number.isFinite(weatherCode)) {
+                    throw new Error('Incomplete current weather response');
+                }
 
                 const iconFileName = getWeatherState(weatherCode, isDay);
                 iconElement.src = iconRootPath + iconFileName;
@@ -1310,9 +1273,25 @@ $activeId = $tableOfContents[0]['id'];
                         vi: "Mưa rào nhẹ",
                         en: "Slight rain showers"
                     },
+                    81: {
+                        vi: "Mưa rào vừa",
+                        en: "Moderate rain showers"
+                    },
+                    82: {
+                        vi: "Mưa rào dữ dội",
+                        en: "Violent rain showers"
+                    },
                     95: {
                         vi: "Giông bão",
                         en: "Thunderstorm"
+                    },
+                    96: {
+                        vi: "Giông bão + mưa đá nhẹ",
+                        en: "Thunderstorm with slight hail"
+                    },
+                    99: {
+                        vi: "Giông bão + mưa đá dữ dội",
+                        en: "Thunderstorm with heavy hail"
                     }
                 };
                 conditionElement.textContent = descMap[weatherCode][lang] || "Bình thường";
@@ -1583,13 +1562,14 @@ document.addEventListener('click', function(e) {
     var galleryImages = <?php
         echo json_encode(array_values($all_gallery_images), JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
     ?>;
+    var galleryModalImageAlt = <?php echo json_encode($mcc['gallery_modal_image_alt'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG); ?>;
 
     var galCurrent = 0;
     var galModal   = document.getElementById('gallery-modal');
 
     function galRender(i) {
         document.getElementById('gal-modal-img').src = galleryImages[i];
-        document.getElementById('gal-modal-img').alt = 'Mu Cang Chai ' + (i + 1);
+        document.getElementById('gal-modal-img').alt = galleryModalImageAlt + ' ' + (i + 1);
         document.getElementById('gal-modal-counter').textContent = (i + 1) + ' / ' + galleryImages.length;
     }
 

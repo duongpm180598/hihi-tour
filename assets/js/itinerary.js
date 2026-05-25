@@ -2,12 +2,118 @@ const pathname = window.location.pathname
 
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang')
+const isMuCangChai = pathname.includes('/mu-cang-chai')
 const vi = pathname.includes('/vi')
 
 let ALL_ITINERARY_PLANS_DATA = {}
 
 if (vi) {
-    if (isHaGiang) {
+    if (isMuCangChai) {
+        ALL_ITINERARY_PLANS_DATA = {
+            4: {
+                // Ngày 0: Hà Nội -> Tú Lệ
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Xe giường nằm Hà Nội - Tú Lệ. Xe này sẽ đi tít lên tận Lai Châu, bạn có thể dừng ở Nghĩa Lộ, Tú Lệ hoặc Mù Cang Chải tuỳ theo ý thích nhé',
+                    },
+                    {
+                        time: '05:30',
+                        description: 'Tới Tú Lệ',
+                    },
+                ],
+
+                // Ngày 1: Khám phá Tú Lệ
+                1: [
+                    {
+                        time: '06:00',
+                        description: 'Ăn sáng. Thử món xôi cồm Tú Lệ nổi tiếng nếu đúng mùa cốm.',
+                    },
+                    {
+                        time: '07:00',
+                        description: 'Thuê xe máy, ở dọc chợ Tú Lệ có khá nhiều hàng cho thuê, giá cả ngang nhau, thích nhà nào thuê nhà đó. 180k/ngày (tính trong ngày không phải 24h)',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Về homestay cất đồ, hỏi chủ homestay xem mình nên đi đâu',
+                    },
+                    {
+                        time: '11:00',
+                        description: 'Đi theo các con đường nhỏ lên cao, vào làng bản xung quanh Tú Lệ. Đừng đi ra hẳn Lùng Cúng nhé, đường xấu mà xa á',
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Đi núi Hổ. Đường rất bé và trơn, nhiều đoạn đường đất. Cân nhắc, view cũng cũng',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Ăn tối ở homestay',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Tự chơi với nhau thôi vì tối ở đây không có hoạt động gì nhiều',
+                    },
+                ],
+
+                // Ngày 2: Khám phá Mù Cang Chải
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Ăn sáng',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'Lên đường đi Mù Cang Chải, qua đèo Khau Phạ. Dừng ở đỉnh đèo ngắm cảnh.',
+                    },
+                    {
+                        time: '12:00',
+                        short: 'Ăn trưa',
+                        description: 'Ăn trưa ở thị trấn',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Check-in homestay. Hỏi chủ homestay xem nên đi đâu tiếp',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Đi lên Mồ Dề ngắm hoa. 3km cuối siêu siêu siêu xấu, phải có người bản địa chở đi mới đi nổi',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Lang thang loanh quanh. Vẫn còn thừa thời gian nên đi thẳng xuống Kim Nọi.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'Ăn tối ở thị trấn',
+                    },
+                ],
+
+                // Ngày 3: Về Hà Nội
+                3: [
+                    {
+                        time: '08:00',
+                        description: 'Ăn sáng',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'Đi Lao Chải, dừng ở thuỷ điện Khau Mang Thượng siêu siêu đẹp',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Ăn trưa, check-out',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Đón xe về Hà Nội',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Về tới Hà Nội',
+                    },
+                ],
+            },
+        }
+    } else if (isHaGiang) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
                 // Ngày 0: Hà Nội -> Hà Giang
@@ -557,7 +663,112 @@ if (vi) {
         }
     }
 } else {
-    if (isHaGiang) {
+    if (isMuCangChai) {
+        ALL_ITINERARY_PLANS_DATA = {
+            4: {
+                // Day 0: Hanoi -> Tu Le
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Hanoi - Tu Le sleeper bus. This bus will go all the way to Lai Chau, you can stop in Nghia Lo, Tu Le or Mu Cang Chai depending on your preference.',
+                    },
+                    {
+                        time: '05:30',
+                        description: 'To Tu Le',
+                    },
+                ],
+
+                // Day 1: Explore Tu Le
+                1: [
+                    {
+                        time: '06:00',
+                        description: "Have breakfast. Try the famous Tú Lệ sticky rice dish if it's the right season for young rice flakes.",
+                    },
+                    {
+                        time: '07:00',
+                        description: 'Motorbike rentals are available at many shops along Tu Le market, with similar prices; choose whichever one you like. 180k/day (calculated for the day, not 24 hours).',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'After dropping off our belongings at the homestay, we asked the owner where we should go next.',
+                    },
+                    {
+                        time: '11:00',
+                        description: "Follow the small paths uphill, into the villages surrounding Tú Lệ. Don't go all the way to Lùng Cúng; the road is bad and it's far away.",
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Going to Tiger Mountain. The road is very narrow and slippery, with many dirt sections. Consider this carefully, the view is also...',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Having dinner at the homestay.',
+                    },
+                    {
+                        time: '21:00',
+                        description: "We'll just have to entertain ourselves because there aren't many activities here in the evening.",
+                    },
+                ],
+
+                // Day 2: Explore Mu Cang Chai
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'On the way to Mu Cang Chai, we crossed the Khau Pha Pass. We stopped at the top of the pass to admire the view.',
+                    },
+                    {
+                        time: '12:00',
+                        short: 'Lunch time',
+                        description: 'Lunch in town',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Check in at the homestay. Ask the homestay owner where we should go next.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Go up to Mo De to see the flowers. The last 3km are extremely bad; you need a local to drive you through them.',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Wandering around aimlessly. Still have time to spare, so head straight down to Kim Noi.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'Dinner in town',
+                    },
+                ],
+
+                // Day 3: Back to Hanoi
+                3: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'When going to Lao Chai, stop at the incredibly beautiful Khau Mang Thuong hydroelectric power plant.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Lunch, check out',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Take a bus back to Hanoi.',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Back in Hanoi',
+                    },
+                ],
+            },
+        }
+    } else if (isHaGiang) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
                 // Day 0: Hanoi -> Ha Giang
@@ -1115,7 +1326,7 @@ if (vi) {
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isHaGiang ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : (isHaGiang || isMuCangChai) ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
@@ -1138,10 +1349,10 @@ if (vi) {
                                  style="display: ${dotStyle}; top: ${dotTopPos};"></div>
                             <div class="flex items-start gap-16">
                                 <div class="flex flex-col space-y-2 min-w-20">
-                                    <time class="block text-base font-bold leading-none mt-1">${item.time}</time>
-                                    ${item.short ? `<small>${item.short}</small>` : ''}
+                                    <time class="block mt-1" style="font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;color:#1D292C;">${item.time}</time>
+                                    ${item.short ? `<small style="font-family:'Inter',sans-serif;font-size:12px;line-height:20px;color:rgba(29,41,44,.7);">${item.short}</small>` : ''}
                                 </div>
-                                <p class="text-sm font-normal ">${item.description}</p>
+                                <p style="font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:400;color:#1D292C;">${item.description}</p>
                             </div>
                         </div>
                     </li>`
@@ -1152,15 +1363,14 @@ if (vi) {
         function renderTabs(totals) {
             let tabsHtml = ''
             for (let i = 0; i <= totals; i++) {
-                const isActive = i === 0 ? 'border-b border-[#101F23]' : ''
-                const style = isActive ? '1px solid #101F23' : ''
+                const isActive = i === 0
                 const isLast = i === totals
-                const borderClasses = `${i === 0 ? 'rounded-tl-lg' : ''} ${isLast ? 'rounded-tr-lg' : ''}`
+                const borderClasses = `${i === 0 ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
 
                 tabsHtml += `
-                    <li class="w-full ${isHaGiang ? 'bg-[#DEE9CA]' : 'bg-[#DCF5ED]'} flex-1 ${borderClasses}">
-                        <a data--index="${i}" class="inline-block cursor-pointer p-4 text-fg-brand bg-neutral-secondary-soft rounded-t-base w-full tab-link ${isActive}"
-                           style="border-bottom: ${style};">${vi ? 'Ngày' : 'Day'} ${i}</a>
+                    <li class="w-full flex-1 ${borderClasses}">
+                        <a data--index="${i}" class="inline-flex items-center justify-center cursor-pointer w-full tab-link"
+                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${vi ? 'ngày' : 'day'} ${i}</a>
                     </li>`
             }
             $tabsContainer.html(tabsHtml)
@@ -1173,8 +1383,14 @@ if (vi) {
                 .find('.tab-link')
                 .off('click')
                 .on('click', function () {
-                    $tabsContainer.find('.tab-link').removeClass('border-b border-[#101F23]').css('border-bottom', '')
-                    $(this).addClass('border-b border-[#101F23]').css('border-bottom', '1px solid #101F23')
+                    $tabsContainer.find('.tab-link').css({
+                        background: '#F9FBDF',
+                        color: '#1D292C',
+                    })
+                    $(this).css({
+                        background: '#7B63F7',
+                        color: '#F2F2F0',
+                    })
                     renderTimeline($(this).data('-index'))
                 })
         }
@@ -1182,8 +1398,16 @@ if (vi) {
         function bindPillClickEvent() {
             $('#itinerary-plans').on('click', '.plan-pill', function () {
                 const planValue = $(this).data('plan-value').toString()
-                $('.plan-pill').removeClass('bg-black text-white').addClass('bg-white text-gray-800 border border-gray-300 hover:bg-gray-50')
-                $(this).removeClass('bg-white text-gray-800 border border-gray-300 hover:bg-gray-50').addClass('bg-black text-white')
+                $('.plan-pill').removeClass('text-[#F2F2F0]').addClass('text-[#1D292C]').css({
+                    background: 'transparent',
+                    border: '1px solid #1D292C99',
+                    color: '#1D292C',
+                })
+                $(this).removeClass('text-[#1D292C]').addClass('text-[#F2F2F0]').css({
+                    background: '#7B63F7',
+                    border: '1px solid #7B63F7',
+                    color: '#F2F2F0',
+                })
 
                 if (ALL_ITINERARY_PLANS_DATA[planValue]) {
                     ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[planValue]

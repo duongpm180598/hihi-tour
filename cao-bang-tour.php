@@ -57,9 +57,9 @@ $default_days_count = intval($default_plan);
 $default_days = range(0, $default_days_count);
 
 $locations = [
-    'caobang' => ['display' => $current_lang === 'en' ? 'Cao Bang City' : 'TP.Cao Bằng', 'api_query' => 'latitude=22.6825&longitude=106.2735&current=temperature_2m,relative_humidity_2m'],
-    'bangioc' => ['display' => $current_lang === 'en' ? 'Ban Gioc Waterfall' : 'Thác Bản Giốc', 'api_query' => 'latitude=22.8509&longitude=106.7184&current=temperature_2m,relative_humidity_2m'],
-    'lenin'  => ['display' => $current_lang === 'en' ? 'Lenin Stream' : 'Suối Lenin', 'api_query' => 'latitude=22.9584&longitude=106.0455&current=temperature_2m,relative_humidity_2m'],
+    'caobang' => ['display' => $current_lang === 'en' ? 'Cao Bang City' : 'TP.Cao Bằng', 'api_query' => 'latitude=22.6825&longitude=106.2735'],
+    'bangioc' => ['display' => $current_lang === 'en' ? 'Ban Gioc Waterfall' : 'Thác Bản Giốc', 'api_query' => 'latitude=22.8509&longitude=106.7184'],
+    'lenin'  => ['display' => $current_lang === 'en' ? 'Lenin Stream' : 'Suối Lenin', 'api_query' => 'latitude=22.9584&longitude=106.0455'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -1124,143 +1124,6 @@ $activeId = $tableOfContents[0]['id'];
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        const pathname = window.location.pathname
-        const lang = pathname.includes('/vi') ? 'vi' : 'en'
-
-        function getWeatherState(weatherCode, isDay) {
-            if (weatherCode === 0) {
-                return isDay ? 'sun.svg' : 'clear_sky.svg';
-            }
-            if ([1, 2, 3].includes(weatherCode)) {
-                if (weatherCode === 3) return 'cloud.svg';
-                return isDay ? 'sun_cloud.svg' : 'cloudy_night.svg';
-            }
-            if ([45, 48].includes(weatherCode)) {
-                return 'cloud.svg';
-            }
-            if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(weatherCode)) {
-                return 'rain.svg';
-            }
-            if ([95, 96, 99].includes(weatherCode)) {
-                return 'rain_thunder.svg';
-            }
-
-            return 'sun.svg';
-        }
-
-        async function updateWeatherCard(cardElement) {
-            const query = cardElement.getAttribute('data-city');
-            const cityId = cardElement.id.split('-').pop();
-            const iconRootPath = document.getElementById('weather-data-root').getAttribute('data-icon-root');
-
-            const iconElement = document.getElementById(`icon-${cityId}`);
-            const tempElement = document.getElementById(`temp-${cityId}`);
-            const conditionElement = document.getElementById(`condition-${cityId}`);
-
-            if (!query || !iconElement || !tempElement || !conditionElement) {
-                console.error("Thiếu thuộc tính hoặc phần tử UI.");
-                return;
-            }
-
-            const url = `https://api.open-meteo.com/v1/forecast?${query}&current=temperature_2m,is_day,weather_code&timezone=auto`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-                const data = await response.json();
-
-                const currentTemp = Math.round(data.current.temperature_2m);
-                const weatherCode = data.current.weather_code;
-                const isDay = data.current.is_day === 1;
-
-                const iconFileName = getWeatherState(weatherCode, isDay);
-                iconElement.src = iconRootPath + iconFileName;
-
-                tempElement.textContent = `${currentTemp}°C`;
-
-                const descMap = {
-                    0: {
-                        vi: "Trời quang",
-                        en: "Clear sky"
-                    },
-                    1: {
-                        vi: "Ít mây",
-                        en: "Mainly clear"
-                    },
-                    2: {
-                        vi: "Mây rải rác",
-                        en: "Partly cloudy"
-                    },
-                    3: {
-                        vi: "U ám",
-                        en: "Overcast"
-                    },
-                    45: {
-                        vi: "Sương mù",
-                        en: "Foggy"
-                    },
-                    48: {
-                        vi: "Sương muối",
-                        en: "Depositing rime fog"
-                    },
-                    51: {
-                        vi: "Mưa phùn nhẹ",
-                        en: "Light drizzle"
-                    },
-                    53: {
-                        vi: "Mưa phùn vừa",
-                        en: "Moderate drizzle"
-                    },
-                    55: {
-                        vi: "Mưa phùn dày",
-                        en: "Dense drizzle"
-                    },
-                    61: {
-                        vi: "Mưa nhẹ",
-                        en: "Slight rain"
-                    },
-                    63: {
-                        vi: "Mưa vừa",
-                        en: "Moderate rain"
-                    },
-                    65: {
-                        vi: "Mưa to",
-                        en: "Heavy rain"
-                    },
-                    80: {
-                        vi: "Mưa rào nhẹ",
-                        en: "Slight rain showers"
-                    },
-                    95: {
-                        vi: "Giông bão",
-                        en: "Thunderstorm"
-                    }
-                };
-                conditionElement.textContent = descMap[weatherCode][lang] || "Bình thường";
-
-            } catch (error) {
-                console.error("Lỗi khi lấy dữ liệu thời tiết:", error);
-                iconElement.src = iconRootPath + 'error.svg';
-                tempElement.textContent = 'Lỗi';
-                conditionElement.textContent = 'Không khả dụng';
-            }
-        }
-
-        function fetchAllWeather() {
-            const weatherCards = document.querySelectorAll('#weather-data-root > div');
-
-            weatherCards.forEach(card => {
-                updateWeatherCard(card); // Gọi hàm cập nhật cho từng thẻ
-            });
-        }
-
-        fetchAllWeather();
-    });
-</script>
 
 <script>
 function transTab(tab) {

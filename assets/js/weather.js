@@ -64,12 +64,16 @@
         const tempElement = document.getElementById(`temp-${cityId}`);
         const conditionElement = document.getElementById(`condition-${cityId}`);
 
-        if (!query || !iconElement || !tempElement || !conditionElement) {
+        if (!query || !iconRootPath || !iconElement || !tempElement || !conditionElement) {
             console.error('Thiếu thuộc tính hoặc phần tử UI.');
             return;
         }
 
         const params = new URLSearchParams(query);
+        if (!params.has('latitude') || !params.has('longitude')) {
+            console.error('Thiếu tọa độ thời tiết.');
+            return;
+        }
         params.set('current', 'temperature_2m,is_day,weather_code');
         params.set('timezone', 'auto');
         const url = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;

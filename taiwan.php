@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Hue
+Template Name: Taiwan
 Template Post Type: page
 */
 ?>
@@ -9,51 +9,49 @@ Template Post Type: page
 <?php
 $current_lang = pll_current_language('slug');
 $t = load_lang();
-$hue = $t['hue'];
+$taiwan = $t['taiwan'];
 
 $theme_uri = get_template_directory_uri();
 
 // Danh sách các ảnh.
 $images = [
-    '/assets/images/hue/cau_truong_tien_hue.webp',
-    '/assets/images/hue/hue_house.webp',
-    '/assets/images/hue/a_luoi.webp',
-    '/assets/images/hue/a_luoi2.webp',
-    '/assets/images/hue/a-luoi-building.webp',
-    '/assets/images/hue/dai_noi_hue.webp',
-    '/assets/images/hue/imperial-palace.webp',
-    '/assets/images/hue/song_huong.webp',
-    '/assets/images/hue/cau_truong_tien_hue.webp',
-    '/assets/images/hue/hue_house.webp',
-    '/assets/images/hue/a_luoi.webp',
-    '/assets/images/hue/a_luoi2.webp',
-    '/assets/images/hue/a-luoi-building.webp',
-    '/assets/images/hue/dai_noi_hue.webp',
-    '/assets/images/hue/imperial-palace.webp',
+    '/assets/images/taiwan/taipei-101.webp',
+    '/assets/images/taiwan/bitoujiao.webp',
+    '/assets/images/taiwan/bitoujiao-2.webp',
+    '/assets/images/taiwan/bitoujiao-3.webp',
+    '/assets/images/taiwan/bitoujiao-seashore (1).webp',
+    '/assets/images/taiwan/bitoujiao-seashore (2).webp',
+    '/assets/images/taiwan/keelung-trail (1).webp',
+    '/assets/images/taiwan/keelung-trail (2).webp',
+    '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
+    '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
+    '/assets/images/taiwan/liushishi-jinchan-flower (3).webp',
+    '/assets/images/taiwan/liushishi-jinchan-flower (4).webp',
+    '/assets/images/taiwan/liushishi-jinchan-flower (5).webp',
+    '/assets/images/taiwan/taipei-101.webp',
+    '/assets/images/taiwan/bitoujiao.webp',
 ];
 
 // Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/hue/';
+$gallery_dir   = get_template_directory() . '/assets/images/taiwan/';
 $gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
 sort($gallery_files);
 $all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/hue/' . basename($file);
+    return $theme_uri . '/assets/images/taiwan/' . basename($file);
 }, $gallery_files);
 
 // itinerary
 $plan_options = [
-    '4' => $t['ha_giang']['itinerary_plan_1'],
-    '3' => $t['ha_giang']['itinerary_plan_2'],
-    '2' => $t['ha_giang']['itinerary_plan_3'],
+    '8' => $taiwan['itinerary_plan_0'],
 ];
-$default_plan = '4';
+$default_plan = '8';
 $default_days_count = intval($default_plan);
-$default_days = range(0, $default_days_count);
+$default_days = range(1, $default_days_count);
 
 $locations = [
-    'hue' => ['display' => $hue['weather_loc_0'], 'api_query' => 'latitude=16.466221&longitude=107.592234'],
-    'langco' => ['display' => $hue['weather_loc_1'], 'api_query' => 'latitude=16.249324&longitude=108.075598'],
-    'aluoi'  => ['display' => $hue['weather_loc_2'], 'api_query' => 'latitude=16.274230&longitude=107.232044'],
+    'taipei' => ['display' => $taiwan['weather_loc_0'], 'api_query' => 'latitude=25.042793&longitude=121.505908'],
+    'xincheng' => ['display' => $taiwan['weather_loc_1'], 'api_query' => 'latitude=23.974442&longitude=121.610325'],
+    'taichung'  => ['display' => $taiwan['weather_loc_2'], 'api_query' => 'latitude=24.153773&longitude=120.666787'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -99,222 +97,111 @@ $faqs_data = [
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/hue/song_huong.webp',
+        'img'      => '/assets/images/taiwan/taipei-101.webp',
         'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
+            '/assets/images/taiwan/taipei-101.webp',
         ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_0_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_0_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_0_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
+        'category' => 'city',
+        'tag_en' => $taiwan['highlight_item_0_tag'],
+        'tag_vi' => $taiwan['highlight_item_0_tag'],
+        'title_en' => $taiwan['highlight_item_0_title'],
+        'title_vi' => $taiwan['highlight_item_0_title'],
+        'desc_en' => $taiwan['highlight_item_0_desc'],
+        'desc_vi' => $taiwan['highlight_item_0_desc'],
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/hue/a_luoi2.webp',
+        'img'      => '/assets/images/taiwan/bitoujiao.webp',
         'imgs'     => [
-            '/assets/images/hue/a-luoi-building.webp',
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
+            '/assets/images/taiwan/bitoujiao.webp',
+            '/assets/images/taiwan/bitoujiao-2.webp',
+            '/assets/images/taiwan/bitoujiao-3.webp',
+            '/assets/images/taiwan/bitoujiao-seashore (1).webp',
+            '/assets/images/taiwan/bitoujiao-seashore (2).webp',
         ],
         'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_1_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_1_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_1_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
+        'tag_en' => $taiwan['highlight_item_1_tag'],
+        'tag_vi' => $taiwan['highlight_item_1_tag'],
+        'title_en' => $taiwan['highlight_item_1_title'],
+        'title_vi' => $taiwan['highlight_item_1_title'],
+        'desc_en' => $taiwan['highlight_item_1_desc'],
+        'desc_vi' => $taiwan['highlight_item_1_desc'],
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/hue/song_huong.webp',
+        'img'      => '/assets/images/taiwan/bitoujiao-seashore (1).webp',
         'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_2_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_2_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_2_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/hue_house.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => 'Viewpoint',
-        'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'cua chữ M',
-        'title_vi' => 'cua chữ M',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
-        'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
+            '/assets/images/taiwan/bitoujiao-seashore (1).webp',
+            '/assets/images/taiwan/bitoujiao-seashore (2).webp',
         ],
         'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_3_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_3_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_3_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
+        'tag_en' => $taiwan['highlight_item_2_tag'],
+        'tag_vi' => $taiwan['highlight_item_2_tag'],
+        'title_en' => $taiwan['highlight_item_2_title'],
+        'title_vi' => $taiwan['highlight_item_2_title'],
+        'desc_en' => $taiwan['highlight_item_2_desc'],
+        'desc_vi' => $taiwan['highlight_item_2_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
+        'imgs'     => [
+            '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
+            '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
+            '/assets/images/taiwan/liushishi-jinchan-flower (3).webp',
+            '/assets/images/taiwan/liushishi-jinchan-flower (4).webp',
+            '/assets/images/taiwan/liushishi-jinchan-flower (5).webp',
+        ],
+        'category' => 'viewpoints',
+        'tag_en' => $taiwan['highlight_item_3_tag'],
+        'tag_vi' => $taiwan['highlight_item_3_tag'],
+        'title_en' => $taiwan['highlight_item_3_title'],
+        'title_vi' => $taiwan['highlight_item_3_title'],
+        'desc_en' => $taiwan['highlight_item_3_desc'],
+        'desc_vi' => $taiwan['highlight_item_3_desc'],
+        'span'     => 'normal',
+    ],
+    [
+        'img'      => '/assets/images/taiwan/keelung-trail (1).webp',
+        'imgs'     => [
+            '/assets/images/taiwan/keelung-trail (1).webp',
+            '/assets/images/taiwan/keelung-trail (2).webp',
+        ],
+        'category' => 'nature',
+        'tag_en' => $taiwan['highlight_item_4_tag'],
+        'tag_vi' => $taiwan['highlight_item_4_tag'],
+        'title_en' => $taiwan['highlight_item_4_title'],
+        'title_vi' => $taiwan['highlight_item_4_title'],
+        'desc_en' => $taiwan['highlight_item_4_desc'],
+        'desc_vi' => $taiwan['highlight_item_4_desc'],
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/hue/song_huong.webp',
+        'img'      => '/assets/images/taiwan/bitoujiao-2.webp',
         'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
+            '/assets/images/taiwan/bitoujiao-2.webp',
         ],
-        'category' => 'food',
-        'tag_en' => $t['ha_giang']['highlight_item_4_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_4_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_4_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_4_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
+        'category' => 'city',
+        'tag_en' => $taiwan['highlight_item_5_tag'],
+        'tag_vi' => $taiwan['highlight_item_5_tag'],
+        'title_en' => $taiwan['highlight_item_5_title'],
+        'title_vi' => $taiwan['highlight_item_5_title'],
+        'desc_en' => $taiwan['highlight_item_5_desc'],
+        'desc_vi' => $taiwan['highlight_item_5_desc'],
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
+        'img'      => '/assets/images/taiwan/keelung-trail (2).webp',
         'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_5_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_5_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_5_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
+            '/assets/images/taiwan/keelung-trail (2).webp',
         ],
         'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_6_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_6_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_6_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_6_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_6_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/hue_house.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-            '/assets/images/hue/a-luoi-building.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_7_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_7_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_7_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_7_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_7_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/dai_noi_hue.webp',
-        'imgs'     => [
-            '/assets/images/hue/imperial-palace.webp',
-            '/assets/images/hue/song_huong.webp',
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_8_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_8_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_8_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_8_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_8_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
-        'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_9_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_9_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_9_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_9_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_9_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_9_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_10_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_10_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_10_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_10_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_10_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_10_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/a_luoi.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi2.webp',
-            '/assets/images/hue/a-luoi-building.webp',
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'food',
-        'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_11_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_11_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_11_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_11_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_11_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_12_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_12_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_12_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_12_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_12_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_12_desc'],
+        'tag_en' => $taiwan['highlight_item_6_tag'],
+        'tag_vi' => $taiwan['highlight_item_6_tag'],
+        'title_en' => $taiwan['highlight_item_6_title'],
+        'title_vi' => $taiwan['highlight_item_6_title'],
+        'desc_en' => $taiwan['highlight_item_6_desc'],
+        'desc_vi' => $taiwan['highlight_item_6_desc'],
         'span'     => 'normal',
     ],
 ];
@@ -405,8 +292,8 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi.webp'); ?>"
-                alt="Ha Giang"
+                src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao.webp'); ?>"
+                alt="Taiwan"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
 
@@ -467,7 +354,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></p>
+            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo esc_html($taiwan['itinerary_title']); ?></p>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -487,16 +374,16 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- Solo going description -->
             <p id="itinerary-solo-desc" style="font-size:15px; color:#474E50;" class="mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_solo']; ?>
+                <?php echo esc_html($taiwan['itinerary_desc_solo']); ?>
             </p>
 
             <!-- Book a tour description (hidden by default) -->
             <p id="itinerary-book-desc" style="font-size:15px; color:#474E50;" class="hidden mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_book']; ?>
+                <?php echo esc_html($taiwan['itinerary_desc_book']); ?>
             </p>
 
             <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo $t['ha_giang']['itinerary_prompt'] ?>
+                <?php echo esc_html($taiwan['itinerary_prompt']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -568,19 +455,21 @@ $activeId = $tableOfContents[0]['id'];
                     </div>
 
                     <?php
-                    $default_days = range(0, $default_days_count);
+                    $default_days = range(1, $default_days_count);
+                    $first_day = $default_days[0];
+                    $last_day = $default_days[count($default_days) - 1];
                     ?>
                     <ul id="itinerary-tabs" class="flex flex-wrap text-sm font-medium text-center text-body border border-[#A1A4A3] rounded-tl-lg rounded-tr-lg border-default">
                         <?php foreach ($default_days as $index) : ?>
                             <?php
-                            $border_top_left = ($index === 0) ? 'rounded-tl-lg' : '';
-                            $border_top_right = ($index === count($default_days) - 1) ? 'rounded-tr-lg' : '';
-                            $is_active = ($index === 0) ? 'border-b border-[#101F23]' : '';
+                            $border_top_left = ($index === $first_day) ? 'rounded-tl-lg' : '';
+                            $border_top_right = ($index === $last_day) ? 'rounded-tr-lg' : '';
+                            $is_active = ($index === $first_day) ? 'border-b border-[#101F23]' : '';
                             ?>
                             <li class="w-full bg-[#E7F15A] flex-1 <?php echo $border_top_left;
                                                                     echo $border_top_right ?>">
                                 <a
-                                    data--index="<?php echo $index; ?>"
+                                    data--index="<?php echo $index - 1; ?>"
                                     class="inline-block cursor-pointer p-4 text-fg-brand bg-neutral-secondary-soft rounded-t-base w-full tab-link <?php echo $is_active; ?>"
                                     style="border-bottom: <?php echo $is_active ? '1px solid #101F23' : ''; ?>">
                                     <?php echo $t['ha_giang']['itinerary_day_prefix'] ?> <?php echo $index; ?>
@@ -710,14 +599,14 @@ $activeId = $tableOfContents[0]['id'];
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                         <span class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C;">
-                            <?php echo $t['ha_giang']['gallery_title']; ?>
+                            <?php echo esc_html($taiwan['gallery_title']); ?>
                         </span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                     </div>
                     <p style="font-size:12px; color:#1D292C; margin:0;">
-                        <?php echo $t['ha_giang']['gallery_desc']; ?>
+                        <?php echo esc_html($taiwan['gallery_desc']); ?>
                     </p>
                 </div>
             </div>
@@ -745,10 +634,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($taiwan['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($taiwan['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -762,10 +651,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo ($is_last && $remaining_count > 0) ? $visible_count : $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($taiwan['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($taiwan['gallery_image_alt'] . ' ' . ($index + 1)); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -792,16 +681,14 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Section heading -->
                 <h3 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                    <?php echo $t['ha_giang']['transport_title']; ?>
+                    <?php echo esc_html($taiwan['transport_title']); ?>
                 </h3>
 
-                <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
+                <!-- Tab row -->
                 <div class="flex items-center justify-center gap-12 mb-8">
-
-                    <!-- Active tab: Sleep bus — purple blob shape -->
                     <button
-                        id="tab-bus"
-                        onclick="transTab('bus')"
+                        id="tab-go"
+                        onclick="transTab('go')"
                         class="trans-tab relative flex items-center justify-center font-bold text-white text-sm"
                         style="width:160px; height:72px;"
                         aria-pressed="true"
@@ -810,192 +697,104 @@ $activeId = $tableOfContents[0]['id'];
                         <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
                             <path fill="#7B63F7" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
                         </svg>
-                        <span class="relative z-10"><?php echo $t['ha_giang']['transport_tab_bus']; ?></span>
+                        <span class="relative z-10"><?php echo esc_html($taiwan['transport_tab_go']); ?></span>
                     </button>
 
-                    <!-- Inactive tab: Bikes — hidden -->
-                    <!-- Inactive tab: Bicycle — hidden -->
+                    <button
+                        id="tab-within"
+                        onclick="transTab('within')"
+                        class="trans-tab relative flex items-center justify-center font-bold text-sm"
+                        style="width:160px; height:72px; color:#1D292C;"
+                        aria-pressed="false"
+                    >
+                        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
+                            <path fill="#E7F15A" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
+                        </svg>
+                        <span class="relative z-10"><?php echo esc_html($taiwan['transport_tab_within']); ?></span>
+                    </button>
                 </div>
 
-                <!-- ── BUS TAB CONTENT ── -->
-                <div id="trans-content-bus">
+                <?php
+                $transport_cards_go = [
+                    [
+                        'title' => $taiwan['transport_item_0_title'],
+                        'badge' => $taiwan['transport_item_0_badge'],
+                        'desc'  => $taiwan['transport_item_0_desc'],
+                        'meta'  => $taiwan['transport_item_0_meta'],
+                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/taipei-101.webp',
+                    ],
+                    [
+                        'title' => $taiwan['transport_item_1_title'],
+                        'badge' => $taiwan['transport_item_1_badge'],
+                        'desc'  => $taiwan['transport_item_1_desc'],
+                        'meta'  => $taiwan['transport_item_1_meta'],
+                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/keelung-trail (1).webp',
+                    ],
+                ];
+                $transport_cards_within = [
+                    [
+                        'title' => $taiwan['transport_item_2_title'],
+                        'badge' => $taiwan['transport_item_2_badge'],
+                        'desc'  => $taiwan['transport_item_2_desc'],
+                        'meta'  => $taiwan['transport_item_2_meta'],
+                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/keelung-trail (2).webp',
+                    ],
+                    [
+                        'title' => $taiwan['transport_item_3_title'],
+                        'badge' => $taiwan['transport_item_3_badge'],
+                        'desc'  => $taiwan['transport_item_3_desc'],
+                        'meta'  => $taiwan['transport_item_3_meta'],
+                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/bitoujiao.webp',
+                    ],
+                    [
+                        'title' => $taiwan['transport_item_4_title'],
+                        'badge' => $taiwan['transport_item_4_badge'],
+                        'desc'  => $taiwan['transport_item_4_desc'],
+                        'meta'  => $taiwan['transport_item_4_meta'],
+                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/bitoujiao-2.webp',
+                    ],
+                ];
+                $render_transport_cards = function($cards) {
+                    foreach ($cards as $card):
+                ?>
+                    <div>
+                        <div style="position:relative; margin-bottom:12px;">
+                            <img
+                                src="<?php echo esc_url($card['img']); ?>"
+                                alt="<?php echo esc_attr($card['title']); ?>"
+                                class="w-full object-cover rounded-lg"
+                                style="height:220px; object-fit:cover;"
+                            />
+                            <div style="position:absolute; top:12px; right:12px; background:#E7F15A; border-radius:999px; padding:6px 12px;">
+                                <span style="font-size:11px; font-weight:700; color:#1D292C;"><?php echo esc_html($card['badge']); ?></span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color:#1D292C;"><?php echo esc_html($card['title']); ?></h3>
+                        <p class="mb-3" style="color:#1D292C; line-height:1.7; font-size:15px;"><?php echo esc_html($card['desc']); ?></p>
+                        <p class="text-xs" style="color:#74797A;"><?php echo esc_html($card['meta']); ?></p>
+                    </div>
+                <?php
+                    endforeach;
+                };
+                ?>
 
-                    <!-- Intro text -->
+                <div id="trans-content-go">
                     <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
-                        <?php echo $t['ha_giang']['transport_intro']; ?>
+                        <?php echo esc_html($taiwan['transport_intro_go']); ?>
                     </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                        <?php $render_transport_cards($transport_cards_go); ?>
+                    </div>
+                </div>
 
-                    <!-- 3-column bus type cards -->
+                <div id="trans-content-within" style="display:none;">
+                    <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
+                        <?php echo esc_html($taiwan['transport_intro_within']); ?>
+                    </p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-
-                        <?php
-                        // Seat icon SVGs
-                        // 2-seat row (VIP): 2 seats side by side with gap
-                        $seat_svg = '<svg viewBox="0 0 28 32" width="18" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="18" rx="5" fill="#3D4F52"/><rect x="2" y="24" width="14" height="4" rx="2" fill="#3D4F52"/></svg>';
-
-                        $bus_types = [
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_0_label'],
-'label_vi' => $t['ha_giang']['transport_bus_0_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_0_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_0_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/a_luoi2.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_0_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_0_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_0_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_0_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_0_price'],
-'price_vi' => $t['ha_giang']['transport_bus_0_price'],
-                                'seats'     => 2,
-                            ],
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_1_label'],
-'label_vi' => $t['ha_giang']['transport_bus_1_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_1_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_1_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/a-luoi-building.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_1_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_1_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_1_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_1_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_1_price'],
-'price_vi' => $t['ha_giang']['transport_bus_1_price'],
-                                'seats'     => 3,
-                            ],
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_2_label'],
-'label_vi' => $t['ha_giang']['transport_bus_2_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_2_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_2_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/dai_noi_hue.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_2_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_2_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_2_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_2_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_2_price'],
-'price_vi' => $t['ha_giang']['transport_bus_2_price'],
-                                'seats'     => 3,
-                            ],
-                        ];
-
-                        // Yellow blob SVG (for image badge)
-                        $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
-
-                        foreach ($bus_types as $bt):
-                        ?>
-                        <div>
-                            <!-- Image with blob badge -->
-                            <div style="position:relative; margin-bottom:8px;">
-                                <img
-                                    src="<?php echo esc_url($bt['img']); ?>"
-                                    alt="<?php echo esc_attr($bt['badge_en']); ?>"
-                                    class="w-full object-cover rounded-lg"
-                                    style="height:220px; object-fit:cover;"
-                                />
-                                <!-- Yellow blob badge top-right -->
-                                <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
-                                    <?php echo $blob_yellow; ?>
-                                    <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
-                                        <?php echo $current_lang === 'en' ? $bt['badge_en'] : $bt['badge_vi']; ?>
-                                    </span>
-                                </div>
-                                <p class="text-center text-xs mt-1" style="color:#74797A;">
-                                    <?php echo $t['ha_giang']['transport_image_note']; ?>
-                                </p>
-                            </div>
-
-                            <!-- Card label -->
-                            <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
-                                <?php echo $current_lang === 'en' ? $bt['label_en'] : $bt['label_vi']; ?>
-                            </h3>
-
-                            <!-- Description -->
-                            <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']; ?>
-                            </p>
-
-                            <!-- Seat rows indicator -->
-                            <div class="flex items-center gap-2 mb-2">
-                                <!-- Seat icons: render $bt['seats'] pairs per floor, 2 floors -->
-                                <div style="display:flex; flex-direction:column; gap:2px;">
-                                    <?php for ($floor = 0; $floor < 2; $floor++): ?>
-                                    <div style="display:flex; gap:3px; <?php echo $floor === 0 ? 'border-bottom:1px solid #555;' : ''; ?>">
-                                        <?php for ($s = 0; $s < $bt['seats']; $s++): ?>
-                                        <svg viewBox="0 0 20 24" width="14" height="18" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="1" y="1" width="12" height="14" rx="4" fill="#3D4F52"/>
-                                            <rect x="1" y="18" width="12" height="3" rx="1.5" fill="#3D4F52"/>
-                                        </svg>
-                                        <?php endfor; ?>
-                                    </div>
-                                    <?php endfor; ?>
-                                </div>
-                                <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['rows_en'] : $bt['rows_vi']; ?>
-                                </span>
-                            </div>
-
-                            <!-- Price -->
-                            <div class="flex items-center gap-2">
-                                <!-- Dollar bubble icon -->
-                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
-                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
-                                </svg>
-                                <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['price_en'] : $bt['price_vi']; ?>
-                                </span>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
+                        <?php $render_transport_cards($transport_cards_within); ?>
                     </div>
-
-                    <!-- See article link -->
-                    <p class="text-center mb-10">
-                        <a href="#" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
-                            <?php echo $t['ha_giang']['transport_guide_link']; ?>
-                        </a>
-                    </p>
-
-                    <!-- How to book box -->
-                    <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
-                        <div class="flex-1">
-                            <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
-                                <?php echo $t['ha_giang']['transport_book_title']; ?>
-                            </h4>
-                            <p style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $t['ha_giang']['transport_book_desc']; ?>
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-3 flex-shrink-0">
-                            <!-- Vexere.com blob button -->
-                            <a href="https://vexere.com" target="_blank" rel="noopener" style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:120px; height:48px; text-decoration:none;">
-                                <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M60,4 C76,4 96,8 106,18 C116,28 116,36 108,42 C100,48 80,48 60,48 C40,48 20,48 12,42 C4,36 4,28 14,18 C24,8 44,4 60,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">Vexere.com</span>
-                            </a>
-                            <!-- teehee blob button -->
-                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:100px; height:48px;">
-                                <svg viewBox="0 0 100 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M50,4 C64,4 82,8 90,18 C98,28 96,36 88,42 C80,48 64,48 50,48 C36,48 20,48 12,42 C4,36 4,28 10,18 C18,8 36,4 50,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">teehee</span>
-                            </span>
-                            <!-- Not an ads blob -->
-                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:110px; height:48px;">
-                                <svg viewBox="0 0 110 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M55,4 C70,4 90,8 100,18 C110,28 108,36 100,42 C92,48 72,48 55,48 C38,48 18,48 10,42 C2,36 2,28 10,18 C20,8 40,4 55,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:11px; font-weight:700; color:#1D292C;">Not an ads</span>
-                            </span>
-                        </div>
-                    </div>
-
-                </div><!-- /trans-content-bus -->
-
-                <!-- Bike & Bicycle tabs hidden (no content yet) -->
-                <div id="trans-content-bike" style="display:none;"></div>
-                <div id="trans-content-bicycle" style="display:none;"></div>
+                </div>
 
             </div>
         </section>
@@ -1030,35 +829,35 @@ $activeId = $tableOfContents[0]['id'];
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/imperial-palace.webp',
+                    'img'     => $theme_uri . '/assets/images/taiwan/bitoujiao-seashore (2).webp',
                     'title_en' => $t['ha_giang']['weather_season_0_title'],
 'title_vi' => $t['ha_giang']['weather_season_0_title'],
                     'desc_en' => $t['ha_giang']['weather_season_0_desc'],
 'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/song_huong.webp',
+                    'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (1).webp',
                     'title_en' => $t['ha_giang']['weather_season_1_title'],
 'title_vi' => $t['ha_giang']['weather_season_1_title'],
                     'desc_en' => $t['ha_giang']['weather_season_1_desc'],
 'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/cau_truong_tien_hue.webp',
+                    'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (2).webp',
                     'title_en' => $t['ha_giang']['weather_season_2_title'],
 'title_vi' => $t['ha_giang']['weather_season_2_title'],
                     'desc_en' => $t['ha_giang']['weather_season_2_desc'],
 'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/hue_house.webp',
+                    'img'     => $theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
                     'title_en' => $t['ha_giang']['weather_season_3_title'],
 'title_vi' => $t['ha_giang']['weather_season_3_title'],
                     'desc_en' => $t['ha_giang']['weather_season_3_desc'],
 'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/a_luoi.webp',
+                    'img'     => $theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
                     'title_en' => $t['ha_giang']['weather_season_4_title'],
 'title_vi' => $t['ha_giang']['weather_season_4_title'],
                     'desc_en' => $t['ha_giang']['weather_season_4_desc'],
@@ -1139,8 +938,8 @@ $activeId = $tableOfContents[0]['id'];
                 <?php
                 $hl_tabs = [
                     'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',
+                    'city'       => $current_lang === 'en' ? 'City'          : 'Thành phố',
                     'viewpoints' => $current_lang === 'en' ? 'View points'   : 'Điểm quan sát',
-                    'food'       => $current_lang === 'en' ? 'Food'           : 'Ẩm thực',
                     'nature'     => $current_lang === 'en' ? 'Nature to go'  : 'Thiên nhiên',
                 ];
                 foreach ($hl_tabs as $key => $label):
@@ -1276,32 +1075,32 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi2.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a-luoi-building.webp'); ?>"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (3).webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (4).webp'); ?>"
                     alt="Cultural Aspect 1"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/dai_noi_hue.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/imperial-palace.webp'); ?>"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (5).webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/taipei-101.webp'); ?>"
                     alt="Cultural Aspect 2"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/song_huong.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/cau_truong_tien_hue.webp'); ?>"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-2.webp'); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/hue_house.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi.webp'); ?>"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-3.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-seashore (1).webp'); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi2.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a-luoi-building.webp'); ?>"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-seashore (2).webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/keelung-trail (1).webp'); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
@@ -1321,7 +1120,7 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
 
-            <?php hihi_related_destinations('ha-giang'); ?>
+            <?php hihi_related_destinations('taiwan'); ?>
         </div>
     </section>
 
@@ -1357,6 +1156,39 @@ $activeId = $tableOfContents[0]['id'];
     </div>
 </div>
 
+<?php
+$taiwan_itinerary_pairs = [
+    [$taiwan['itinerary_place_0_city'], $taiwan['highlight_item_0_title']],
+    [$taiwan['itinerary_place_1_city'], $taiwan['itinerary_place_1_stop']],
+    [$taiwan['itinerary_place_2_city'], $taiwan['highlight_item_5_title']],
+    [$taiwan['itinerary_place_3_city'], $taiwan['highlight_item_6_title']],
+    [$taiwan['itinerary_place_4_city'], $taiwan['itinerary_place_4_stop']],
+    [$taiwan['itinerary_place_5_city'], $taiwan['itinerary_place_5_stop']],
+    [$taiwan['itinerary_place_6_city'], $taiwan['highlight_item_3_title']],
+    [$taiwan['itinerary_place_7_city'], $taiwan['itinerary_place_7_stop']],
+];
+$taiwan_itinerary_days = [];
+foreach ($taiwan_itinerary_pairs as $day_index => $pair) {
+    $day_number = $day_index + 1;
+    $taiwan_itinerary_days[$day_index] = [
+        [
+            'time' => '09:00',
+            'description' => sprintf($taiwan['itinerary_start_template'], $day_number, $pair[0]),
+        ],
+        [
+            'time' => '13:00',
+            'description' => sprintf($taiwan['itinerary_stop_template'], $pair[1]),
+        ],
+        [
+            'time' => '19:00',
+            'description' => $taiwan['itinerary_evening'],
+        ],
+    ];
+}
+?>
+<script>
+window.hihiTaiwanItineraryData = <?php echo wp_json_encode(['8' => $taiwan_itinerary_days], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG); ?>;
+</script>
 
 <!-- ── Gallery Modal ── -->
 <div
@@ -1401,9 +1233,16 @@ $activeId = $tableOfContents[0]['id'];
 
 <script>
 function transTab(tab) {
-    ['bus','bike','bicycle'].forEach(function(t) {
+    ['go','within'].forEach(function(t) {
         var content = document.getElementById('trans-content-' + t);
         if (content) content.style.display = (t === tab) ? '' : 'none';
+        var button = document.getElementById('tab-' + t);
+        if (button) {
+            button.setAttribute('aria-pressed', t === tab ? 'true' : 'false');
+            button.style.color = t === tab ? '#fff' : '#1D292C';
+            var path = button.querySelector('path');
+            if (path) path.setAttribute('fill', t === tab ? '#7B63F7' : '#E7F15A');
+        }
     });
 }
 
@@ -1603,7 +1442,7 @@ document.addEventListener('click', function(e) {
 
     function galRender(i) {
         document.getElementById('gal-modal-img').src = galleryImages[i];
-        document.getElementById('gal-modal-img').alt = 'Ha Giang ' + (i + 1);
+        document.getElementById('gal-modal-img').alt = 'Taiwan ' + (i + 1);
         document.getElementById('gal-modal-counter').textContent = (i + 1) + ' / ' + galleryImages.length;
     }
 

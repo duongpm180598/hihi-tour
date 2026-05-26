@@ -3,12 +3,19 @@ const pathname = window.location.pathname
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang')
 const isMuCangChai = pathname.includes('/mu-cang-chai')
+const isTaiwan = pathname.includes('/taiwan')
 const vi = pathname.includes('/vi')
 
 let ALL_ITINERARY_PLANS_DATA = {}
 
+function makeTaiwanItinerary(isVi) {
+    return window.hihiTaiwanItineraryData || {}
+}
+
 if (vi) {
-    if (isMuCangChai) {
+    if (isTaiwan) {
+        ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
+    } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
                 // Ngày 0: Hà Nội -> Tú Lệ
@@ -663,7 +670,9 @@ if (vi) {
         }
     }
 } else {
-    if (isMuCangChai) {
+    if (isTaiwan) {
+        ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
+    } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
                 // Day 0: Hanoi -> Tu Le
@@ -1326,7 +1335,7 @@ if (vi) {
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : (isHaGiang || isMuCangChai) ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : (isHaGiang || isMuCangChai) ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
@@ -1365,12 +1374,13 @@ if (vi) {
             for (let i = 0; i <= totals; i++) {
                 const isActive = i === 0
                 const isLast = i === totals
+                const dayNumber = isTaiwan ? i + 1 : i
                 const borderClasses = `${i === 0 ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
 
                 tabsHtml += `
                     <li class="w-full flex-1 ${borderClasses}">
                         <a data--index="${i}" class="inline-flex items-center justify-center cursor-pointer w-full tab-link"
-                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${vi ? 'ngày' : 'day'} ${i}</a>
+                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${vi ? 'ngày' : 'day'} ${dayNumber}</a>
                     </li>`
             }
             $tabsContainer.html(tabsHtml)

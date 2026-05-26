@@ -64,7 +64,7 @@ $destinations = [
         'kw_vi' => 'cao bằng thác bản giốc đông bắc việt nam thiên nhiên núi',
     ],
     [
-        'slug'  => null,
+        'slug'  => 'hue-trip',
         'en'    => 'Huế', 'vi' => 'Huế',
         'img'   => $HueImperialPalace,
         'geo'   => 'vietnam',
@@ -184,7 +184,7 @@ $destinations = [
         'kw_vi' => 'hải phòng thành phố cảng bãi biển đồ sơn',
     ],
     [
-        'slug'  => null,
+        'slug'  => 'taiwan-trip',
         'en'    => 'Đài Loan', 'vi' => 'Đài Loan',
         'img'   => $TaiwanTaipei101,
         'geo'   => 'sea',

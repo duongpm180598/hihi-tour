@@ -810,7 +810,7 @@ $activeId = $tableOfContents[0]['id'];
             <div
                 id="weather-data-root"
                 data-icon-root="<?php echo esc_url($icon_root_path); ?>"
-                class="flex flex-wrap justify-center gap-8 py-6 mb-6 border-b border-[#8A8E8F]">
+                class="flex flex-wrap justify-center gap-8 py-6 mb-6">
                 <?php foreach ($locations as $id => $location): ?>
                 <div class="text-center" data-city="<?php echo esc_attr($location['api_query']); ?>" id="weather-card-<?php echo esc_attr($id); ?>">
                     <p style="font-size:15px; font-weight:600;" class="mb-2"><?php echo esc_html($location['display']); ?></p>

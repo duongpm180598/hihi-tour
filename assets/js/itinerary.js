@@ -4,6 +4,7 @@ const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang')
 const isMuCangChai = pathname.includes('/mu-cang-chai')
 const isTaiwan = pathname.includes('/taiwan')
+const isHue = pathname.includes('/hue')
 const vi = pathname.includes('/vi')
 
 let ALL_ITINERARY_PLANS_DATA = {}
@@ -15,6 +16,8 @@ function makeTaiwanItinerary(isVi) {
 if (vi) {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
+    } else if (isHue) {
+        ALL_ITINERARY_PLANS_DATA = window.hihiHueItineraryData || {}
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -672,6 +675,8 @@ if (vi) {
 } else {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
+    } else if (isHue) {
+        ALL_ITINERARY_PLANS_DATA = window.hihiHueItineraryData || {}
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -1337,7 +1342,7 @@ if (vi) {
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
@@ -1378,11 +1383,12 @@ if (vi) {
                 const isLast = i === totals
                 const dayNumber = isTaiwan ? i + 1 : i
                 const borderClasses = `${i === 0 ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
+                const dayLabel = (window.hihiItineraryLabels && window.hihiItineraryLabels.day) || (vi ? 'ngày' : 'day')
 
                 tabsHtml += `
                     <li class="w-full flex-1 ${borderClasses}">
                         <a data--index="${i}" class="inline-flex items-center justify-center cursor-pointer w-full tab-link"
-                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${vi ? 'ngày' : 'day'} ${dayNumber}</a>
+                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${dayLabel} ${dayNumber}</a>
                     </li>`
             }
             $tabsContainer.html(tabsHtml)
@@ -1433,12 +1439,31 @@ if (vi) {
         function getPricingItemTotal($item, plan) {
             const unit = $item.data('unit')
             const price = Number($item.data(vi ? 'vnd' : 'usd')) || 0
-            const travelDays = Math.max((Number(plan) || 0) - 1, 0)
+            const planDaysMatch = String(plan).match(/_(\d+)$/)
+            const planDays = planDaysMatch ? Number(planDaysMatch[1]) : Number(plan)
+            const travelDays = Math.max((planDays || 0) - 1, 0)
 
             if (unit === 'all') return price
             if (unit === 'meal') return price * travelDays * 3
             if (unit === 'day') return price * travelDays
             return price
+        }
+
+        function isPricingItemApplicable($item, plan) {
+            const scope = $item.data('plan-scope') || 'all'
+            if (scope === 'all') return true
+            if (scope === 'central') return String(plan).indexOf('central_') === 0
+            if (scope === 'hue_core') return String(plan).indexOf('hue_only_') === 0 || String(plan).indexOf('central_') === 0
+            return true
+        }
+
+        function updatePricingItemAvailability(plan) {
+            $pricingIncludes.each(function () {
+                const $item = $(this)
+                const applicable = isPricingItemApplicable($item, plan)
+                $item.prop('disabled', !applicable)
+                $item.closest('.pricing-item-row').toggle(applicable)
+            })
         }
 
         function renderPrice(plan) {
@@ -1448,10 +1473,11 @@ if (vi) {
                 return
             }
             if ($pricingIncludes.length) {
+                updatePricingItemAvailability(plan)
                 let total = 0
                 $pricingIncludes.each(function () {
                     const $item = $(this)
-                    if ($item.is(':checked')) {
+                    if ($item.is(':checked') && isPricingItemApplicable($item, plan)) {
                         total += getPricingItemTotal($item, plan)
                     }
                 })
@@ -1469,6 +1495,9 @@ if (vi) {
             }
             if ($item.is(':checked') && $item.data('type') === 'motorbike') {
                 $pricingIncludes.filter('[data-type="easy-driver"]').prop('checked', false)
+            }
+            if ($item.is(':checked') && $item.data('type') === 'long-transport') {
+                $pricingIncludes.filter('[data-type="long-transport"]').not($item).prop('checked', false)
             }
             renderPrice(currentPlan || initialPlan)
         })

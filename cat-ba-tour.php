@@ -326,7 +326,7 @@ $activeId = $tableOfContents[0]['id'];
             <div
                 id="weather-data-root"
                 data-icon-root="<?php echo esc_url($icon_root_path); ?>"
-                class="grid grid-cols-1 md:grid-cols-3 divide-x-0 md:divide-x divide-[#8A8E8F] border-b border-[#8A8E8F] py-4">
+                class="grid grid-cols-1 md:grid-cols-3 divide-x-0 md:divide-x divide-[#8A8E8F] py-4">
                 <?php $index = 0;
                 foreach ($locations as $id => $location) : ?>
                     <?php

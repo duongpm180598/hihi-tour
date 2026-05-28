@@ -41,14 +41,94 @@ $all_gallery_images = array_map(function($file) use ($theme_uri) {
 }, $gallery_files);
 
 // itinerary
-$plan_options = [
-    '4' => $t['ha_giang']['itinerary_plan_1'],
-    '3' => $t['ha_giang']['itinerary_plan_2'],
-    '2' => $t['ha_giang']['itinerary_plan_3'],
+$plan_groups = [
+    'hue_only' => [
+        'label' => $hue['itinerary_group_0_label'],
+        'plans' => [
+            'hue_only_4' => $hue['itinerary_plan_2_label'],
+            'hue_only_3' => $hue['itinerary_plan_1_label'],
+        ],
+    ],
+    'central' => [
+        'label' => $hue['itinerary_group_1_label'],
+        'plans' => [
+            'central_3' => $hue['itinerary_plan_1_label'],
+            'central_4' => $hue['itinerary_plan_2_label'],
+        ],
+    ],
+    'advanced' => [
+        'label' => $hue['itinerary_group_2_label'],
+        'plans' => [
+            'advanced_4' => $hue['itinerary_plan_2_label'],
+            'advanced_5' => $hue['itinerary_plan_3_label'],
+        ],
+    ],
 ];
-$default_plan = '4';
-$default_days_count = intval($default_plan);
+$default_plan_group = 'hue_only';
+$default_plan = 'hue_only_4';
+$default_days_count = 4;
 $default_days = range(0, $default_days_count);
+
+$hue_make_items = function ($times, $descriptions) {
+    return array_map(function ($time, $description) {
+        return [
+            'time' => $time,
+            'description' => $description,
+        ];
+    }, $times, $descriptions);
+};
+
+$hue_itinerary_data = [
+    'hue_only_4' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_1_item_0'], $hue['itinerary_hue_only_3_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_2_item_0'], $hue['itinerary_hue_only_3_day_2_item_1']]),
+        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_4_day_3_item_0']]),
+        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_4_day_4_item_0']]),
+    ],
+    'hue_only_3' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_1_item_0'], $hue['itinerary_hue_only_3_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_2_item_0'], $hue['itinerary_hue_only_3_day_2_item_1']]),
+        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_3_day_0_item_1']]),
+    ],
+    'central_3' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_3_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_3_day_1_item_0'], $hue['itinerary_central_3_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_3_day_2_item_0']]),
+        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_3_day_3_item_0']]),
+    ],
+    'central_4' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_1_item_0'], $hue['itinerary_central_4_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_2_item_0'], $hue['itinerary_central_4_day_2_item_1']]),
+        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_4_day_3_item_0']]),
+        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_4_day_3_item_1']]),
+    ],
+    'central_5' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_central_5_day_1_item_0'], $hue['itinerary_central_5_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_2_item_0'], $hue['itinerary_central_5_day_2_item_1']]),
+        3 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_3_item_0'], $hue['itinerary_central_5_day_3_item_1']]),
+        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_5_day_4_item_0']]),
+        5 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_5_day_4_item_1']]),
+    ],
+    'advanced_4' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_advanced_4_day_1_item_0'], $hue['itinerary_advanced_4_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_2_item_0'], $hue['itinerary_advanced_4_day_2_item_1']]),
+        3 => $hue_make_items([$hue['itinerary_time_morning']], [$hue['itinerary_advanced_4_day_3_item_0']]),
+        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_4_day_3_item_1']]),
+    ],
+    'advanced_5' => [
+        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_0_item_0']]),
+        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_advanced_4_day_1_item_0'], $hue['itinerary_advanced_4_day_1_item_1']]),
+        2 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_5_day_2_item_0']]),
+        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_5_day_3_item_0']]),
+        4 => $hue_make_items([$hue['itinerary_time_morning']], [$hue['itinerary_advanced_4_day_3_item_0']]),
+        5 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_4_day_3_item_1']]),
+    ],
+];
 
 $locations = [
     'hue' => ['display' => $hue['weather_loc_0'], 'api_query' => 'latitude=16.466221&longitude=107.592234'],
@@ -319,6 +399,37 @@ $highlights = [
     ],
 ];
 
+$hue_highlight_specs = [
+    ['img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
+    ['img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
+    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'heritage'],
+    ['img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
+    ['img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
+    ['img' => '/assets/images/hue/a_luoi.webp', 'category' => 'nature'],
+    ['img' => '/assets/images/hue/a_luoi2.webp', 'category' => 'nature'],
+    ['img' => '/assets/images/hue/a-luoi-building.webp', 'category' => 'nature'],
+    ['img' => '/assets/images/hue/song_huong.webp', 'category' => 'river'],
+    ['img' => '/assets/images/hue/cau_truong_tien_hue.webp', 'category' => 'river'],
+    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+];
+
+$highlights = array_map(function ($item, $index) use ($hue) {
+    return [
+        'img' => $item['img'],
+        'imgs' => [$item['img']],
+        'category' => $item['category'],
+        'tag_en' => $hue["highlight_item_{$index}_tag"],
+        'tag_vi' => $hue["highlight_item_{$index}_tag"],
+        'title_en' => $hue["highlight_item_{$index}_title"],
+        'title_vi' => $hue["highlight_item_{$index}_title"],
+        'desc_en' => $hue["highlight_item_{$index}_desc"],
+        'desc_vi' => $hue["highlight_item_{$index}_desc"],
+        'span' => 'normal',
+    ];
+}, $hue_highlight_specs, array_keys($hue_highlight_specs));
+
 $tableOfContents = [
     [
         'id' => 'overview',
@@ -359,6 +470,12 @@ $tableOfContents = [
 ];
 $activeId = $tableOfContents[0]['id'];
 ?>
+
+<script>
+window.hihiHueItineraryData = <?php echo wp_json_encode($hue_itinerary_data, JSON_UNESCAPED_UNICODE); ?>;
+window.hihiHueDefaultPlan = <?php echo wp_json_encode($default_plan); ?>;
+window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary_day_prefix']], JSON_UNESCAPED_UNICODE); ?>;
+</script>
 
 <!-- banner  -->
 <div class="fixed top-50 -right-12 z-50">
@@ -467,7 +584,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></p>
+            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo esc_html($hue['itinerary_title']); ?></p>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -487,39 +604,57 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- Solo going description -->
             <p id="itinerary-solo-desc" style="font-size:15px; color:#474E50;" class="mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_solo']; ?>
+                <?php echo esc_html($hue['itinerary_desc_solo']); ?>
             </p>
 
             <!-- Book a tour description (hidden by default) -->
             <p id="itinerary-book-desc" style="font-size:15px; color:#474E50;" class="hidden mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_book']; ?>
+                <?php echo esc_html($hue['itinerary_desc_solo']); ?>
             </p>
 
             <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo $t['ha_giang']['itinerary_prompt'] ?>
+                <?php echo esc_html($hue['itinerary_prompt']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="md:col-span-2 mb-8">
                     <!-- Pills row + Download dropdown on the right -->
-                    <div class="flex items-center justify-between gap-2 mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                         <div id="itinerary-plans" class="flex flex-wrap gap-2">
-                            <?php foreach ($plan_options as $value => $text) : ?>
+                            <?php foreach ($plan_groups as $group_key => $group) : ?>
+                                <?php foreach ($group['plans'] as $value => $text) : ?>
                                 <?php
                                 $is_active = ($value == $default_plan);
+                                $is_default_group = ($group_key === $default_plan_group);
                                 $active_class = $is_active
                                     ? 'bg-[#7B63F7] text-white rounded-full'
                                     : 'bg-white text-[#1D292C] border border-gray-300 hover:bg-gray-50 rounded-full';
                                 ?>
                                 <a
+                                    data-plan-group="<?php echo esc_attr($group_key); ?>"
                                     data-plan-value="<?php echo esc_attr($value); ?>"
+                                    style="<?php echo $is_default_group ? '' : 'display:none;'; ?>"
                                     class="plan-pill inline-block cursor-pointer py-2 px-4 rounded-lg text-sm font-medium transition duration-200 <?php echo $active_class; ?>">
                                     <?php echo esc_html($text); ?>
                                 </a>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </div>
 
                         <!-- Download dropdown — Filled button per COMPONENTS.md §3.1 -->
+                        <div class="flex flex-wrap items-center gap-2 sm:justify-end">
+                        <label class="sr-only" for="hue-plan-group"><?php echo esc_html($hue['itinerary_group_label']); ?></label>
+                        <select
+                            id="hue-plan-group"
+                            style="min-height:44px; padding:0 40px 0 14px; border:1.5px solid #1D292C; border-radius:999px; background:#fff; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;"
+                        >
+                            <?php foreach ($plan_groups as $group_key => $group) : ?>
+                                <option value="<?php echo esc_attr($group_key); ?>" <?php selected($group_key, $default_plan_group); ?>>
+                                    <?php echo esc_html($group['label']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
                         <div class="relative flex-shrink-0" id="itinerary-download-wrap">
                             <button
                                 id="itinerary-download-btn"
@@ -565,6 +700,7 @@ $activeId = $tableOfContents[0]['id'];
                                 </button>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <?php
@@ -583,7 +719,7 @@ $activeId = $tableOfContents[0]['id'];
                                     data--index="<?php echo $index; ?>"
                                     class="inline-block cursor-pointer p-4 text-fg-brand bg-neutral-secondary-soft rounded-t-base w-full tab-link <?php echo $is_active; ?>"
                                     style="border-bottom: <?php echo $is_active ? '1px solid #101F23' : ''; ?>">
-                                    <?php echo $t['ha_giang']['itinerary_day_prefix'] ?> <?php echo $index; ?>
+                                    <?php echo esc_html($hue['itinerary_day_prefix']); ?> <?php echo $index; ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -602,69 +738,134 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['itinerary']); ?>" alt="itinerary" />
                         <div class="flex flex-col">
                             <span class="font-bold">
-                                <?php echo $t['ha_giang']['itinerary_note_ref'] ?>
+                                <?php echo esc_html($hue['itinerary_note_ref']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_note_target'] ?>
+                                <?php echo esc_html($hue['itinerary_note_target']); ?>
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-1">
-                    <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
-                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $t['ha_giang']['itinerary_price_note'] ?></p>
+                <div class="md:col-span-1" style="align-self:start;">
+                    <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
+                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                            <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
+                            <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($hue['itinerary_price_note']); ?></p>
+                        </div>
                         <?php
-                        $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                        $pricing_items = [
+                            [
+                                'label' => $hue['pricing_round_trip_bus_label'],
+                                'desc' => $hue['pricing_round_trip_bus_desc'],
+                                'type' => 'long-transport',
+                                'scope' => 'all',
+                                'unit' => 'all',
+                                'usd' => 50,
+                                'vnd' => 1000000,
+                                'checked' => true,
+                            ],
+                            [
+                                'label' => $hue['pricing_round_trip_flight_label'],
+                                'desc' => $hue['pricing_round_trip_flight_desc'],
+                                'type' => 'long-transport',
+                                'scope' => 'all',
+                                'unit' => 'all',
+                                'usd' => 100,
+                                'vnd' => 2000000,
+                                'checked' => false,
+                            ],
+                            [
+                                'label' => $hue['pricing_homestay_label'],
+                                'desc' => $hue['pricing_homestay_desc'],
+                                'scope' => 'all',
+                                'unit' => 'day',
+                                'usd' => 15,
+                                'vnd' => 300000,
+                                'checked' => true,
+                            ],
+                            [
+                                'label' => $hue['pricing_meals_label'],
+                                'desc' => $hue['pricing_meals_desc'],
+                                'scope' => 'all',
+                                'unit' => 'meal',
+                                'usd' => 6,
+                                'vnd' => 100000,
+                                'checked' => true,
+                            ],
+                            [
+                                'label' => $hue['pricing_motorbike_label'],
+                                'desc' => $hue['pricing_motorbike_desc'],
+                                'scope' => 'all',
+                                'unit' => 'day',
+                                'usd' => 5,
+                                'vnd' => 150000,
+                                'checked' => true,
+                            ],
+                            [
+                                'label' => $hue['pricing_train_label'],
+                                'desc' => $hue['pricing_train_desc'],
+                                'scope' => 'central',
+                                'unit' => 'all',
+                                'usd' => 4,
+                                'vnd' => 120000,
+                                'checked' => true,
+                            ],
+                            [
+                                'label' => $hue['pricing_entrance_label'],
+                                'desc' => $hue['pricing_entrance_desc'],
+                                'scope' => 'hue_core',
+                                'unit' => 'all',
+                                'usd' => 50,
+                                'vnd' => 1000000,
+                                'checked' => true,
+                            ],
+                        ];
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_include_title'] ?>
+                            <?php echo esc_html($hue['itinerary_include_title']); ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_1'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_3'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_4'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_5'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_6'] ?>
-                            </li>
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
+                            <?php foreach ($pricing_items as $item): ?>
+                                <li class="pricing-item-row">
+                                    <label class="flex items-start gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
+                                            style="accent-color:#7B63F7;"
+                                            data-type="<?php echo esc_attr($item['type'] ?? ''); ?>"
+                                            data-plan-scope="<?php echo esc_attr($item['scope']); ?>"
+                                            data-unit="<?php echo esc_attr($item['unit']); ?>"
+                                            data-usd="<?php echo esc_attr($item['usd']); ?>"
+                                            data-vnd="<?php echo esc_attr($item['vnd']); ?>"
+                                            <?php checked($item['checked']); ?>
+                                        />
+                                        <span>
+                                            <span class="block"><?php echo esc_html($item['label']); ?></span>
+                                            <span class="block opacity-70" style="font-size:12px; line-height:18px;"><?php echo esc_html($item['desc']); ?></span>
+                                        </span>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_exclude_title'] ?>
+                            <?php echo esc_html($hue['itinerary_exclude_title']); ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_1'] ?>
+                                <?php echo esc_html($hue['itinerary_exclude_1']); ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_2'] ?>
+                                <?php echo esc_html($hue['itinerary_exclude_2']); ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_3'] ?>
+                                <?php echo esc_html($hue['itinerary_exclude_3']); ?>
                             </li>
                         </ul>
 
@@ -674,10 +875,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['human']); ?>" alt="human" />
                         <div class="flex flex-col">
                             <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_age_title'] ?>
+                                <?php echo esc_html($hue['itinerary_age_title']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_age_desc'] ?>
+                                <?php echo esc_html($hue['itinerary_age_desc']); ?>
                             </span>
                         </div>
                     </div>
@@ -685,10 +886,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['group']); ?>" alt="group" />
                         <div class="flex flex-col">
                             <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_group_title'] ?>
+                                <?php echo esc_html($hue['itinerary_group_info_title']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_group_desc'] ?>
+                                <?php echo esc_html($hue['itinerary_group_info_desc']); ?>
                             </span>
                         </div>
                     </div>
@@ -792,11 +993,11 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Section heading -->
                 <h3 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                    <?php echo $t['ha_giang']['transport_title']; ?>
+                    <?php echo esc_html($hue['transport_title']); ?>
                 </h3>
 
                 <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
-                <div class="flex items-center justify-center gap-12 mb-8">
+                <div class="flex items-center justify-center gap-6 mb-8">
 
                     <!-- Active tab: Sleep bus — purple blob shape -->
                     <button
@@ -810,7 +1011,19 @@ $activeId = $tableOfContents[0]['id'];
                         <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
                             <path fill="#7B63F7" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
                         </svg>
-                        <span class="relative z-10"><?php echo $t['ha_giang']['transport_tab_bus']; ?></span>
+                        <span class="relative z-10"><?php echo esc_html($hue['transport_tab_go']); ?></span>
+                    </button>
+                    <button
+                        id="tab-bike"
+                        onclick="transTab('bike')"
+                        class="trans-tab relative flex items-center justify-center font-bold text-sm"
+                        style="width:160px; height:72px; color:#1D292C;"
+                        aria-pressed="false"
+                    >
+                        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
+                            <path fill="#FFFFFF" stroke="#1D292C" stroke-width="3" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
+                        </svg>
+                        <span class="relative z-10"><?php echo esc_html($hue['transport_tab_within']); ?></span>
                     </button>
 
                     <!-- Inactive tab: Bikes — hidden -->
@@ -822,7 +1035,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <!-- Intro text -->
                     <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
-                        <?php echo $t['ha_giang']['transport_intro']; ?>
+                        <?php echo esc_html($hue['transport_intro_bus']); ?>
                     </p>
 
                     <!-- 3-column bus type cards -->
@@ -835,46 +1048,46 @@ $activeId = $tableOfContents[0]['id'];
 
                         $bus_types = [
                             [
-                                'label_en' => $t['ha_giang']['transport_bus_0_label'],
-'label_vi' => $t['ha_giang']['transport_bus_0_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_0_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_0_badge'],
+                                'label_en' => $hue['transport_bus_label'],
+'label_vi' => $hue['transport_bus_label'],
+                                'badge_en' => $hue['transport_bus_badge'],
+'badge_vi' => $hue['transport_bus_badge'],
                                 'img'       => get_template_directory_uri() . '/assets/images/hue/a_luoi2.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_0_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_0_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_0_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_0_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_0_price'],
-'price_vi' => $t['ha_giang']['transport_bus_0_price'],
+                                'desc_en' => $hue['transport_bus_desc'],
+'desc_vi' => $hue['transport_bus_desc'],
+                                'rows_en' => $hue['transport_bus_meta'],
+'rows_vi' => $hue['transport_bus_meta'],
+                                'price_en' => $hue['transport_bus_price'],
+'price_vi' => $hue['transport_bus_price'],
                                 'seats'     => 2,
                             ],
                             [
-                                'label_en' => $t['ha_giang']['transport_bus_1_label'],
-'label_vi' => $t['ha_giang']['transport_bus_1_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_1_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_1_badge'],
+                                'label_en' => $hue['transport_flight_label'],
+'label_vi' => $hue['transport_flight_label'],
+                                'badge_en' => $hue['transport_flight_badge'],
+'badge_vi' => $hue['transport_flight_badge'],
                                 'img'       => get_template_directory_uri() . '/assets/images/hue/a-luoi-building.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_1_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_1_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_1_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_1_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_1_price'],
-'price_vi' => $t['ha_giang']['transport_bus_1_price'],
-                                'seats'     => 3,
+                                'desc_en' => $hue['transport_flight_desc'],
+'desc_vi' => $hue['transport_flight_desc'],
+                                'rows_en' => $hue['transport_flight_meta'],
+'rows_vi' => $hue['transport_flight_meta'],
+                                'price_en' => $hue['transport_flight_price'],
+'price_vi' => $hue['transport_flight_price'],
+                                'seats'     => 1,
                             ],
                             [
-                                'label_en' => $t['ha_giang']['transport_bus_2_label'],
-'label_vi' => $t['ha_giang']['transport_bus_2_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_2_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_2_badge'],
+                                'label_en' => $hue['transport_self_drive_label'],
+'label_vi' => $hue['transport_self_drive_label'],
+                                'badge_en' => $hue['transport_self_drive_badge'],
+'badge_vi' => $hue['transport_self_drive_badge'],
                                 'img'       => get_template_directory_uri() . '/assets/images/hue/dai_noi_hue.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_2_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_2_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_2_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_2_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_2_price'],
-'price_vi' => $t['ha_giang']['transport_bus_2_price'],
-                                'seats'     => 3,
+                                'desc_en' => $hue['transport_self_drive_desc'],
+'desc_vi' => $hue['transport_self_drive_desc'],
+                                'rows_en' => $hue['transport_self_drive_meta'],
+'rows_vi' => $hue['transport_self_drive_meta'],
+                                'price_en' => $hue['transport_self_drive_price'],
+'price_vi' => $hue['transport_self_drive_price'],
+                                'seats'     => 1,
                             ],
                         ];
 
@@ -900,7 +1113,7 @@ $activeId = $tableOfContents[0]['id'];
                                     </span>
                                 </div>
                                 <p class="text-center text-xs mt-1" style="color:#74797A;">
-                                    <?php echo $t['ha_giang']['transport_image_note']; ?>
+                                    <?php echo esc_html($hue['transport_image_note']); ?>
                                 </p>
                             </div>
 
@@ -993,27 +1206,80 @@ $activeId = $tableOfContents[0]['id'];
 
                 </div><!-- /trans-content-bus -->
 
-                <!-- Bike & Bicycle tabs hidden (no content yet) -->
-                <div id="trans-content-bike" style="display:none;"></div>
-                <div id="trans-content-bicycle" style="display:none;"></div>
+                <div id="trans-content-bike" style="display:none;">
+                    <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
+                        <?php echo esc_html($hue['transport_intro_within']); ?>
+                    </p>
+
+                    <?php
+                    $bike_type = [
+                        'label' => $hue['transport_rent_bike_label'],
+                        'badge' => $hue['transport_rent_bike_badge'],
+                        'img' => get_template_directory_uri() . '/assets/images/hue/song_huong.webp',
+                        'desc' => $hue['transport_rent_bike_desc'],
+                        'meta' => $hue['transport_rent_bike_meta'],
+                        'price' => $hue['transport_rent_bike_price'],
+                    ];
+                    ?>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <div>
+                            <div style="position:relative; margin-bottom:8px;">
+                                <img
+                                    src="<?php echo esc_url($bike_type['img']); ?>"
+                                    alt="<?php echo esc_attr($bike_type['badge']); ?>"
+                                    class="w-full object-cover rounded-lg"
+                                    style="height:220px; object-fit:cover;"
+                                />
+                                <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
+                                    <?php echo $blob_yellow; ?>
+                                    <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
+                                        <?php echo esc_html($bike_type['badge']); ?>
+                                    </span>
+                                </div>
+                                <p class="text-center text-xs mt-1" style="color:#74797A;">
+                                    <?php echo esc_html($hue['transport_image_note']); ?>
+                                </p>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
+                                <?php echo esc_html($bike_type['label']); ?>
+                            </h3>
+                            <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
+                                <?php echo esc_html($bike_type['desc']); ?>
+                            </p>
+                            <p class="text-xs mb-2" style="color:#1D292C;">
+                                <?php echo esc_html($bike_type['meta']); ?>
+                            </p>
+                            <div class="flex items-center gap-2">
+                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
+                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
+                                </svg>
+                                <span class="text-xs" style="color:#1D292C;">
+                                    <?php echo esc_html($bike_type['price']); ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
     </div>
+
 
     <!-- Weather -->
     <section class="py-16" style="background:#F9FBDF;" id="weather">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <h3 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                <?php echo $t['ha_giang']['weather_title']; ?>
+                <?php echo esc_html($hue['weather_title']); ?>
             </h3>
 
             <!-- Live weather strip -->
             <div
                 id="weather-data-root"
                 data-icon-root="<?php echo esc_url($icon_root_path); ?>"
-                class="flex flex-wrap justify-center gap-8 py-6 mb-6 border-b border-[#8A8E8F]">
+                class="flex flex-wrap justify-center gap-8 py-6 mb-6">
                 <?php foreach ($locations as $id => $location): ?>
                 <div class="text-center" data-city="<?php echo esc_attr($location['api_query']); ?>" id="weather-card-<?php echo esc_attr($id); ?>">
                     <p style="font-size:15px; font-weight:600;" class="mb-2"><?php echo esc_html($location['display']); ?></p>
@@ -1031,38 +1297,31 @@ $activeId = $tableOfContents[0]['id'];
             $seasons = [
                 [
                     'img'     => $theme_uri . '/assets/images/hue/imperial-palace.webp',
-                    'title_en' => $t['ha_giang']['weather_season_0_title'],
-'title_vi' => $t['ha_giang']['weather_season_0_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_0_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
+                    'title_en' => $hue['weather_season_0_title'],
+'title_vi' => $hue['weather_season_0_title'],
+                    'desc_en' => $hue['weather_season_0_desc'],
+'desc_vi' => $hue['weather_season_0_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/hue/song_huong.webp',
-                    'title_en' => $t['ha_giang']['weather_season_1_title'],
-'title_vi' => $t['ha_giang']['weather_season_1_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_1_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
+                    'title_en' => $hue['weather_season_1_title'],
+'title_vi' => $hue['weather_season_1_title'],
+                    'desc_en' => $hue['weather_season_1_desc'],
+'desc_vi' => $hue['weather_season_1_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/hue/cau_truong_tien_hue.webp',
-                    'title_en' => $t['ha_giang']['weather_season_2_title'],
-'title_vi' => $t['ha_giang']['weather_season_2_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_2_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
+                    'title_en' => $hue['weather_season_2_title'],
+'title_vi' => $hue['weather_season_2_title'],
+                    'desc_en' => $hue['weather_season_2_desc'],
+'desc_vi' => $hue['weather_season_2_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/hue/hue_house.webp',
-                    'title_en' => $t['ha_giang']['weather_season_3_title'],
-'title_vi' => $t['ha_giang']['weather_season_3_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_3_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/hue/a_luoi.webp',
-                    'title_en' => $t['ha_giang']['weather_season_4_title'],
-'title_vi' => $t['ha_giang']['weather_season_4_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_4_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_4_desc'],
+                    'title_en' => $hue['weather_season_3_title'],
+'title_vi' => $hue['weather_season_3_title'],
+                    'desc_en' => $hue['weather_season_3_desc'],
+'desc_vi' => $hue['weather_season_3_desc'],
                 ],
             ];
             ?>
@@ -1071,7 +1330,7 @@ $activeId = $tableOfContents[0]['id'];
                 <!-- Left scroll button -->
                 <button
                     onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
-                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    style="display:none;"
                     aria-label="Scroll left"
                 >
                     <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
@@ -1082,7 +1341,7 @@ $activeId = $tableOfContents[0]['id'];
                 <!-- Right scroll button -->
                 <button
                     onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
-                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    style="display:none;"
                     aria-label="Scroll right"
                 >
                     <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
@@ -1091,10 +1350,10 @@ $activeId = $tableOfContents[0]['id'];
                 </button>
 
                 <!-- Scrollable row -->
-                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
+                <div id="season-scroll" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; padding-bottom:8px;">
                     <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
                     <?php foreach ($seasons as $s): ?>
-                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="border-radius:8px; overflow:hidden; display:flex; flex-direction:column; min-width:0;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -1125,23 +1384,24 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px;" class="mb-2">
-                <?php echo $t['ha_giang']['highlight_title']; ?>
+                <?php echo esc_html($hue['highlight_title']); ?>
             </p>
             <h3 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['highlight_subtitle']; ?>
+                <?php echo esc_html($hue['highlight_subtitle']); ?>
             </h3>
             <p style="font-size:15px; color:#474E50;" class="mb-8 max-w-xl">
-                <?php echo $t['ha_giang']['highlight_desc']; ?>
+                <?php echo esc_html($hue['highlight_desc']); ?>
             </p>
 
             <!-- Category filter tabs -->
             <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
-                    'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',
-                    'viewpoints' => $current_lang === 'en' ? 'View points'   : 'Điểm quan sát',
-                    'food'       => $current_lang === 'en' ? 'Food'           : 'Ẩm thực',
-                    'nature'     => $current_lang === 'en' ? 'Nature to go'  : 'Thiên nhiên',
+                    'all'      => $hue['highlight_tab_all'],
+                    'heritage' => $hue['highlight_tab_heritage'],
+                    'nature'   => $hue['highlight_tab_nature'],
+                    'food'     => $hue['highlight_tab_food'],
+                    'river'    => $hue['highlight_tab_river'],
                 ];
                 foreach ($hl_tabs as $key => $label):
                     $is_active = ($key === 'all');
@@ -1199,7 +1459,7 @@ $activeId = $tableOfContents[0]['id'];
     $highlight_modal_highlights = $highlights;
     $highlight_modal_prev_label = $t["ha_giang"]["carousel_prev"];
     $highlight_modal_next_label = $t["ha_giang"]["carousel_next"];
-    $highlight_modal_preview_label = $current_lang === "en" ? "Preview image" : "Xem ảnh";
+    $highlight_modal_preview_label = $hue["highlight_preview_image_label"];
     include get_template_directory() . "/components/highlight-modal.php";
     ?>
 
@@ -1357,9 +1617,21 @@ $activeId = $tableOfContents[0]['id'];
 
 <script>
 function transTab(tab) {
-    ['bus','bike','bicycle'].forEach(function(t) {
+    ['bus','bike'].forEach(function(t) {
         var content = document.getElementById('trans-content-' + t);
         if (content) content.style.display = (t === tab) ? '' : 'none';
+        var button = document.getElementById('tab-' + t);
+        if (button) {
+            var active = t === tab;
+            button.setAttribute('aria-pressed', active ? 'true' : 'false');
+            button.classList.toggle('text-white', active);
+            button.style.color = active ? '#fff' : '#1D292C';
+            var path = button.querySelector('path');
+            if (path) {
+                path.setAttribute('fill', active ? '#7B63F7' : '#FFFFFF');
+                path.setAttribute('stroke', active ? 'none' : '#1D292C');
+            }
+        }
     });
 }
 
@@ -1405,6 +1677,24 @@ function transTab(tab) {
 })();
 
 // ── Highlight category filter ──
+(function() {
+    var select = document.getElementById('hue-plan-group');
+    if (!select) return;
+
+    select.addEventListener('change', function() {
+        var group = select.value;
+        var firstVisible = null;
+
+        document.querySelectorAll('#itinerary-plans .plan-pill').forEach(function(pill) {
+            var match = pill.getAttribute('data-plan-group') === group;
+            pill.style.display = match ? '' : 'none';
+            if (match && !firstVisible) firstVisible = pill;
+        });
+
+        if (firstVisible) firstVisible.click();
+    });
+})();
+
 (function() {
     var tabs  = document.querySelectorAll('.hl-tab');
     var cards = document.querySelectorAll('#highlight-grid .highlight-card');

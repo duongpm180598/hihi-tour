@@ -46,9 +46,9 @@ $all_gallery_images = array_map(function($file) use ($theme_uri) {
 
 // itinerary
 $plan_options = [
-    '4' => $mcc['itinerary_plan_0'],
+    '3' => $mcc['itinerary_plan_0'],
 ];
-$default_plan = '4';
+$default_plan = '3';
 $default_days_count = intval($default_plan);
 $default_days = range(0, $default_days_count - 1);
 
@@ -104,7 +104,9 @@ $highlights = [
         'img'      => '/assets/images/mu-cang-chai/tu_le.webp',
         'imgs'     => [
             '/assets/images/mu-cang-chai/tu_le.webp',
-            '/assets/images/mu-cang-chai/mu_cang_chai_tu_le.webp',
+            '/assets/images/mu-cang-chai/tu-le-mua-dong.webp',
+            '/assets/images/mu-cang-chai/tu-le-ben-duong.webp',
+            '/assets/images/mu-cang-chai/mu_cang_chai.webp',
             '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
         ],
         'category' => 'nature',
@@ -132,10 +134,11 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai.webp',
+        'img'      => '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
         'imgs'     => [
-            '/assets/images/mu-cang-chai/mu_cang_chai.webp',
-            '/assets/images/mu-cang-chai/mu_cang_chai_ngoi_nha_nho.webp',
+            '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
+            '/assets/images/mu-cang-chai/khau-mang-thuong (2).webp',
+            '/assets/images/mu-cang-chai/khau-mang-thuong (3).webp',
         ],
         'category' => 'viewpoints',
         'tag_en' => $mcc['highlight_item_2_tag'],
@@ -262,7 +265,7 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp'); ?>"
+                src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai.webp'); ?>"
                 alt="<?php echo esc_attr($mcc['hero_image_alt']); ?>"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -352,15 +355,16 @@ $activeId = $tableOfContents[0]['id'];
                 <?php echo esc_html($mcc['itinerary_desc_book']); ?>
             </p>
 
-            <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo esc_html($mcc['itinerary_prompt']); ?>
-            </p>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="md:col-span-2 mb-8">
                     <!-- Download dropdown on the right -->
-                    <div class="flex items-center justify-between gap-2 mb-6">
-                        <div id="itinerary-plans" class="hidden"></div>
+                    <div class="flex items-center justify-between gap-4 mb-6">
+                        <div class="min-w-0">
+                            <p class="text-sm font-semibold text-[#1D292C]">
+                                <?php echo esc_html($mcc['itinerary_prompt']); ?>
+                            </p>
+                            <div id="itinerary-plans" class="hidden"></div>
+                        </div>
 
                         <!-- Download dropdown — Filled button per COMPONENTS.md §3.1 -->
                         <div class="relative flex-shrink-0" id="itinerary-download-wrap">
@@ -454,59 +458,46 @@ $activeId = $tableOfContents[0]['id'];
 
                 <div class="md:col-span-1">
                     <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
-                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $t['ha_giang']['itinerary_price_note'] ?></p>
+                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan" data-fixed-price="<?php echo esc_attr($mcc['itinerary_price']); ?>"></span></h2>
+                        <p class="mb-4 opacity-80"><?php echo esc_html($mcc['itinerary_price_note']); ?></p>
                         <?php
                         $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                        $included_items = [
+                            $mcc['itinerary_include_1'],
+                            $mcc['itinerary_include_2'],
+                            $mcc['itinerary_include_3'],
+                            $mcc['itinerary_include_4'],
+                            $mcc['itinerary_include_5'],
+                        ];
+                        $excluded_items = [
+                            $mcc['itinerary_exclude_1'],
+                            $mcc['itinerary_exclude_2'],
+                        ];
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_include_title'] ?>
+                            <?php echo esc_html($mcc['itinerary_include_title']); ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
+                            <?php foreach ($included_items as $item): ?>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_1'] ?>
+                                <?php echo esc_html($item); ?>
                             </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_3'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_4'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_5'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_6'] ?>
-                            </li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_exclude_title'] ?>
+                            <?php echo esc_html($mcc['itinerary_exclude_title']); ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
+                            <?php foreach ($excluded_items as $item): ?>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_1'] ?>
+                                <?php echo esc_html($item); ?>
                             </li>
-                            <li class="flex items-start">
-                                <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_3'] ?>
-                            </li>
+                            <?php endforeach; ?>
                         </ul>
 
                     </div>
@@ -515,21 +506,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['human']); ?>" alt="human" />
                         <div class="flex flex-col">
                             <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_age_title'] ?>
+                                <?php echo esc_html($mcc['itinerary_age_title']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_age_desc'] ?>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex gap-3 mb-3">
-                        <img src="<?php echo esc_url($icons['group']); ?>" alt="group" />
-                        <div class="flex flex-col">
-                            <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_group_title'] ?>
-                            </span>
-                            <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_group_desc'] ?>
+                                <?php echo esc_html($mcc['itinerary_age_desc']); ?>
                             </span>
                         </div>
                     </div>
@@ -906,13 +886,13 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px;" class="mb-2">
-                <?php echo $t['ha_giang']['highlight_title']; ?>
+                <?php echo esc_html($mcc['highlight_title']); ?>
             </p>
             <h3 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['highlight_subtitle']; ?>
+                <?php echo esc_html($mcc['highlight_subtitle']); ?>
             </h3>
             <p style="font-size:15px; color:#474E50;" class="mb-8 max-w-xl">
-                <?php echo $t['ha_giang']['highlight_desc']; ?>
+                <?php echo esc_html($mcc['highlight_desc']); ?>
             </p>
 
             <!-- Category filter tabs -->
@@ -976,131 +956,55 @@ $activeId = $tableOfContents[0]['id'];
 
         </div>
     </section>
-
-    <!-- ── Highlights Modal ── -->
-    <div
-        id="highlights-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(29,41,44,.7); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px;"
-        onclick="if(event.target===this) closeHighlight()"
-    >
-        <div style="background:#F2F2F0; border-radius:16px; max-width:860px; width:100%; height:480px; max-height:90vh; overflow:hidden; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3); display:flex; flex-direction:row;">
-            <!-- Close -->
-            <button
-                onclick="closeHighlight()"
-                aria-label="Close"
-                style="position:absolute; top:12px; right:12px; z-index:10; width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.6); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;"
-            >
-                <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-            <!-- Image — left column (per-card slideshow) -->
-            <div style="flex:0 0 45%; height:100%; overflow:hidden; border-radius:16px 0 0 16px; position:relative;">
-                <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity .2s;" />
-                <!-- Prev image arrow -->
-                <button
-                    id="img-prev-btn"
-                    onclick="navHighlightImg(-1)"
-                    aria-label="Previous image"
-                    style="display:none; position:absolute; left:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
-                >
-                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <!-- Next image arrow -->
-                <button
-                    id="img-next-btn"
-                    onclick="navHighlightImg(1)"
-                    aria-label="Next image"
-                    style="display:none; position:absolute; right:10px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.55); border:none; cursor:pointer; align-items:center; justify-content:center; z-index:5;"
-                >
-                    <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
-                </button>
-                <!-- Dot indicators -->
-                <div id="img-dots" style="position:absolute; bottom:12px; left:0; right:0; display:none; justify-content:center; gap:6px; z-index:5;"></div>
-            </div>
-            <!-- Text — right column -->
-            <div style="flex:1; overflow-y:auto; padding:32px 28px 28px; display:flex; flex-direction:column; justify-content:space-between;">
-                <div>
-                    <div style="display:inline-block; background:#E7F15A; border-radius:999px; padding:3px 12px; margin-bottom:12px;">
-                        <span id="modal-tag" style="font-size:11px; font-weight:700; color:#1D292C;"></span>
-                    </div>
-                    <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0 0 12px; line-height:1.3;"></h3>
-                    <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
-                </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px;">
-                    <button onclick="navHighlight(-1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
-                        <?php echo $t['ha_giang']['carousel_prev']; ?>
-                    </button>
-                    <span id="modal-counter" style="font-size:12px; color:#74797A;"></span>
-                    <button onclick="navHighlight(1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
-                        <?php echo $t['ha_giang']['carousel_next']; ?>
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    $highlight_modal_highlights = $highlights;
+    $highlight_modal_prev_label = $t['ha_giang']['carousel_prev'];
+    $highlight_modal_next_label = $t['ha_giang']['carousel_next'];
+    $highlight_modal_preview_label = $mcc['highlight_preview_image_label'] ?? ($current_lang === 'en' ? 'Preview image' : 'Xem ảnh');
+    include get_template_directory() . '/components/highlight-modal.php';
+    ?>
 
     <!-- Culture -->
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['culture_title'] ?>
+                <?php echo esc_html($mcc['culture_title']); ?>
             </h3>
 
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_desc'] ?>
-            </p>
-
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_happywater_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_happywater_desc'] ?>
-            </p>
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_market_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_market_desc'] ?>
+                <?php echo esc_html($mcc['culture_desc']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
-                    alt="Cultural Aspect 1"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/gat-lua-mcc.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/gat-lua-mcc.webp'); ?>"
+                    alt="<?php echo esc_attr($mcc['culture_title'] . ' 1'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
-                    alt="Cultural Aspect 2"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp'); ?>"
+                    alt="<?php echo esc_attr($mcc['culture_title'] . ' 2'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
-                    alt="Cultural Aspect 3"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/tu-le-ben-duong.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/tu-le-ben-duong.webp'); ?>"
+                    alt="<?php echo esc_attr($mcc['culture_title'] . ' 3'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
-                    alt="Cultural Aspect 3"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp'); ?>"
+                    alt="<?php echo esc_attr($mcc['culture_title'] . ' 4'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
-                    alt="Cultural Aspect 3"
+                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/co-be-vung-cao.webp'); ?>"
+                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/co-be-vung-cao.webp'); ?>"
+                    alt="<?php echo esc_attr($mcc['culture_title'] . ' 5'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
@@ -1283,119 +1187,6 @@ document.addEventListener('click', function(e) {
         menu.classList.add('hidden');
     }
 });
-
-// ── Highlights modal ──
-(function() {
-    var lang = document.documentElement.lang || (window.location.pathname.includes('/vi') ? 'vi' : 'en');
-
-    var data = <?php
-        $js_highlights = array_map(function($h) use ($theme_uri) {
-            $base_uri = get_template_directory_uri();
-            $imgs = isset($h['imgs'])
-                ? array_map(function($p) use ($base_uri) { return $base_uri . $p; }, $h['imgs'])
-                : [$base_uri . $h['img']];
-            return [
-                'imgs'     => $imgs,
-                'tag_en'   => $h['tag_en'],
-                'tag_vi'   => $h['tag_vi'],
-                'title_en' => $h['title_en'],
-                'title_vi' => $h['title_vi'],
-                'desc_en'  => $h['desc_en'],
-                'desc_vi'  => $h['desc_vi'],
-            ];
-        }, $highlights);
-        echo json_encode($js_highlights, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
-    ?>;
-
-    var current    = 0;  // card index
-    var imgCurrent = 0;  // image index within current card
-    var modal      = document.getElementById('highlights-modal');
-    var modalImg   = document.getElementById('modal-img');
-    var imgPrevBtn = document.getElementById('img-prev-btn');
-    var imgNextBtn = document.getElementById('img-next-btn');
-    var dotsEl     = document.getElementById('img-dots');
-
-    function renderDots(imgs, active) {
-        dotsEl.innerHTML = '';
-        if (imgs.length <= 1) { dotsEl.style.display = 'none'; imgPrevBtn.style.display = 'none'; imgNextBtn.style.display = 'none'; return; }
-        dotsEl.style.display = 'flex';
-        imgPrevBtn.style.display = 'flex';
-        imgNextBtn.style.display = 'flex';
-        imgs.forEach(function(_, idx) {
-            var dot = document.createElement('span');
-            dot.style.cssText = 'width:7px; height:7px; border-radius:50%; background:' + (idx === active ? '#fff' : 'rgba(255,255,255,.45)') + '; cursor:pointer; transition:background .15s; display:inline-block;';
-            dot.addEventListener('click', function() { setImg(idx); });
-            dotsEl.appendChild(dot);
-        });
-    }
-
-    function setImg(imgIdx) {
-        var imgs = data[current].imgs;
-        imgCurrent = (imgIdx + imgs.length) % imgs.length;
-        modalImg.style.opacity = '0';
-        setTimeout(function() {
-            modalImg.src = imgs[imgCurrent];
-            modalImg.style.opacity = '1';
-        }, 100);
-        renderDots(imgs, imgCurrent);
-    }
-
-    function renderCard(i) {
-        var h = data[i];
-        var isEn = lang !== 'vi';
-        imgCurrent = 0;
-        modalImg.src = h.imgs[0];
-        modalImg.style.opacity = '1';
-        document.getElementById('modal-img').alt         = isEn ? h.title_en : h.title_vi;
-        document.getElementById('modal-tag').textContent  = isEn ? h.tag_en   : h.tag_vi;
-        document.getElementById('modal-title').textContent = isEn ? h.title_en : h.title_vi;
-        document.getElementById('modal-desc').textContent  = isEn ? h.desc_en  : h.desc_vi;
-        document.getElementById('modal-counter').textContent = (i + 1) + ' / ' + data.length;
-        renderDots(h.imgs, 0);
-    }
-
-    window.openHighlight = function(i) {
-        current = i;
-        renderCard(current);
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        setTimeout(function() { modal.querySelector('button').focus(); }, 50);
-    };
-
-    window.closeHighlight = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    };
-
-    // Card navigation (text panel buttons)
-    window.navHighlight = function(dir) {
-        current = (current + dir + data.length) % data.length;
-        renderCard(current);
-    };
-
-    // Image navigation within current card (image panel arrows)
-    window.navHighlightImg = function(dir) {
-        setImg(imgCurrent + dir);
-    };
-
-    // Keyboard: ←/→ = image nav; Shift+←/→ = card nav; Esc = close
-    document.addEventListener('keydown', function(e) {
-        if (modal.style.display !== 'flex') return;
-        if (e.key === 'Escape') { closeHighlight(); return; }
-        if (e.key === 'ArrowRight') { e.shiftKey ? navHighlight(1)  : navHighlightImg(1);  }
-        if (e.key === 'ArrowLeft')  { e.shiftKey ? navHighlight(-1) : navHighlightImg(-1); }
-    });
-
-    // keyboard activation for cards
-    document.querySelectorAll('.highlight-card').forEach(function(card) {
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openHighlight(parseInt(card.getAttribute('data-index')));
-            }
-        });
-    });
-})();
 
 // ── Gallery modal ──
 (function() {

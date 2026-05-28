@@ -285,12 +285,10 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
+        'img'      => '/assets/images/ha-giang/gallery/meo-vac-market.webp',
         'imgs'     => [
-            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
+            '/assets/images/ha-giang/gallery/meo-vac-market.webp',
+            '/assets/images/ha-giang/gallery/ha-giang-food.webp',
         ],
         'category' => 'food',
         'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
@@ -404,7 +402,7 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
+                src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/gallery/mountain-du-gia.webp'); ?>"
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -610,49 +608,92 @@ $activeId = $tableOfContents[0]['id'];
                     </div>
                 </div>
 
-                <div class="md:col-span-1">
-                    <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
-                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $t['ha_giang']['itinerary_price_note'] ?></p>
+                <div class="md:col-span-1" style="align-self:start;">
+                    <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
+                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                            <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
+                            <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($t['ha_giang']['itinerary_price_note']); ?></p>
+                        </div>
                         <?php
-                        $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                        $pricing_items = [
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_1'],
+                                'desc' => $t['ha_giang']['itinerary_include_1_desc'],
+                                'unit' => 'all',
+                                'usd' => 30,
+                                'vnd' => 700000,
+                            ],
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_2'],
+                                'desc' => $t['ha_giang']['itinerary_include_2_desc'],
+                                'unit' => 'day',
+                                'usd' => 15,
+                                'vnd' => 300000,
+                            ],
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_3'],
+                                'desc' => $t['ha_giang']['itinerary_include_3_desc'],
+                                'unit' => 'meal',
+                                'usd' => 10,
+                                'vnd' => 150000,
+                            ],
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_4'],
+                                'desc' => $t['ha_giang']['itinerary_include_4_desc'],
+                                'type' => 'motorbike',
+                                'unit' => 'day',
+                                'usd' => 7,
+                                'vnd' => 180000,
+                            ],
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_5'],
+                                'desc' => $t['ha_giang']['itinerary_include_5_desc'],
+                                'type' => 'easy-driver',
+                                'unit' => 'day',
+                                'usd' => 60,
+                                'vnd' => 1000000,
+                            ],
+                            [
+                                'label' => $t['ha_giang']['itinerary_include_6'],
+                                'desc' => $t['ha_giang']['itinerary_include_6_desc'],
+                                'unit' => 'all',
+                                'usd' => 10,
+                                'vnd' => 200000,
+                            ],
+                        ];
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
                             <?php echo $t['ha_giang']['itinerary_include_title'] ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_1'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_3'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_4'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_5'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_6'] ?>
-                            </li>
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
+                            <?php foreach ($pricing_items as $item): ?>
+                                <li>
+                                    <label class="flex items-start gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
+                                            style="accent-color:#7B63F7;"
+                                            data-type="<?php echo esc_attr($item['type'] ?? ''); ?>"
+                                            data-unit="<?php echo esc_attr($item['unit']); ?>"
+                                            data-usd="<?php echo esc_attr($item['usd']); ?>"
+                                            data-vnd="<?php echo esc_attr($item['vnd']); ?>"
+                                            <?php checked(($item['type'] ?? '') !== 'motorbike'); ?>
+                                        />
+                                        <span>
+                                            <span class="block"><?php echo esc_html($item['label']); ?></span>
+                                            <span class="block opacity-70" style="font-size:12px; line-height:18px;"><?php echo esc_html($item['desc']); ?></span>
+                                        </span>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
                             <?php echo $t['ha_giang']['itinerary_exclude_title'] ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
                                 <?php echo $t['ha_giang']['itinerary_exclude_1'] ?>
@@ -1194,57 +1235,13 @@ $activeId = $tableOfContents[0]['id'];
 
         </div>
     </section>
-
-    <!-- ── Highlights Modal ── -->
-    <div
-        id="highlights-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(29,41,44,.7); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px;"
-        onclick="if(event.target===this) closeHighlight()"
-    >
-        <div style="background:#F2F2F0; border-radius:16px; max-width:860px; width:100%; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 24px 48px rgba(0,0,0,.3); display:flex; flex-direction:column;">
-            <!-- Close -->
-            <button
-                onclick="closeHighlight()"
-                aria-label="Close"
-                style="position:absolute; top:12px; right:12px; z-index:10; width:36px; height:36px; border-radius:50%; background:rgba(29,41,44,.6); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;"
-            >
-                <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-            <!-- Image preview -->
-            <div style="width:100%; padding:18px 18px 0;">
-                <div style="height:min(46vh, 380px); min-height:240px; overflow:hidden; border-radius:14px; position:relative; background:#1D292C;">
-                    <img id="modal-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity .2s;" />
-                </div>
-                <div id="img-thumbs" style="display:none; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px;"></div>
-            </div>
-            <!-- Text -->
-            <div style="overflow-y:auto; padding:18px 28px 24px; display:flex; flex-direction:column;">
-                <div>
-                    <div style="display:inline-block; background:#E7F15A; border-radius:999px; padding:3px 12px; margin-bottom:12px;">
-                        <span id="modal-tag" style="font-size:11px; font-weight:700; color:#1D292C;"></span>
-                    </div>
-                    <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0 0 12px; line-height:1.3;"></h3>
-                    <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
-                </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:12px;">
-                    <button onclick="navHighlight(-1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
-                        <?php echo $t['ha_giang']['carousel_prev']; ?>
-                    </button>
-                    <span id="modal-counter" style="font-size:12px; color:#74797A;"></span>
-                    <button onclick="navHighlight(1)" style="display:flex; align-items:center; gap:6px; background:none; border:1.5px solid #1D292C; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:13px; font-weight:600; color:#1D292C;">
-                        <?php echo $t['ha_giang']['carousel_next']; ?>
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    $highlight_modal_highlights = $highlights;
+    $highlight_modal_prev_label = $t['ha_giang']['carousel_prev'];
+    $highlight_modal_next_label = $t['ha_giang']['carousel_next'];
+    $highlight_modal_preview_label = $current_lang === 'en' ? 'Preview image' : 'Xem ảnh';
+    include get_template_directory() . '/components/highlight-modal.php';
+    ?>
 
     <!-- Culture -->
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
@@ -1484,112 +1481,6 @@ document.addEventListener('click', function(e) {
         menu.classList.add('hidden');
     }
 });
-
-// ── Highlights modal ──
-(function() {
-    var lang = document.documentElement.lang || (window.location.pathname.includes('/vi') ? 'vi' : 'en');
-
-    var data = <?php
-        $js_highlights = array_map(function($h) use ($theme_uri) {
-            $base_uri = get_template_directory_uri();
-            $imgs = isset($h['imgs'])
-                ? array_map(function($p) use ($base_uri) { return $base_uri . $p; }, $h['imgs'])
-                : [$base_uri . $h['img']];
-            return [
-                'imgs'     => $imgs,
-                'tag_en'   => $h['tag_en'],
-                'tag_vi'   => $h['tag_vi'],
-                'title_en' => $h['title_en'],
-                'title_vi' => $h['title_vi'],
-                'desc_en'  => $h['desc_en'],
-                'desc_vi'  => $h['desc_vi'],
-            ];
-        }, $highlights);
-        echo json_encode($js_highlights, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
-    ?>;
-
-    var current    = 0;  // card index
-    var imgCurrent = 0;  // image index within current card
-    var modal      = document.getElementById('highlights-modal');
-    var modalImg   = document.getElementById('modal-img');
-    var thumbsEl   = document.getElementById('img-thumbs');
-
-    function renderThumbs(imgs, active) {
-        thumbsEl.innerHTML = '';
-        thumbsEl.style.display = 'flex';
-        imgs.forEach(function(src, idx) {
-            var thumb = document.createElement('button');
-            thumb.type = 'button';
-            thumb.setAttribute('aria-label', 'Preview image ' + (idx + 1));
-            thumb.style.cssText = 'flex:0 0 74px; width:74px; height:54px; border-radius:8px; overflow:hidden; padding:0; border:' + (idx === active ? '2px solid #1D292C' : '2px solid transparent') + '; background:none; cursor:pointer;';
-            thumb.innerHTML = '<img src="' + src + '" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">';
-            thumb.addEventListener('click', function() { setImg(idx); });
-            thumbsEl.appendChild(thumb);
-        });
-    }
-
-    function setImg(imgIdx) {
-        var imgs = data[current].imgs;
-        imgCurrent = (imgIdx + imgs.length) % imgs.length;
-        modalImg.style.opacity = '0';
-        setTimeout(function() {
-            modalImg.src = imgs[imgCurrent];
-            modalImg.style.opacity = '1';
-        }, 100);
-        renderThumbs(imgs, imgCurrent);
-    }
-
-    function renderCard(i) {
-        var h = data[i];
-        var isEn = lang !== 'vi';
-        imgCurrent = 0;
-        modalImg.src = h.imgs[0];
-        modalImg.style.opacity = '1';
-        document.getElementById('modal-img').alt         = isEn ? h.title_en : h.title_vi;
-        document.getElementById('modal-tag').textContent  = isEn ? h.tag_en   : h.tag_vi;
-        document.getElementById('modal-title').textContent = isEn ? h.title_en : h.title_vi;
-        document.getElementById('modal-desc').textContent  = isEn ? h.desc_en  : h.desc_vi;
-        document.getElementById('modal-counter').textContent = (i + 1) + ' / ' + data.length;
-        renderThumbs(h.imgs, 0);
-    }
-
-    window.openHighlight = function(i) {
-        current = i;
-        renderCard(current);
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        setTimeout(function() { modal.querySelector('button').focus(); }, 50);
-    };
-
-    window.closeHighlight = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    };
-
-    // Card navigation (text panel buttons)
-    window.navHighlight = function(dir) {
-        current = (current + dir + data.length) % data.length;
-        renderCard(current);
-    };
-
-    // Keyboard: ←/→ = card nav; Esc = close
-    document.addEventListener('keydown', function(e) {
-        if (modal.style.display !== 'flex') return;
-        if (e.key === 'Escape') { closeHighlight(); return; }
-        if (e.key === 'ArrowRight') { navHighlight(1); }
-        if (e.key === 'ArrowLeft')  { navHighlight(-1); }
-    });
-
-    // keyboard activation for cards
-    document.querySelectorAll('.highlight-card').forEach(function(card) {
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openHighlight(parseInt(card.getAttribute('data-index')));
-            }
-        });
-    });
-})();
 
 // ── Gallery modal ──
 (function() {

@@ -17,7 +17,7 @@ if (vi) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
-            4: {
+            3: {
                 // Ngày 0: Hà Nội -> Tú Lệ
                 0: [
                     {
@@ -674,7 +674,7 @@ if (vi) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
-            4: {
+            3: {
                 // Day 0: Hanoi -> Tu Le
                 0: [
                     {
@@ -1329,13 +1329,15 @@ if (vi) {
         const $tabsContainer = $('#itinerary-tabs')
         const $timelineList = $('#timeline-list')
         const $priceByPlan = $('#price-per-plan')
+        const $pricingIncludes = $('.pricing-include')
+        let currentPlan = null
 
         // --- MỚI: Lấy plan từ URL ---
         const urlParams = new URLSearchParams(window.location.search)
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : (isHaGiang || isMuCangChai) ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
@@ -1421,16 +1423,55 @@ if (vi) {
 
                 if (ALL_ITINERARY_PLANS_DATA[planValue]) {
                     ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[planValue]
+                    currentPlan = planValue
                     renderPrice(planValue)
                     renderTabs(Object.keys(ITINERARY_DATA).length - 1)
                 }
             })
         }
 
+        function getPricingItemTotal($item, plan) {
+            const unit = $item.data('unit')
+            const price = Number($item.data(vi ? 'vnd' : 'usd')) || 0
+            const travelDays = Math.max((Number(plan) || 0) - 1, 0)
+
+            if (unit === 'all') return price
+            if (unit === 'meal') return price * travelDays * 3
+            if (unit === 'day') return price * travelDays
+            return price
+        }
+
         function renderPrice(plan) {
+            const fixedPrice = $priceByPlan.data('fixed-price')
+            if (fixedPrice) {
+                $priceByPlan.text(fixedPrice)
+                return
+            }
+            if ($pricingIncludes.length) {
+                let total = 0
+                $pricingIncludes.each(function () {
+                    const $item = $(this)
+                    if ($item.is(':checked')) {
+                        total += getPricingItemTotal($item, plan)
+                    }
+                })
+                $priceByPlan.text(vi ? `${total.toLocaleString('vi-VN')} VNĐ` : `${total.toLocaleString('en-US')} USD`)
+                return
+            }
             let html = vi ? `${(Number(plan) * 1500000).toLocaleString('vi-VN')} VNĐ` : `${(Number(plan) * 65).toLocaleString('en-US')} USD`
             $priceByPlan.text(html)
         }
+
+        $pricingIncludes.on('change', function () {
+            const $item = $(this)
+            if ($item.is(':checked') && $item.data('type') === 'easy-driver') {
+                $pricingIncludes.filter('[data-type="motorbike"]').prop('checked', false)
+            }
+            if ($item.is(':checked') && $item.data('type') === 'motorbike') {
+                $pricingIncludes.filter('[data-type="easy-driver"]').prop('checked', false)
+            }
+            renderPrice(currentPlan || initialPlan)
+        })
 
         // --- KHỞI CHẠY LẦN ĐẦU ---
         bindPillClickEvent()
@@ -1439,6 +1480,7 @@ if (vi) {
         $(`.plan-pill[data-plan-value="${initialPlan}"]`).trigger('click')
 
         // Nếu trigger click không hoạt động do cấu trúc HTML, dùng trực tiếp:
+        currentPlan = initialPlan
         renderPrice(initialPlan)
         renderTabs(Object.keys(ITINERARY_DATA).length - 1)
     })

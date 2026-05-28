@@ -20,7 +20,7 @@ function hihi_scripts()
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
     wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.0', true);
-    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.3', true);
+    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.8', true);
     if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
         wp_enqueue_script('weather_script', get_theme_file_uri('/assets/js/weather.js'), array(), '1.1', true);
     }
@@ -88,6 +88,8 @@ function get_translated_permalink_by_slug($slug) {
             'ninh-thuan' => 'ninh-thuan.php',
             'mu-cang-chai' => 'mu-cang-chai.php',
             'cat-ba-tour' => 'cat-ba-tour.php',
+            'taiwan' => 'taiwan.php',
+            'hue-tour' => 'hue-tour.php',
         ];
 
         if (!empty($template_by_slug[$slug])) {

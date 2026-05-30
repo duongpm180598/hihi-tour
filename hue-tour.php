@@ -60,75 +60,21 @@ $plan_groups = [
         'label' => $hue['itinerary_group_2_label'],
         'plans' => [
             'advanced_4' => $hue['itinerary_plan_2_label'],
-            'advanced_5' => $hue['itinerary_plan_3_label'],
         ],
     ],
 ];
 $default_plan_group = 'hue_only';
 $default_plan = 'hue_only_4';
-$default_days_count = 4;
-$default_days = range(0, $default_days_count);
-
-$hue_make_items = function ($times, $descriptions) {
-    return array_map(function ($time, $description) {
-        return [
-            'time' => $time,
-            'description' => $description,
-        ];
-    }, $times, $descriptions);
-};
-
-$hue_itinerary_data = [
-    'hue_only_4' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_1_item_0'], $hue['itinerary_hue_only_3_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_2_item_0'], $hue['itinerary_hue_only_3_day_2_item_1']]),
-        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_4_day_3_item_0']]),
-        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_4_day_4_item_0']]),
-    ],
-    'hue_only_3' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_1_item_0'], $hue['itinerary_hue_only_3_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_hue_only_3_day_2_item_0'], $hue['itinerary_hue_only_3_day_2_item_1']]),
-        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_hue_only_3_day_0_item_1']]),
-    ],
-    'central_3' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_3_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_3_day_1_item_0'], $hue['itinerary_central_3_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_3_day_2_item_0']]),
-        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_3_day_3_item_0']]),
-    ],
-    'central_4' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_1_item_0'], $hue['itinerary_central_4_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_4_day_2_item_0'], $hue['itinerary_central_4_day_2_item_1']]),
-        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_4_day_3_item_0']]),
-        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_4_day_3_item_1']]),
-    ],
-    'central_5' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_central_5_day_1_item_0'], $hue['itinerary_central_5_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_2_item_0'], $hue['itinerary_central_5_day_2_item_1']]),
-        3 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_central_5_day_3_item_0'], $hue['itinerary_central_5_day_3_item_1']]),
-        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_5_day_4_item_0']]),
-        5 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_central_5_day_4_item_1']]),
-    ],
-    'advanced_4' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_advanced_4_day_1_item_0'], $hue['itinerary_advanced_4_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_2_item_0'], $hue['itinerary_advanced_4_day_2_item_1']]),
-        3 => $hue_make_items([$hue['itinerary_time_morning']], [$hue['itinerary_advanced_4_day_3_item_0']]),
-        4 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_4_day_3_item_1']]),
-    ],
-    'advanced_5' => [
-        0 => $hue_make_items([$hue['itinerary_time_evening']], [$hue['itinerary_advanced_4_day_0_item_0']]),
-        1 => $hue_make_items([$hue['itinerary_time_morning'], $hue['itinerary_time_afternoon']], [$hue['itinerary_advanced_4_day_1_item_0'], $hue['itinerary_advanced_4_day_1_item_1']]),
-        2 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_5_day_2_item_0']]),
-        3 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_5_day_3_item_0']]),
-        4 => $hue_make_items([$hue['itinerary_time_morning']], [$hue['itinerary_advanced_4_day_3_item_0']]),
-        5 => $hue_make_items([$hue['itinerary_time_day']], [$hue['itinerary_advanced_4_day_3_item_1']]),
-    ],
+$hue_plan_day_counts = [
+    'hue_only_4' => [2, 8, 8, 8, 6],
+    'hue_only_3' => [2, 8, 8, 6],
+    'central_4' => [2, 8, 8, 8, 6],
+    'central_3' => [2, 8, 9, 6],
+    'advanced_4' => [2, 9, 8, 8, 6],
 ];
+
+$default_days_count = count($hue_plan_day_counts[$default_plan]) - 1;
+$default_days = range(0, $default_days_count);
 
 $locations = [
     'hue' => ['display' => $hue['weather_loc_0'], 'api_query' => 'latitude=16.466221&longitude=107.592234'],
@@ -472,7 +418,6 @@ $activeId = $tableOfContents[0]['id'];
 ?>
 
 <script>
-window.hihiHueItineraryData = <?php echo wp_json_encode($hue_itinerary_data, JSON_UNESCAPED_UNICODE); ?>;
 window.hihiHueDefaultPlan = <?php echo wp_json_encode($default_plan); ?>;
 window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary_day_prefix']], JSON_UNESCAPED_UNICODE); ?>;
 </script>
@@ -568,10 +513,10 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                 <span style="font-size:4rem; line-height:1; color:#7B63F7; font-family:Georgia,serif; flex-shrink:0; margin-top:-8px;">"</span>
                 <div>
                     <p class="text-lg font-semibold text-[#1D292C] leading-relaxed mb-3">
-                        <?php echo $t['ha_giang']['hero_quote']; ?>
+                        <?php echo esc_html($hue['hero_quote']); ?>
                     </p>
                     <p style="font-size:15px; color:#474E50;">
-                        — <?php echo $t['ha_giang']['hero_quote_author']; ?>
+                        — <?php echo esc_html($hue['hero_quote_author']); ?>
                     </p>
                 </div>
             </div>
@@ -619,7 +564,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="md:col-span-2 mb-8">
                     <!-- Pills row + Download dropdown on the right -->
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                    <div class="flex flex-row items-center gap-3 mb-6">
                         <div id="itinerary-plans" class="flex flex-wrap gap-2">
                             <?php foreach ($plan_groups as $group_key => $group) : ?>
                                 <?php foreach ($group['plans'] as $value => $text) : ?>
@@ -641,12 +586,10 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             <?php endforeach; ?>
                         </div>
 
-                        <!-- Download dropdown — Filled button per COMPONENTS.md §3.1 -->
-                        <div class="flex flex-wrap items-center gap-2 sm:justify-end">
                         <label class="sr-only" for="hue-plan-group"><?php echo esc_html($hue['itinerary_group_label']); ?></label>
                         <select
                             id="hue-plan-group"
-                            style="min-height:44px; padding:0 40px 0 14px; border:1.5px solid #1D292C; border-radius:999px; background:#fff; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;"
+                            style="width:180px; min-height:44px; flex-shrink:0; padding:0 40px 0 14px; border:1.5px solid #1D292C; border-radius:999px; background:#fff url('<?php echo esc_url($theme_uri . '/assets/icons/chevron-down.svg'); ?>') no-repeat right 14px center / 12px 12px; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; appearance:none; -webkit-appearance:none;"
                         >
                             <?php foreach ($plan_groups as $group_key => $group) : ?>
                                 <option value="<?php echo esc_attr($group_key); ?>" <?php selected($group_key, $default_plan_group); ?>>
@@ -655,20 +598,16 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             <?php endforeach; ?>
                         </select>
 
-                        <div class="relative flex-shrink-0" id="itinerary-download-wrap">
+                        <div class="relative flex-shrink-0 ml-auto" id="itinerary-download-wrap">
                             <button
                                 id="itinerary-download-btn"
                                 onclick="document.getElementById('itinerary-download-menu').classList.toggle('hidden')"
                                 style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:transparent; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; line-height:24px; border-radius:999px; border:1.5px solid #1D292C; cursor:pointer; transition:opacity .15s;"
                                 onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'"
                             >
-                                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/download.svg'); ?>" alt="" width="15" height="15" style="display:block;" />
                                 <?php echo $t['ha_giang']['itinerary_btn_download']; ?>
-                                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chevron-down.svg'); ?>" alt="" width="12" height="12" style="display:block;" />
                             </button>
                             <!-- Dropdown menu — M3 Medium (12dp) surface -->
                             <div
@@ -699,7 +638,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                     <?php echo $t['ha_giang']['itinerary_download_drive']; ?>
                                 </button>
                             </div>
-                        </div>
                         </div>
                     </div>
 
@@ -760,6 +698,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                 'label' => $hue['pricing_round_trip_bus_label'],
                                 'desc' => $hue['pricing_round_trip_bus_desc'],
                                 'type' => 'long-transport',
+                                'transport' => 'bus',
                                 'scope' => 'all',
                                 'unit' => 'all',
                                 'usd' => 50,
@@ -767,9 +706,20 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                 'checked' => true,
                             ],
                             [
+                                'label' => $hue['pricing_round_trip_train_label'],
+                                'type'  => 'long-transport',
+                                'transport' => 'train',
+                                'scope' => 'all',
+                                'unit'  => 'all',
+                                'usd'   => 130,
+                                'vnd'   => 3400000,
+                                'checked' => false,
+                            ],
+                            [
                                 'label' => $hue['pricing_round_trip_flight_label'],
                                 'desc' => $hue['pricing_round_trip_flight_desc'],
                                 'type' => 'long-transport',
+                                'transport' => 'flight',
                                 'scope' => 'all',
                                 'unit' => 'all',
                                 'usd' => 100,
@@ -778,7 +728,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             ],
                             [
                                 'label' => $hue['pricing_homestay_label'],
-                                'desc' => $hue['pricing_homestay_desc'],
                                 'scope' => 'all',
                                 'unit' => 'day',
                                 'usd' => 15,
@@ -787,7 +736,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             ],
                             [
                                 'label' => $hue['pricing_meals_label'],
-                                'desc' => $hue['pricing_meals_desc'],
                                 'scope' => 'all',
                                 'unit' => 'meal',
                                 'usd' => 6,
@@ -796,7 +744,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             ],
                             [
                                 'label' => $hue['pricing_motorbike_label'],
-                                'desc' => $hue['pricing_motorbike_desc'],
                                 'scope' => 'all',
                                 'unit' => 'day',
                                 'usd' => 5,
@@ -805,7 +752,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             ],
                             [
                                 'label' => $hue['pricing_train_label'],
-                                'desc' => $hue['pricing_train_desc'],
                                 'scope' => 'central',
                                 'unit' => 'all',
                                 'usd' => 4,
@@ -814,7 +760,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             ],
                             [
                                 'label' => $hue['pricing_entrance_label'],
-                                'desc' => $hue['pricing_entrance_desc'],
                                 'scope' => 'hue_core',
                                 'unit' => 'all',
                                 'usd' => 50,
@@ -836,6 +781,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                             class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
                                             style="accent-color:#7B63F7;"
                                             data-type="<?php echo esc_attr($item['type'] ?? ''); ?>"
+                                            data-itinerary-transport="<?php echo esc_attr($item['transport'] ?? ''); ?>"
                                             data-plan-scope="<?php echo esc_attr($item['scope']); ?>"
                                             data-unit="<?php echo esc_attr($item['unit']); ?>"
                                             data-usd="<?php echo esc_attr($item['usd']); ?>"
@@ -844,7 +790,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                         />
                                         <span>
                                             <span class="block"><?php echo esc_html($item['label']); ?></span>
-                                            <span class="block opacity-70" style="font-size:12px; line-height:18px;"><?php echo esc_html($item['desc']); ?></span>
+                                            <span class="block opacity-70" style="font-size:12px; line-height:18px;"><?php echo esc_html($item['desc'] ?? ''); ?></span>
                                         </span>
                                     </label>
                                 </li>
@@ -911,14 +857,14 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                         <span class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C;">
-                            <?php echo $t['ha_giang']['gallery_title']; ?>
+                            <?php echo esc_html($hue['gallery_title']); ?>
                         </span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                     </div>
                     <p style="font-size:12px; color:#1D292C; margin:0;">
-                        <?php echo $t['ha_giang']['gallery_desc']; ?>
+                        <?php echo esc_html($hue['gallery_desc']); ?>
                     </p>
                 </div>
             </div>
@@ -1052,7 +998,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_bus_label'],
                                 'badge_en' => $hue['transport_bus_badge'],
 'badge_vi' => $hue['transport_bus_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/a_luoi2.webp',
+                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/normal.webp',
                                 'desc_en' => $hue['transport_bus_desc'],
 'desc_vi' => $hue['transport_bus_desc'],
                                 'rows_en' => $hue['transport_bus_meta'],
@@ -1066,7 +1012,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_flight_label'],
                                 'badge_en' => $hue['transport_flight_badge'],
 'badge_vi' => $hue['transport_flight_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/a-luoi-building.webp',
+                                'img'       => get_template_directory_uri() . '/assets/images/san_bay_hue.jpg',
                                 'desc_en' => $hue['transport_flight_desc'],
 'desc_vi' => $hue['transport_flight_desc'],
                                 'rows_en' => $hue['transport_flight_meta'],
@@ -1080,7 +1026,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_self_drive_label'],
                                 'badge_en' => $hue['transport_self_drive_badge'],
 'badge_vi' => $hue['transport_self_drive_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/hue/dai_noi_hue.webp',
+                                'img'       => get_template_directory_uri() . '/assets/images/train_bed.jpg',
                                 'desc_en' => $hue['transport_self_drive_desc'],
 'desc_vi' => $hue['transport_self_drive_desc'],
                                 'rows_en' => $hue['transport_self_drive_meta'],
@@ -1124,24 +1070,12 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 
                             <!-- Description -->
                             <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']; ?>
+                                <?php echo wp_kses_post($current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']); ?>
                             </p>
 
-                            <!-- Seat rows indicator -->
+                            <!-- Transport meta -->
                             <div class="flex items-center gap-2 mb-2">
-                                <!-- Seat icons: render $bt['seats'] pairs per floor, 2 floors -->
-                                <div style="display:flex; flex-direction:column; gap:2px;">
-                                    <?php for ($floor = 0; $floor < 2; $floor++): ?>
-                                    <div style="display:flex; gap:3px; <?php echo $floor === 0 ? 'border-bottom:1px solid #555;' : ''; ?>">
-                                        <?php for ($s = 0; $s < $bt['seats']; $s++): ?>
-                                        <svg viewBox="0 0 20 24" width="14" height="18" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="1" y="1" width="12" height="14" rx="4" fill="#3D4F52"/>
-                                            <rect x="1" y="18" width="12" height="3" rx="1.5" fill="#3D4F52"/>
-                                        </svg>
-                                        <?php endfor; ?>
-                                    </div>
-                                    <?php endfor; ?>
-                                </div>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/clock time.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
                                 <span class="text-xs" style="color:#1D292C;">
                                     <?php echo $current_lang === 'en' ? $bt['rows_en'] : $bt['rows_vi']; ?>
                                 </span>
@@ -1149,11 +1083,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 
                             <!-- Price -->
                             <div class="flex items-center gap-2">
-                                <!-- Dollar bubble icon -->
-                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
-                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chat money.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
                                 <span class="text-xs" style="color:#1D292C;">
                                     <?php echo $current_lang === 'en' ? $bt['price_en'] : $bt['price_vi']; ?>
                                 </span>
@@ -1165,7 +1095,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                     <!-- See article link -->
                     <p class="text-center mb-10">
                         <a href="#" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
-                            <?php echo $t['ha_giang']['transport_guide_link']; ?>
+                            <?php echo esc_html($hue['transport_guide_link']); ?>
                         </a>
                     </p>
 
@@ -1173,10 +1103,10 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                     <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
                         <div class="flex-1">
                             <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
-                                <?php echo $t['ha_giang']['transport_book_title']; ?>
+                                <?php echo esc_html($hue['transport_book_title']); ?>
                             </h4>
                             <p style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $t['ha_giang']['transport_book_desc']; ?>
+                                <?php echo wp_kses_post($hue['transport_book_desc']); ?>
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-3 flex-shrink-0">
@@ -1212,28 +1142,39 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                     </p>
 
                     <?php
-                    $bike_type = [
-                        'label' => $hue['transport_rent_bike_label'],
-                        'badge' => $hue['transport_rent_bike_badge'],
-                        'img' => get_template_directory_uri() . '/assets/images/hue/song_huong.webp',
-                        'desc' => $hue['transport_rent_bike_desc'],
-                        'meta' => $hue['transport_rent_bike_meta'],
-                        'price' => $hue['transport_rent_bike_price'],
+                    $local_transport_types = [
+                        [
+                            'label' => $hue['transport_motorbike_label'],
+                            'badge' => $hue['transport_motorbike_badge'],
+                            'img' => get_template_directory_uri() . '/assets/images/xe_may_hue.jpg',
+                            'desc' => $hue['transport_motorbike_desc'],
+                            'meta' => $hue['transport_motorbike_meta'],
+                            'price' => $hue['transport_motorbike_price'],
+                        ],
+                        [
+                            'label' => $hue['transport_bicycle_label'],
+                            'badge' => $hue['transport_bicycle_badge'],
+                            'img' => get_template_directory_uri() . '/assets/images/xe_dap_hue2.jpg',
+                            'desc' => $hue['transport_bicycle_desc'],
+                            'meta' => $hue['transport_bicycle_meta'],
+                            'price' => $hue['transport_bicycle_price'],
+                        ],
                     ];
                     ?>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <?php foreach ($local_transport_types as $transport_type) : ?>
                         <div>
                             <div style="position:relative; margin-bottom:8px;">
                                 <img
-                                    src="<?php echo esc_url($bike_type['img']); ?>"
-                                    alt="<?php echo esc_attr($bike_type['badge']); ?>"
+                                    src="<?php echo esc_url($transport_type['img']); ?>"
+                                    alt="<?php echo esc_attr($transport_type['badge']); ?>"
                                     class="w-full object-cover rounded-lg"
                                     style="height:220px; object-fit:cover;"
                                 />
                                 <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
                                     <?php echo $blob_yellow; ?>
                                     <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
-                                        <?php echo esc_html($bike_type['badge']); ?>
+                                        <?php echo esc_html($transport_type['badge']); ?>
                                     </span>
                                 </div>
                                 <p class="text-center text-xs mt-1" style="color:#74797A;">
@@ -1241,24 +1182,25 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                 </p>
                             </div>
                             <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
-                                <?php echo esc_html($bike_type['label']); ?>
+                                <?php echo esc_html($transport_type['label']); ?>
                             </h3>
                             <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo esc_html($bike_type['desc']); ?>
+                                <?php echo esc_html($transport_type['desc']); ?>
                             </p>
-                            <p class="text-xs mb-2" style="color:#1D292C;">
-                                <?php echo esc_html($bike_type['meta']); ?>
-                            </p>
-                            <div class="flex items-center gap-2">
-                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
-                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
-                                </svg>
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/clock time.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
                                 <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo esc_html($bike_type['price']); ?>
+                                    <?php echo esc_html($transport_type['meta']); ?>
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chat money.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
+                                <span class="text-xs" style="color:#1D292C;">
+                                    <?php echo esc_html($transport_type['price']); ?>
                                 </span>
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -1467,26 +1409,19 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['culture_title'] ?>
+                <?php echo esc_html($hue['culture_title']); ?>
             </h3>
 
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_desc'] ?>
+                <?php echo esc_html($hue['culture_desc']); ?>
             </p>
 
 
             <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_happywater_title'] ?>
+                <?php echo esc_html($hue['culture_food_title']); ?>
             </h3>
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_happywater_desc'] ?>
-            </p>
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_market_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_market_desc'] ?>
+                <?php echo esc_html($hue['culture_food_desc']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">

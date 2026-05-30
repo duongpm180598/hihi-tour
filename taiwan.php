@@ -414,13 +414,9 @@ $activeId = $tableOfContents[0]['id'];
                                 style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:transparent; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; line-height:24px; border-radius:999px; border:1.5px solid #1D292C; cursor:pointer; transition:opacity .15s;"
                                 onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'"
                             >
-                                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/download.svg'); ?>" alt="" width="15" height="15" style="display:block;" />
                                 <?php echo $t['ha_giang']['itinerary_btn_download']; ?>
-                                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chevron-down.svg'); ?>" alt="" width="12" height="12" style="display:block;" />
                             </button>
                             <!-- Dropdown menu — M3 Medium (12dp) surface -->
                             <div

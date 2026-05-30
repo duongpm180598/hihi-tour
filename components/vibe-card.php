@@ -8,6 +8,7 @@
  *
  * Optional variables:
  *   $vibe_class — extra classes on root.
+ *   $vibe_style — inline style on root.
  *
  * Usage:
  *   $vibe_title = 'trip vibe';
@@ -18,8 +19,9 @@
  */
 
 $vibe_class = $vibe_class ?? '';
+$vibe_style = $vibe_style ?? '';
 ?>
-<div class="vibe-card <?php echo esc_attr($vibe_class); ?>">
+<div class="vibe-card <?php echo esc_attr($vibe_class); ?>" style="<?php echo esc_attr($vibe_style); ?>">
     <p class="vibe-card__header">
         <?php echo esc_html($vibe_title); ?>
     </p>

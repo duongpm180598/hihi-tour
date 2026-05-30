@@ -323,52 +323,19 @@ $activeId = $tableOfContents[0]['id'];
     <!-- ── VIBE ── -->
     <section style="background:#E7F15A;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <p class="mb-5" style="font-family:'Phudu',sans-serif; font-size:24px; line-height:36px; font-weight:600; color:#1D292C;">
-                <?php echo $current_lang === 'en' ? 'cao bang at a glance' : 'cao bằng trong một nhịp nhìn'; ?>
-            </p>
             <?php
-            $vibes = [
-                [
-                    'icon'  => 'human',
-                    'title' => $current_lang === 'en' ? 'trip style' : 'kiểu đi',
-                    'val'   => $current_lang === 'en' ? 'calm, scenic, low chaos' : 'êm, đẹp, ít rối',
-                ],
-                [
-                    'icon'  => 'money',
-                    'title' => $current_lang === 'en' ? 'budget' : 'ngân sách',
-                    'val'   => $current_lang === 'en' ? 'easy to plan' : 'dễ tính trước',
-                ],
-                [
-                    'icon'  => 'globe',
-                    'title' => $current_lang === 'en' ? 'best for' : 'hợp với',
-                    'val'   => $current_lang === 'en' ? 'waterfalls and backroads' : 'thác nước và đường vắng',
-                ],
-                [
-                    'icon'  => 'clock',
-                    'title' => $current_lang === 'en' ? 'pace' : 'nhịp đi',
-                    'val'   => $current_lang === 'en' ? '2-3 days' : '2-3 ngày',
-                ],
+            $cb = $t['cao_bang'];
+            $vibe_title = $cb['hero_vibe_title'];
+            $vibe_items = [
+                ['icon' => 'human', 'title' => $cb['hero_vibe_0_title'], 'val' => $cb['hero_vibe_0_val']],
+                ['icon' => 'money', 'title' => $cb['hero_vibe_1_title'], 'val' => $cb['hero_vibe_1_val']],
+                ['icon' => 'globe', 'title' => $cb['hero_vibe_2_title'], 'val' => $cb['hero_vibe_2_val']],
+                ['icon' => 'clock', 'title' => $cb['hero_vibe_3_title'], 'val' => $cb['hero_vibe_3_val']],
             ];
+            $vibe_style = 'position:static; width:auto; max-width:none; margin:0; box-shadow:none;';
+            include get_template_directory() . '/components/vibe-card.php';
+            unset($vibe_style);
             ?>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <?php foreach ($vibes as $v):
-                    $icon_url = esc_url($theme_uri . '/assets/icons/' . $v['icon'] . '.svg');
-                ?>
-                    <div class="flex items-start gap-3">
-                        <div style="width:36px; height:36px; border-radius:50%; background:#1D292C; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <img src="<?php echo $icon_url; ?>" alt="" width="18" height="18" style="filter:brightness(0) invert(1);" aria-hidden="true" />
-                        </div>
-                        <div>
-                            <p style="font-family:'Inter',sans-serif; font-size:12px; line-height:20px; font-weight:600; color:rgba(29,41,44,.7); margin:0 0 4px;">
-                                <?php echo esc_html($v['title']); ?>
-                            </p>
-                            <p style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:600; color:#1D292C; margin:0;">
-                                <?php echo esc_html($v['val']); ?>
-                            </p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
         </div>
     </section>
 

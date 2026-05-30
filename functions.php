@@ -10,7 +10,7 @@ function hihi_scripts()
     wp_enqueue_style('aos_style', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
     // Ha Giang layout pages
-    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php')) {
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
         wp_enqueue_style('ha_giang_style', get_theme_file_uri('/assets/css/ha-giang.css'));
     }
 
@@ -20,7 +20,7 @@ function hihi_scripts()
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
     wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.0', true);
-    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.8', true);
+    wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.12', true);
     if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
         wp_enqueue_script('weather_script', get_theme_file_uri('/assets/js/weather.js'), array(), '1.1', true);
     }

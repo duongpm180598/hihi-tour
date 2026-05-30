@@ -3,6 +3,7 @@ const pathname = window.location.pathname
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang')
 const isMuCangChai = pathname.includes('/mu-cang-chai')
+const isNinhThuan = pathname.includes('/ninh-thuan')
 const isTaiwan = pathname.includes('/taiwan')
 const isHue = pathname.includes('/hue')
 const vi = pathname.includes('/vi')
@@ -13,11 +14,1319 @@ function makeTaiwanItinerary(isVi) {
     return window.hihiTaiwanItineraryData || {}
 }
 
+function makeNinhThuanItinerary() {
+    return window.hihiNinhThuanItineraryData || {}
+}
+
+function makeHueItinerary(isVi) {
+    return isVi ? {
+    "hue_only_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Lăng Minh Mạng"
+            },
+            {
+                "time": "10:30",
+                "description": "Lăng Khải Định"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Nem lụi đii. Xong về homestay ngủ."
+            },
+            {
+                "time": "15:00",
+                "description": "Đi cung An Định"
+            },
+            {
+                "time": "16:00",
+                "description": "Ra biển Thuận An thật là chill"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối ở quán ăn ven biển"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn một bát bún bò nhưng ở chỗ khác"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 60km ra Vịnh Lăng Cô"
+            },
+            {
+                "time": "11:00",
+                "description": "Ngắm nghía vùng vẫy"
+            },
+            {
+                "time": "12:00",
+                "description": "Ăn trưa ở nhà hàng sát biển. Ngon nhé mình ưng."
+            },
+            {
+                "time": "14:00",
+                "description": "Lấy sức đi về. Có thể dừng ở bất kỳ đâu bạn muốn."
+            },
+            {
+                "time": "16:00",
+                "description": "Về nhà tắm rửa, phơi khô ráo nước"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "Night time",
+                "description": "Lượn lờ tiếp"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "hue_only_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Lăng Minh Mạng"
+            },
+            {
+                "time": "10:30",
+                "description": "Lăng Khải Định"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Nem lụi đii. Xong về homestay ngủ."
+            },
+            {
+                "time": "15:00",
+                "description": "Đi cung An Định"
+            },
+            {
+                "time": "16:00",
+                "description": "Ra biển Thuận An thật là chill"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối ở quán ăn ven biển"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "central_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi tàu Huế - Đà Nẵng, ngắm đèo Hải Vân"
+            },
+            {
+                "time": "12:00",
+                "description": "Về homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bát mỳ Quảng thật là ngon"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra biển Mỹ Khê tắm mát"
+            },
+            {
+                "time": "16:00",
+                "description": "Không tắm thì chạy lên Chùa Linh Ứng hoặc Ngũ Hành Sơn"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn hải sản Đà Nẵng"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ cà phê hoặc đi bar hoặc ngắm biển đêm tuỳ sở thích"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bún chả cá"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi Hội An"
+            },
+            {
+                "time": "10:00",
+                "description": "Dạo quanh phố cổ, đạp xe hoặc đi bộ"
+            },
+            {
+                "time": "12:00",
+                "description": "Ăn trưa trong phố: Cao Lầu, Mỳ Quảng, Bún thịt nướng"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi biển An Bàng"
+            },
+            {
+                "time": "16:00",
+                "description": "Về Đà Nẵng"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn bò nướng"
+            },
+            {
+                "time": "Night time",
+                "description": "Lượn lờ tiếp"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Cồn mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Làm bát bún mắm nêm (ai bụng yếu thì ăn món khác nhé)"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "central_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "08:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi tàu Huế - Đà Nẵng, ngắm đèo Hải Vân"
+            },
+            {
+                "time": "12:00",
+                "description": "Về homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bát mỳ Quảng thật là ngon"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Hội An"
+            },
+            {
+                "time": "16:00",
+                "description": "Dạo quanh phố cổ, đạp xe hoặc đi bộ"
+            },
+            {
+                "time": "17:00",
+                "description": "Về Đà Nẵng"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn hải sản Đà Nẵng"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ cà phê hoặc đi bar hoặc ngắm biển đêm tuỳ sở thích"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bún chả cá"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Cồn mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Làm bát bún mắm nêm (ai bụng yếu thì ăn món khác nhé)"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "advanced_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "08:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "09:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "10:00",
+                "description": "Lăng Tự Đức"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi A Lưới, 70km"
+            },
+            {
+                "time": "11:00",
+                "description": "Đến nơi, lấy phòng, nghỉ 1 tị"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn trưa trong thị trấn. Hẻo món lắm nên đừng kén chọn"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi cột mốc 666. Mang theo giấy tờ tuỳ thân để được qua đồn biên phòng"
+            },
+            {
+                "time": "16:00",
+                "description": "Về đến Anor, không đi 1 mình nếu là nữ"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn tối. Các hàng ăn ở A Lưới không mở muộn nên đi sớm 1 chút"
+            },
+            {
+                "time": "19:00",
+                "description": "Về phòng xem phim cho sớm chợ hoặc khoảng lặng Capcut"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng trong chợ A Lưới, có 1 2 hàng ăn thôi"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi đồi thông A Lưới, uống cà phê ở đây, thích lắm, phải thử nhé"
+            },
+            {
+                "time": "11:00",
+                "description": "Về trả phòng rồi về Huế"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bữa trưa thiệt nhiều để bù đắp năng lượng"
+            },
+            {
+                "time": "14:00",
+                "description": "Về homestay nghỉ chút"
+            },
+            {
+                "time": "16:00",
+                "description": "Đi Phá Tam Giang ngắm hoàng hôn"
+            },
+            {
+                "time": "17:00",
+                "description": "Thuê thuyền ra phá ngắm hoàng hôn"
+            },
+            {
+                "time": "19:00",
+                "description": "Về thành phố ăn tối hoặc quay ra biển Thuận An ăn"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ]
+} : {
+    "hue_only_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Minh Mang Mausoleum"
+            },
+            {
+                "time": "10:30",
+                "description": "Khai Dinh Mausoleum"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Let's have some grilled pork skewers. Then we'll go back to the homestay to sleep."
+            },
+            {
+                "time": "15:00",
+                "description": "Visit An Dinh Palace"
+            },
+            {
+                "time": "16:00",
+                "description": "Going to Thuan An beach is so relaxing."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner at a seaside restaurant."
+            },
+            {
+                "time": "Nigh time",
+                "description": "Wandering around"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of beef noodle soup, but at a different place."
+            },
+            {
+                "time": "09:00",
+                "description": "Travel 60km to Lang Co Bay"
+            },
+            {
+                "time": "11:00",
+                "description": "Gazing around and splashing"
+            },
+            {
+                "time": "12:00",
+                "description": "We had lunch at a restaurant right by the sea. The food was delicious, I liked it."
+            },
+            {
+                "time": "14:00",
+                "description": "Gather your strength and head back. You can stop anywhere you like."
+            },
+            {
+                "time": "16:00",
+                "description": "Go home, take a shower, and dry yourself off."
+            },
+            {
+                "time": "18:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "Night time",
+                "description": "Keep wandering around."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "hue_only_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Minh Mang Mausoleum"
+            },
+            {
+                "time": "10:30",
+                "description": "Khai Dinh Mausoleum"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Let's have some grilled pork skewers. Then we'll go back to the homestay to sleep."
+            },
+            {
+                "time": "15:00",
+                "description": "Visit An Dinh Palace"
+            },
+            {
+                "time": "16:00",
+                "description": "Going to Thuan An beach is so relaxing."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner at a seaside restaurant."
+            },
+            {
+                "time": "Nigh time",
+                "description": "Wandering around"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "central_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Take the train from Hue to Da Nang and admire the Hai Van Pass."
+            },
+            {
+                "time": "12:00",
+                "description": "Regarding homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eating a bowl of Quang noodles is really delicious."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to My Khe beach for a refreshing swim."
+            },
+            {
+                "time": "16:00",
+                "description": "If you don't want to swim, head up to Linh Ung Pagoda or Marble Mountains."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating seafood in Da Nang"
+            },
+            {
+                "time": "Nigh time",
+                "description": "You can stroll around, have coffee, go to a bar, or admire the sea at night—it's up to you."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of bun cha ca (made out of fish)"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Hoi An"
+            },
+            {
+                "time": "10:00",
+                "description": "Stroll around the old town, cycle, or walk."
+            },
+            {
+                "time": "12:00",
+                "description": "Lunch in the city: Cao Lau, Quang Noodles, Grilled Pork Vermicelli"
+            },
+            {
+                "time": "14:00",
+                "description": "Go to An Bang Beach"
+            },
+            {
+                "time": "16:00",
+                "description": "About Da Nang"
+            },
+            {
+                "time": "18:00",
+                "description": "Eat grilled beef"
+            },
+            {
+                "time": "Night time",
+                "description": "Keep wandering around."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Con Market to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Make a bowl of bun with fermented fish sauce (those with sensitive stomachs should eat something else)."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "central_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "08:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Take the train from Hue to Da Nang and admire the Hai Van Pass."
+            },
+            {
+                "time": "12:00",
+                "description": "Regarding homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eating a bowl of Quang noodles is really delicious."
+            },
+            {
+                "time": "14:00",
+                "description": "Go to Hoi An"
+            },
+            {
+                "time": "16:00",
+                "description": "Stroll around the old town, cycle, or walk."
+            },
+            {
+                "time": "17:00",
+                "description": "Return to Da Nang"
+            },
+            {
+                "time": "19:00",
+                "description": "Eating seafood in Da Nang"
+            },
+            {
+                "time": "Nigh time",
+                "description": "You can stroll around, have coffee, go to a bar, or admire the sea at night—it's up to you."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of bun cha ca (made out of fish)"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Con Market to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Make a bowl of vermicelli with fermented fish sauce (those with sensitive stomachs should eat something else)."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "advanced_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "08:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "09:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "10:00",
+                "description": "Tu Duc Tomb"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "To A Luoi, 70km"
+            },
+            {
+                "time": "11:00",
+                "description": "Arrived, checked into a room, and rested for a while."
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Have lunch in town. There aren't many options, so don't be picky."
+            },
+            {
+                "time": "14:00",
+                "description": "Go to milestone 666. Bring your identification documents to pass through the border guard station."
+            },
+            {
+                "time": "16:00",
+                "description": "When you arrive in Anor, do not travel alone if you are a woman."
+            },
+            {
+                "time": "18:00",
+                "description": "Dinner. Restaurants in A Lưới don't stay open late, so go a little early."
+            },
+            {
+                "time": "19:00",
+                "description": "Go back to the room, watch a movie or rewind all the photos you took"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "There are only one or two food stalls for breakfast in A Lưới market."
+            },
+            {
+                "time": "09:00",
+                "description": "Go to the pine hills of A Lưới, have coffee there, it's great, you have to try it!"
+            },
+            {
+                "time": "11:00",
+                "description": "Check out of the hotel and then head back to Hue."
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eat a really big lunch to replenish your energy."
+            },
+            {
+                "time": "14:00",
+                "description": "Let's go back to the homestay to rest for a bit."
+            },
+            {
+                "time": "16:00",
+                "description": "Go to Tam Giang Lagoon to watch the sunset."
+            },
+            {
+                "time": "17:00",
+                "description": "Rent a boat to go out onto the lagoon and watch the sunset."
+            },
+            {
+                "time": "19:00",
+                "description": "Go back to the city for dinner or head to Thuan An beach for a meal."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ]
+}
+}
+
 if (vi) {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
     } else if (isHue) {
-        ALL_ITINERARY_PLANS_DATA = window.hihiHueItineraryData || {}
+        ALL_ITINERARY_PLANS_DATA = makeHueItinerary(true)
+    } else if (isNinhThuan) {
+        ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -676,7 +1985,9 @@ if (vi) {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
     } else if (isHue) {
-        ALL_ITINERARY_PLANS_DATA = window.hihiHueItineraryData || {}
+        ALL_ITINERARY_PLANS_DATA = makeHueItinerary(false)
+    } else if (isNinhThuan) {
+        ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -1336,23 +2647,60 @@ if (vi) {
         const $priceByPlan = $('#price-per-plan')
         const $pricingIncludes = $('.pricing-include')
         let currentPlan = null
+        let currentTimelineIndex = 0
 
         // --- MỚI: Lấy plan từ URL ---
         const urlParams = new URLSearchParams(window.location.search)
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isNinhThuan ? '4' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
 
+        function getHueLongTransport() {
+            const $selected = $pricingIncludes.filter('[data-type="long-transport"]:checked')
+            return $selected.data('itinerary-transport') || 'bus'
+        }
+
+        function getHueFirstVisibleDay() {
+            return isHue && getHueLongTransport() === 'flight' ? 1 : 0
+        }
+
+        function getHueItineraryItem(item) {
+            if (!isHue) return item
+
+            const transport = getHueLongTransport()
+
+            const trainReplacements = {
+                'Lên xe giường nằm đi Huế': 'Lên tàu giường nằm đi Huế',
+                'Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm': 'Thành phố Huế, tàu đến ga Huế, khá gần trung tâm',
+                'Ra bến xe đi về': 'Ra ga tàu đi về',
+                'Board a sleeper bus to Hue.': 'Board a sleeper train to Hue.',
+                'Hue City, the bus stops at a private station, very close to the city center.': 'Hue City, the train arrives at Hue station, close to the city center.',
+                'Go to the bus station to go home.': 'Go to the train station to go home.',
+            }
+            const flightReplacements = {
+                'Ra bến xe đi về': 'Bay về Hà Nội',
+                'Go to the bus station to go home.': 'Fly back to Hanoi.',
+            }
+            const replacements = transport === 'train' ? trainReplacements : transport === 'flight' ? flightReplacements : {}
+
+            return {
+                ...item,
+                description: replacements[item.description] || item.description,
+            }
+        }
+
         function renderTimeline(Index = 0) {
+            currentTimelineIndex = Index
             const data = ITINERARY_DATA[Index]
             if (!data) return $timelineList.html('<li class="p-4">No itinerary data available.</li>')
 
             let html = ''
             data.forEach((item, index) => {
+                item = getHueItineraryItem(item)
                 const isFirstOrLast = index === 0 || index === data.length - 1
                 const dotStyle = isFirstOrLast ? 'block' : 'none'
                 let dotTopPos = index === data.length - 1 ? '18px' : '-8px'
@@ -1378,11 +2726,12 @@ if (vi) {
 
         function renderTabs(totals) {
             let tabsHtml = ''
-            for (let i = 0; i <= totals; i++) {
-                const isActive = i === 0
+            const firstVisibleDay = getHueFirstVisibleDay()
+            for (let i = firstVisibleDay; i <= totals; i++) {
+                const isActive = i === firstVisibleDay
                 const isLast = i === totals
                 const dayNumber = isTaiwan ? i + 1 : i
-                const borderClasses = `${i === 0 ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
+                const borderClasses = `${i === firstVisibleDay ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
                 const dayLabel = (window.hihiItineraryLabels && window.hihiItineraryLabels.day) || (vi ? 'ngày' : 'day')
 
                 tabsHtml += `
@@ -1393,7 +2742,7 @@ if (vi) {
             }
             $tabsContainer.html(tabsHtml)
             bindTabClickEvent()
-            renderTimeline(0)
+            renderTimeline(firstVisibleDay)
         }
 
         function bindTabClickEvent() {
@@ -1500,6 +2849,9 @@ if (vi) {
                 $pricingIncludes.filter('[data-type="long-transport"]').not($item).prop('checked', false)
             }
             renderPrice(currentPlan || initialPlan)
+            if (isHue && $item.data('type') === 'long-transport') {
+                renderTabs(Object.keys(ITINERARY_DATA).length - 1)
+            }
         })
 
         // --- KHỞI CHẠY LẦN ĐẦU ---

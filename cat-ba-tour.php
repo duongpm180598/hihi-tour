@@ -172,6 +172,25 @@ $activeId = $tableOfContents[0]['id'];
         </div>
     </section>
 
+    <!-- ── VIBE ── -->
+    <section style="background:#E7F15A;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <?php
+            $cat_ba = $t['cat_ba'];
+            $vibe_title = $cat_ba['hero_vibe_title'];
+            $vibe_items = [
+                ['icon' => 'human', 'title' => $cat_ba['hero_vibe_0_title'], 'val' => $cat_ba['hero_vibe_0_val']],
+                ['icon' => 'money', 'title' => $cat_ba['hero_vibe_1_title'], 'val' => $cat_ba['hero_vibe_1_val']],
+                ['icon' => 'globe', 'title' => $cat_ba['hero_vibe_2_title'], 'val' => $cat_ba['hero_vibe_2_val']],
+                ['icon' => 'clock', 'title' => $cat_ba['hero_vibe_3_title'], 'val' => $cat_ba['hero_vibe_3_val']],
+            ];
+            $vibe_style = 'position:static; width:auto; max-width:none; margin:0; box-shadow:none;';
+            include get_template_directory() . '/components/vibe-card.php';
+            unset($vibe_style);
+            ?>
+        </div>
+    </section>
+
     <!-- gallery -->
     <section class="pt-16" id="gallery" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">

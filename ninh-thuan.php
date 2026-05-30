@@ -11,6 +11,7 @@ $current_lang = pll_current_language('slug');
 $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
+$nt = $t['ninh_thuan'] ?? $t['ha_giang'];
 
 // Danh sách các ảnh.
 $images = [
@@ -41,18 +42,16 @@ $all_gallery_images = array_map(function($file) use ($theme_uri) {
 
 // itinerary
 $plan_options = [
-    '4' => $t['ha_giang']['itinerary_plan_1'],
-    '3' => $t['ha_giang']['itinerary_plan_2'],
-    '2' => $t['ha_giang']['itinerary_plan_3'],
+    '4' => $nt['itinerary_plan_0'],
 ];
 $default_plan = '4';
 $default_days_count = intval($default_plan);
 $default_days = range(0, $default_days_count);
 
 $locations = [
-    'hagiang' => ['display' => $t['ha_giang']['weather_loc_1'], 'api_query' => 'latitude=22.8407&longitude=104.9881'],
-    'dongvan' => ['display' => $t['ha_giang']['weather_loc_2'], 'api_query' => 'latitude=23.2779&longitude=105.358'],
-    'meovac'  => ['display' => $t['ha_giang']['weather_loc_3'], 'api_query' => 'latitude=23.1618&longitude=105.4056'],
+    'phanrang' => ['display' => $nt['weather_loc_0'], 'api_query' => 'latitude=11.565381&longitude=108.999847'],
+    'vinhhy'   => ['display' => $nt['weather_loc_1'], 'api_query' => 'latitude=11.723124&longitude=109.196279'],
+    'muidinh'  => ['display' => $nt['weather_loc_2'], 'api_query' => 'latitude=11.364581&longitude=109.001757'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -96,209 +95,22 @@ $faqs_data = [
 ];
 
 // S3 highlights — "What's here"
-$highlights = [
-    [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_0_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_0_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_0_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_1_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_1_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_1_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-            '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
-            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_2_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_2_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_2_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_3_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_3_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_3_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-        ],
-        'category' => 'food',
-        'tag_en' => $t['ha_giang']['highlight_item_4_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_4_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_4_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_4_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_5_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_5_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_5_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_6_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_6_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_6_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_6_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_6_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_7_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_7_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_7_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_7_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_7_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_8_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_8_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_8_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_8_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_8_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_9_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_9_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_9_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_9_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_9_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_9_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/gallery-2.webp',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/gallery-2.webp',
-            '/assets/images/ha-giang/gallery/gallery-4.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_10_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_10_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_10_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_10_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_10_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_10_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-            '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-            '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-        ],
-        'category' => 'food',
-        'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_11_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_11_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_11_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_11_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_11_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/ha-giang/gallery/gallery-6.webp',
-        'imgs'     => [
-            '/assets/images/ha-giang/gallery/gallery-6.webp',
-            '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_12_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_12_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_12_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_12_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_12_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_12_desc'],
-        'span'     => 'normal',
-    ],
-];
+$highlight_image = '/assets/images/ninh-thuan/bai-da-trung.webp';
+$highlights = [];
+for ($i = 0; $i < 8; $i++) {
+    $highlights[] = [
+        'img'      => $highlight_image,
+        'imgs'     => [$highlight_image],
+        'category' => $nt["highlight_item_{$i}_category"] ?? 'nature',
+        'tag_en'   => $nt["highlight_item_{$i}_tag"],
+        'tag_vi'   => $nt["highlight_item_{$i}_tag"],
+        'title_en' => $nt["highlight_item_{$i}_title"],
+        'title_vi' => $nt["highlight_item_{$i}_title"],
+        'desc_en'  => $nt["highlight_item_{$i}_desc"],
+        'desc_vi'  => $nt["highlight_item_{$i}_desc"],
+        'span'     => $i % 3 === 0 ? 'tall' : 'normal',
+    ];
+}
 
 $tableOfContents = [
     [
@@ -340,6 +152,11 @@ $tableOfContents = [
 ];
 $activeId = $tableOfContents[0]['id'];
 ?>
+
+<script>
+window.hihiNinhThuanItineraryData = <?php echo wp_json_encode($nt['itinerary_data'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG); ?>;
+window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_day_prefix']], JSON_UNESCAPED_UNICODE); ?>;
+</script>
 
 <!-- banner  -->
 <div class="fixed top-50 -right-12 z-50">
@@ -391,53 +208,16 @@ $activeId = $tableOfContents[0]['id'];
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
 
-            <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
-
-            <div class="vibe-card">
-                <p class="vibe-card__header">
-                    <?php echo $t['ha_giang']['hero_vibe_title']; ?>
-                </p>
-                <?php
-                $vibes = [
-                    [
-                        'icon'  => 'human',
-                        'title' => $t['ha_giang']['hero_vibe_0_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_0_val'],
-                    ],
-                    [
-                        'icon'  => 'money',
-                        'title' => $t['ha_giang']['hero_vibe_1_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_1_val'],
-                    ],
-                    [
-                        'icon'  => 'globe',
-                        'title' => $t['ha_giang']['hero_vibe_2_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_2_val'],
-                    ],
-                    [
-                        'icon'  => 'clock',
-                        'title' => $t['ha_giang']['hero_vibe_3_title'],
-                        'val'   => $t['ha_giang']['hero_vibe_3_val'],
-                    ],
-                ];
-                ?>
-                <div class="vibe-card__grid">
-                    <?php foreach ($vibes as $v):
-                        $icon_url = esc_url($theme_uri . '/assets/icons/' . $v['icon'] . '.svg');
-                    ?>
-                    <div class="vibe-card__item">
-                        <div class="vibe-card__icon">
-                            <img src="<?php echo $icon_url; ?>" alt="" width="18" height="18" style="filter:brightness(0) invert(1);" aria-hidden="true" />
-                        </div>
-                        <div class="vibe-card__text">
-                            <span class="vibe-card__title"><?php echo esc_html($v['title']); ?></span>
-                            <span class="vibe-card__val"><?php echo esc_html($v['val']); ?></span>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <!-- /vibe card -->
+            <?php
+            $vibe_title = $nt['hero_vibe_title'];
+            $vibe_items = [
+                ['icon' => 'human', 'title' => $nt['hero_vibe_0_title'], 'val' => $nt['hero_vibe_0_val']],
+                ['icon' => 'money', 'title' => $nt['hero_vibe_1_title'], 'val' => $nt['hero_vibe_1_val']],
+                ['icon' => 'globe', 'title' => $nt['hero_vibe_2_title'], 'val' => $nt['hero_vibe_2_val']],
+                ['icon' => 'clock', 'title' => $nt['hero_vibe_3_title'], 'val' => $nt['hero_vibe_3_val']],
+            ];
+            include get_template_directory() . '/components/vibe-card.php';
+            ?>
 
         </div>
     </section>
@@ -450,10 +230,10 @@ $activeId = $tableOfContents[0]['id'];
                 <span style="font-size:4rem; line-height:1; color:#7B63F7; font-family:Georgia,serif; flex-shrink:0; margin-top:-8px;">"</span>
                 <div>
                     <p class="text-lg font-semibold text-[#1D292C] leading-relaxed mb-3">
-                        <?php echo $t['ha_giang']['hero_quote']; ?>
+                        <?php echo esc_html($nt['hero_quote']); ?>
                     </p>
                     <p style="font-size:15px; color:#474E50;">
-                        — <?php echo $t['ha_giang']['hero_quote_author']; ?>
+                        — <?php echo esc_html($nt['hero_quote_author']); ?>
                     </p>
                 </div>
             </div>
@@ -466,7 +246,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></p>
+            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $nt['itinerary_title']; ?></p>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -474,28 +254,28 @@ $activeId = $tableOfContents[0]['id'];
                     id="tab-solo"
                     class="itinerary-mode-tab pb-3 px-1 mr-8 text-sm font-semibold border-b-2 border-[#7B63F7] text-[#1D292C] transition-colors duration-150"
                     data-mode="solo">
-                    <?php echo $t['ha_giang']['itinerary_tab_solo']; ?>
+                    <?php echo $nt['itinerary_tab_solo']; ?>
                 </button>
                 <button
                     id="tab-book"
                     class="itinerary-mode-tab pb-3 px-1 mr-8 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#1D292C] transition-colors duration-150"
                     data-mode="book">
-                    <?php echo $t['ha_giang']['itinerary_tab_book']; ?>
+                    <?php echo $nt['itinerary_tab_book']; ?>
                 </button>
             </div>
 
             <!-- Solo going description -->
             <p id="itinerary-solo-desc" style="font-size:15px; color:#474E50;" class="mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_solo']; ?>
+                <?php echo $nt['itinerary_desc_solo']; ?>
             </p>
 
             <!-- Book a tour description (hidden by default) -->
             <p id="itinerary-book-desc" style="font-size:15px; color:#474E50;" class="hidden mb-6 max-w-2xl leading-relaxed">
-                <?php echo $t['ha_giang']['itinerary_desc_book']; ?>
+                <?php echo $nt['itinerary_desc_book']; ?>
             </p>
 
             <p class="text-sm font-semibold text-[#1D292C] mb-3">
-                <?php echo $t['ha_giang']['itinerary_prompt'] ?>
+                <?php echo $nt['itinerary_prompt'] ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -526,13 +306,9 @@ $activeId = $tableOfContents[0]['id'];
                                 style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:transparent; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; line-height:24px; border-radius:999px; border:1.5px solid #1D292C; cursor:pointer; transition:opacity .15s;"
                                 onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'"
                             >
-                                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
-                                </svg>
-                                <?php echo $t['ha_giang']['itinerary_btn_download']; ?>
-                                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                                </svg>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/download.svg'); ?>" alt="" width="15" height="15" style="display:block;" />
+                                <?php echo $nt['itinerary_btn_download']; ?>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chevron-down.svg'); ?>" alt="" width="12" height="12" style="display:block;" />
                             </button>
                             <!-- Dropdown menu — M3 Medium (12dp) surface -->
                             <div
@@ -550,7 +326,7 @@ $activeId = $tableOfContents[0]['id'];
                                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
-                                    <?php echo $t['ha_giang']['itinerary_download_xlsx']; ?>
+                                    <?php echo $nt['itinerary_download_xlsx']; ?>
                                 </a>
                                 <button
                                     onclick="alert('Add to Google Drive coming soon'); document.getElementById('itinerary-download-menu').classList.add('hidden');"
@@ -560,7 +336,7 @@ $activeId = $tableOfContents[0]['id'];
                                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                                     </svg>
-                                    <?php echo $t['ha_giang']['itinerary_download_drive']; ?>
+                                    <?php echo $nt['itinerary_download_drive']; ?>
                                 </button>
                             </div>
                         </div>
@@ -582,7 +358,7 @@ $activeId = $tableOfContents[0]['id'];
                                     data--index="<?php echo $index; ?>"
                                     class="inline-block cursor-pointer p-4 text-fg-brand bg-neutral-secondary-soft rounded-t-base w-full tab-link <?php echo $is_active; ?>"
                                     style="border-bottom: <?php echo $is_active ? '1px solid #101F23' : ''; ?>">
-                                    <?php echo $t['ha_giang']['itinerary_day_prefix'] ?> <?php echo $index; ?>
+                                    <?php echo $nt['itinerary_day_prefix'] ?> <?php echo $index; ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -601,10 +377,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['itinerary']); ?>" alt="itinerary" />
                         <div class="flex flex-col">
                             <span class="font-bold">
-                                <?php echo $t['ha_giang']['itinerary_note_ref'] ?>
+                                <?php echo $nt['itinerary_note_ref'] ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_note_target'] ?>
+                                <?php echo $nt['itinerary_note_target'] ?>
                             </span>
                         </div>
                     </div>
@@ -613,57 +389,57 @@ $activeId = $tableOfContents[0]['id'];
                 <div class="md:col-span-1">
                     <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
                         <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $t['ha_giang']['itinerary_price_note'] ?></p>
+                        <p class="mb-4 opacity-80"><?php echo $nt['itinerary_price_note'] ?></p>
                         <?php
                         $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_include_title'] ?>
+                            <?php echo $nt['itinerary_include_title'] ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_1'] ?>
+                                <?php echo $nt['itinerary_include_1'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_2'] ?>
+                                <?php echo $nt['itinerary_include_2'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_3'] ?>
+                                <?php echo $nt['itinerary_include_3'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_4'] ?>
+                                <?php echo $nt['itinerary_include_4'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_5'] ?>
+                                <?php echo $nt['itinerary_include_5'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_6'] ?>
+                                <?php echo $nt['itinerary_include_6'] ?>
                             </li>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_exclude_title'] ?>
+                            <?php echo $nt['itinerary_exclude_title'] ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_1'] ?>
+                                <?php echo $nt['itinerary_exclude_1'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_2'] ?>
+                                <?php echo $nt['itinerary_exclude_2'] ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_3'] ?>
+                                <?php echo $nt['itinerary_exclude_3'] ?>
                             </li>
                         </ul>
 
@@ -673,10 +449,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['human']); ?>" alt="human" />
                         <div class="flex flex-col">
                             <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_age_title'] ?>
+                                <?php echo $nt['itinerary_age_title'] ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_age_desc'] ?>
+                                <?php echo $nt['itinerary_age_desc'] ?>
                             </span>
                         </div>
                     </div>
@@ -684,10 +460,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['group']); ?>" alt="group" />
                         <div class="flex flex-col">
                             <span style="font-size:15px;">
-                                <?php echo $t['ha_giang']['itinerary_group_title'] ?>
+                                <?php echo $nt['itinerary_group_title'] ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_group_desc'] ?>
+                                <?php echo $nt['itinerary_group_desc'] ?>
                             </span>
                         </div>
                     </div>
@@ -709,14 +485,14 @@ $activeId = $tableOfContents[0]['id'];
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                         <span class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C;">
-                            <?php echo $t['ha_giang']['gallery_title']; ?>
+                            <?php echo esc_html($nt['gallery_title']); ?>
                         </span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
                     </div>
                     <p style="font-size:12px; color:#1D292C; margin:0;">
-                        <?php echo $t['ha_giang']['gallery_desc']; ?>
+                        <?php echo esc_html($nt['gallery_desc']); ?>
                     </p>
                 </div>
             </div>
@@ -791,13 +567,10 @@ $activeId = $tableOfContents[0]['id'];
 
                 <!-- Section heading -->
                 <h3 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                    <?php echo $t['ha_giang']['transport_title']; ?>
+                    <?php echo $nt['transport_title']; ?>
                 </h3>
 
-                <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
-                <div class="flex items-center justify-center gap-12 mb-8">
-
-                    <!-- Active tab: Sleep bus — purple blob shape -->
+                <div class="flex items-center justify-center gap-6 mb-8">
                     <button
                         id="tab-bus"
                         onclick="transTab('bus')"
@@ -805,196 +578,139 @@ $activeId = $tableOfContents[0]['id'];
                         style="width:160px; height:72px;"
                         aria-pressed="true"
                     >
-                        <!-- Purple blob SVG background -->
                         <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
                             <path fill="#7B63F7" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
                         </svg>
-                        <span class="relative z-10"><?php echo $t['ha_giang']['transport_tab_bus']; ?></span>
+                        <span class="relative z-10"><?php echo esc_html($nt['transport_tab_go']); ?></span>
                     </button>
-
-                    <!-- Inactive tab: Bikes — hidden -->
-                    <!-- Inactive tab: Bicycle — hidden -->
+                    <button
+                        id="tab-bike"
+                        onclick="transTab('bike')"
+                        class="trans-tab relative flex items-center justify-center font-bold text-sm"
+                        style="width:160px; height:72px; color:#1D292C;"
+                        aria-pressed="false"
+                    >
+                        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none">
+                            <path fill="#FFFFFF" stroke="#1D292C" stroke-width="3" d="M100,5 C120,5 148,12 162,28 C176,44 178,58 170,70 C162,82 140,88 118,88 C96,88 60,90 44,76 C28,62 22,46 30,30 C38,14 60,5 80,5 Z"/>
+                        </svg>
+                        <span class="relative z-10"><?php echo esc_html($nt['transport_tab_within']); ?></span>
+                    </button>
                 </div>
 
-                <!-- ── BUS TAB CONTENT ── -->
-                <div id="trans-content-bus">
-
-                    <!-- Intro text -->
-                    <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
-                        <?php echo $t['ha_giang']['transport_intro']; ?>
-                    </p>
-
-                    <!-- 3-column bus type cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-
-                        <?php
-                        // Seat icon SVGs
-                        // 2-seat row (VIP): 2 seats side by side with gap
-                        $seat_svg = '<svg viewBox="0 0 28 32" width="18" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="18" rx="5" fill="#3D4F52"/><rect x="2" y="24" width="14" height="4" rx="2" fill="#3D4F52"/></svg>';
-
-                        $bus_types = [
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_0_label'],
-'label_vi' => $t['ha_giang']['transport_bus_0_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_0_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_0_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/vip.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_0_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_0_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_0_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_0_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_0_price'],
-'price_vi' => $t['ha_giang']['transport_bus_0_price'],
-                                'seats'     => 2,
-                            ],
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_1_label'],
-'label_vi' => $t['ha_giang']['transport_bus_1_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_1_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_1_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/normal.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_1_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_1_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_1_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_1_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_1_price'],
-'price_vi' => $t['ha_giang']['transport_bus_1_price'],
-                                'seats'     => 3,
-                            ],
-                            [
-                                'label_en' => $t['ha_giang']['transport_bus_2_label'],
-'label_vi' => $t['ha_giang']['transport_bus_2_label'],
-                                'badge_en' => $t['ha_giang']['transport_bus_2_badge'],
-'badge_vi' => $t['ha_giang']['transport_bus_2_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/economy.webp',
-                                'desc_en' => $t['ha_giang']['transport_bus_2_desc'],
-'desc_vi' => $t['ha_giang']['transport_bus_2_desc'],
-                                'rows_en' => $t['ha_giang']['transport_bus_2_rows'],
-'rows_vi' => $t['ha_giang']['transport_bus_2_rows'],
-                                'price_en' => $t['ha_giang']['transport_bus_2_price'],
-'price_vi' => $t['ha_giang']['transport_bus_2_price'],
-                                'seats'     => 3,
-                            ],
-                        ];
-
-                        // Yellow blob SVG (for image badge)
-                        $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
-
-                        foreach ($bus_types as $bt):
-                        ?>
-                        <div>
-                            <!-- Image with blob badge -->
-                            <div style="position:relative; margin-bottom:8px;">
-                                <img
-                                    src="<?php echo esc_url($bt['img']); ?>"
-                                    alt="<?php echo esc_attr($bt['badge_en']); ?>"
-                                    class="w-full object-cover rounded-lg"
-                                    style="height:220px; object-fit:cover;"
-                                />
-                                <!-- Yellow blob badge top-right -->
-                                <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
-                                    <?php echo $blob_yellow; ?>
-                                    <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
-                                        <?php echo $current_lang === 'en' ? $bt['badge_en'] : $bt['badge_vi']; ?>
-                                    </span>
-                                </div>
-                                <p class="text-center text-xs mt-1" style="color:#74797A;">
-                                    <?php echo $t['ha_giang']['transport_image_note']; ?>
-                                </p>
+                <?php
+                $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
+                $transport_image = get_template_directory_uri() . '/assets/images/ninh-thuan/bai-da-trung.webp';
+                $go_transport_types = [
+                    [
+                        'label' => $nt['transport_flight_label'],
+                        'badge' => $nt['transport_flight_badge'],
+                        'img' => $transport_image,
+                        'desc' => $nt['transport_flight_desc'],
+                        'meta' => $nt['transport_flight_meta'],
+                        'price' => $nt['transport_flight_price'],
+                    ],
+                    [
+                        'label' => $nt['transport_taxi_label'],
+                        'badge' => $nt['transport_taxi_badge'],
+                        'img' => $transport_image,
+                        'desc' => $nt['transport_taxi_desc'],
+                        'meta' => $nt['transport_taxi_meta'],
+                        'price' => $nt['transport_taxi_price'],
+                    ],
+                ];
+                $local_transport_types = [
+                    [
+                        'label' => $nt['transport_bike_label'],
+                        'badge' => $nt['transport_bike_badge'],
+                        'img' => $transport_image,
+                        'desc' => $nt['transport_bike_desc'],
+                        'meta' => $nt['transport_bike_meta'],
+                        'price' => $nt['transport_bike_price'],
+                    ],
+                    [
+                        'label' => $nt['transport_tourist_taxi_label'],
+                        'badge' => $nt['transport_tourist_taxi_badge'],
+                        'img' => $transport_image,
+                        'desc' => $nt['transport_tourist_taxi_desc'],
+                        'meta' => $nt['transport_tourist_taxi_meta'],
+                        'price' => $nt['transport_tourist_taxi_price'],
+                    ],
+                ];
+                $render_transport_cards = function($transport_types) use ($blob_yellow, $theme_uri, $nt) {
+                    foreach ($transport_types as $transport_type) :
+                ?>
+                    <div>
+                        <div style="position:relative; margin-bottom:8px;">
+                            <img
+                                src="<?php echo esc_url($transport_type['img']); ?>"
+                                alt="<?php echo esc_attr($transport_type['badge']); ?>"
+                                class="w-full object-cover rounded-lg"
+                                style="height:220px; object-fit:cover;"
+                            />
+                            <div style="position:absolute; top:12px; right:12px; width:80px; height:80px;">
+                                <?php echo $blob_yellow; ?>
+                                <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:700; color:#1D292C; line-height:1.3; padding:8px;">
+                                    <?php echo esc_html($transport_type['badge']); ?>
+                                </span>
                             </div>
-
-                            <!-- Card label -->
-                            <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
-                                <?php echo $current_lang === 'en' ? $bt['label_en'] : $bt['label_vi']; ?>
-                            </h3>
-
-                            <!-- Description -->
-                            <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $current_lang === 'en' ? $bt['desc_en'] : $bt['desc_vi']; ?>
+                            <p class="text-center text-xs mt-1" style="color:#74797A;">
+                                <?php echo esc_html($nt['transport_image_note']); ?>
                             </p>
-
-                            <!-- Seat rows indicator -->
-                            <div class="flex items-center gap-2 mb-2">
-                                <!-- Seat icons: render $bt['seats'] pairs per floor, 2 floors -->
-                                <div style="display:flex; flex-direction:column; gap:2px;">
-                                    <?php for ($floor = 0; $floor < 2; $floor++): ?>
-                                    <div style="display:flex; gap:3px; <?php echo $floor === 0 ? 'border-bottom:1px solid #555;' : ''; ?>">
-                                        <?php for ($s = 0; $s < $bt['seats']; $s++): ?>
-                                        <svg viewBox="0 0 20 24" width="14" height="18" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="1" y="1" width="12" height="14" rx="4" fill="#3D4F52"/>
-                                            <rect x="1" y="18" width="12" height="3" rx="1.5" fill="#3D4F52"/>
-                                        </svg>
-                                        <?php endfor; ?>
-                                    </div>
-                                    <?php endfor; ?>
-                                </div>
-                                <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['rows_en'] : $bt['rows_vi']; ?>
-                                </span>
-                            </div>
-
-                            <!-- Price -->
-                            <div class="flex items-center gap-2">
-                                <!-- Dollar bubble icon -->
-                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#3D4F52" d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.2 5.1 3.1 6.8L4 22l4.4-1.4C9.5 21.5 10.7 22 12 22c5.52 0 10-4.03 10-9S17.52 2 12 2z"/>
-                                    <text x="12" y="15" text-anchor="middle" font-size="9" font-weight="bold" fill="#000" font-family="sans-serif">$</text>
-                                </svg>
-                                <span class="text-xs" style="color:#1D292C;">
-                                    <?php echo $current_lang === 'en' ? $bt['price_en'] : $bt['price_vi']; ?>
-                                </span>
-                            </div>
                         </div>
-                        <?php endforeach; ?>
+                        <h3 class="text-xl font-bold mb-2" style="color:#1D292C;">
+                            <?php echo esc_html($transport_type['label']); ?>
+                        </h3>
+                        <p class="mb-4" style="color:#1D292C; line-height:1.7; font-size:15px;">
+                            <?php echo wp_kses_post($transport_type['desc']); ?>
+                        </p>
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="<?php echo esc_url($theme_uri . '/assets/icons/clock time.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
+                            <span class="text-xs" style="color:#1D292C;">
+                                <?php echo esc_html($transport_type['meta']); ?>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="<?php echo esc_url($theme_uri . '/assets/icons/chat money.svg'); ?>" alt="" width="20" height="20" style="display:block;" />
+                            <span class="text-xs" style="color:#1D292C;">
+                                <?php echo esc_html($transport_type['price']); ?>
+                            </span>
+                        </div>
                     </div>
+                <?php
+                    endforeach;
+                };
+                ?>
 
-                    <!-- See article link -->
+                <div id="trans-content-bus">
+                    <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
+                        <?php echo esc_html($nt['transport_intro_go']); ?>
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <?php $render_transport_cards($go_transport_types); ?>
+                    </div>
                     <p class="text-center mb-10">
                         <a href="#" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
-                            <?php echo $t['ha_giang']['transport_guide_link']; ?>
+                            <?php echo esc_html($nt['transport_guide_link']); ?>
                         </a>
                     </p>
-
-                    <!-- How to book box -->
-                    <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
-                        <div class="flex-1">
-                            <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
-                                <?php echo $t['ha_giang']['transport_book_title']; ?>
-                            </h4>
-                            <p style="color:#1D292C; line-height:1.7; font-size:15px;">
-                                <?php echo $t['ha_giang']['transport_book_desc']; ?>
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-3 flex-shrink-0">
-                            <!-- Vexere.com blob button -->
-                            <a href="https://vexere.com" target="_blank" rel="noopener" style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:120px; height:48px; text-decoration:none;">
-                                <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M60,4 C76,4 96,8 106,18 C116,28 116,36 108,42 C100,48 80,48 60,48 C40,48 20,48 12,42 C4,36 4,28 14,18 C24,8 44,4 60,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">Vexere.com</span>
-                            </a>
-                            <!-- teehee blob button -->
-                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:100px; height:48px;">
-                                <svg viewBox="0 0 100 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M50,4 C64,4 82,8 90,18 C98,28 96,36 88,42 C80,48 64,48 50,48 C36,48 20,48 12,42 C4,36 4,28 10,18 C18,8 36,4 50,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:12px; font-weight:700; color:#1D292C;">teehee</span>
-                            </span>
-                            <!-- Not an ads blob -->
-                            <span style="position:relative; display:inline-flex; align-items:center; justify-content:center; width:110px; height:48px;">
-                                <svg viewBox="0 0 110 48" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-                                    <path fill="#E7F15A" d="M55,4 C70,4 90,8 100,18 C110,28 108,36 100,42 C92,48 72,48 55,48 C38,48 18,48 10,42 C2,36 2,28 10,18 C20,8 40,4 55,4 Z"/>
-                                </svg>
-                                <span style="position:relative; z-index:1; font-size:11px; font-weight:700; color:#1D292C;">Not an ads</span>
-                            </span>
-                        </div>
+                    <div class="rounded-2xl p-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
+                        <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
+                            <?php echo esc_html($nt['transport_book_title']); ?>
+                        </h4>
+                        <p style="color:#1D292C; line-height:1.7; font-size:15px;">
+                            <?php echo wp_kses_post($nt['transport_book_desc']); ?>
+                        </p>
                     </div>
+                </div>
 
-                </div><!-- /trans-content-bus -->
-
-                <!-- Bike & Bicycle tabs hidden (no content yet) -->
-                <div id="trans-content-bike" style="display:none;"></div>
-                <div id="trans-content-bicycle" style="display:none;"></div>
+                <div id="trans-content-bike" style="display:none;">
+                    <p class="text-center max-w-xl mx-auto mb-10" style="color:#1D292C; font-size:15px;">
+                        <?php echo esc_html($nt['transport_intro_within']); ?>
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <?php $render_transport_cards($local_transport_types); ?>
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -1005,7 +721,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <h3 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                <?php echo $t['ha_giang']['weather_title']; ?>
+                <?php echo $nt['weather_title']; ?>
             </h3>
 
             <!-- Live weather strip -->
@@ -1030,38 +746,31 @@ $activeId = $tableOfContents[0]['id'];
             $seasons = [
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_0_title'],
-'title_vi' => $t['ha_giang']['weather_season_0_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_0_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
+                    'title_en' => $nt['weather_season_0_title'],
+                    'title_vi' => $nt['weather_season_0_title'],
+                    'desc_en' => $nt['weather_season_0_desc'],
+                    'desc_vi' => $nt['weather_season_0_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
-                    'title_en' => $t['ha_giang']['weather_season_1_title'],
-'title_vi' => $t['ha_giang']['weather_season_1_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_1_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
+                    'title_en' => $nt['weather_season_1_title'],
+                    'title_vi' => $nt['weather_season_1_title'],
+                    'desc_en' => $nt['weather_season_1_desc'],
+                    'desc_vi' => $nt['weather_season_1_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
-                    'title_en' => $t['ha_giang']['weather_season_2_title'],
-'title_vi' => $t['ha_giang']['weather_season_2_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_2_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
+                    'title_en' => $nt['weather_season_2_title'],
+                    'title_vi' => $nt['weather_season_2_title'],
+                    'desc_en' => $nt['weather_season_2_desc'],
+                    'desc_vi' => $nt['weather_season_2_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
-                    'title_en' => $t['ha_giang']['weather_season_3_title'],
-'title_vi' => $t['ha_giang']['weather_season_3_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_3_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_4_title'],
-'title_vi' => $t['ha_giang']['weather_season_4_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_4_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_4_desc'],
+                    'title_en' => $nt['weather_season_3_title'],
+                    'title_vi' => $nt['weather_season_3_title'],
+                    'desc_en' => $nt['weather_season_3_desc'],
+                    'desc_vi' => $nt['weather_season_3_desc'],
                 ],
             ];
             ?>
@@ -1124,23 +833,23 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px;" class="mb-2">
-                <?php echo $t['ha_giang']['highlight_title']; ?>
+                <?php echo $nt['highlight_title']; ?>
             </p>
             <h3 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['highlight_subtitle']; ?>
+                <?php echo $nt['highlight_subtitle']; ?>
             </h3>
             <p style="font-size:15px; color:#474E50;" class="mb-8 max-w-xl">
-                <?php echo $t['ha_giang']['highlight_desc']; ?>
+                <?php echo $nt['highlight_desc']; ?>
             </p>
 
             <!-- Category filter tabs -->
             <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
-                    'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',
-                    'viewpoints' => $current_lang === 'en' ? 'View points'   : 'Điểm quan sát',
-                    'food'       => $current_lang === 'en' ? 'Food'           : 'Ẩm thực',
-                    'nature'     => $current_lang === 'en' ? 'Nature to go'  : 'Thiên nhiên',
+                    'all'        => $nt['highlight_tab_all'],
+                    'viewpoints' => $nt['highlight_tab_viewpoints'],
+                    'food'       => $nt['highlight_tab_food'],
+                    'nature'     => $nt['highlight_tab_nature'],
                 ];
                 foreach ($hl_tabs as $key => $label):
                     $is_active = ($key === 'all');
@@ -1198,7 +907,7 @@ $activeId = $tableOfContents[0]['id'];
     $highlight_modal_highlights = $highlights;
     $highlight_modal_prev_label = $t['ha_giang']['carousel_prev'];
     $highlight_modal_next_label = $t['ha_giang']['carousel_next'];
-    $highlight_modal_preview_label = $current_lang === 'en' ? 'Preview image' : 'Xem ảnh';
+    $highlight_modal_preview_label = $nt['highlight_preview_image_label'];
     include get_template_directory() . '/components/highlight-modal.php';
     ?>
 
@@ -1356,9 +1065,21 @@ $activeId = $tableOfContents[0]['id'];
 
 <script>
 function transTab(tab) {
-    ['bus','bike','bicycle'].forEach(function(t) {
+    ['bus','bike'].forEach(function(t) {
         var content = document.getElementById('trans-content-' + t);
         if (content) content.style.display = (t === tab) ? '' : 'none';
+        var button = document.getElementById('tab-' + t);
+        if (button) {
+            var active = t === tab;
+            button.setAttribute('aria-pressed', active ? 'true' : 'false');
+            button.classList.toggle('text-white', active);
+            button.style.color = active ? '#fff' : '#1D292C';
+            var path = button.querySelector('path');
+            if (path) {
+                path.setAttribute('fill', active ? '#7B63F7' : '#FFFFFF');
+                path.setAttribute('stroke', active ? 'none' : '#1D292C');
+            }
+        }
     });
 }
 

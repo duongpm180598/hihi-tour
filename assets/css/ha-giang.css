@@ -90,3 +90,11 @@
         gap: 16px 20px;
     }
 }
+
+.img-2025-12 {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: url('/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg') no-repeat center center/cover;
+}

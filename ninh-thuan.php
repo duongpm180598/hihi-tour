@@ -12,33 +12,9 @@ $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
 $nt = $t['ninh_thuan'] ?? $t['ha_giang'];
-
-// Danh sách các ảnh.
-$images = [
-    '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
-    '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-    '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-];
-
-// Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/ha-giang/gallery/';
-$gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
-sort($gallery_files);
-$all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/ha-giang/gallery/' . basename($file);
-}, $gallery_files);
+$global_images = hihi_image_group('global');
+$nt_images = hihi_image_group('ninh_thuan');
+$all_gallery_images = array_values(array_filter($nt_images['gallery'] ?? []));
 
 // itinerary
 $plan_options = [
@@ -72,15 +48,15 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
+    'whatsapp'  => $global_images['social']['whatsapp'] ?? '',
+    'instagram' => $global_images['social']['instagram'] ?? '',
+    'facebook'  => $global_images['social']['facebook'] ?? '',
 ];
 
 $qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
+    'whatsapp_qr' => $global_images['qr']['whatsapp'] ?? '',
+    'instagram_qr' => $global_images['qr']['instagram'] ?? '',
+    'facebook_qr'  => $global_images['qr']['facebook'] ?? '',
 ];
 
 // faqs
@@ -95,7 +71,7 @@ $faqs_data = [
 ];
 
 // S3 highlights — "What's here"
-$highlight_image = '/assets/images/ninh-thuan/bai-da-trung.webp';
+$highlight_image = $nt_images['highlight']['default'] ?? '';
 $highlights = [];
 for ($i = 0; $i < 8; $i++) {
     $highlights[] = [
@@ -203,7 +179,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/banner.png'); ?>"
+                src="<?php echo esc_url($nt_images['hero'] ?? ''); ?>"
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -645,7 +621,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
 
                 <?php
                 $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
-                $transport_image = get_template_directory_uri() . '/assets/images/ninh-thuan/bai-da-trung.webp';
+                $transport_image = $nt_images['transport']['default'] ?? '';
                 $go_transport_types = [
                     [
                         'label' => $nt['transport_flight_label'],
@@ -791,32 +767,25 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
+                    'img'     => $nt_images['weather'][0] ?? '',
                     'title_en' => $nt['weather_season_0_title'],
                     'title_vi' => $nt['weather_season_0_title'],
                     'desc_en' => $nt['weather_season_0_desc'],
                     'desc_vi' => $nt['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
+                    'img'     => $nt_images['weather'][1] ?? '',
                     'title_en' => $nt['weather_season_1_title'],
                     'title_vi' => $nt['weather_season_1_title'],
                     'desc_en' => $nt['weather_season_1_desc'],
                     'desc_vi' => $nt['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
+                    'img'     => $nt_images['weather'][2] ?? '',
                     'title_en' => $nt['weather_season_2_title'],
                     'title_vi' => $nt['weather_season_2_title'],
                     'desc_en' => $nt['weather_season_2_desc'],
                     'desc_vi' => $nt['weather_season_2_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
-                    'title_en' => $nt['weather_season_3_title'],
-                    'title_vi' => $nt['weather_season_3_title'],
-                    'desc_en' => $nt['weather_season_3_desc'],
-                    'desc_vi' => $nt['weather_season_3_desc'],
                 ],
             ];
             ?>
@@ -926,7 +895,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                 >
                     <div class="relative overflow-hidden" style="aspect-ratio:4/3;">
                         <img
-                            src="<?php echo esc_url($theme_uri . $h['img']); ?>"
+                            src="<?php echo esc_url($h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"
@@ -986,32 +955,32 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
+                    data-src="<?php echo esc_url($nt_images['culture'][0] ?? ''); ?>"
+                    src="<?php echo esc_url($nt_images['culture'][0] ?? ''); ?>"
                     alt="Cultural Aspect 1"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
+                    data-src="<?php echo esc_url($nt_images['culture'][1] ?? ''); ?>"
+                    src="<?php echo esc_url($nt_images['culture'][1] ?? ''); ?>"
                     alt="Cultural Aspect 2"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
+                    data-src="<?php echo esc_url($nt_images['culture'][2] ?? ''); ?>"
+                    src="<?php echo esc_url($nt_images['culture'][2] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
+                    data-src="<?php echo esc_url($nt_images['culture'][3] ?? ''); ?>"
+                    src="<?php echo esc_url($nt_images['culture'][3] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
+                    data-src="<?php echo esc_url($nt_images['culture'][4] ?? ''); ?>"
+                    src="<?php echo esc_url($nt_images['culture'][4] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>

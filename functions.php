@@ -1,5 +1,7 @@
 <?php
 
+require_once get_template_directory() . '/inc/image-assets.php';
+
 function hihi_scripts()
 {
     wp_enqueue_style('tailwindcss', get_template_directory_uri() . '/src/output.css');

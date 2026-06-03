@@ -272,6 +272,11 @@
         "itinerary_plan_0": "3 ngày, 2 đêm",
         "itinerary_price": "3.000.000 VND",
         "itinerary_price_note": "mỗi người",
+        "pricing_round_trip_bus_label": "Xe khứ hồi Hà Nội - Mù Cang Chải",
+        "pricing_homestay_label": "Homestay",
+        "pricing_meals_label": "Ăn uống",
+        "pricing_motorbike_label": "Thuê xe máy",
+        "pricing_entrance_label": "Vé vào cửa",
         "itinerary_include_title": "Chi phí bao gồm",
         "itinerary_include_1": "Vé xe khứ hồi Hà Nội - Mù Cang Chải",
         "itinerary_include_2": "Homestay xuyên suốt lịch trình",
@@ -394,14 +399,235 @@
         "itinerary_include_5": "Thuê người lái",
         "itinerary_include_6": "Tất cả vé vào cửa",
         "hero_vibe_title": "Cao Bằng trong một nhịp nhìn",
-        "hero_vibe_0_title": "Kiểu đi",
-        "hero_vibe_0_val": "Êm, đẹp, ít rối",
-        "hero_vibe_1_title": "Ngân sách",
-        "hero_vibe_1_val": "Dễ tính trước",
-        "hero_vibe_2_title": "Hợp với",
-        "hero_vibe_2_val": "Thác nước và đường vắng",
-        "hero_vibe_3_title": "Nhịp đi",
-        "hero_vibe_3_val": "2-3 ngày"
+        "hero_vibe_0_title": "An toàn",
+        "hero_vibe_0_val": "An toàn kể cả khi đi một mình",
+        "hero_vibe_1_title": "Chi phí",
+        "hero_vibe_1_val": "Trung bình khoảng 1.200.000đ / ngày",
+        "hero_vibe_2_title": "Dễ tiếp cận",
+        "hero_vibe_2_val": "Dễ dàng đi từ các thành phố lớn.",
+        "hero_vibe_3_title": "Thời gian ở",
+        "hero_vibe_3_val": "Ít nhất 3 ngày",
+        "itinerary_title": "Lịch trình Cao Bằng",
+        "itinerary_desc_solo": "Cao Bằng cũng là một nơi rộng lớn, mỗi ngày trên hành trình đều mở ra một cảnh sắc khác biệt.",
+        "itinerary_flex_title": "Lịch trình có thể linh hoạt",
+        "itinerary_flex_desc": "Nếu bạn đã từng tới Cao Bằng, chúng tôi có thể đổi cung và điều chỉnh theo yêu cầu riêng.",
+        "weather_title": "Nên đi mùa nào?",
+        "weather_season_0_title": "Mùa xuân (tháng 2 - tháng 5)",
+        "weather_season_0_desc": "Mùa xuân (tháng 2 - tháng 5): Cũng là mùa khá đẹp. Thời tiết đã bớt lạnh so với mùa đông và chưa nóng như mùa hè.",
+        "weather_season_1_title": "Mùa hè",
+        "weather_season_1_desc": "Mùa hè: Nóng. Mùa hè nên chú ý những ngày mưa rào, mưa giông lớn. Mình cảm giác nhìn chung thì Cao Bằng nóng hơn Hà Giang một chút, có lẽ vì thung lũng lớn hơn nên không có các khe tạo gió lớn.",
+        "weather_season_2_title": "Mùa thu (tháng 9 - tháng 11)",
+        "weather_season_2_desc": "Mùa thu (tháng 9 - tháng 11): Trời đẹp, dễ đi, mùa đông khách (hơn mùa khác).",
+        "weather_season_3_title": "Mùa đông",
+        "weather_season_3_desc": "Mùa đông: Cuối đông (đầu tháng 1) ở Cao Bằng là mùa lá đỏ trên khắp các khu Xuân Trường, Trùng Khánh. Mùa này xui hôm nào gặp không khí lạnh về là sương phủ đặc, trời rét căm căm, đi đường tầm nhìn xa... 20m. Nhưng hôm nào trời đẹp thì lại rất đẹp nha.",
+        "highlight_title": "Highlights",
+        "highlight_subtitle": "Những điểm ở Cao Bằng đáng dành thời gian",
+        "highlight_desc": "Cao Bằng cũng là một nơi rộng lớn, mỗi ngày trên hành trình đều mở ra một cảnh sắc khác biệt.",
+        "highlight_tab_all": "Tất cả",
+        "highlight_tab_viewpoints": "Điểm quan sát",
+        "highlight_tab_food": "Ẩm thực",
+        "highlight_tab_nature": "Thiên nhiên",
+        "highlight_preview_image_label": "Xem ảnh",
+        "highlight_item_0_tag": "Điểm ngắm",
+        "highlight_item_0_title": "Khau Cốc Chà",
+        "highlight_item_0_desc": "Khau Cốc Chà: Đi đèo này không đáng sợ lắm đâu, hơi mỏi tay tí xíu thôi. Đèo có 15 tầng tương đương với 14 khúc cua tay áo. Từ trên đỉnh đèo có thể nhìn thấy cả thung lũng Xuân Trường bên dưới. Ở đây có một vài hàng ăn, có các chú công an phát nước, đổ xăng miễn phí. Các anh siêu thân thiện và chủ động hỏi mình có cần thêm xăng, thêm nước không, chưa đi chỗ nào mà có các chú công an kiêm nhiệm vụ chăm sóc khách đi đường thế này. Đối diện chỗ các chú đứng là đường đi bộ lên ngắm cảnh. Từ đây leo lên khoảng 20 phút sẽ tới đỉnh ngọn núi bên cạnh, ngắm được trọn 15 tầng đèo. Đường leo chủ yếu là đường mòn, chỉ có nửa đường đầu có bậc thang nên sẽ hơi bẩn 1 chút, ai sợ bẩn quần áo thì cân nhắc.",
+        "highlight_item_1_tag": "Thác nước",
+        "highlight_item_1_title": "Thác Bản Giốc",
+        "highlight_item_1_desc": "Thác Bản Giốc: Được vinh danh là một trong các thác đẹp nhất châu Á, nằm ở ngay biên giới Việt - Trung và được cả 2 nước khai thác du lịch. Thật ra với người đến chơi thì chỉ nhìn được 2 tầng thác dưới cùng nên không thấy được hết sự hùng vĩ của nó. Ngày trước có thể leo lên các tầng thác cao hơn nhưng vì có một số trường hợp đáng tiếc xảy ra nên hoạt động này đã bị cấm. Đi vào có thể đứng trên bờ hoặc thuê thuyền ra gần thác để ngắm, vé thuê thuyền là mua riêng với vé vào cửa. Ăn cái lạp xưởng mini ở đây ngon.",
+        "highlight_item_2_tag": "Lịch sử",
+        "highlight_item_2_title": "Suối Lenin",
+        "highlight_item_2_desc": "Suối Lenin: Di tích lịch sử kết hợp với danh lam thắng cảnh. Suối Lenin quanh năm đều đẹp, nước suối trong vắt, nhìn từ xa có khi ra màu xanh ngọc, có khi lại nhuốm màu rêu đá. Vào đây không chỉ tham quan suối mà sẽ là đi bộ một vòng tròn từ cổng, lên hang Pác Bó, xuống bờ suối rồi ra ngoài.",
+        "highlight_item_3_tag": "Điểm ngắm",
+        "highlight_item_3_title": "Đồi cỏ Ba Quáng",
+        "highlight_item_3_desc": "Đồi cỏ Ba Quáng: Chân đồi cỏ sẽ là bãi đậu xe, sau đó sẽ cần leo lên mất khoảng 10 phút để lên tới đồi. Đồi rộng, thoáng, cỏ lại đổi màu theo mùa. Hè, thu cỏ xanh óng ánh, sang đông cỏ khô lại thành màu nâu cháy rất đẹp. Trên đây có một homestay kiêm một quán cà phê nhỏ (không biết giờ còn không nữa vì mình đi từ 2025 rồi).",
+        "highlight_item_4_tag": "Thung lũng",
+        "highlight_item_4_title": "Bảo Lâm",
+        "highlight_item_4_desc": "Bảo Lâm: Đây không hẳn là một thị trấn có du lịch. Mình thường nghỉ ở Bảo Lâm nếu đi từ Hà Giang sang. Đường sang Bảo Lâm nằm dọc con sông Gâm, xanh mướt mềm mượt. Ở đây đơn giản là một thị trấn bình thường nên không có hoạt động gì đặc biệt đâu.",
+        "itinerary_data": {
+            "3": [
+                [
+                    {
+                        "time": "21:00",
+                        "description": "Đón xe giường nằm đi Cao Bằng"
+                    },
+                    {
+                        "time": "04:00",
+                        "description": "Tới Thành phố Cao Bằng, nghỉ tại chỗ thuê xe máy"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Ăn sáng, lấy xe, buộc đồ và lên đường"
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Rẽ ngang rẽ dọc"
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "Leo đồi cỏ Ba Quáng (mất khoảng 10 - 15 phút)"
+                    },
+                    {
+                        "time": "12:00",
+                        "short": "Ăn trưa",
+                        "description": "Ăn trưa ở Hạ Lan"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Vào Thác Bản Giốc"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Về homestay ở gần thác"
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Ăn tối ở homestay hoặc thị trấn nhỏ ở gần đấy"
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Hít hà không khí núi rừng"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Sẵn sàng chưa... Đón lấy nắng sớm bên kia chân đồi...\nCả nhà dậy ăn sáng nha."
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Lượn qua cầu treo Pác Ngà"
+                    },
+                    {
+                        "time": "11:00",
+                        "description": "Xuống đến Núi Thủng"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Ăn trưa",
+                        "description": "Về Trà Lĩnh ăn trua"
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Đi suối Lenin"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Về homestay gần Pác Bó"
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Ăn tối ở homestay"
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Ngắm sao"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Ăn sáng"
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "Sang Xuân Trường, qua đèo Khau Cốc Chà - đèo 15 tầng"
+                    },
+                    {
+                        "time": "11:00",
+                        "description": "Leo đồi ngắm con đèo (khoảng 20 phút)"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Ăn trưa",
+                        "description": "We will pause our journey now for a brief rest and a satisfying lunch"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Về thành phố Cao Bằng"
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Lên xe về Hà Nội"
+                    },
+                    {
+                        "time": "22:00",
+                        "description": "Về đến Hà Nội"
+                    }
+                ]
+            ],
+            "2": [
+                [
+                    {
+                        "time": "21:00",
+                        "description": "Đón xe giường nằm đi Cao Bằng"
+                    },
+                    {
+                        "time": "04:00",
+                        "description": "Tới Thành phố Cao Bằng, nghỉ tại chỗ thuê xe máy"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Ăn sáng, lấy xe, buộc đồ và lên đường"
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "Đi suối Lenin"
+                    },
+                    {
+                        "time": "12:00",
+                        "short": "Ăn trưa",
+                        "description": "Ăn trưa ở Trà Lĩnh"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Sang Núi Thủng"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Cắm trại ở Núi Thủng.\nThời tiết không thuận lợi thì ở homestay gần đấy."
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Ăn tối"
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Ngắm sao"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Ăn sáng"
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Đi Thác Bản Giốc"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Ăn trưa",
+                        "description": "Ăn trưa ở Hạ Lan"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Lượn qua Trùng Khánh"
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Về Thành Phố Cao Bằng. Đón xe về Hà Nội"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Về dến Hà Nội"
+                    }
+                ]
+            ]
+        }
     },
     "hue": {
         "weather_loc_0": "TP Huế",
@@ -576,6 +802,14 @@
         "itinerary_note_ref": "Lịch trình chỉ để tham khảo",
         "itinerary_note_target": "Ninh Thuận nên đi linh hoạt theo nắng, gió và tình hình biển.",
         "itinerary_price_note": "Mỗi người",
+        "pricing_round_trip_flight_label": "Vé máy bay khứ hồi Hà Nội - Cam Ranh",
+        "pricing_round_trip_taxi_label": "Taxi khứ hồi Cam Ranh - Phan Rang",
+        "pricing_homestay_label": "Homestay",
+        "pricing_meals_label": "Ăn uống",
+        "pricing_motorbike_label": "Thuê xe máy",
+        "pricing_local_tourist_taxi_label": "Taxi du lịch địa phương",
+        "pricing_island_tour_label": "Tour đảo Vĩnh Hy",
+        "pricing_entrance_label": "Vé vào cửa",
         "itinerary_include_title": "Bao gồm",
         "itinerary_include_1": "Gợi ý route",
         "itinerary_include_2": "Gợi ý chỗ ở",
@@ -790,14 +1024,14 @@
         "gallery_title": "Ảnh Ninh Thuận",
         "gallery_desc": "Ảnh mình chụp ở Ninh Thuận. Đề nghị xem và khen.",
         "hero_vibe_title": "Ninh Thuận trong một nhịp nhìn",
-        "hero_vibe_0_title": "An toàn",
-        "hero_vibe_0_val": "Dễ đi, nhiều nắng và biển",
-        "hero_vibe_1_title": "Ngân sách",
-        "hero_vibe_1_val": "Tính theo vé bay và taxi",
+        "hero_vibe_0_title": "Biển",
+        "hero_vibe_0_val": "View biển rất đẹp",
+        "hero_vibe_1_title": "Chi phí",
+        "hero_vibe_1_val": "70% là phí di chuyển",
         "hero_vibe_2_title": "Vibe",
-        "hero_vibe_2_val": "Biển sa mạc, văn hoá Chăm",
-        "hero_vibe_3_title": "Nên ở",
-        "hero_vibe_3_val": "4 ngày 3 đêm"
+        "hero_vibe_2_val": "Không quá du lịch, trừ Vĩnh Hy",
+        "hero_vibe_3_title": "Dễ tiếp cận",
+        "hero_vibe_3_val": "Dễ đi hơn từ các tỉnh phía Nam"
     },
     "cat_ba": {
         "hero_vibe_title": "Cát Bà trong một nhịp nhìn",

@@ -9,6 +9,7 @@ Template Post Type: page
 <?php
 $current_lang = pll_current_language('slug');
 $t = load_lang();
+$cb = $t['cao_bang'];
 
 $theme_uri = get_template_directory_uri();
 
@@ -111,12 +112,12 @@ $highlights = [
             '/assets/images/cao-bang/banner_1.png',
         ],
         'category' => 'viewpoints',
-        'tag_en' => 'Viewpoint',
-        'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'Khau Cốc Chà',
-        'title_vi' => 'Khau Cốc Chà',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $cb['highlight_item_0_tag'],
+        'tag_vi' => $cb['highlight_item_0_tag'],
+        'title_en' => $cb['highlight_item_0_title'],
+        'title_vi' => $cb['highlight_item_0_title'],
+        'desc_en' => $cb['highlight_item_0_desc'],
+        'desc_vi' => $cb['highlight_item_0_desc'],
         'span'     => 'tall',
     ],
     [
@@ -126,12 +127,12 @@ $highlights = [
             '/assets/images/cao-bang/banner_2.png',
         ],
         'category' => 'nature',
-        'tag_en' => 'Waterfall',
-        'tag_vi' => 'Thác nước',
-        'title_en' => 'Bản Giốc waterfall',
-        'title_vi' => 'Thác Bản Giốc',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $cb['highlight_item_1_tag'],
+        'tag_vi' => $cb['highlight_item_1_tag'],
+        'title_en' => $cb['highlight_item_1_title'],
+        'title_vi' => $cb['highlight_item_1_title'],
+        'desc_en' => $cb['highlight_item_1_desc'],
+        'desc_vi' => $cb['highlight_item_1_desc'],
         'span'     => 'normal',
     ],
     [
@@ -141,12 +142,12 @@ $highlights = [
             '/assets/images/cao-bang/banner_3.png',
         ],
         'category' => 'nature',
-        'tag_en' => 'History',
-        'tag_vi' => 'Lịch sử',
-        'title_en' => 'Lenin stream',
-        'title_vi' => 'Suối Lenin',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $cb['highlight_item_2_tag'],
+        'tag_vi' => $cb['highlight_item_2_tag'],
+        'title_en' => $cb['highlight_item_2_title'],
+        'title_vi' => $cb['highlight_item_2_title'],
+        'desc_en' => $cb['highlight_item_2_desc'],
+        'desc_vi' => $cb['highlight_item_2_desc'],
         'span'     => 'normal',
     ],
     [
@@ -156,12 +157,12 @@ $highlights = [
             '/assets/images/cao-bang/banner_4.png',
         ],
         'category' => 'viewpoints',
-        'tag_en' => 'Viewpoint',
-        'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'Ba Quáng hill',
-        'title_vi' => 'Đồi Ba Quáng',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $cb['highlight_item_3_tag'],
+        'tag_vi' => $cb['highlight_item_3_tag'],
+        'title_en' => $cb['highlight_item_3_title'],
+        'title_vi' => $cb['highlight_item_3_title'],
+        'desc_en' => $cb['highlight_item_3_desc'],
+        'desc_vi' => $cb['highlight_item_3_desc'],
         'span'     => 'normal',
     ],
     [
@@ -171,12 +172,12 @@ $highlights = [
             '/assets/images/cao-bang/banner_5.png',
         ],
         'category' => 'nature',
-        'tag_en' => 'Valley',
-        'tag_vi' => 'Thung lũng',
-        'title_en' => 'Bảo Lâm',
-        'title_vi' => 'Bảo Lâm',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $cb['highlight_item_4_tag'],
+        'tag_vi' => $cb['highlight_item_4_tag'],
+        'title_en' => $cb['highlight_item_4_title'],
+        'title_vi' => $cb['highlight_item_4_title'],
+        'desc_en' => $cb['highlight_item_4_desc'],
+        'desc_vi' => $cb['highlight_item_4_desc'],
         'span'     => 'tall',
     ],
 ];
@@ -207,10 +208,6 @@ $tableOfContents = [
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
     ],
     [
-        'id' => 'activities',
-        'title' => $t['global']['toc_activities'] ?? 'Các hoạt động',
-    ],
-    [
         'id' => 'how-to-book',
         'title' => $t['global']['toc_how_to_book'] ?? 'Cách đặt tour',
     ],
@@ -221,6 +218,11 @@ $tableOfContents = [
 ];
 $activeId = $tableOfContents[0]['id'];
 ?>
+
+<script>
+window.hihiCaoBangItineraryData = <?php echo wp_json_encode($cb['itinerary_data'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG); ?>;
+window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang === 'en' ? 'Day' : 'Ngày'], JSON_UNESCAPED_UNICODE); ?>;
+</script>
 
 <!-- banner  -->
 <div class="fixed top-50 -right-12 z-50">
@@ -310,14 +312,6 @@ $activeId = $tableOfContents[0]['id'];
                     class="w-full h-full object-cover cursor-pointer rounded-xl" />
             </div>
         </div>
-        <div class="max-w-4xl mt-8 mx-auto space-y-4" style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; color:#1D292C;">
-            <p>
-                <?php echo $current_lang === 'en' ? "Cao Bang sits in Vietnam's northeast, where limestone peaks, rivers, and open valleys make the road feel properly cinematic." : "Cao Bằng nằm ở vùng núi Đông Bắc Việt Nam, nơi núi đá vôi, sông suối và thung lũng mở ra một cung đường rất đáng đi." ?>
-            </p>
-            <p>
-                <?php echo $current_lang === 'en' ? "We've been riding Cao Bang since 2018, mixing the big-name stops with quieter roads that still feel untouched." : "Hi Hi Tour chạy Cao Bằng từ năm 2018, kết hợp các điểm nổi tiếng với những cung đường yên hơn và còn nguyên bản." ?>
-            </p>
-        </div>
     </section>
 
     <!-- ── VIBE ── -->
@@ -343,11 +337,11 @@ $activeId = $tableOfContents[0]['id'];
     <section class="pt-16 pb-16" id="itinerary" data-aos="fade-up" data-aos-duration="1000" style="background:#F2F2F0;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="mb-3" style="font-family:'Phudu',sans-serif; font-size:24px; line-height:36px; font-weight:600; color:#1D292C;">
-                <?php echo $current_lang === 'en' ? "cao bang itinerary" : "lịch trình cao bằng" ?>
+                <?php echo esc_html($cb['itinerary_title']); ?>
             </h2>
 
             <p class="mb-6" style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:400; color:rgba(29,41,44,.7);">
-                <?php echo $current_lang === 'en' ? "Pick your pace. We'll handle the route, rooms, food, and the bits that usually get messy." : "Chọn nhịp đi của bạn. Chúng tôi lo cung đường, chỗ ngủ, bữa ăn và mấy phần dễ rối." ?>
+                <?php echo esc_html($cb['itinerary_desc_solo']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -396,7 +390,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <div id="timeline-content" class="relative py-8 pl-6 border border-[#1D292C99] border-t-0 rounded-bl-xl rounded-br-xl min-h-2/3" style="background:#F9FBDF;">
                         <div class="relative">
-                            <div class="absolute top-0 left-24 w-0.5 bg-[#7B63F7] h-full z-0"></div>
+                            <div class="absolute top-0 left-24 w-0.5 h-full z-0" style="background:#1D292C99;"></div>
                             <ol id="timeline-list" class="relative ml-0 pr-3 list-none">
                             </ol>
                         </div>
@@ -407,10 +401,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['itinerary']); ?>" alt="itinerary" />
                         <div class="flex flex-col">
                             <span style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:600;">
-                                <?php echo $current_lang === 'en' ? 'the route can flex' : 'lịch trình có thể linh hoạt' ?>
+                                <?php echo esc_html($cb['itinerary_flex_title']); ?>
                             </span>
                             <span style="font-family:'Inter',sans-serif; font-size:12px; line-height:20px; color:rgba(29,41,44,.7);">
-                                <?php echo $current_lang === 'en' ? 'Been here before? We can switch up the route and build around special requests.' : 'Nếu bạn đã từng tới Cao Bằng, chúng tôi có thể đổi cung và điều chỉnh theo yêu cầu riêng.' ?>
+                                <?php echo esc_html($cb['itinerary_flex_desc']); ?>
                             </span>
                         </div>
                     </div>
@@ -527,22 +521,6 @@ $activeId = $tableOfContents[0]['id'];
                             </span>
                             <span style="font-size:12px; line-height:20px; color:rgba(29,41,44,.7);">
                                 <?php echo $current_lang === 'en' ? 'Private by default. Shared only if you ask.' : 'Mặc định là tour riêng. Chỉ ghép khi bạn yêu cầu.' ?>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex gap-3 mb-3" style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; color:#1D292C;">
-                        <img src="<?php echo esc_url($icons['schedule']); ?>" alt="schedule" />
-                        <div class="flex flex-col">
-                            <span style="font-weight:600;">
-                                <?php echo $current_lang === 'en' ? 'start time: check availability' : 'ngày bắt đầu: mọi ngày trong tuần' ?>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex gap-3 mb-3" style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; color:#1D292C;">
-                        <img src="<?php echo esc_url($icons['globe']); ?>" alt="globe" />
-                        <div class="flex flex-col">
-                            <span style="font-weight:600;">
-                                <?php echo $current_lang === 'en' ? 'language: Vietnamese, basic English' : 'ngôn ngữ: tiếng Việt, tiếng Anh cơ bản' ?>
                             </span>
                         </div>
                     </div>
@@ -773,7 +751,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <h3 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                <?php echo $t['ha_giang']['weather_title']; ?>
+                <?php echo esc_html($cb['weather_title']); ?>
             </h3>
 
             <!-- Live weather strip -->
@@ -798,70 +776,39 @@ $activeId = $tableOfContents[0]['id'];
             $seasons = [
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_0_title'],
-'title_vi' => $t['ha_giang']['weather_season_0_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_0_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
+                    'title_en' => $cb['weather_season_0_title'],
+'title_vi' => $cb['weather_season_0_title'],
+                    'desc_en' => $cb['weather_season_0_desc'],
+'desc_vi' => $cb['weather_season_0_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
-                    'title_en' => $t['ha_giang']['weather_season_1_title'],
-'title_vi' => $t['ha_giang']['weather_season_1_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_1_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
+                    'title_en' => $cb['weather_season_1_title'],
+'title_vi' => $cb['weather_season_1_title'],
+                    'desc_en' => $cb['weather_season_1_desc'],
+'desc_vi' => $cb['weather_season_1_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
-                    'title_en' => $t['ha_giang']['weather_season_2_title'],
-'title_vi' => $t['ha_giang']['weather_season_2_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_2_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
+                    'title_en' => $cb['weather_season_2_title'],
+'title_vi' => $cb['weather_season_2_title'],
+                    'desc_en' => $cb['weather_season_2_desc'],
+'desc_vi' => $cb['weather_season_2_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
-                    'title_en' => $t['ha_giang']['weather_season_3_title'],
-'title_vi' => $t['ha_giang']['weather_season_3_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_3_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
-                    'title_en' => $t['ha_giang']['weather_season_4_title'],
-'title_vi' => $t['ha_giang']['weather_season_4_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_4_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_4_desc'],
+                    'title_en' => $cb['weather_season_3_title'],
+'title_vi' => $cb['weather_season_3_title'],
+                    'desc_en' => $cb['weather_season_3_desc'],
+'desc_vi' => $cb['weather_season_3_desc'],
                 ],
             ];
             ?>
 
             <div class="relative">
-                <!-- Left scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
-                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll left"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Right scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
-                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll right"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Scrollable row -->
-                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
-                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
+                <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:12px;">
                     <?php foreach ($seasons as $s): ?>
-                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -892,23 +839,23 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px;" class="mb-2">
-                <?php echo $t['ha_giang']['highlight_title']; ?>
+                <?php echo esc_html($cb['highlight_title']); ?>
             </p>
             <h3 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['highlight_subtitle']; ?>
+                <?php echo esc_html($cb['highlight_subtitle']); ?>
             </h3>
             <p style="font-size:15px; color:#474E50;" class="mb-8 max-w-xl">
-                <?php echo $t['ha_giang']['highlight_desc']; ?>
+                <?php echo esc_html($cb['highlight_desc']); ?>
             </p>
 
             <!-- Category filter tabs -->
             <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
-                    'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',
-                    'viewpoints' => $current_lang === 'en' ? 'View points'   : 'Điểm quan sát',
-                    'food'       => $current_lang === 'en' ? 'Food'           : 'Ẩm thực',
-                    'nature'     => $current_lang === 'en' ? 'Nature to go'  : 'Thiên nhiên',
+                    'all'        => $cb['highlight_tab_all'],
+                    'viewpoints' => $cb['highlight_tab_viewpoints'],
+                    'food'       => $cb['highlight_tab_food'],
+                    'nature'     => $cb['highlight_tab_nature'],
                 ];
                 foreach ($hl_tabs as $key => $label):
                     $is_active = ($key === 'all');
@@ -966,72 +913,9 @@ $activeId = $tableOfContents[0]['id'];
     $highlight_modal_highlights = $highlights;
     $highlight_modal_prev_label = $t["ha_giang"]["carousel_prev"];
     $highlight_modal_next_label = $t["ha_giang"]["carousel_next"];
-    $highlight_modal_preview_label = $current_lang === "en" ? "Preview image" : "Xem ảnh";
+    $highlight_modal_preview_label = $cb["highlight_preview_image_label"];
     include get_template_directory() . "/components/highlight-modal.php";
     ?>
-
-    <!-- Culture -->
-    <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
-            <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['culture_title'] ?>
-            </h3>
-
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_desc'] ?>
-            </p>
-
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_happywater_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_happywater_desc'] ?>
-            </p>
-
-            <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_market_title'] ?>
-            </h3>
-            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_market_desc'] ?>
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-
-                <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-1.png'); ?>"
-                    alt="Cultural Aspect 1"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
-
-                <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-2.png'); ?>"
-                    alt="Cultural Aspect 2"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-3.png'); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
-                <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-4.png'); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
-                <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/ha-giang/immerse-5.png'); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
-            </div>
-
-        </div>
-    </section>
-
 
     <!-- How to book us -->
     <!-- May be you will interest in -->
@@ -1088,27 +972,6 @@ function transTab(tab) {
         if (content) content.style.display = (t === tab) ? '' : 'none';
     });
 }
-
-// Mouse drag to scroll season cards
-(function() {
-    var el = document.getElementById('season-scroll');
-    if (!el) return;
-    var isDown = false, startX, scrollLeft;
-    el.addEventListener('mousedown', function(e) {
-        isDown = true;
-        el.classList.add('dragging');
-        startX = e.pageX - el.offsetLeft;
-        scrollLeft = el.scrollLeft;
-    });
-    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mousemove',  function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - el.offsetLeft;
-        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    });
-})();
 
 // Solo going / Book a tour tab switcher
 (function() {

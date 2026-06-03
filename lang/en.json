@@ -272,6 +272,11 @@
         "itinerary_plan_0": "3 days, 2 nights",
         "itinerary_price": "$114 USD",
         "itinerary_price_note": "Per person",
+        "pricing_round_trip_bus_label": "Round-trip bus Ha Noi - Mu Cang Chai",
+        "pricing_homestay_label": "Homestay",
+        "pricing_meals_label": "Meals",
+        "pricing_motorbike_label": "Motorbike rental",
+        "pricing_entrance_label": "Entrance fee",
         "itinerary_include_title": "What's included",
         "itinerary_include_1": "Round-trip sleeper bus: Ha Noi - Mu Cang Chai",
         "itinerary_include_2": "Homestay for the whole trip",
@@ -394,14 +399,235 @@
         "itinerary_include_5": "Easy riders",
         "itinerary_include_6": "All entrance fees included",
         "hero_vibe_title": "Cao Bang at a glance",
-        "hero_vibe_0_title": "Trip style",
-        "hero_vibe_0_val": "Calm, scenic, low chaos",
+        "hero_vibe_0_title": "Safety",
+        "hero_vibe_0_val": "Solo traveler safe, even for female. I do it all the time.",
         "hero_vibe_1_title": "Budget",
-        "hero_vibe_1_val": "Easy to plan",
-        "hero_vibe_2_title": "Best for",
-        "hero_vibe_2_val": "Waterfalls and backroads",
-        "hero_vibe_3_title": "Pace",
-        "hero_vibe_3_val": "2-3 days"
+        "hero_vibe_1_val": "Typical cost $50 a day",
+        "hero_vibe_2_title": "Accessible",
+        "hero_vibe_2_val": "Easy access from big cities.",
+        "hero_vibe_3_title": "Typical stay",
+        "hero_vibe_3_val": "Should be at least 3 days",
+        "itinerary_title": "Cao Bang itinerary",
+        "itinerary_desc_solo": "Cao Bang is also a vast place; every day on the journey opens up a different scenery.",
+        "itinerary_flex_title": "The route can flex",
+        "itinerary_flex_desc": "Been here before? We can switch up the route and build around special requests.",
+        "weather_title": "When should you go?",
+        "weather_season_0_title": "Spring (Feb - May)",
+        "weather_season_0_desc": "Also a quite beautiful season. The weather is less cold compared to winter and not yet as hot as summer.",
+        "weather_season_1_title": "Summer",
+        "weather_season_1_desc": "Hot. In summer, you should pay attention to days with heavy showers and thunderstorms. I feel that overall, Cao Bang is slightly hotter than Ha Giang, perhaps because the valleys are larger so there are no big crevices to create strong winds.",
+        "weather_season_2_title": "Autumn (Sep - Nov)",
+        "weather_season_2_desc": "Beautiful weather, easy to travel, the crowded season (more than other seasons).",
+        "weather_season_3_title": "Winter",
+        "weather_season_3_desc": "Late winter (early January) in Cao Bang is the season of red leaves all over Xuan Truong and Trung Khanh areas. In this season, if you are unlucky and encounter a cold wave, thick fog will cover everything, it will be bitterly cold, and visibility on the road will be... 20 meters. But on beautiful days, it is extremely beautiful.",
+        "highlight_title": "Highlights",
+        "highlight_subtitle": "Cao Bang things worth saving time for",
+        "highlight_desc": "Cao Bang is also a vast place; every day on the journey opens up a different scenery.",
+        "highlight_tab_all": "All",
+        "highlight_tab_viewpoints": "View points",
+        "highlight_tab_food": "Food",
+        "highlight_tab_nature": "Nature to go",
+        "highlight_preview_image_label": "Preview image",
+        "highlight_item_0_tag": "Viewpoint",
+        "highlight_item_0_title": "Khau Cốc Chà",
+        "highlight_item_0_desc": "Riding this pass is not too scary, just a little bit tiring for the hands. The pass has 15 tiers equivalent to 14 hairpin turns. From the top of the pass, you can see the entire Xuan Truong valley below. There are a few food stalls here, and police officers distribute free water and gasoline. They are super friendly and proactively ask if you need more gas or water; I've never been anywhere with police officers taking on the duty of taking care of travelers on the road like this. Opposite where they stand is the walking path up to the viewpoint. Climbing up from here for about 20 minutes will take you to the top of the adjacent mountain, where you can fully admire the 15-tier pass. The climbing path is mainly a dirt trail, only the first half has steps so it will be a bit dirty, those who are afraid of getting their clothes dirty should consider carefully.",
+        "highlight_item_1_tag": "Waterfall",
+        "highlight_item_1_title": "Ban Gioc waterfall",
+        "highlight_item_1_desc": "Honored as one of the most beautiful waterfalls in Asia, it is located right on the Vietnam - China border and is jointly exploited for tourism by both countries. Actually, for visitors, you can only see the bottom 2 tiers of the waterfall, so you cannot see its full majesty. Previously, people could climb up to the higher tiers, but because some unfortunate incidents occurred, this activity was banned. Going in, you can stand on the bank or rent a boat to get closer to the waterfall for sightseeing; the boat rental ticket is purchased separately from the entrance ticket. The mini sausage here is delicious.",
+        "highlight_item_2_tag": "History",
+        "highlight_item_2_title": "Lenin stream",
+        "highlight_item_2_desc": "A historical relic combined with a scenic spot. Lenin Stream is beautiful all year round, the stream water is crystal clear; viewed from afar, sometimes it looks jade green, sometimes it is tinged with the color of mossy rocks. Coming here is not just about visiting the stream but walking a full circle from the gate, up to Pac Bo cave, down to the stream bank, and then out.",
+        "highlight_item_3_tag": "Viewpoint",
+        "highlight_item_3_title": "Ba Quáng hill",
+        "highlight_item_3_desc": "The foot of the grass hill is a parking lot, then you will need to climb up for about 10 minutes to reach the hill. The hill is wide, airy, and the grass changes color according to the seasons. In summer and autumn, the grass is glossy green, turning into winter, the dried grass becomes a very beautiful burnt brown color. Up here, there is a homestay doubling as a small coffee shop (I don't know if it's still there since I went in 2025).",
+        "highlight_item_4_tag": "Valley",
+        "highlight_item_4_title": "Bảo Lâm",
+        "highlight_item_4_desc": "This is not exactly a tourist town. I usually rest in Bao Lam if I travel over from Ha Giang. The road to Bao Lam runs along the Gam River, silky green. It is simply a normal town here, so there are no special activities.",
+        "itinerary_data": {
+            "3": [
+                [
+                    {
+                        "time": "21:00",
+                        "description": "Take a sleeper bus to Cao Bang."
+                    },
+                    {
+                        "time": "04:00",
+                        "description": "Upon arriving in Cao Bang City, take a break and rent a motorbike."
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Have breakfast, grab the car, pack your bags, and hit the road."
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Turn left, turn right"
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "Climb the Ba Quang grass hill (takes about 10-15 minutes)"
+                    },
+                    {
+                        "time": "12:00",
+                        "short": "Lunch time",
+                        "description": "Lunch in Hạ Lan"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Visiting Ban Gioc Waterfall"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Regarding homestays near the waterfall"
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Have dinner at a homestay or in a nearby small town."
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Breathe in the fresh mountain air."
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Ready?... Let's bask in the early morning sun over the hillside...\nLet's all wake up and have breakfast."
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Crossing the Pac Nga suspension bridge."
+                    },
+                    {
+                        "time": "11:00",
+                        "description": "Descending to Thung Mountain"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Lunch time",
+                        "description": "Go to Tra Linh for lunch."
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Go to Lenin Stream"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "About homestays near Pac Bo"
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Having dinner at the homestay."
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Stargazing"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Have breakfast"
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "To get to Xuan Truong, cross the Khau Coc Cha pass - the 15-tiered pass."
+                    },
+                    {
+                        "time": "11:00",
+                        "description": "Hike up the hill to admire the mountain pass (approximately 20 minutes)"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Lunch time",
+                        "description": "We will pause our journey now for a brief rest and a satisfying lunch"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "About Cao Bang city"
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Get on the bus back to Hanoi."
+                    },
+                    {
+                        "time": "22:00",
+                        "description": "Arrived in Hanoi"
+                    }
+                ]
+            ],
+            "2": [
+                [
+                    {
+                        "time": "21:00",
+                        "description": "Take a sleeper bus to Cao Bang."
+                    },
+                    {
+                        "time": "04:00",
+                        "description": "Upon arriving in Cao Bang City, take a break and rent a motorbike."
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Have breakfast, grab the car, pack your bags, and hit the road."
+                    },
+                    {
+                        "time": "10:00",
+                        "description": "Go to Lenin Stream"
+                    },
+                    {
+                        "time": "12:00",
+                        "short": "Lunch time",
+                        "description": "Lunch in Tra Linh"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Crossing the Hole in the Mountain"
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Camping at Thung Mountain.\nIf the weather is unfavorable, stay at a nearby homestay."
+                    },
+                    {
+                        "time": "19:00",
+                        "description": "Have dinner"
+                    },
+                    {
+                        "time": "Night time",
+                        "description": "Stargazing"
+                    }
+                ],
+                [
+                    {
+                        "time": "08:00",
+                        "description": "Have breakfast"
+                    },
+                    {
+                        "time": "09:00",
+                        "description": "Visit Ban Gioc Waterfall"
+                    },
+                    {
+                        "time": "13:00",
+                        "short": "Lunch time",
+                        "description": "Lunch in Hạ Lan"
+                    },
+                    {
+                        "time": "14:00",
+                        "description": "Take a stroll through Trung Khanh"
+                    },
+                    {
+                        "time": "16:00",
+                        "description": "Go to Cao Bang City. Take a bus back to Hanoi."
+                    },
+                    {
+                        "time": "17:00",
+                        "description": "Arrived back in Hanoi"
+                    }
+                ]
+            ]
+        }
     },
     "hue": {
         "weather_loc_0": "Hue city",
@@ -571,6 +797,14 @@
         "itinerary_note_ref": "The itinerary is for reference only",
         "itinerary_note_target": "Ninh Thuan is best with flexible coastal timing. Keep sun, wind, and sea conditions in mind.",
         "itinerary_price_note": "Per person",
+        "pricing_round_trip_flight_label": "Round-trip flight Ha Noi - Cam Ranh",
+        "pricing_round_trip_taxi_label": "Round-trip taxi Cam Ranh - Phan Rang",
+        "pricing_homestay_label": "Homestay",
+        "pricing_meals_label": "Meals",
+        "pricing_motorbike_label": "Motorbike rental",
+        "pricing_local_tourist_taxi_label": "Local tourist taxi",
+        "pricing_island_tour_label": "Island tour on Vinh Hy",
+        "pricing_entrance_label": "Entrance fee",
         "itinerary_include_title": "What is included",
         "itinerary_include_1": "Route planning",
         "itinerary_include_2": "Accommodation suggestions",
@@ -785,14 +1019,14 @@
         "gallery_title": "Ninh Thuan Gallery",
         "gallery_desc": "Photos from Ninh Thuan. View and praise.",
         "hero_vibe_title": "Ninh Thuan at a glance",
-        "hero_vibe_0_title": "Safety",
-        "hero_vibe_0_val": "Easy, sunny coastal travel",
+        "hero_vibe_0_title": "Beach",
+        "hero_vibe_0_val": "Best sea view",
         "hero_vibe_1_title": "Budget",
-        "hero_vibe_1_val": "Plan around flights and taxis",
+        "hero_vibe_1_val": "70% is transportation fee",
         "hero_vibe_2_title": "Vibe",
-        "hero_vibe_2_val": "Desert coast, Cham culture",
-        "hero_vibe_3_title": "Recommend stay",
-        "hero_vibe_3_val": "4D3N"
+        "hero_vibe_2_val": "Not much tourist, except for Vinh Hy",
+        "hero_vibe_3_title": "Accessible",
+        "hero_vibe_3_val": "Easier from Southern provinces"
     },
     "cat_ba": {
         "hero_vibe_title": "Cat Ba at a glance",

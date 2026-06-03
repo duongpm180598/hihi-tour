@@ -211,10 +211,10 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             <?php
             $vibe_title = $nt['hero_vibe_title'];
             $vibe_items = [
-                ['icon' => 'human', 'title' => $nt['hero_vibe_0_title'], 'val' => $nt['hero_vibe_0_val']],
+                ['icon' => 'Beach Sea', 'title' => $nt['hero_vibe_0_title'], 'val' => $nt['hero_vibe_0_val']],
                 ['icon' => 'money', 'title' => $nt['hero_vibe_1_title'], 'val' => $nt['hero_vibe_1_val']],
-                ['icon' => 'globe', 'title' => $nt['hero_vibe_2_title'], 'val' => $nt['hero_vibe_2_val']],
-                ['icon' => 'clock', 'title' => $nt['hero_vibe_3_title'], 'val' => $nt['hero_vibe_3_val']],
+                ['icon' => 'human', 'title' => $nt['hero_vibe_2_title'], 'val' => $nt['hero_vibe_2_val']],
+                ['icon' => 'globe', 'title' => $nt['hero_vibe_3_title'], 'val' => $nt['hero_vibe_3_val']],
             ];
             include get_template_directory() . '/components/vibe-card.php';
             ?>
@@ -366,7 +366,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
 
                     <div id="timeline-content" class="relative py-8 pl-6 border border-[#A1A4A3] border-t-0 rounded-bl-lg rounded-br-lg min-h-2/3">
                         <div class="relative">
-                            <div class="absolute top-0 left-24 w-0.5 bg-[#F2F2F0] h-full z-0"></div>
+                            <div class="absolute top-0 left-24 w-0.5 h-full z-0" style="background:#1D292C99;"></div>
                             <ol id="timeline-list" class="relative ml-0 pr-3 list-none">
                             </ol>
                         </div>
@@ -386,43 +386,89 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                     </div>
                 </div>
 
-                <div class="md:col-span-1">
-                    <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
-                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $nt['itinerary_price_note'] ?></p>
+                <div class="md:col-span-1" style="align-self:start;">
+                    <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
+                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                            <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
+                            <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($nt['itinerary_price_note']); ?></p>
+                        </div>
                         <?php
-                        $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                        $pricing_items = [
+                            [
+                                'label' => $nt['pricing_round_trip_flight_label'],
+                                'unit' => 'all',
+                                'usd' => 150,
+                                'vnd' => 4000000,
+                            ],
+                            [
+                                'label' => $nt['pricing_round_trip_taxi_label'],
+                                'unit' => 'all',
+                                'usd' => 70,
+                                'vnd' => 1800000,
+                            ],
+                            [
+                                'label' => $nt['pricing_homestay_label'],
+                                'unit' => 'day',
+                                'usd' => 6,
+                                'vnd' => 200000,
+                            ],
+                            [
+                                'label' => $nt['pricing_meals_label'],
+                                'unit' => 'meal',
+                                'usd' => 4,
+                                'vnd' => 100000,
+                            ],
+                            [
+                                'label' => $nt['pricing_motorbike_label'],
+                                'type' => 'motorbike',
+                                'unit' => 'day',
+                                'usd' => 6,
+                                'vnd' => 150000,
+                            ],
+                            [
+                                'label' => $nt['pricing_local_tourist_taxi_label'],
+                                'type' => 'local-tourist-taxi',
+                                'unit' => 'day',
+                                'usd' => 40,
+                                'vnd' => 1000000,
+                            ],
+                            [
+                                'label' => $nt['pricing_island_tour_label'],
+                                'unit' => 'all',
+                                'usd' => 15,
+                                'vnd' => 400000,
+                            ],
+                            [
+                                'label' => $nt['pricing_entrance_label'],
+                                'unit' => 'all',
+                                'usd' => 10,
+                                'vnd' => 200000,
+                            ],
+                        ];
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $nt['itinerary_include_title'] ?>
+                            <?php echo esc_html($nt['itinerary_include_title']); ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_1'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_3'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_4'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_5'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $nt['itinerary_include_6'] ?>
-                            </li>
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
+                            <?php foreach ($pricing_items as $item): ?>
+                                <li class="pricing-item-row">
+                                    <label class="flex items-start gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
+                                            style="accent-color:#7B63F7;"
+                                            data-type="<?php echo esc_attr($item['type'] ?? ''); ?>"
+                                            data-unit="<?php echo esc_attr($item['unit']); ?>"
+                                            data-usd="<?php echo esc_attr($item['usd']); ?>"
+                                            data-vnd="<?php echo esc_attr($item['vnd']); ?>"
+                                            <?php checked(($item['type'] ?? '') !== 'local-tourist-taxi'); ?>
+                                        />
+                                        <span><?php echo esc_html($item['label']); ?></span>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">

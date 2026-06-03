@@ -3,6 +3,7 @@ const pathname = window.location.pathname
 const isCatBa = pathname.includes('/cat-ba-tour')
 const isHaGiang = pathname.includes('/ha-giang')
 const isMuCangChai = pathname.includes('/mu-cang-chai')
+const isCaoBang = pathname.includes('/cao-bang')
 const isNinhThuan = pathname.includes('/ninh-thuan')
 const isTaiwan = pathname.includes('/taiwan')
 const isHue = pathname.includes('/hue')
@@ -16,6 +17,10 @@ function makeTaiwanItinerary(isVi) {
 
 function makeNinhThuanItinerary() {
     return window.hihiNinhThuanItineraryData || {}
+}
+
+function makeCaoBangItinerary() {
+    return window.hihiCaoBangItineraryData || {}
 }
 
 function makeHueItinerary(isVi) {
@@ -1327,6 +1332,8 @@ if (vi) {
         ALL_ITINERARY_PLANS_DATA = makeHueItinerary(true)
     } else if (isNinhThuan) {
         ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
+    } else if (isCaoBang) {
+        ALL_ITINERARY_PLANS_DATA = makeCaoBangItinerary()
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -1988,6 +1995,8 @@ if (vi) {
         ALL_ITINERARY_PLANS_DATA = makeHueItinerary(false)
     } else if (isNinhThuan) {
         ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
+    } else if (isCaoBang) {
+        ALL_ITINERARY_PLANS_DATA = makeCaoBangItinerary()
     } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
             3: {
@@ -2709,8 +2718,8 @@ if (vi) {
                 html += `
                     <li class="relative" style="margin-bottom: ${marginBottom}">
                         <div class="flex items-start">
-                            <div class="absolute w-2 h-2 bg-[#74797A] rounded-full left-[93px] z-10" 
-                                 style="display: ${dotStyle}; top: ${dotTopPos};"></div>
+                            <div class="absolute w-2 h-2 rounded-full left-[93px] z-10"
+                                 style="display: ${dotStyle}; top: ${dotTopPos}; background:#74797A;"></div>
                             <div class="flex items-start gap-16">
                                 <div class="flex flex-col space-y-2 min-w-20">
                                     <time class="block mt-1" style="font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;color:#1D292C;">${item.time}</time>

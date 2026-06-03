@@ -67,6 +67,12 @@
         ['slug' => 'taiwan', 'label' => $header_global['nav_destination_5_label'] ?? 'Taiwan'],
         ['slug' => 'hue-tour', 'label' => $header_global['nav_destination_6_label'] ?? 'Hue'],
     ];
+    usort($destinations_menu, function ($a, $b) {
+        $label_a = function_exists('remove_accents') ? remove_accents($a['label']) : $a['label'];
+        $label_b = function_exists('remove_accents') ? remove_accents($b['label']) : $b['label'];
+
+        return strtolower($label_a) <=> strtolower($label_b);
+    });
     ?>
 
     <style>

@@ -476,7 +476,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <div id="timeline-content" class="relative py-8 pl-6 border border-[#A1A4A3] border-t-0 rounded-bl-lg rounded-br-lg min-h-2/3">
                         <div class="relative">
-                            <div class="absolute top-0 left-24 w-0.5 bg-[#F2F2F0] h-full z-0"></div>
+                            <div class="absolute top-0 left-24 w-0.5 h-full z-0" style="background:#1D292C99;"></div>
                             <ol id="timeline-list" class="relative ml-0 pr-3 list-none">
                             </ol>
                         </div>

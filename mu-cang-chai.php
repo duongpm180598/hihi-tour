@@ -432,7 +432,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <div id="timeline-content" class="relative py-8 pl-6 border border-[#A1A4A3] border-t-0 rounded-bl-lg rounded-br-lg min-h-2/3">
                         <div class="relative">
-                            <div class="absolute top-0 left-24 w-0.5 bg-[#F2F2F0] h-full z-0"></div>
+                            <div class="absolute top-0 left-24 w-0.5 h-full z-0" style="background:#1D292C99;"></div>
                             <ol id="timeline-list" class="relative ml-0 pr-3 list-none">
                             </ol>
                         </div>
@@ -452,19 +452,46 @@ $activeId = $tableOfContents[0]['id'];
                     </div>
                 </div>
 
-                <div class="md:col-span-1">
-                    <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
-                        <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan" data-fixed-price="<?php echo esc_attr($mcc['itinerary_price']); ?>"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo esc_html($mcc['itinerary_price_note']); ?></p>
+                <div class="md:col-span-1" style="align-self:start;">
+                    <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
+                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                            <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
+                            <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($mcc['itinerary_price_note']); ?></p>
+                        </div>
                         <?php
-                        $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-                        $included_items = [
-                            $mcc['itinerary_include_1'],
-                            $mcc['itinerary_include_2'],
-                            $mcc['itinerary_include_3'],
-                            $mcc['itinerary_include_4'],
-                            $mcc['itinerary_include_5'],
+                        $pricing_items = [
+                            [
+                                'label' => $mcc['pricing_round_trip_bus_label'],
+                                'unit' => 'all',
+                                'usd' => 20,
+                                'vnd' => 500000,
+                            ],
+                            [
+                                'label' => $mcc['pricing_homestay_label'],
+                                'unit' => 'day',
+                                'usd' => 6,
+                                'vnd' => 200000,
+                            ],
+                            [
+                                'label' => $mcc['pricing_meals_label'],
+                                'unit' => 'meal',
+                                'usd' => 6,
+                                'vnd' => 150000,
+                            ],
+                            [
+                                'label' => $mcc['pricing_motorbike_label'],
+                                'type' => 'motorbike',
+                                'unit' => 'day',
+                                'usd' => 8,
+                                'vnd' => 200000,
+                            ],
+                            [
+                                'label' => $mcc['pricing_entrance_label'],
+                                'unit' => 'all',
+                                'usd' => 10,
+                                'vnd' => 200000,
+                            ],
                         ];
                         $excluded_items = [
                             $mcc['itinerary_exclude_1'],
@@ -475,11 +502,22 @@ $activeId = $tableOfContents[0]['id'];
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
                             <?php echo esc_html($mcc['itinerary_include_title']); ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
-                            <?php foreach ($included_items as $item): ?>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo esc_html($item); ?>
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
+                            <?php foreach ($pricing_items as $item): ?>
+                            <li class="pricing-item-row">
+                                <label class="flex items-start gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
+                                        style="accent-color:#7B63F7;"
+                                        data-type="<?php echo esc_attr($item['type'] ?? ''); ?>"
+                                        data-unit="<?php echo esc_attr($item['unit']); ?>"
+                                        data-usd="<?php echo esc_attr($item['usd']); ?>"
+                                        data-vnd="<?php echo esc_attr($item['vnd']); ?>"
+                                        <?php checked(true); ?>
+                                    />
+                                    <span><?php echo esc_html($item['label']); ?></span>
+                                </label>
                             </li>
                             <?php endforeach; ?>
                         </ul>

@@ -1,10 +1,9 @@
-# Task: Ninh Thuan Image URL Migration
+# Task: Apply Ninh Thuan Image Manifest First
 
-- [x] Confirm scope: Ninh Thuan page first, no icon replacement.
-- [x] Add centralized image manifest/helper.
-- [x] Wire `ninh-thuan.php` raster images to manifest.
-- [x] Keep shared highlight modal backward-compatible with existing local paths.
-- [x] Run PHP lint on touched PHP files.
-- [x] Run targeted local image path scan for `ninh-thuan.php`.
-- [x] Run `git diff --check`.
-- [x] Create `walkthrough.md` after verification.
+- [x] Create centralized image manifest/helper.
+- [x] Load manifest helper from `functions.php`.
+- [x] Replace Ninh Thuan dynamic local gallery scan with explicit remote URLs.
+- [x] Replace Ninh Thuan hero, highlights, transport, weather, and culture images with manifest values.
+- [x] Update highlight modal so full remote URLs are accepted.
+- [x] Validate touched PHP files.
+- [x] Run diff whitespace check.

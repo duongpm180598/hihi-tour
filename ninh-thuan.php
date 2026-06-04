@@ -12,9 +12,13 @@ $t = load_lang();
 
 $theme_uri = get_template_directory_uri();
 $nt = $t['ninh_thuan'] ?? $t['ha_giang'];
-$global_images = hihi_image_group('global');
-$nt_images = hihi_image_group('ninh_thuan');
-$all_gallery_images = array_values(array_filter($nt_images['gallery'] ?? []));
+
+$all_gallery_images = hihi_image_group('ninh_thuan.gallery');
+$hero_image = hihi_image_url('ninh_thuan.hero');
+$highlight_images = hihi_image_group('ninh_thuan.highlight');
+$transport_images = hihi_image_group('ninh_thuan.transport');
+$weather_images = hihi_image_group('ninh_thuan.weather');
+$culture_images = hihi_image_group('ninh_thuan.culture');
 
 // itinerary
 $plan_options = [
@@ -48,15 +52,6 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $global_images['social']['whatsapp'] ?? '',
-    'instagram' => $global_images['social']['instagram'] ?? '',
-    'facebook'  => $global_images['social']['facebook'] ?? '',
-];
-
-$qrs = [
-    'whatsapp_qr' => $global_images['qr']['whatsapp'] ?? '',
-    'instagram_qr' => $global_images['qr']['instagram'] ?? '',
-    'facebook_qr'  => $global_images['qr']['facebook'] ?? '',
 ];
 
 // faqs
@@ -70,10 +65,10 @@ $faqs_data = [
     ['group' => 'global', 'q' => 'faq_q_tip', 'a' => 'faq_a_tip'],
 ];
 
-// S3 highlights — "What's here"
-$highlight_image = $nt_images['highlight']['default'] ?? '';
 $highlights = [];
+$highlight_image_count = count($highlight_images);
 for ($i = 0; $i < 8; $i++) {
+    $highlight_image = $highlight_image_count > 0 ? $highlight_images[$i % $highlight_image_count] : '';
     $highlights[] = [
         'img'      => $highlight_image,
         'imgs'     => [$highlight_image],
@@ -179,7 +174,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($nt_images['hero'] ?? ''); ?>"
+                src="<?php echo esc_url($hero_image); ?>"
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -621,12 +616,11 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
 
                 <?php
                 $blob_yellow = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path fill="#E7F15A" d="M50,5 C62,5 74,10 82,20 C90,30 92,44 88,56 C84,68 74,78 62,84 C50,90 36,90 24,84 C12,78 4,66 2,52 C0,38 6,24 16,14 C26,4 38,5 50,5 Z"/></svg>';
-                $transport_image = $nt_images['transport']['default'] ?? '';
                 $go_transport_types = [
                     [
                         'label' => $nt['transport_flight_label'],
                         'badge' => $nt['transport_flight_badge'],
-                        'img' => $transport_image,
+                        'img' => $transport_images[0] ?? '',
                         'desc' => $nt['transport_flight_desc'],
                         'meta' => $nt['transport_flight_meta'],
                         'price' => $nt['transport_flight_price'],
@@ -634,7 +628,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                     [
                         'label' => $nt['transport_taxi_label'],
                         'badge' => $nt['transport_taxi_badge'],
-                        'img' => $transport_image,
+                        'img' => $transport_images[1] ?? '',
                         'desc' => $nt['transport_taxi_desc'],
                         'meta' => $nt['transport_taxi_meta'],
                         'price' => $nt['transport_taxi_price'],
@@ -644,7 +638,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                     [
                         'label' => $nt['transport_bike_label'],
                         'badge' => $nt['transport_bike_badge'],
-                        'img' => $transport_image,
+                        'img' => $transport_images[2] ?? '',
                         'desc' => $nt['transport_bike_desc'],
                         'meta' => $nt['transport_bike_meta'],
                         'price' => $nt['transport_bike_price'],
@@ -652,7 +646,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                     [
                         'label' => $nt['transport_tourist_taxi_label'],
                         'badge' => $nt['transport_tourist_taxi_badge'],
-                        'img' => $transport_image,
+                        'img' => $transport_images[0] ?? '',
                         'desc' => $nt['transport_tourist_taxi_desc'],
                         'meta' => $nt['transport_tourist_taxi_meta'],
                         'price' => $nt['transport_tourist_taxi_price'],
@@ -767,25 +761,32 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             <?php
             $seasons = [
                 [
-                    'img'     => $nt_images['weather'][0] ?? '',
+                    'img'     => $weather_images[0] ?? '',
                     'title_en' => $nt['weather_season_0_title'],
                     'title_vi' => $nt['weather_season_0_title'],
                     'desc_en' => $nt['weather_season_0_desc'],
                     'desc_vi' => $nt['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $nt_images['weather'][1] ?? '',
+                    'img'     => $weather_images[1] ?? '',
                     'title_en' => $nt['weather_season_1_title'],
                     'title_vi' => $nt['weather_season_1_title'],
                     'desc_en' => $nt['weather_season_1_desc'],
                     'desc_vi' => $nt['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $nt_images['weather'][2] ?? '',
+                    'img'     => $weather_images[2] ?? '',
                     'title_en' => $nt['weather_season_2_title'],
                     'title_vi' => $nt['weather_season_2_title'],
                     'desc_en' => $nt['weather_season_2_desc'],
                     'desc_vi' => $nt['weather_season_2_desc'],
+                ],
+                [
+                    'img'     => $weather_images[3] ?? '',
+                    'title_en' => $nt['weather_season_3_title'],
+                    'title_vi' => $nt['weather_season_3_title'],
+                    'desc_en' => $nt['weather_season_3_desc'],
+                    'desc_vi' => $nt['weather_season_3_desc'],
                 ],
             ];
             ?>
@@ -955,32 +956,32 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($nt_images['culture'][0] ?? ''); ?>"
-                    src="<?php echo esc_url($nt_images['culture'][0] ?? ''); ?>"
+                    data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     alt="Cultural Aspect 1"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($nt_images['culture'][1] ?? ''); ?>"
-                    src="<?php echo esc_url($nt_images['culture'][1] ?? ''); ?>"
+                    data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     alt="Cultural Aspect 2"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($nt_images['culture'][2] ?? ''); ?>"
-                    src="<?php echo esc_url($nt_images['culture'][2] ?? ''); ?>"
+                    data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($nt_images['culture'][3] ?? ''); ?>"
-                    src="<?php echo esc_url($nt_images['culture'][3] ?? ''); ?>"
+                    data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($nt_images['culture'][4] ?? ''); ?>"
-                    src="<?php echo esc_url($nt_images['culture'][4] ?? ''); ?>"
+                    data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>

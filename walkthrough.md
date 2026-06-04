@@ -1,46 +1,29 @@
-# Walkthrough: Ninh Thuan Image URL Migration
+# Walkthrough: Ninh Thuan Image Manifest First
 
-## What Changed
+## Changed Files
 
-- Added `inc/image-assets.php` as the central place for image URL management.
-- Loaded the image helper from `functions.php`.
-- Updated `ninh-thuan.php` so raster images come from `hihi_image_group('ninh_thuan')` and `hihi_image_group('global')`.
-- Removed local filesystem gallery scanning from `ninh-thuan.php`; gallery order now comes from the manifest.
-- Updated `components/highlight-modal.php` so it accepts full URLs and still supports old local relative paths used by other pages.
-- Left `assets/icons` paths unchanged.
+- `inc/image-assets.php`: added centralized image manifest and dot-key helper functions.
+- `functions.php`: loads the manifest helper.
+- `ninh-thuan.php`: replaces local raster image wiring with manifest groups for hero, gallery, highlights, transport, weather, and culture images.
+- `components/highlight-modal.php`: accepts full remote URLs while keeping existing relative-path support for other pages.
+- `task.md`: execution checklist for this first pass.
 
-## Where To Put Image URLs
+## Image URLs Used
 
-Put Ninh Thuan image URLs in `inc/image-assets.php`, inside:
-
-- `global.social` for WhatsApp, Instagram, Facebook images.
-- `global.qr` for social QR images.
-- `ninh_thuan.hero` for the top hero image.
-- `ninh_thuan.highlight.default` for highlight cards and modal image.
-- `ninh_thuan.transport.default` for transport cards.
-- `ninh_thuan.gallery` for gallery and gallery modal order.
-- `ninh_thuan.weather` for weather season cards.
-- `ninh_thuan.culture` for culture image grid.
-
-Use exact WordPress URLs when needed:
-
-```php
-'hero' => ['url' => 'https://hihitour.com/wp-content/uploads/2025/12/PA120443-1-scaled.jpg'],
-```
-
-Or use filename lookup when the Media Library filename is unique:
-
-```php
-'hero' => ['file' => 'PA120443-1-scaled.jpg'],
-```
+- `https://hihitour.com/wp-content/uploads/2025/12/Screenshot_20251211_233712_Gallery-1-edited.jpg`
+- `https://hihitour.com/wp-content/uploads/2025/12/retouch_2024062019095613-1.jpg`
+- `https://hihitour.com/wp-content/uploads/2025/12/retouch_2024061918515652-1.jpg`
 
 ## Verification
 
 - `/Applications/XAMPP/xamppfiles/bin/php -l ninh-thuan.php`
 - `/Applications/XAMPP/xamppfiles/bin/php -l functions.php`
-- `/Applications/XAMPP/xamppfiles/bin/php -l inc/image-assets.php`
 - `/Applications/XAMPP/xamppfiles/bin/php -l components/highlight-modal.php`
-- `rg "assets/images|get_template_directory\\(\\).*assets/images|get_template_directory_uri\\(\\).*assets/images|theme_uri \\..*/assets/images" ninh-thuan.php`
+- `/Applications/XAMPP/xamppfiles/bin/php -l inc/image-assets.php`
 - `git diff --check`
 
-All checks passed.
+All passed.
+
+## Remaining Scope
+
+- `functions.php` still has local raster paths for global related-destination cards. That is outside the Ninh Thuan template-first pass and should move after exact URLs are provided for those destination card images.

@@ -16,12 +16,16 @@ $highlight_modal_preview_label = $highlight_modal_preview_label ?? 'Preview imag
 
 $highlight_modal_items = array_map(function($h) {
     $base_uri = get_template_directory_uri();
-    $resolve_img = function($p) use ($base_uri) {
-        if (function_exists('hihi_normalize_image_url')) {
-            return hihi_normalize_image_url($p);
+    $resolve_img = function($path) use ($base_uri) {
+        if (!is_string($path) || $path === '') {
+            return '';
         }
 
-        return preg_match('#^https?://#i', (string) $p) ? $p : $base_uri . $p;
+        if (preg_match('#^https?://#', $path)) {
+            return $path;
+        }
+
+        return $base_uri . $path;
     };
     $imgs = isset($h['imgs']) && is_array($h['imgs'])
         ? array_map($resolve_img, $h['imgs'])

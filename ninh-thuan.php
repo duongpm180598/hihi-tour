@@ -757,30 +757,68 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                 <?php endforeach; ?>
             </div>
 
-            <!-- Season cards -->
+            <!-- Season cards — horizontal scroll with right arrow button -->
             <?php
-            $seasons = [];
-            for ($season_index = 0; $season_index < 4; $season_index++) {
-                $title_key = "weather_season_{$season_index}_title";
-                $desc_key = "weather_season_{$season_index}_desc";
-
-                if (empty($nt[$title_key]) || empty($nt[$desc_key])) {
-                    continue;
-                }
-
-                $seasons[] = [
-                    'img'     => $weather_images[$season_index] ?? '',
-                    'title_en' => $nt[$title_key],
-                    'title_vi' => $nt[$title_key],
-                    'desc_en' => $nt[$desc_key],
-                    'desc_vi' => $nt[$desc_key],
-                ];
-            }
+            $seasons = [
+                [
+                    'img'     => $weather_images[0] ?? '',
+                    'title_en' => $nt['weather_season_0_title'],
+                    'title_vi' => $nt['weather_season_0_title'],
+                    'desc_en' => $nt['weather_season_0_desc'],
+                    'desc_vi' => $nt['weather_season_0_desc'],
+                ],
+                [
+                    'img'     => $weather_images[1] ?? '',
+                    'title_en' => $nt['weather_season_1_title'],
+                    'title_vi' => $nt['weather_season_1_title'],
+                    'desc_en' => $nt['weather_season_1_desc'],
+                    'desc_vi' => $nt['weather_season_1_desc'],
+                ],
+                [
+                    'img'     => $weather_images[2] ?? '',
+                    'title_en' => $nt['weather_season_2_title'],
+                    'title_vi' => $nt['weather_season_2_title'],
+                    'desc_en' => $nt['weather_season_2_desc'],
+                    'desc_vi' => $nt['weather_season_2_desc'],
+                ],
+                [
+                    'img'     => $weather_images[3] ?? '',
+                    'title_en' => $nt['weather_season_3_title'],
+                    'title_vi' => $nt['weather_season_3_title'],
+                    'desc_en' => $nt['weather_season_3_desc'],
+                    'desc_vi' => $nt['weather_season_3_desc'],
+                ],
+            ];
             ?>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <?php foreach ($seasons as $s): ?>
-                    <div style="width:100%; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="relative">
+                <!-- Left scroll button -->
+                <button
+                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
+                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    aria-label="Scroll left"
+                >
+                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+
+                <!-- Right scroll button -->
+                <button
+                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
+                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
+                    aria-label="Scroll right"
+                >
+                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+                <!-- Scrollable row -->
+                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
+                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
+                    <?php foreach ($seasons as $s): ?>
+                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -799,7 +837,8 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                             </p>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
         </div>
@@ -892,21 +931,26 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo esc_html($nt['culture_title']); ?>
+                <?php echo $t['ha_giang']['culture_title'] ?>
             </h3>
 
+            <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
+                <?php echo $t['ha_giang']['culture_desc'] ?>
+            </p>
+
+
             <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo esc_html($nt['culture_scenery_title']); ?>
+                <?php echo $t['ha_giang']['culture_happywater_title'] ?>
             </h3>
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo esc_html($nt['culture_scenery_desc']); ?>
+                <?php echo $t['ha_giang']['culture_happywater_desc'] ?>
             </p>
 
             <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo esc_html($nt['culture_food_cost_title']); ?>
+                <?php echo $t['ha_giang']['culture_market_title'] ?>
             </h3>
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo esc_html($nt['culture_food_cost_desc']); ?>
+                <?php echo $t['ha_giang']['culture_market_desc'] ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -1054,6 +1098,27 @@ function transTab(tab) {
         }
     });
 }
+
+// Mouse drag to scroll season cards
+(function() {
+    var el = document.getElementById('season-scroll');
+    if (!el) return;
+    var isDown = false, startX, scrollLeft;
+    el.addEventListener('mousedown', function(e) {
+        isDown = true;
+        el.classList.add('dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+    });
+    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
+    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
+    el.addEventListener('mousemove',  function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - el.offsetLeft;
+        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    });
+})();
 
 // Solo going / Book a tour tab switcher
 (function() {

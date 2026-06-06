@@ -499,57 +499,92 @@ $activeId = $tableOfContents[0]['id'];
                 <div class="md:col-span-1">
                     <div class="p-6 rounded-xl" style="background:#7B63F7; color:#fff;">
                         <h2 class="text-2xl font-bold mb-4" style="color:#E7F15A;"><span id="price-per-plan"></span></h2>
-                        <p class="mb-4 opacity-80"><?php echo $t['ha_giang']['itinerary_price_note'] ?></p>
+                        <p class="mb-4 opacity-80"><?php echo esc_html($taiwan['itinerary_price_note']); ?></p>
                         <?php
-                        $check_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                        $pricing_items = [
+                            [
+                                'label' => $taiwan['pricing_round_trip_flight_label'],
+                                'unit' => 'all',
+                                'usd' => 200,
+                                'vnd' => 5000000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_visa_label'],
+                                'unit' => 'all',
+                                'usd' => 50,
+                                'vnd' => 1300000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_homestay_label'],
+                                'unit' => 'day',
+                                'usd' => 50,
+                                'vnd' => 1000000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_meals_label'],
+                                'unit' => 'meal',
+                                'usd' => 6,
+                                'vnd' => 100000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_public_transport_label'],
+                                'unit' => 'day',
+                                'usd' => 5,
+                                'vnd' => 150000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_easy_card_label'],
+                                'unit' => 'all',
+                                'usd' => 4,
+                                'vnd' => 100000,
+                            ],
+                            [
+                                'label' => $taiwan['pricing_hualien_train_label'],
+                                'unit' => 'all',
+                                'usd' => 60,
+                                'vnd' => 1600000,
+                            ],
+                        ];
                         ?>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_include_title'] ?>
+                            <?php echo esc_html($taiwan['itinerary_include_title']); ?>
                         </p>
-                        <ul style="font-size:15px;" class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_1'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_2'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_3'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_4'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_5'] ?>
-                            </li>
-                            <li class="flex items-start">
-                                <?php echo $check_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_include_6'] ?>
-                            </li>
+                        <ul style="font-size:15px;" class="space-y-3 mb-6">
+                            <?php foreach ($pricing_items as $item): ?>
+                                <li class="pricing-item-row">
+                                    <label class="flex items-start gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            class="pricing-include mt-1 h-4 w-4 rounded border-[#F2F2F0]"
+                                            style="accent-color:#E7F15A;"
+                                            data-unit="<?php echo esc_attr($item['unit']); ?>"
+                                            data-usd="<?php echo esc_attr($item['usd']); ?>"
+                                            data-vnd="<?php echo esc_attr($item['vnd']); ?>"
+                                            checked
+                                        />
+                                        <span><?php echo esc_html($item['label']); ?></span>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <p style="font-size:15px; font-weight:700;" class="mb-2">
-                            <?php echo $t['ha_giang']['itinerary_exclude_title'] ?>
+                            <?php echo esc_html($taiwan['itinerary_exclude_title']); ?>
                         </p>
                         <ul style="font-size:15px;" class="space-y-2 mb-6">
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_1'] ?>
+                                <?php echo esc_html($taiwan['itinerary_exclude_1']); ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_2'] ?>
+                                <?php echo esc_html($taiwan['itinerary_exclude_2']); ?>
                             </li>
                             <li class="flex items-start">
                                 <?php echo $close_icon; ?>
-                                <?php echo $t['ha_giang']['itinerary_exclude_3'] ?>
+                                <?php echo esc_html($taiwan['itinerary_exclude_3']); ?>
                             </li>
                         </ul>
 
@@ -801,7 +836,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <h3 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
-                <?php echo $t['ha_giang']['weather_title']; ?>
+                <?php echo esc_html($taiwan['weather_title']); ?>
             </h3>
 
             <!-- Live weather strip -->
@@ -826,38 +861,24 @@ $activeId = $tableOfContents[0]['id'];
             $seasons = [
                 [
                     'img'     => $theme_uri . '/assets/images/taiwan/bitoujiao-seashore (2).webp',
-                    'title_en' => $t['ha_giang']['weather_season_0_title'],
-'title_vi' => $t['ha_giang']['weather_season_0_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_0_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_0_desc'],
+                    'title_en' => $taiwan['weather_season_0_title'],
+                    'title_vi' => $taiwan['weather_season_0_title'],
+                    'desc_en' => $taiwan['weather_season_0_desc'],
+                    'desc_vi' => $taiwan['weather_season_0_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (1).webp',
-                    'title_en' => $t['ha_giang']['weather_season_1_title'],
-'title_vi' => $t['ha_giang']['weather_season_1_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_1_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_1_desc'],
+                    'title_en' => $taiwan['weather_season_1_title'],
+                    'title_vi' => $taiwan['weather_season_1_title'],
+                    'desc_en' => $taiwan['weather_season_1_desc'],
+                    'desc_vi' => $taiwan['weather_season_1_desc'],
                 ],
                 [
                     'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (2).webp',
-                    'title_en' => $t['ha_giang']['weather_season_2_title'],
-'title_vi' => $t['ha_giang']['weather_season_2_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_2_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_2_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
-                    'title_en' => $t['ha_giang']['weather_season_3_title'],
-'title_vi' => $t['ha_giang']['weather_season_3_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_3_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_3_desc'],
-                ],
-                [
-                    'img'     => $theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
-                    'title_en' => $t['ha_giang']['weather_season_4_title'],
-'title_vi' => $t['ha_giang']['weather_season_4_title'],
-                    'desc_en' => $t['ha_giang']['weather_season_4_desc'],
-'desc_vi' => $t['ha_giang']['weather_season_4_desc'],
+                    'title_en' => $taiwan['weather_season_2_title'],
+                    'title_vi' => $taiwan['weather_season_2_title'],
+                    'desc_en' => $taiwan['weather_season_2_desc'],
+                    'desc_vi' => $taiwan['weather_season_2_desc'],
                 ],
             ];
             ?>

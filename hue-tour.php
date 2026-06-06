@@ -346,22 +346,22 @@ $highlights = [
 ];
 
 $hue_highlight_specs = [
-    ['img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
-    ['img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
-    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'heritage'],
-    ['img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
-    ['img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
-    ['img' => '/assets/images/hue/a_luoi.webp', 'category' => 'nature'],
-    ['img' => '/assets/images/hue/a_luoi2.webp', 'category' => 'nature'],
-    ['img' => '/assets/images/hue/a-luoi-building.webp', 'category' => 'nature'],
-    ['img' => '/assets/images/hue/song_huong.webp', 'category' => 'river'],
-    ['img' => '/assets/images/hue/cau_truong_tien_hue.webp', 'category' => 'river'],
-    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
-    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
-    ['img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['locale_index' => 0, 'img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
+    ['locale_index' => 2, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'heritage'],
+    ['locale_index' => 3, 'img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
+    ['locale_index' => 4, 'img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
+    ['locale_index' => 5, 'img' => '/assets/images/hue/a_luoi.webp', 'category' => 'nature'],
+    ['locale_index' => 6, 'img' => '/assets/images/hue/a_luoi2.webp', 'category' => 'nature'],
+    ['locale_index' => 7, 'img' => '/assets/images/hue/a-luoi-building.webp', 'category' => 'nature'],
+    ['locale_index' => 9, 'img' => '/assets/images/hue/cau_truong_tien_hue.webp', 'category' => 'river'],
+    ['locale_index' => 10, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['locale_index' => 11, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['locale_index' => 12, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
 ];
 
-$highlights = array_map(function ($item, $index) use ($hue) {
+$highlights = array_map(function ($item) use ($hue) {
+    $index = $item['locale_index'];
+
     return [
         'img' => $item['img'],
         'imgs' => [$item['img']],
@@ -374,7 +374,7 @@ $highlights = array_map(function ($item, $index) use ($hue) {
         'desc_vi' => $hue["highlight_item_{$index}_desc"],
         'span' => 'normal',
     ];
-}, $hue_highlight_specs, array_keys($hue_highlight_specs));
+}, $hue_highlight_specs);
 
 $tableOfContents = [
     [

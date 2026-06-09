@@ -12,37 +12,12 @@ $t = load_lang();
 $mcc = $t['mu_cang_chai'];
 
 $theme_uri = get_template_directory_uri();
-
-// Danh sách các ảnh.
-$images = [
-    '/assets/images/mu-cang-chai/tu_le.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
-    '/assets/images/mu-cang-chai/gat-lua-mcc.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
-    '/assets/images/mu-cang-chai/lao-chai-mu-cang-chai.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai_ngoi_nha_nho.webp',
-    '/assets/images/mu-cang-chai/mo_de_to_day.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
-    '/assets/images/mu-cang-chai/mo-de-2.webp',
-    '/assets/images/mu-cang-chai/tu-le-ben-duong.webp',
-    '/assets/images/mu-cang-chai/khau-mang-thuong (3).webp',
-    '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
-    '/assets/images/mu-cang-chai/nui-ho-tu-le.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
-    '/assets/images/mu-cang-chai/tu-le-mua-dong.webp',
-    '/assets/images/mu-cang-chai/hang-gang-mu-cang-chai.webp',
-    '/assets/images/mu-cang-chai/khau-mang-thuong (2).webp',
-    '/assets/images/mu-cang-chai/co-be-vung-cao.webp',
-    '/assets/images/mu-cang-chai/mu_cang_chai.webp',
-];
-
-// Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/mu-cang-chai/';
-$gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
-sort($gallery_files);
-$all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/mu-cang-chai/' . basename($file);
-}, $gallery_files);
+$hero_image = hihi_image_url('mu_cang_chai.hero');
+$all_gallery_images = hihi_image_group('mu_cang_chai.gallery');
+$highlight_image_groups = hihi_image_group('mu_cang_chai.highlights');
+$transport_images = hihi_image_group('mu_cang_chai.transport');
+$weather_images = hihi_image_group('mu_cang_chai.weather');
+$culture_images = hihi_image_group('mu_cang_chai.culture');
 
 // itinerary
 $plan_options = [
@@ -76,15 +51,6 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];
 
 // faqs
@@ -101,14 +67,8 @@ $faqs_data = [
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/mu-cang-chai/tu_le.webp',
-        'imgs'     => [
-            '/assets/images/mu-cang-chai/tu_le.webp',
-            '/assets/images/mu-cang-chai/tu-le-mua-dong.webp',
-            '/assets/images/mu-cang-chai/tu-le-ben-duong.webp',
-            '/assets/images/mu-cang-chai/mu_cang_chai.webp',
-            '/assets/images/mu-cang-chai/mu_cang_chai_tu_le2.webp',
-        ],
+        'img'      => $highlight_image_groups[0][0] ?? '',
+        'imgs'     => $highlight_image_groups[0] ?? [],
         'category' => 'nature',
         'tag_en' => $mcc['highlight_item_0_tag'],
         'tag_vi' => $mcc['highlight_item_0_tag'],
@@ -119,11 +79,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
-        'imgs'     => [
-            '/assets/images/mu-cang-chai/mu_cang_chai_landscape.webp',
-            '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
-        ],
+        'img'      => $highlight_image_groups[1][0] ?? '',
+        'imgs'     => $highlight_image_groups[1] ?? [],
         'category' => 'viewpoints',
         'tag_en' => $mcc['highlight_item_1_tag'],
         'tag_vi' => $mcc['highlight_item_1_tag'],
@@ -134,12 +91,8 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
-        'imgs'     => [
-            '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp',
-            '/assets/images/mu-cang-chai/khau-mang-thuong (2).webp',
-            '/assets/images/mu-cang-chai/khau-mang-thuong (3).webp',
-        ],
+        'img'      => $highlight_image_groups[2][0] ?? '',
+        'imgs'     => $highlight_image_groups[2] ?? [],
         'category' => 'viewpoints',
         'tag_en' => $mcc['highlight_item_2_tag'],
         'tag_vi' => $mcc['highlight_item_2_tag'],
@@ -150,10 +103,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
-        'imgs'     => [
-            '/assets/images/mu-cang-chai/mu_cang_chai_thi_tran.webp',
-        ],
+        'img'      => $highlight_image_groups[3][0] ?? '',
+        'imgs'     => $highlight_image_groups[3] ?? [],
         'category' => 'culture',
         'tag_en' => $mcc['highlight_item_3_tag'],
         'tag_vi' => $mcc['highlight_item_3_tag'],
@@ -164,10 +115,8 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/mu-cang-chai/mo_de_to_day.webp',
-        'imgs'     => [
-            '/assets/images/mu-cang-chai/mo_de_to_day.webp',
-        ],
+        'img'      => $highlight_image_groups[4][0] ?? '',
+        'imgs'     => $highlight_image_groups[4] ?? [],
         'category' => 'nature',
         'tag_en' => $mcc['highlight_item_4_tag'],
         'tag_vi' => $mcc['highlight_item_4_tag'],
@@ -178,6 +127,14 @@ $highlights = [
         'span'     => 'normal',
     ],
 ];
+
+foreach ($highlights as $index => &$highlight) {
+    $highlight['summary_en'] = $mcc["highlight_item_{$index}_summary"] ?? '';
+    $highlight['summary_vi'] = $highlight['summary_en'];
+    $highlight['keywords_en'] = $mcc["highlight_item_{$index}_keywords"] ?? [];
+    $highlight['keywords_vi'] = $highlight['keywords_en'];
+}
+unset($highlight);
 
 $tableOfContents = [
     [
@@ -265,7 +222,7 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai.webp'); ?>"
+                src="<?php echo esc_url($hero_image); ?>"
                 alt="<?php echo esc_attr($mcc['hero_image_alt']); ?>"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -692,7 +649,7 @@ $activeId = $tableOfContents[0]['id'];
                             [
                                 'label' => $mcc['transport_bus_0_label'],
                                 'badge' => $mcc['transport_bus_0_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/vip.webp',
+                                'img'       => $transport_images[0] ?? '',
                                 'desc' => $mcc['transport_bus_0_desc'],
                                 'rows' => $mcc['transport_bus_0_rows'],
                                 'price' => $mcc['transport_bus_0_price'],
@@ -701,7 +658,7 @@ $activeId = $tableOfContents[0]['id'];
                             [
                                 'label' => $mcc['transport_bus_2_label'],
                                 'badge' => $mcc['transport_bus_2_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/economy.webp',
+                                'img'       => $transport_images[1] ?? '',
                                 'desc' => $mcc['transport_bus_2_desc'],
                                 'rows' => $mcc['transport_bus_2_rows'],
                                 'price' => $mcc['transport_bus_2_price'],
@@ -861,21 +818,21 @@ $activeId = $tableOfContents[0]['id'];
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp',
+                    'img'     => $weather_images[0] ?? '',
                     'title_en' => $mcc['weather_season_0_title'],
                     'title_vi' => $mcc['weather_season_0_title'],
                     'desc_en' => $mcc['weather_season_0_desc'],
                     'desc_vi' => $mcc['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp',
+                    'img'     => $weather_images[1] ?? '',
                     'title_en' => $mcc['weather_season_1_title'],
                     'title_vi' => $mcc['weather_season_1_title'],
                     'desc_en' => $mcc['weather_season_1_desc'],
                     'desc_vi' => $mcc['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai.webp',
+                    'img'     => $weather_images[2] ?? '',
                     'title_en' => $mcc['weather_season_2_title'],
                     'title_vi' => $mcc['weather_season_2_title'],
                     'desc_en' => $mcc['weather_season_2_desc'],
@@ -957,32 +914,31 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="highlight-grid">
                 <?php foreach ($highlights as $i => $h): ?>
                 <div
-                    class="highlight-card group cursor-pointer rounded-xl overflow-hidden relative"
+                    class="highlight-card group overflow-hidden"
                     data-index="<?php echo $i; ?>"
                     data-category="<?php echo esc_attr($h['category']); ?>"
-                    onclick="openHighlight(<?php echo $i; ?>)"
-                    role="button"
-                    tabindex="0"
-                    aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
+                    style="border:1px solid #D7D9D8; border-radius:8px; background:#fff;"
                 >
-                    <div class="relative overflow-hidden" style="aspect-ratio:4/3;">
+                    <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" class="relative overflow-hidden" style="display:block; width:100%; aspect-ratio:4/3; padding:0; border:0; background:none; cursor:pointer;">
                         <img
-                            src="<?php echo esc_url($theme_uri . $h['img']); ?>"
+                            src="<?php echo esc_url($h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"
                         />
-                        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(29,41,44,.75) 0%, transparent 55%); pointer-events:none;"></div>
-                        <div style="position:absolute; top:10px; left:10px; background:#E7F15A; border-radius:999px; padding:3px 10px;">
-                            <span style="font-size:11px; font-weight:700; color:#1D292C;">
-                                <?php echo esc_html($current_lang === 'en' ? $h['tag_en'] : $h['tag_vi']); ?>
-                            </span>
-                        </div>
-                        <div style="position:absolute; bottom:12px; left:12px; right:12px;">
-                            <p style="font-size:15px; font-weight:700; color:#F2F2F0; line-height:1.3; margin:0;">
+                    </button>
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:88px; padding:16px;">
+                        <div style="min-width:0;">
+                            <p style="font-size:15px; font-weight:700; color:#1D292C; line-height:1.35; margin:0 0 5px;">
                                 <?php echo esc_html($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>
                             </p>
+                            <p style="font-size:12px; font-weight:500; color:#74797A; line-height:1.45; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                <?php echo esc_html($current_lang === 'en' ? $h['summary_en'] : $h['summary_vi']); ?>
+                            </p>
                         </div>
+                        <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" style="display:flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; padding:0; border:1px solid #1D292C; border-radius:50%; background:#E7F15A; cursor:pointer;">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/arrow-right.svg'); ?>" alt="" aria-hidden="true" style="width:20px; height:20px; display:block;" />
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -995,6 +951,7 @@ $activeId = $tableOfContents[0]['id'];
     $highlight_modal_prev_label = $t['ha_giang']['carousel_prev'];
     $highlight_modal_next_label = $t['ha_giang']['carousel_next'];
     $highlight_modal_preview_label = $mcc['highlight_preview_image_label'] ?? ($current_lang === 'en' ? 'Preview image' : 'Xem ảnh');
+    $highlight_modal_quick_peek_label = $t['global']['highlight_quick_peek_label'];
     include get_template_directory() . '/components/highlight-modal.php';
     ?>
 
@@ -1012,32 +969,32 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/gat-lua-mcc.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/gat-lua-mcc.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     alt="<?php echo esc_attr($mcc['culture_title'] . ' 1'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/mo_de_to_day.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     alt="<?php echo esc_attr($mcc['culture_title'] . ' 2'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/tu-le-ben-duong.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/tu-le-ben-duong.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     alt="<?php echo esc_attr($mcc['culture_title'] . ' 3'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/khau-mang-thuong (1).webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     alt="<?php echo esc_attr($mcc['culture_title'] . ' 4'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/co-be-vung-cao.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/mu-cang-chai/co-be-vung-cao.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     alt="<?php echo esc_attr($mcc['culture_title'] . ' 5'); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>

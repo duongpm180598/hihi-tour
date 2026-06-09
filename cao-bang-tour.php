@@ -182,6 +182,14 @@ $highlights = [
     ],
 ];
 
+foreach ($highlights as $index => &$highlight) {
+    $highlight['summary_en'] = $cb["highlight_item_{$index}_summary"] ?? '';
+    $highlight['summary_vi'] = $highlight['summary_en'];
+    $highlight['keywords_en'] = $cb["highlight_item_{$index}_keywords"] ?? [];
+    $highlight['keywords_vi'] = $highlight['keywords_en'];
+}
+unset($highlight);
+
 $tableOfContents = [
     [
         'id' => 'overview',
@@ -876,32 +884,31 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="highlight-grid">
                 <?php foreach ($highlights as $i => $h): ?>
                 <div
-                    class="highlight-card group cursor-pointer rounded-xl overflow-hidden relative"
+                    class="highlight-card group overflow-hidden"
                     data-index="<?php echo $i; ?>"
                     data-category="<?php echo esc_attr($h['category']); ?>"
-                    onclick="openHighlight(<?php echo $i; ?>)"
-                    role="button"
-                    tabindex="0"
-                    aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
+                    style="border:1px solid #D7D9D8; border-radius:8px; background:#fff;"
                 >
-                    <div class="relative overflow-hidden" style="aspect-ratio:4/3;">
+                    <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" class="relative overflow-hidden" style="display:block; width:100%; aspect-ratio:4/3; padding:0; border:0; background:none; cursor:pointer;">
                         <img
                             src="<?php echo esc_url($theme_uri . $h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"
                         />
-                        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(29,41,44,.75) 0%, transparent 55%); pointer-events:none;"></div>
-                        <div style="position:absolute; top:10px; left:10px; background:#E7F15A; border-radius:999px; padding:3px 10px;">
-                            <span style="font-size:11px; font-weight:700; color:#1D292C;">
-                                <?php echo esc_html($current_lang === 'en' ? $h['tag_en'] : $h['tag_vi']); ?>
-                            </span>
-                        </div>
-                        <div style="position:absolute; bottom:12px; left:12px; right:12px;">
-                            <p style="font-size:15px; font-weight:700; color:#F2F2F0; line-height:1.3; margin:0;">
+                    </button>
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:88px; padding:16px;">
+                        <div style="min-width:0;">
+                            <p style="font-size:15px; font-weight:700; color:#1D292C; line-height:1.35; margin:0 0 5px;">
                                 <?php echo esc_html($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>
                             </p>
+                            <p style="font-size:12px; font-weight:500; color:#74797A; line-height:1.45; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                <?php echo esc_html($current_lang === 'en' ? $h['summary_en'] : $h['summary_vi']); ?>
+                            </p>
                         </div>
+                        <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" style="display:flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; padding:0; border:1px solid #1D292C; border-radius:50%; background:#E7F15A; cursor:pointer;">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/arrow-right.svg'); ?>" alt="" aria-hidden="true" style="width:20px; height:20px; display:block;" />
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -914,6 +921,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
     $highlight_modal_prev_label = $t["ha_giang"]["carousel_prev"];
     $highlight_modal_next_label = $t["ha_giang"]["carousel_next"];
     $highlight_modal_preview_label = $cb["highlight_preview_image_label"];
+    $highlight_modal_quick_peek_label = $t['global']['highlight_quick_peek_label'];
     include get_template_directory() . "/components/highlight-modal.php";
     ?>
 

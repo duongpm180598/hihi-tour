@@ -39,6 +39,10 @@ $highlight_modal_items = array_map(function($h) {
         'title_vi' => $h['title_vi'] ?? '',
         'desc_en'  => $h['desc_en'] ?? '',
         'desc_vi'  => $h['desc_vi'] ?? '',
+        'summary_en' => $h['summary_en'] ?? '',
+        'summary_vi' => $h['summary_vi'] ?? '',
+        'keywords_en' => isset($h['keywords_en']) && is_array($h['keywords_en']) ? array_values($h['keywords_en']) : [],
+        'keywords_vi' => isset($h['keywords_vi']) && is_array($h['keywords_vi']) ? array_values($h['keywords_vi']) : [],
     ];
 }, $highlight_modal_highlights);
 ?>
@@ -70,7 +74,7 @@ $highlight_modal_items = array_map(function($h) {
             <div id="img-thumbs" style="display:none; flex-direction:column; flex:0 0 78px; width:78px; max-height:60vh; gap:8px; overflow-y:auto; padding-right:2px;"></div>
         </div>
 
-        <div style="overflow-y:auto; padding:18px 28px 24px; display:flex; flex-direction:column;">
+        <div style="padding:18px 28px 24px; display:flex; flex-direction:column;">
             <div>
                 <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:12px;">
                     <h3 id="modal-title" style="font-size:22px; font-weight:700; color:#1D292C; margin:0; line-height:1.3; min-width:0;"></h3>
@@ -83,6 +87,10 @@ $highlight_modal_items = array_map(function($h) {
                             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
                         </button>
                     </div>
+                </div>
+                <div id="modal-quick-peek" style="display:none; margin-bottom:18px;">
+                    <p id="modal-summary" style="font-size:16px; font-weight:600; color:#1D292C; line-height:1.55; margin:0 0 10px;"></p>
+                    <div id="modal-keywords" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
                 </div>
                 <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
             </div>
@@ -100,8 +108,11 @@ $highlight_modal_items = array_map(function($h) {
     var modal = document.getElementById('highlights-modal');
     var modalImg = document.getElementById('modal-img');
     var thumbsEl = document.getElementById('img-thumbs');
+    var quickPeekEl = document.getElementById('modal-quick-peek');
+    var summaryEl = document.getElementById('modal-summary');
+    var keywordsEl = document.getElementById('modal-keywords');
 
-    if (!modal || !modalImg || !thumbsEl || !data.length) return;
+    if (!modal || !modalImg || !thumbsEl || !quickPeekEl || !summaryEl || !keywordsEl || !data.length) return;
 
     function renderThumbs(imgs, active) {
         thumbsEl.innerHTML = '';
@@ -131,6 +142,8 @@ $highlight_modal_items = array_map(function($h) {
     function renderCard(i) {
         var h = data[i];
         var isEn = lang !== 'vi';
+        var summary = isEn ? h.summary_en : h.summary_vi;
+        var keywords = isEn ? h.keywords_en : h.keywords_vi;
         imgCurrent = 0;
         modalImg.src = h.imgs[0];
         modalImg.style.opacity = '1';
@@ -138,6 +151,17 @@ $highlight_modal_items = array_map(function($h) {
         document.getElementById('modal-title').textContent = isEn ? h.title_en : h.title_vi;
         document.getElementById('modal-desc').textContent = isEn ? h.desc_en : h.desc_vi;
         document.getElementById('modal-counter').textContent = (i + 1) + ' / ' + data.length;
+        summaryEl.textContent = summary || '';
+        keywordsEl.innerHTML = '';
+        (Array.isArray(keywords) ? keywords : []).forEach(function(keyword) {
+            var chip = document.createElement('span');
+            chip.textContent = keyword;
+            chip.style.cssText = 'display:inline-flex; align-items:center; min-height:28px; padding:4px 10px; border:1px solid #A1A4A3; border-radius:999px; color:#1D292C; font-size:12px; font-weight:600; line-height:1.3; background:#fff;';
+            keywordsEl.appendChild(chip);
+        });
+        summaryEl.style.display = summary ? '' : 'none';
+        keywordsEl.style.display = keywordsEl.children.length ? 'flex' : 'none';
+        quickPeekEl.style.display = summary || keywordsEl.children.length ? 'block' : 'none';
         renderThumbs(h.imgs, 0);
     }
 
@@ -168,13 +192,5 @@ $highlight_modal_items = array_map(function($h) {
         if (e.key === 'ArrowUp') { e.preventDefault(); setImg(imgCurrent - 1); }
     });
 
-    document.querySelectorAll('.highlight-card').forEach(function(card) {
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openHighlight(parseInt(card.getAttribute('data-index')));
-            }
-        });
-    });
 })();
 </script>

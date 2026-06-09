@@ -13,32 +13,12 @@ $taiwan = $t['taiwan'];
 
 $theme_uri = get_template_directory_uri();
 
-// Danh sách các ảnh.
-$images = [
-    '/assets/images/taiwan/taipei-101.webp',
-    '/assets/images/taiwan/bitoujiao.webp',
-    '/assets/images/taiwan/bitoujiao-2.webp',
-    '/assets/images/taiwan/bitoujiao-3.webp',
-    '/assets/images/taiwan/bitoujiao-seashore (1).webp',
-    '/assets/images/taiwan/bitoujiao-seashore (2).webp',
-    '/assets/images/taiwan/keelung-trail (1).webp',
-    '/assets/images/taiwan/keelung-trail (2).webp',
-    '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
-    '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
-    '/assets/images/taiwan/liushishi-jinchan-flower (3).webp',
-    '/assets/images/taiwan/liushishi-jinchan-flower (4).webp',
-    '/assets/images/taiwan/liushishi-jinchan-flower (5).webp',
-    '/assets/images/taiwan/taipei-101.webp',
-    '/assets/images/taiwan/bitoujiao.webp',
-];
-
-// Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/taiwan/';
-$gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
-sort($gallery_files);
-$all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/taiwan/' . basename($file);
-}, $gallery_files);
+$all_gallery_images = hihi_image_group('taiwan.gallery');
+$hero_image = hihi_image_url('taiwan.hero');
+$highlight_images = hihi_image_group('taiwan.highlight');
+$transport_images = hihi_image_group('taiwan.transport');
+$weather_images = hihi_image_group('taiwan.weather');
+$culture_images = hihi_image_group('taiwan.culture');
 
 // itinerary
 $plan_options = [
@@ -72,15 +52,6 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];
 
 // faqs
@@ -95,116 +66,33 @@ $faqs_data = [
 ];
 
 // S3 highlights — "What's here"
-$highlights = [
-    [
-        'img'      => '/assets/images/taiwan/taipei-101.webp',
-        'imgs'     => [
-            '/assets/images/taiwan/taipei-101.webp',
-        ],
-        'category' => 'city',
-        'tag_en' => $taiwan['highlight_item_0_tag'],
-        'tag_vi' => $taiwan['highlight_item_0_tag'],
-        'title_en' => $taiwan['highlight_item_0_title'],
-        'title_vi' => $taiwan['highlight_item_0_title'],
-        'desc_en' => $taiwan['highlight_item_0_desc'],
-        'desc_vi' => $taiwan['highlight_item_0_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/bitoujiao.webp',
-        'imgs'     => [
-            '/assets/images/taiwan/bitoujiao.webp',
-            '/assets/images/taiwan/bitoujiao-2.webp',
-            '/assets/images/taiwan/bitoujiao-3.webp',
-            '/assets/images/taiwan/bitoujiao-seashore (1).webp',
-            '/assets/images/taiwan/bitoujiao-seashore (2).webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $taiwan['highlight_item_1_tag'],
-        'tag_vi' => $taiwan['highlight_item_1_tag'],
-        'title_en' => $taiwan['highlight_item_1_title'],
-        'title_vi' => $taiwan['highlight_item_1_title'],
-        'desc_en' => $taiwan['highlight_item_1_desc'],
-        'desc_vi' => $taiwan['highlight_item_1_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/bitoujiao-seashore (1).webp',
-        'imgs'     => [
-            '/assets/images/taiwan/bitoujiao-seashore (1).webp',
-            '/assets/images/taiwan/bitoujiao-seashore (2).webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $taiwan['highlight_item_2_tag'],
-        'tag_vi' => $taiwan['highlight_item_2_tag'],
-        'title_en' => $taiwan['highlight_item_2_title'],
-        'title_vi' => $taiwan['highlight_item_2_title'],
-        'desc_en' => $taiwan['highlight_item_2_desc'],
-        'desc_vi' => $taiwan['highlight_item_2_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
-        'imgs'     => [
-            '/assets/images/taiwan/liushishi-jinchan-flower (1).webp',
-            '/assets/images/taiwan/liushishi-jinchan-flower (2).webp',
-            '/assets/images/taiwan/liushishi-jinchan-flower (3).webp',
-            '/assets/images/taiwan/liushishi-jinchan-flower (4).webp',
-            '/assets/images/taiwan/liushishi-jinchan-flower (5).webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $taiwan['highlight_item_3_tag'],
-        'tag_vi' => $taiwan['highlight_item_3_tag'],
-        'title_en' => $taiwan['highlight_item_3_title'],
-        'title_vi' => $taiwan['highlight_item_3_title'],
-        'desc_en' => $taiwan['highlight_item_3_desc'],
-        'desc_vi' => $taiwan['highlight_item_3_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/keelung-trail (1).webp',
-        'imgs'     => [
-            '/assets/images/taiwan/keelung-trail (1).webp',
-            '/assets/images/taiwan/keelung-trail (2).webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $taiwan['highlight_item_4_tag'],
-        'tag_vi' => $taiwan['highlight_item_4_tag'],
-        'title_en' => $taiwan['highlight_item_4_title'],
-        'title_vi' => $taiwan['highlight_item_4_title'],
-        'desc_en' => $taiwan['highlight_item_4_desc'],
-        'desc_vi' => $taiwan['highlight_item_4_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/bitoujiao-2.webp',
-        'imgs'     => [
-            '/assets/images/taiwan/bitoujiao-2.webp',
-        ],
-        'category' => 'city',
-        'tag_en' => $taiwan['highlight_item_5_tag'],
-        'tag_vi' => $taiwan['highlight_item_5_tag'],
-        'title_en' => $taiwan['highlight_item_5_title'],
-        'title_vi' => $taiwan['highlight_item_5_title'],
-        'desc_en' => $taiwan['highlight_item_5_desc'],
-        'desc_vi' => $taiwan['highlight_item_5_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/taiwan/keelung-trail (2).webp',
-        'imgs'     => [
-            '/assets/images/taiwan/keelung-trail (2).webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $taiwan['highlight_item_6_tag'],
-        'tag_vi' => $taiwan['highlight_item_6_tag'],
-        'title_en' => $taiwan['highlight_item_6_title'],
-        'title_vi' => $taiwan['highlight_item_6_title'],
-        'desc_en' => $taiwan['highlight_item_6_desc'],
-        'desc_vi' => $taiwan['highlight_item_6_desc'],
-        'span'     => 'normal',
-    ],
-];
+$highlight_categories = ['city', 'nature', 'nature', 'viewpoints', 'nature', 'city', 'viewpoints', 'nature', 'nature'];
+$highlight_spans = ['tall', 'normal', 'normal', 'normal', 'tall', 'normal', 'normal', 'normal', 'normal'];
+$highlights = [];
+for ($i = 0; $i < 9; $i++) {
+    $highlight_image_count = count($highlight_images);
+    $highlight_image = $highlight_image_count > 0 ? $highlight_images[$i % $highlight_image_count] : '';
+    $highlights[] = [
+        'img'      => $highlight_image,
+        'imgs'     => [$highlight_image],
+        'category' => $highlight_categories[$i],
+        'tag_en'   => $taiwan["highlight_item_{$i}_tag"],
+        'tag_vi'   => $taiwan["highlight_item_{$i}_tag"],
+        'title_en' => $taiwan["highlight_item_{$i}_title"],
+        'title_vi' => $taiwan["highlight_item_{$i}_title"],
+        'desc_en'  => $taiwan["highlight_item_{$i}_desc"],
+        'desc_vi'  => $taiwan["highlight_item_{$i}_desc"],
+        'span'     => $highlight_spans[$i],
+    ];
+}
+
+foreach ($highlights as $index => &$highlight) {
+    $highlight['summary_en'] = $taiwan["highlight_item_{$index}_summary"] ?? '';
+    $highlight['summary_vi'] = $highlight['summary_en'];
+    $highlight['keywords_en'] = $taiwan["highlight_item_{$index}_keywords"] ?? [];
+    $highlight['keywords_vi'] = $highlight['keywords_en'];
+}
+unset($highlight);
 
 $tableOfContents = [
     [
@@ -292,7 +180,7 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao.webp'); ?>"
+                src="<?php echo esc_url($hero_image); ?>"
                 alt="Taiwan"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -752,14 +640,14 @@ $activeId = $tableOfContents[0]['id'];
                         'badge' => $taiwan['transport_item_0_badge'],
                         'desc'  => $taiwan['transport_item_0_desc'],
                         'meta'  => $taiwan['transport_item_0_meta'],
-                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/taipei-101.webp',
+                        'img'   => $transport_images[0] ?? '',
                     ],
                     [
                         'title' => $taiwan['transport_item_1_title'],
                         'badge' => $taiwan['transport_item_1_badge'],
                         'desc'  => $taiwan['transport_item_1_desc'],
                         'meta'  => $taiwan['transport_item_1_meta'],
-                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/keelung-trail (1).webp',
+                        'img'   => $transport_images[1] ?? '',
                     ],
                 ];
                 $transport_cards_within = [
@@ -768,21 +656,21 @@ $activeId = $tableOfContents[0]['id'];
                         'badge' => $taiwan['transport_item_2_badge'],
                         'desc'  => $taiwan['transport_item_2_desc'],
                         'meta'  => $taiwan['transport_item_2_meta'],
-                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/keelung-trail (2).webp',
+                        'img'   => $transport_images[2] ?? '',
                     ],
                     [
                         'title' => $taiwan['transport_item_3_title'],
                         'badge' => $taiwan['transport_item_3_badge'],
                         'desc'  => $taiwan['transport_item_3_desc'],
                         'meta'  => $taiwan['transport_item_3_meta'],
-                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/bitoujiao.webp',
+                        'img'   => $transport_images[3] ?? '',
                     ],
                     [
                         'title' => $taiwan['transport_item_4_title'],
                         'badge' => $taiwan['transport_item_4_badge'],
                         'desc'  => $taiwan['transport_item_4_desc'],
                         'meta'  => $taiwan['transport_item_4_meta'],
-                        'img'   => get_template_directory_uri() . '/assets/images/taiwan/bitoujiao-2.webp',
+                        'img'   => $transport_images[4] ?? '',
                     ],
                 ];
                 $render_transport_cards = function($cards) {
@@ -856,25 +744,25 @@ $activeId = $tableOfContents[0]['id'];
                 <?php endforeach; ?>
             </div>
 
-            <!-- Season cards — horizontal scroll with right arrow button -->
+            <!-- Season cards -->
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/taiwan/bitoujiao-seashore (2).webp',
+                    'img'     => $weather_images[0] ?? '',
                     'title_en' => $taiwan['weather_season_0_title'],
                     'title_vi' => $taiwan['weather_season_0_title'],
                     'desc_en' => $taiwan['weather_season_0_desc'],
                     'desc_vi' => $taiwan['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (1).webp',
+                    'img'     => $weather_images[1] ?? '',
                     'title_en' => $taiwan['weather_season_1_title'],
                     'title_vi' => $taiwan['weather_season_1_title'],
                     'desc_en' => $taiwan['weather_season_1_desc'],
                     'desc_vi' => $taiwan['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/taiwan/keelung-trail (2).webp',
+                    'img'     => $weather_images[2] ?? '',
                     'title_en' => $taiwan['weather_season_2_title'],
                     'title_vi' => $taiwan['weather_season_2_title'],
                     'desc_en' => $taiwan['weather_season_2_desc'],
@@ -883,34 +771,9 @@ $activeId = $tableOfContents[0]['id'];
             ];
             ?>
 
-            <div class="relative">
-                <!-- Left scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
-                    style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll left"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Right scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
-                    style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:36px; background:#fff; border:2px solid #1D292C; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.12);"
-                    aria-label="Scroll right"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Scrollable row -->
-                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; padding-left:60px; padding-right:60px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
-                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
-                    <?php foreach ($seasons as $s): ?>
-                    <div style="flex:0 0 calc((100% - 3 * 12px) / 3.5); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <?php foreach ($seasons as $s): ?>
+                    <div style="width:100%; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -929,8 +792,7 @@ $activeId = $tableOfContents[0]['id'];
                             </p>
                         </div>
                     </div>
-                    <?php endforeach; ?>
-                </div>
+                <?php endforeach; ?>
             </div>
 
         </div>
@@ -978,32 +840,31 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="highlight-grid">
                 <?php foreach ($highlights as $i => $h): ?>
                 <div
-                    class="highlight-card group cursor-pointer rounded-xl overflow-hidden relative"
+                    class="highlight-card group overflow-hidden"
                     data-index="<?php echo $i; ?>"
                     data-category="<?php echo esc_attr($h['category']); ?>"
-                    onclick="openHighlight(<?php echo $i; ?>)"
-                    role="button"
-                    tabindex="0"
-                    aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
+                    style="border:1px solid #D7D9D8; border-radius:8px; background:#fff;"
                 >
-                    <div class="relative overflow-hidden" style="aspect-ratio:4/3;">
+                    <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" class="relative overflow-hidden" style="display:block; width:100%; aspect-ratio:4/3; padding:0; border:0; background:none; cursor:pointer;">
                         <img
-                            src="<?php echo esc_url($theme_uri . $h['img']); ?>"
+                            src="<?php echo esc_url($h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"
                         />
-                        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(29,41,44,.75) 0%, transparent 55%); pointer-events:none;"></div>
-                        <div style="position:absolute; top:10px; left:10px; background:#E7F15A; border-radius:999px; padding:3px 10px;">
-                            <span style="font-size:11px; font-weight:700; color:#1D292C;">
-                                <?php echo esc_html($current_lang === 'en' ? $h['tag_en'] : $h['tag_vi']); ?>
-                            </span>
-                        </div>
-                        <div style="position:absolute; bottom:12px; left:12px; right:12px;">
-                            <p style="font-size:15px; font-weight:700; color:#F2F2F0; line-height:1.3; margin:0;">
+                    </button>
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:88px; padding:16px;">
+                        <div style="min-width:0;">
+                            <p style="font-size:15px; font-weight:700; color:#1D292C; line-height:1.35; margin:0 0 5px;">
                                 <?php echo esc_html($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>
                             </p>
+                            <p style="font-size:12px; font-weight:500; color:#74797A; line-height:1.45; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                <?php echo esc_html($current_lang === 'en' ? $h['summary_en'] : $h['summary_vi']); ?>
+                            </p>
                         </div>
+                        <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" style="display:flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; padding:0; border:1px solid #1D292C; border-radius:50%; background:#E7F15A; cursor:pointer;">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/arrow-right.svg'); ?>" alt="" aria-hidden="true" style="width:20px; height:20px; display:block;" />
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -1016,6 +877,7 @@ $activeId = $tableOfContents[0]['id'];
     $highlight_modal_prev_label = $t["ha_giang"]["carousel_prev"];
     $highlight_modal_next_label = $t["ha_giang"]["carousel_next"];
     $highlight_modal_preview_label = $current_lang === "en" ? "Preview image" : "Xem ảnh";
+    $highlight_modal_quick_peek_label = $t['global']['highlight_quick_peek_label'];
     include get_template_directory() . "/components/highlight-modal.php";
     ?>
 
@@ -1048,32 +910,32 @@ $activeId = $tableOfContents[0]['id'];
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (3).webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (4).webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     alt="Cultural Aspect 1"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/liushishi-jinchan-flower (5).webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/taipei-101.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     alt="Cultural Aspect 2"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-2.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-3.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-seashore (1).webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/bitoujiao-seashore (2).webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/taiwan/keelung-trail (1).webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
@@ -1218,27 +1080,6 @@ function transTab(tab) {
         }
     });
 }
-
-// Mouse drag to scroll season cards
-(function() {
-    var el = document.getElementById('season-scroll');
-    if (!el) return;
-    var isDown = false, startX, scrollLeft;
-    el.addEventListener('mousedown', function(e) {
-        isDown = true;
-        el.classList.add('dragging');
-        startX = e.pageX - el.offsetLeft;
-        scrollLeft = el.scrollLeft;
-    });
-    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mousemove',  function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - el.offsetLeft;
-        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    });
-})();
 
 // Solo going / Book a tour tab switcher
 (function() {

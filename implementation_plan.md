@@ -186,3 +186,176 @@ Manual/browser checks if local WordPress is available:
 - Some current destination pages reuse Ha Giang images intentionally or accidentally; migration should preserve current visual behavior unless user asks to correct image content.
 - Remote filenames with spaces or special characters must be copied exactly and escaped with `esc_url`.
 - Network/remote media availability cannot be fully verified offline; browser checks need the local WordPress site and internet access.
+
+---
+
+# Implementation Plan Addendum: Highlight Quick Peek
+
+## Goal
+
+Add a concise quick-peek block above every highlight description so readers can understand the place without reading the full paragraph.
+
+Each highlight will receive:
+
+- One short localized summary.
+- Three to five localized keyword chips.
+- The existing full description below, unchanged.
+
+This applies to all six pages currently using `components/highlight-modal.php`:
+
+- `ha-giang-tour.php`
+- `mu-cang-chai.php`
+- `taiwan.php`
+- `cao-bang-tour.php`
+- `hue-tour.php`
+- `ninh-thuan.php`
+
+`cat-ba-tour.php` is excluded because it currently has no page-local highlight records and does not use the shared highlight modal.
+
+## Required User Review
+
+> [!IMPORTANT]
+> This plan generates summaries and keywords once during implementation and stores them in `lang/en.json` and `lang/vi.json`. Nothing will be generated at runtime.
+
+Current inventory:
+
+- 53 bilingual highlight records exist across the six namespaces.
+- 51 records currently render because Hue intentionally omits indexes `1` and `8`.
+- All 53 records will receive quick-peek data so both locale files stay structurally complete.
+
+Generation rules:
+
+1. Use only facts already present in each localized title, tag, and description.
+2. Do not add recommendations, accessibility claims, prices, difficulty, timing, or safety information unless the source text supports them.
+3. Keep summaries to one sentence, normally 15–25 words.
+4. Generate 3–5 short keywords covering useful dimensions such as place type, activity, scenery, atmosphere, season, food, or caution.
+5. Generate English from English source content and Vietnamese from Vietnamese source content.
+6. Do not copy English keyword arrays into Vietnamese.
+7. For placeholder descriptions, use only title/tag facts and avoid inventing destination details.
+8. Preserve every existing `highlight_item_*_desc` value unchanged.
+
+Recommended modal order:
+
+1. Title and highlight navigation.
+2. Localized `Quick peek` label.
+3. Summary sentence.
+4. Keyword chips.
+5. Full description.
+
+Keyword chips are informational, not clickable filters.
+
+## Proposed Locale Changes
+
+### [MODIFY] `lang/en.json`
+
+Add:
+
+- `global.highlight_quick_peek_label`: `Quick peek`
+- For every highlight record:
+  - `highlight_item_{index}_summary`
+  - `highlight_item_{index}_keywords` as a JSON array of 3–5 strings
+
+### [MODIFY] `lang/vi.json`
+
+Add:
+
+- `global.highlight_quick_peek_label`: `Xem nhanh`
+- Matching Vietnamese `summary` and `keywords` keys for every highlight record.
+
+Example structure:
+
+```json
+"highlight_item_0_summary": "A lively district for food, shopping, nightlife, and convenient public transport.",
+"highlight_item_0_keywords": ["Nightlife", "Street food", "Shopping", "Metro"]
+```
+
+## Proposed Template Changes
+
+### [MODIFY] Destination templates
+
+Extend each rendered `$highlights` item with:
+
+```php
+'summary_en' => $page["highlight_item_{$index}_summary"] ?? '',
+'summary_vi' => $page["highlight_item_{$index}_summary"] ?? '',
+'keywords_en' => $page["highlight_item_{$index}_keywords"] ?? [],
+'keywords_vi' => $page["highlight_item_{$index}_keywords"] ?? [],
+```
+
+Use each template's existing page namespace and index mapping:
+
+- Ha Giang: indexes `0–12`
+- Mu Cang Chai: indexes `0–4`
+- Taiwan: indexes `0–8`
+- Cao Bang: indexes `0–4`
+- Hue: existing `locale_index` mapping, preserving omitted indexes `1` and `8`
+- Ninh Thuan: indexes `0–7`
+
+Pass the global quick-peek label into the shared component:
+
+```php
+$highlight_modal_quick_peek_label = $t['global']['highlight_quick_peek_label'];
+```
+
+Do not alter highlight images, categories, ordering, filtering, or existing descriptions.
+
+## Shared Component
+
+### [MODIFY] `components/highlight-modal.php`
+
+- Accept optional `summary_en`, `summary_vi`, `keywords_en`, and `keywords_vi`.
+- Accept `$highlight_modal_quick_peek_label`.
+- Render the quick-peek section above `#modal-desc`.
+- Render keyword chips with compact wrapping and no click behavior.
+- Hide the entire quick-peek section if both summary and keywords are absent.
+- Keep whole-modal scrolling from the current implementation.
+- Preserve 4:3 image layout, right-side thumbnails, counters, previous/next controls, and keyboard navigation.
+- Populate summary and chips safely with `textContent` and DOM element creation, not interpolated HTML.
+
+## Implementation Workflow After Approval
+
+1. Create/update `task.md` with a checklist.
+2. Run `hihi-tour-locale-preflight` on all six templates before edits.
+3. Generate source-grounded summaries and keyword arrays for all 53 bilingual records.
+4. Update both locale files.
+5. Extend all six `$highlights` mappings.
+6. Update the shared modal component.
+7. Run locale-key coverage checks, including dynamic key ranges.
+8. Verify PHP, JSON, whitespace, and browser layout.
+9. Update `walkthrough.md`.
+
+## Verification Plan
+
+Static checks:
+
+- Parse `lang/en.json` and `lang/vi.json`.
+- Verify every highlight `desc` record has matching `summary` and `keywords` in both languages.
+- Verify every keyword value is an array containing 3–5 non-empty strings.
+- Verify every summary is a non-empty string.
+- Run the locale preflight for all six templates.
+- Run `/Applications/XAMPP/xamppfiles/bin/php -l` on:
+  - `components/highlight-modal.php`
+  - `ha-giang-tour.php`
+  - `mu-cang-chai.php`
+  - `taiwan.php`
+  - `cao-bang-tour.php`
+  - `hue-tour.php`
+  - `ninh-thuan.php`
+- Run `git diff --check`.
+- Scan touched templates for new hardcoded visible strings.
+
+Browser checks when local WordPress is available:
+
+- Open one short-description and one long-description highlight per page.
+- Confirm summary and chips appear above the full description.
+- Confirm long modal content scrolls as one unit.
+- Confirm chips wrap without horizontal overflow on mobile.
+- Confirm highlight navigation updates summary, keywords, and description together.
+- Confirm English and Vietnamese render localized values.
+
+## Risks
+
+- Automated summaries can overstate source material. Generation must remain source-grounded and receive a content consistency pass.
+- Some Taiwan descriptions are placeholders. Their quick peeks must remain generic until real descriptions are supplied.
+- Hue renders a subset of its locale records. Index-based mapping must use `locale_index`, not array position.
+- Large locale edits can create missing or mismatched keys. The preflight and exact coverage script are required before completion.

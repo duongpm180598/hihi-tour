@@ -13,40 +13,18 @@ $cb = $t['cao_bang'];
 
 $theme_uri = get_template_directory_uri();
 
+$banner_group = hihi_image_group('cao_bang.banners');
 $banner_images = [
-    'banner_1' => $theme_uri . '/assets/images/cao-bang/banner_1.png',
-    'banner_2' => $theme_uri . '/assets/images/cao-bang/banner_2.png',
-    'banner_3' => $theme_uri . '/assets/images/cao-bang/banner_3.png',
-    'banner_4' => $theme_uri . '/assets/images/cao-bang/banner_4.png',
-    'banner_5' => $theme_uri . '/assets/images/cao-bang/banner_5.png',
+    'banner_1' => $banner_group[0] ?? '',
+    'banner_2' => $banner_group[1] ?? '',
+    'banner_3' => $banner_group[2] ?? '',
+    'banner_4' => $banner_group[3] ?? '',
+    'banner_5' => $banner_group[4] ?? '',
 ];
-
-// Danh sách các ảnh.
-$images = [
-    '/assets/images/ha-giang/gallery/nho_que_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cuoc_song_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/xa_phin_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_2.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_3.jpg',
-    '/assets/images/ha-giang/gallery/cua_chu_M_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/du_gia_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_bang_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/dan_trau_tren_doi.jpg',
-    '/assets/images/ha-giang/gallery/tre_em_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/doc_tham_ma_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/nui_rung_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/cho_meo_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/tu_san_coffee_ha_giang.jpg',
-    '/assets/images/ha-giang/gallery/pho_cao_ha_giang_1.jpg',
-];
-
-// Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/ha-giang/gallery/';
-$gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
-sort($gallery_files);
-$all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/ha-giang/gallery/' . basename($file);
-}, $gallery_files);
+$all_gallery_images = hihi_image_group('cao_bang.gallery');
+$highlight_image_groups = hihi_image_group('cao_bang.highlights');
+$transport_images = hihi_image_group('cao_bang.transport');
+$weather_images = hihi_image_group('cao_bang.weather');
 
 // itinerary
 $plan_options = [
@@ -81,36 +59,23 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];
 
 // faqs
 $faqs_data = [
-    ['group' => 'ha_giang', 'q' => 'faq_q_age', 'a' => 'faq_a_age'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_challenge', 'a' => 'faq_a_challenge'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_driving', 'a' => 'faq_a_driving'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_party', 'a' => 'faq_a_party'],
-
-    ['group' => 'global', 'q' => 'faq_q_tip', 'a' => 'faq_a_tip'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_difference', 'a' => 'faq_a_difference'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_difficulty', 'a' => 'faq_a_difficulty'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_days', 'a' => 'faq_a_days'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
+    ['group' => 'cao_bang', 'q' => 'faq_q_weather', 'a' => 'faq_a_weather'],
 ];
 
 // S3 highlights — "What's here"
 $highlights = [
     [
-        'img'      => '/assets/images/cao-bang/gallery_1.png',
-        'imgs'     => [
-            '/assets/images/cao-bang/gallery_1.png',
-            '/assets/images/cao-bang/banner_1.png',
-        ],
+        'img'      => $highlight_image_groups[0][0] ?? '',
+        'imgs'     => $highlight_image_groups[0] ?? [],
         'category' => 'viewpoints',
         'tag_en' => $cb['highlight_item_0_tag'],
         'tag_vi' => $cb['highlight_item_0_tag'],
@@ -121,11 +86,8 @@ $highlights = [
         'span'     => 'tall',
     ],
     [
-        'img'      => '/assets/images/cao-bang/gallery_2.png',
-        'imgs'     => [
-            '/assets/images/cao-bang/gallery_2.png',
-            '/assets/images/cao-bang/banner_2.png',
-        ],
+        'img'      => $highlight_image_groups[1][0] ?? '',
+        'imgs'     => $highlight_image_groups[1] ?? [],
         'category' => 'nature',
         'tag_en' => $cb['highlight_item_1_tag'],
         'tag_vi' => $cb['highlight_item_1_tag'],
@@ -136,11 +98,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/cao-bang/gallery_3.png',
-        'imgs'     => [
-            '/assets/images/cao-bang/gallery_3.png',
-            '/assets/images/cao-bang/banner_3.png',
-        ],
+        'img'      => $highlight_image_groups[2][0] ?? '',
+        'imgs'     => $highlight_image_groups[2] ?? [],
         'category' => 'nature',
         'tag_en' => $cb['highlight_item_2_tag'],
         'tag_vi' => $cb['highlight_item_2_tag'],
@@ -151,11 +110,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/cao-bang/gallery_4.png',
-        'imgs'     => [
-            '/assets/images/cao-bang/gallery_4.png',
-            '/assets/images/cao-bang/banner_4.png',
-        ],
+        'img'      => $highlight_image_groups[3][0] ?? '',
+        'imgs'     => $highlight_image_groups[3] ?? [],
         'category' => 'viewpoints',
         'tag_en' => $cb['highlight_item_3_tag'],
         'tag_vi' => $cb['highlight_item_3_tag'],
@@ -166,11 +122,8 @@ $highlights = [
         'span'     => 'normal',
     ],
     [
-        'img'      => '/assets/images/cao-bang/gallery_5.png',
-        'imgs'     => [
-            '/assets/images/cao-bang/gallery_5.png',
-            '/assets/images/cao-bang/banner_5.png',
-        ],
+        'img'      => $highlight_image_groups[4][0] ?? '',
+        'imgs'     => $highlight_image_groups[4] ?? [],
         'category' => 'nature',
         'tag_en' => $cb['highlight_item_4_tag'],
         'tag_vi' => $cb['highlight_item_4_tag'],
@@ -592,7 +545,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
 'label_vi' => $t['ha_giang']['transport_bus_0_label'],
                                 'badge_en' => $t['ha_giang']['transport_bus_0_badge'],
 'badge_vi' => $t['ha_giang']['transport_bus_0_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/vip.webp',
+                                'img'       => $transport_images[0] ?? '',
                                 'desc_en' => $t['ha_giang']['transport_bus_0_desc'],
 'desc_vi' => $t['ha_giang']['transport_bus_0_desc'],
                                 'rows_en' => $t['ha_giang']['transport_bus_0_rows'],
@@ -606,7 +559,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
 'label_vi' => $t['ha_giang']['transport_bus_1_label'],
                                 'badge_en' => $t['ha_giang']['transport_bus_1_badge'],
 'badge_vi' => $t['ha_giang']['transport_bus_1_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/normal.webp',
+                                'img'       => $transport_images[1] ?? '',
                                 'desc_en' => $t['ha_giang']['transport_bus_1_desc'],
 'desc_vi' => $t['ha_giang']['transport_bus_1_desc'],
                                 'rows_en' => $t['ha_giang']['transport_bus_1_rows'],
@@ -620,7 +573,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
 'label_vi' => $t['ha_giang']['transport_bus_2_label'],
                                 'badge_en' => $t['ha_giang']['transport_bus_2_badge'],
 'badge_vi' => $t['ha_giang']['transport_bus_2_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/economy.webp',
+                                'img'       => $transport_images[2] ?? '',
                                 'desc_en' => $t['ha_giang']['transport_bus_2_desc'],
 'desc_vi' => $t['ha_giang']['transport_bus_2_desc'],
                                 'rows_en' => $t['ha_giang']['transport_bus_2_rows'],
@@ -783,28 +736,28 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-1.png',
+                    'img'     => $weather_images[0] ?? '',
                     'title_en' => $cb['weather_season_0_title'],
 'title_vi' => $cb['weather_season_0_title'],
                     'desc_en' => $cb['weather_season_0_desc'],
 'desc_vi' => $cb['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-2.png',
+                    'img'     => $weather_images[1] ?? '',
                     'title_en' => $cb['weather_season_1_title'],
 'title_vi' => $cb['weather_season_1_title'],
                     'desc_en' => $cb['weather_season_1_desc'],
 'desc_vi' => $cb['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-3.png',
+                    'img'     => $weather_images[2] ?? '',
                     'title_en' => $cb['weather_season_2_title'],
 'title_vi' => $cb['weather_season_2_title'],
                     'desc_en' => $cb['weather_season_2_desc'],
 'desc_vi' => $cb['weather_season_2_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/ha-giang/weather-4.png',
+                    'img'     => $weather_images[3] ?? '',
                     'title_en' => $cb['weather_season_3_title'],
 'title_vi' => $cb['weather_season_3_title'],
                     'desc_en' => $cb['weather_season_3_desc'],
@@ -891,7 +844,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
                 >
                     <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" class="relative overflow-hidden" style="display:block; width:100%; aspect-ratio:4/3; padding:0; border:0; background:none; cursor:pointer;">
                         <img
-                            src="<?php echo esc_url($theme_uri . $h['img']); ?>"
+                            src="<?php echo esc_url($h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"

@@ -2,6 +2,7 @@
 <?php
 $current_lang = pll_current_language('slug');
 $theme_uri    = get_template_directory_uri();
+$t            = load_lang();
 
 $HaGiangLoop = $theme_uri . '/assets/images/ha-giang/ha_giang_loop.jpg';
 $CaoBangTrip = $theme_uri . '/assets/images/cao-bang/cao_bang.jpg';
@@ -247,30 +248,101 @@ usort($destinations, function ($a, $b) use ($current_lang) {
 
 <main>
 
+<style>
+    .home-hero {
+        min-height: 300px;
+        background: #F8F8F8;
+    }
+
+    .home-hero-inner {
+        width: 100%;
+        max-width: 900px;
+        padding: 40px 16px 32px;
+    }
+
+    .home-hero-heading {
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 14px;
+        margin: 0 0 24px;
+        color: #fff;
+        font-family: 'Phudu', sans-serif;
+        font-size: 58px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: left;
+    }
+
+    .home-hero-mark,
+    .home-hero-title {
+        display: flex;
+        align-items: center;
+        min-height: 96px;
+        background: #8500FF;
+    }
+
+    .home-hero-mark {
+        justify-content: center;
+        border-radius: 48px 48px 48px 8px;
+    }
+
+    .home-hero-title {
+        padding: 12px 34px;
+        border-radius: 48px 48px 8px 48px;
+    }
+
+    @media (max-width: 640px) {
+        .home-hero {
+            min-height: 260px;
+        }
+
+        .home-hero-inner {
+            padding-top: 28px;
+            padding-bottom: 24px;
+        }
+
+        .home-hero-heading {
+            grid-template-columns: 64px minmax(0, 1fr);
+            gap: 8px;
+            margin-bottom: 18px;
+            font-size: 26px;
+        }
+
+        .home-hero-mark,
+        .home-hero-title {
+            min-height: 68px;
+        }
+
+        .home-hero-mark {
+            border-radius: 34px 34px 34px 8px;
+        }
+
+        .home-hero-title {
+            padding: 10px 18px;
+            border-radius: 34px 34px 8px 34px;
+        }
+    }
+</style>
+
 <!-- ═══════════════════════════════════════════════════════════════════════════
      HERO BANNER
 ════════════════════════════════════════════════════════════════════════════ -->
 <section
-    class="relative flex flex-col items-center justify-center text-center overflow-hidden"
-    style="min-height: 60vh; background-color: #F8F8F8;"
+    class="home-hero relative flex flex-col items-center justify-center overflow-hidden"
 >
-    <!-- Decorative blobs -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full opacity-20" style="background:#7B63F7; filter:blur(80px);"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full opacity-15" style="background:#E7F15A; filter:blur(80px);"></div>
-    </div>
-
-    <div class="relative z-10 px-4 py-20 w-full max-w-3xl mx-auto">
+    <div class="home-hero-inner relative z-10 mx-auto">
 
         <h1
-            class="font-black tracking-tight mb-8 font-phudu"
-            style="font-size: clamp(2.5rem, 8vw, 5.5rem); color: #1D292C; line-height: 1.05;"
+            class="home-hero-heading"
+            aria-label="<?php echo esc_attr($t['global']['home_hero_title']); ?>"
         >
-            <?php echo $current_lang === 'en' ? 'GOING SOMEWHERE ?' : 'BẠN MUỐN ĐI ĐÂU ?' ?>
+            <span class="home-hero-mark" aria-hidden="true">?</span>
+            <span class="home-hero-title"><?php echo esc_html($t['global']['home_hero_title']); ?></span>
         </h1>
 
         <!-- Search -->
-        <div class="relative max-w-xl mx-auto mb-6">
+        <div class="relative max-w-xl mx-auto">
             <input
                 id="dest-search"
                 type="text"
@@ -301,7 +373,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
 
         <!-- Filter rows -->
         <!-- Row 1: Geography — toggle, no "All" chip -->
-        <div class="flex flex-wrap justify-center gap-2 mb-2" role="group" aria-label="Filter by region">
+        <div class="flex flex-wrap justify-center gap-2 mb-2" role="group" aria-label="Filter by region" style="display:none;">
             <?php
             $geo_filters = [
                 ['vietnam', 'Vietnam'],
@@ -320,7 +392,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
         </div>
 
         <!-- Row 2: Topo — toggle, no "All" chip -->
-        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter by landscape">
+        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter by landscape" style="display:none;">
             <?php
             $topo_filters = [
                 ['sea',      $current_lang === 'en' ? 'Sea'      : 'Biển'],
@@ -344,7 +416,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
 <!-- ═══════════════════════════════════════════════════════════════════════════
      DESTINATION CARDS
 ════════════════════════════════════════════════════════════════════════════ -->
-<section style="background:#F8F8F8;" class="px-4 py-10">
+<section style="background:#F8F8F8;" class="px-4 py-4">
     <div class="container mx-auto">
 
         <p id="dest-no-results" class="hidden text-center py-16 text-sm" style="color:#1D292C; opacity:.5;">

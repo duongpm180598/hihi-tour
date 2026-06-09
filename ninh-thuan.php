@@ -56,13 +56,12 @@ $icons = [
 
 // faqs
 $faqs_data = [
-    ['group' => 'ha_giang', 'q' => 'faq_q_age', 'a' => 'faq_a_age'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_challenge', 'a' => 'faq_a_challenge'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_driving', 'a' => 'faq_a_driving'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_party', 'a' => 'faq_a_party'],
-
-    ['group' => 'global', 'q' => 'faq_q_tip', 'a' => 'faq_a_tip'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_worth', 'a' => 'faq_a_worth'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_weather', 'a' => 'faq_a_weather'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_transport', 'a' => 'faq_a_transport'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
+    ['group' => 'ninh_thuan', 'q' => 'faq_q_children', 'a' => 'faq_a_children'],
 ];
 
 $highlights = [];
@@ -654,7 +653,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                     [
                         'label' => $nt['transport_tourist_taxi_label'],
                         'badge' => $nt['transport_tourist_taxi_badge'],
-                        'img' => $transport_images[0] ?? '',
+                        'img' => $transport_images[3] ?? '',
                         'desc' => $nt['transport_tourist_taxi_desc'],
                         'meta' => $nt['transport_tourist_taxi_meta'],
                         'price' => $nt['transport_tourist_taxi_price'],

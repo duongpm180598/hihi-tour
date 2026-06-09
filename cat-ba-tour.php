@@ -52,19 +52,12 @@ $qrs = [
 
 // faqs
 $faqs_data = [
-    [
-        'q' => 'faq_q_age_catba',
-        'a' => 'faq_a_age_catba',
-    ],
-    [
-        'q' => 'faq_q_seasick',
-        'a' => 'faq_a_seasick',
-    ],
-
-    [
-        'q' => 'faq_q_tip',
-        'a' => 'faq_a_tip',
-    ],
+    ['group' => 'cat_ba', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_family', 'a' => 'faq_a_family'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_seasick', 'a' => 'faq_a_seasick'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_days', 'a' => 'faq_a_days'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_weather', 'a' => 'faq_a_weather'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
 ];
 
 $tableOfContents = [
@@ -463,8 +456,9 @@ $activeId = $tableOfContents[0]['id'];
 
         <?php foreach ($faqs_data as $index => $faq): ?>
             <?php
-            $question_text = $t[$faq['q']] ?? 'Question key not found';
-            $answer_text = $t[$faq['a']] ?? 'Answer key not found';
+            $group = $faq['group'] ?? 'global';
+            $question_text = $t[$group][$faq['q']] ?? 'Question key not found';
+            $answer_text = $t[$group][$faq['a']] ?? 'Answer key not found';
             ?>
             <div class="border-b border-gray-200">
                 <button

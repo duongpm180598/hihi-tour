@@ -19,6 +19,27 @@
 - [x] Confirm no local raster paths remain in either template.
 - [x] Validate touched PHP files and whitespace.
 
+## Local Transportation Images
+
+- [x] Use the new Ha Giang VIP, normal, and economy transport images.
+- [x] Use Hue airport, train, motorbike, and bicycle images.
+- [x] Keep transportation images local on every destination page.
+- [x] Verify every transport image path exists.
+- [x] Validate touched PHP files and whitespace.
+
+## Hue And Cao Bang CSV Mapping
+
+- [x] Read `img-url-hihi.CSV` and classify Hue/Cao Bang URLs by filename.
+- [x] Add Hue and Cao Bang image groups to the centralized manifest.
+- [x] Replace local gallery scans with explicit manifest arrays.
+- [x] Replace hero/banner, highlights, transport, weather, and culture images.
+- [x] Remove unused local social raster arrays from both templates.
+- [x] Remove Hue's overwritten legacy highlight image array.
+- [x] Confirm every Hue/Cao Bang manifest URL exists in the CSV.
+- [x] Map cross-destination CSV files to Ninh Thuan and Mu Cang Chai.
+- [x] Confirm no local raster paths remain in either template.
+- [x] Validate touched PHP files and whitespace.
+
 ## Highlight Quick Peek
 
 - [x] Run locale preflight for all six highlight templates.

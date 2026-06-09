@@ -56,13 +56,12 @@ $icons = [
 
 // faqs
 $faqs_data = [
-    ['group' => 'ha_giang', 'q' => 'faq_q_age', 'a' => 'faq_a_age'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_challenge', 'a' => 'faq_a_challenge'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_driving', 'a' => 'faq_a_driving'],
+    ['group' => 'ha_giang', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'ha_giang', 'q' => 'faq_q_first_timer', 'a' => 'faq_a_first_timer'],
+    ['group' => 'ha_giang', 'q' => 'faq_q_self_drive', 'a' => 'faq_a_self_drive'],
+    ['group' => 'ha_giang', 'q' => 'faq_q_days', 'a' => 'faq_a_days'],
     ['group' => 'ha_giang', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
     ['group' => 'ha_giang', 'q' => 'faq_q_party', 'a' => 'faq_a_party'],
-
-    ['group' => 'global', 'q' => 'faq_q_tip', 'a' => 'faq_a_tip'],
 ];
 
 // S3 highlights — "What's here"

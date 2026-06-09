@@ -12,33 +12,12 @@ $t = load_lang();
 $hue = $t['hue'];
 
 $theme_uri = get_template_directory_uri();
-
-// Danh sách các ảnh.
-$images = [
-    '/assets/images/hue/cau_truong_tien_hue.webp',
-    '/assets/images/hue/hue_house.webp',
-    '/assets/images/hue/a_luoi.webp',
-    '/assets/images/hue/a_luoi2.webp',
-    '/assets/images/hue/a-luoi-building.webp',
-    '/assets/images/hue/dai_noi_hue.webp',
-    '/assets/images/hue/imperial-palace.webp',
-    '/assets/images/hue/song_huong.webp',
-    '/assets/images/hue/cau_truong_tien_hue.webp',
-    '/assets/images/hue/hue_house.webp',
-    '/assets/images/hue/a_luoi.webp',
-    '/assets/images/hue/a_luoi2.webp',
-    '/assets/images/hue/a-luoi-building.webp',
-    '/assets/images/hue/dai_noi_hue.webp',
-    '/assets/images/hue/imperial-palace.webp',
-];
-
-// Load ALL gallery images dynamically for modal
-$gallery_dir   = get_template_directory() . '/assets/images/hue/';
-$gallery_files = glob($gallery_dir . '*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE);
-sort($gallery_files);
-$all_gallery_images = array_map(function($file) use ($theme_uri) {
-    return $theme_uri . '/assets/images/hue/' . basename($file);
-}, $gallery_files);
+$hero_image = hihi_image_url('hue.hero');
+$all_gallery_images = hihi_image_group('hue.gallery');
+$highlight_image_groups = hihi_image_group('hue.highlights');
+$transport_images = hihi_image_group('hue.transport');
+$weather_images = hihi_image_group('hue.weather');
+$culture_images = hihi_image_group('hue.culture');
 
 // itinerary
 $plan_groups = [
@@ -100,271 +79,38 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];
 
 // faqs
 $faqs_data = [
-    ['group' => 'ha_giang', 'q' => 'faq_q_age', 'a' => 'faq_a_age'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_challenge', 'a' => 'faq_a_challenge'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_driving', 'a' => 'faq_a_driving'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
-    ['group' => 'ha_giang', 'q' => 'faq_q_party', 'a' => 'faq_a_party'],
-
-    ['group' => 'global', 'q' => 'faq_q_tip', 'a' => 'faq_a_tip'],
-];
-
-// S3 highlights — "What's here"
-$highlights = [
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_0_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_0_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_0_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_0_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_0_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_0_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/a_luoi2.webp',
-        'imgs'     => [
-            '/assets/images/hue/a-luoi-building.webp',
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_1_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_1_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_1_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_1_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_1_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_1_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => $t['ha_giang']['highlight_item_2_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_2_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_2_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_2_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_2_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_2_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/hue_house.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en' => 'Viewpoint',
-        'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'cua chữ M',
-        'title_vi' => 'cua chữ M',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
-        'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_3_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_3_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_3_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_3_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_3_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_3_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-        ],
-        'category' => 'food',
-        'tag_en' => $t['ha_giang']['highlight_item_4_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_4_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_4_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_4_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_4_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_4_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
-        'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'nature',
-        'tag_en' => $t['ha_giang']['highlight_item_5_tag'],
-        'tag_vi' => $t['ha_giang']['highlight_item_5_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_5_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_5_title'],
-        'desc_en' => $t['ha_giang']['highlight_item_5_desc'],
-        'desc_vi' => $t['ha_giang']['highlight_item_5_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_6_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_6_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_6_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_6_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_6_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_6_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/hue_house.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-            '/assets/images/hue/a-luoi-building.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_7_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_7_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_7_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_7_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_7_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_7_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/dai_noi_hue.webp',
-        'imgs'     => [
-            '/assets/images/hue/imperial-palace.webp',
-            '/assets/images/hue/song_huong.webp',
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-            '/assets/images/hue/a_luoi.webp',
-            '/assets/images/hue/a_luoi2.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_8_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_8_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_8_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_8_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_8_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_8_desc'],
-        'span'     => 'tall',
-    ],
-    [
-        'img'      => '/assets/images/hue/a-luoi-building.webp',
-        'imgs'     => [
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_9_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_9_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_9_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_9_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_9_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_9_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-        ],
-        'category' => 'viewpoints',
-        'tag_en'   => $t['ha_giang']['highlight_item_10_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_10_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_10_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_10_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_10_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_10_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/a_luoi.webp',
-        'imgs'     => [
-            '/assets/images/hue/a_luoi2.webp',
-            '/assets/images/hue/a-luoi-building.webp',
-            '/assets/images/hue/dai_noi_hue.webp',
-            '/assets/images/hue/imperial-palace.webp',
-        ],
-        'category' => 'food',
-        'tag_en'   => $t['ha_giang']['highlight_item_11_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_11_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_11_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_11_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_11_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_11_desc'],
-        'span'     => 'normal',
-    ],
-    [
-        'img'      => '/assets/images/hue/song_huong.webp',
-        'imgs'     => [
-            '/assets/images/hue/cau_truong_tien_hue.webp',
-            '/assets/images/hue/hue_house.webp',
-        ],
-        'category' => 'nature',
-        'tag_en'   => $t['ha_giang']['highlight_item_12_tag'],
-        'tag_vi'   => $t['ha_giang']['highlight_item_12_tag'],
-        'title_en' => $t['ha_giang']['highlight_item_12_title'],
-        'title_vi' => $t['ha_giang']['highlight_item_12_title'],
-        'desc_en'  => $t['ha_giang']['highlight_item_12_desc'],
-        'desc_vi'  => $t['ha_giang']['highlight_item_12_desc'],
-        'span'     => 'normal',
-    ],
+    ['group' => 'hue', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'hue', 'q' => 'faq_q_worth', 'a' => 'faq_a_worth'],
+    ['group' => 'hue', 'q' => 'faq_q_days', 'a' => 'faq_a_days'],
+    ['group' => 'hue', 'q' => 'faq_q_transport', 'a' => 'faq_a_transport'],
+    ['group' => 'hue', 'q' => 'faq_q_weather', 'a' => 'faq_a_weather'],
+    ['group' => 'hue', 'q' => 'faq_q_food', 'a' => 'faq_a_food'],
 ];
 
 $hue_highlight_specs = [
-    ['locale_index' => 0, 'img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
-    ['locale_index' => 2, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'heritage'],
-    ['locale_index' => 3, 'img' => '/assets/images/hue/imperial-palace.webp', 'category' => 'heritage'],
-    ['locale_index' => 4, 'img' => '/assets/images/hue/dai_noi_hue.webp', 'category' => 'heritage'],
-    ['locale_index' => 5, 'img' => '/assets/images/hue/a_luoi.webp', 'category' => 'nature'],
-    ['locale_index' => 6, 'img' => '/assets/images/hue/a_luoi2.webp', 'category' => 'nature'],
-    ['locale_index' => 7, 'img' => '/assets/images/hue/a-luoi-building.webp', 'category' => 'nature'],
-    ['locale_index' => 9, 'img' => '/assets/images/hue/cau_truong_tien_hue.webp', 'category' => 'river'],
-    ['locale_index' => 10, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
-    ['locale_index' => 11, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
-    ['locale_index' => 12, 'img' => '/assets/images/hue/hue_house.webp', 'category' => 'food'],
+    ['locale_index' => 0, 'images' => $highlight_image_groups[0] ?? [], 'category' => 'heritage'],
+    ['locale_index' => 2, 'images' => $highlight_image_groups[1] ?? [], 'category' => 'heritage'],
+    ['locale_index' => 3, 'images' => $highlight_image_groups[2] ?? [], 'category' => 'heritage'],
+    ['locale_index' => 4, 'images' => $highlight_image_groups[3] ?? [], 'category' => 'heritage'],
+    ['locale_index' => 5, 'images' => $highlight_image_groups[4] ?? [], 'category' => 'nature'],
+    ['locale_index' => 6, 'images' => $highlight_image_groups[5] ?? [], 'category' => 'nature'],
+    ['locale_index' => 7, 'images' => $highlight_image_groups[6] ?? [], 'category' => 'nature'],
+    ['locale_index' => 9, 'images' => $highlight_image_groups[7] ?? [], 'category' => 'river'],
+    ['locale_index' => 10, 'images' => $highlight_image_groups[8] ?? [], 'category' => 'food'],
+    ['locale_index' => 11, 'images' => $highlight_image_groups[9] ?? [], 'category' => 'food'],
+    ['locale_index' => 12, 'images' => $highlight_image_groups[10] ?? [], 'category' => 'food'],
 ];
 
 $highlights = array_map(function ($item) use ($hue) {
     $index = $item['locale_index'];
 
     return [
-        'img' => $item['img'],
-        'imgs' => [$item['img']],
+        'img' => $item['images'][0] ?? '',
+        'imgs' => $item['images'],
         'category' => $item['category'],
         'tag_en' => $hue["highlight_item_{$index}_tag"],
         'tag_vi' => $hue["highlight_item_{$index}_tag"],
@@ -476,7 +222,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
         <!-- Full-width banner image -->
         <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
-                src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi.webp'); ?>"
+                src="<?php echo esc_url($hero_image); ?>"
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
@@ -1007,7 +753,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_bus_label'],
                                 'badge_en' => $hue['transport_bus_badge'],
 'badge_vi' => $hue['transport_bus_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/ha-giang/normal.webp',
+                                'img'       => $transport_images[0] ?? '',
                                 'desc_en' => $hue['transport_bus_desc'],
 'desc_vi' => $hue['transport_bus_desc'],
                                 'rows_en' => $hue['transport_bus_meta'],
@@ -1021,7 +767,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_flight_label'],
                                 'badge_en' => $hue['transport_flight_badge'],
 'badge_vi' => $hue['transport_flight_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/san_bay_hue.jpg',
+                                'img'       => $transport_images[1] ?? '',
                                 'desc_en' => $hue['transport_flight_desc'],
 'desc_vi' => $hue['transport_flight_desc'],
                                 'rows_en' => $hue['transport_flight_meta'],
@@ -1035,7 +781,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 'label_vi' => $hue['transport_self_drive_label'],
                                 'badge_en' => $hue['transport_self_drive_badge'],
 'badge_vi' => $hue['transport_self_drive_badge'],
-                                'img'       => get_template_directory_uri() . '/assets/images/train_bed.jpg',
+                                'img'       => $transport_images[2] ?? '',
                                 'desc_en' => $hue['transport_self_drive_desc'],
 'desc_vi' => $hue['transport_self_drive_desc'],
                                 'rows_en' => $hue['transport_self_drive_meta'],
@@ -1155,7 +901,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                         [
                             'label' => $hue['transport_motorbike_label'],
                             'badge' => $hue['transport_motorbike_badge'],
-                            'img' => get_template_directory_uri() . '/assets/images/xe_may_hue.jpg',
+                            'img' => $transport_images[3] ?? '',
                             'desc' => $hue['transport_motorbike_desc'],
                             'meta' => $hue['transport_motorbike_meta'],
                             'price' => $hue['transport_motorbike_price'],
@@ -1163,7 +909,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                         [
                             'label' => $hue['transport_bicycle_label'],
                             'badge' => $hue['transport_bicycle_badge'],
-                            'img' => get_template_directory_uri() . '/assets/images/xe_dap_hue2.jpg',
+                            'img' => $transport_images[4] ?? '',
                             'desc' => $hue['transport_bicycle_desc'],
                             'meta' => $hue['transport_bicycle_meta'],
                             'price' => $hue['transport_bicycle_price'],
@@ -1247,28 +993,28 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
             <?php
             $seasons = [
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/imperial-palace.webp',
+                    'img'     => $weather_images[0] ?? '',
                     'title_en' => $hue['weather_season_0_title'],
 'title_vi' => $hue['weather_season_0_title'],
                     'desc_en' => $hue['weather_season_0_desc'],
 'desc_vi' => $hue['weather_season_0_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/song_huong.webp',
+                    'img'     => $weather_images[1] ?? '',
                     'title_en' => $hue['weather_season_1_title'],
 'title_vi' => $hue['weather_season_1_title'],
                     'desc_en' => $hue['weather_season_1_desc'],
 'desc_vi' => $hue['weather_season_1_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/cau_truong_tien_hue.webp',
+                    'img'     => $weather_images[2] ?? '',
                     'title_en' => $hue['weather_season_2_title'],
 'title_vi' => $hue['weather_season_2_title'],
                     'desc_en' => $hue['weather_season_2_desc'],
 'desc_vi' => $hue['weather_season_2_desc'],
                 ],
                 [
-                    'img'     => $theme_uri . '/assets/images/hue/hue_house.webp',
+                    'img'     => $weather_images[3] ?? '',
                     'title_en' => $hue['weather_season_3_title'],
 'title_vi' => $hue['weather_season_3_title'],
                     'desc_en' => $hue['weather_season_3_desc'],
@@ -1380,7 +1126,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                 >
                     <button type="button" onclick="openHighlight(<?php echo $i; ?>)" aria-label="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>" class="relative overflow-hidden" style="display:block; width:100%; aspect-ratio:4/3; padding:0; border:0; background:none; cursor:pointer;">
                         <img
-                            src="<?php echo esc_url($theme_uri . $h['img']); ?>"
+                            src="<?php echo esc_url($h['img']); ?>"
                             alt="<?php echo esc_attr($current_lang === 'en' ? $h['title_en'] : $h['title_vi']); ?>"
                             style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;"
                             class="group-hover:scale-105"
@@ -1436,32 +1182,32 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi2.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a-luoi-building.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     alt="Cultural Aspect 1"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/dai_noi_hue.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/imperial-palace.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     alt="Cultural Aspect 2"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/song_huong.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/cau_truong_tien_hue.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/hue_house.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($theme_uri . '/assets/images/hue/a_luoi2.webp'); ?>"
-                    src="<?php echo esc_url($theme_uri . '/assets/images/hue/a-luoi-building.webp'); ?>"
+                    data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
+                    src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     alt="Cultural Aspect 3"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>

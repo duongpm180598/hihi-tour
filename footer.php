@@ -103,6 +103,7 @@ $icons = [
     }
 </script>
 
+<?php include get_template_directory() . '/components/itinerary-feedback-modal.php'; ?>
 <?php wp_footer(); ?>
 </body>
 

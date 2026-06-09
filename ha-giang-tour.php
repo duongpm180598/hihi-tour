@@ -466,6 +466,7 @@ $activeId = $tableOfContents[0]['id'];
                                 <a
                                     href="<?php echo esc_url(get_theme_file_uri('/assets/itinerary/Ha_Giang_schedule.xlsx')); ?>"
                                     download="Ha_Giang_schedule.xlsx"
+                                    data-itinerary-download
                                     onclick="document.getElementById('itinerary-download-menu').classList.add('hidden');"
                                     style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s; text-decoration:none;"
                                     onmouseover="this.style.background='#F9FBDF'" onmouseout="this.style.background='none'"

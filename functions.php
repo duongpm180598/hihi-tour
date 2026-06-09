@@ -2,6 +2,8 @@
 
 require_once get_template_directory() . '/inc/image-assets.php';
 
+define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-09-1');
+
 function hihi_scripts()
 {
     wp_enqueue_style('tailwindcss', get_template_directory_uri() . '/src/output.css');
@@ -21,7 +23,13 @@ function hihi_scripts()
     wp_enqueue_script('flatpickr_script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), '4.6.13', true);
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
-    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.0', true);
+    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.1', true);
+    wp_localize_script('main_script', 'hihiItineraryFeedback', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('hihi_itinerary_feedback_vote'),
+        'action' => 'hihi_itinerary_feedback_vote',
+        'optionSetVersion' => HIHI_ITINERARY_FEEDBACK_VERSION,
+    ));
     wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.12', true);
     if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
         wp_enqueue_script('weather_script', get_theme_file_uri('/assets/js/weather.js'), array(), '1.1', true);
@@ -31,6 +39,87 @@ function hihi_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'hihi_scripts');
+
+function hihi_itinerary_feedback_options()
+{
+    return array(
+        array('id' => 'nha-trang'),
+        array('id' => 'phu-yen'),
+        array('id' => 'thailand'),
+    );
+}
+
+function hihi_itinerary_feedback_option_ids()
+{
+    return array_column(hihi_itinerary_feedback_options(), 'id');
+}
+
+function hihi_handle_itinerary_feedback_vote()
+{
+    check_ajax_referer('hihi_itinerary_feedback_vote', 'nonce');
+
+    $option_id = isset($_POST['optionId'])
+        ? sanitize_key(wp_unslash($_POST['optionId']))
+        : '';
+
+    if (!in_array($option_id, hihi_itinerary_feedback_option_ids(), true)) {
+        wp_send_json_error(array('code' => 'invalid_option'), 400);
+    }
+
+    $counts = get_option('hihi_itinerary_feedback_counts', array());
+    if (!is_array($counts)) {
+        $counts = array();
+    }
+
+    $counts[$option_id] = isset($counts[$option_id])
+        ? max(0, (int) $counts[$option_id]) + 1
+        : 1;
+
+    update_option('hihi_itinerary_feedback_counts', $counts, false);
+    wp_send_json_success();
+}
+
+add_action('wp_ajax_hihi_itinerary_feedback_vote', 'hihi_handle_itinerary_feedback_vote');
+add_action('wp_ajax_nopriv_hihi_itinerary_feedback_vote', 'hihi_handle_itinerary_feedback_vote');
+
+function hihi_register_itinerary_feedback_dashboard_widget()
+{
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    $translations = load_lang();
+    $global = $translations['global'] ?? array();
+
+    wp_add_dashboard_widget(
+        'hihi_itinerary_feedback_dashboard',
+        $global['feedback_modal_0_admin_title'] ?? '',
+        'hihi_render_itinerary_feedback_dashboard_widget'
+    );
+}
+
+add_action('wp_dashboard_setup', 'hihi_register_itinerary_feedback_dashboard_widget');
+
+function hihi_render_itinerary_feedback_dashboard_widget()
+{
+    $translations = load_lang();
+    $global = $translations['global'] ?? array();
+    $counts = get_option('hihi_itinerary_feedback_counts', array());
+    $counts = is_array($counts) ? $counts : array();
+    $total = 0;
+
+    echo '<ul>';
+    foreach (hihi_itinerary_feedback_options() as $index => $option) {
+        $count = max(0, (int) ($counts[$option['id']] ?? 0));
+        $label_key = "feedback_modal_0_option_{$index}_label";
+        $label = $global[$label_key] ?? $option['id'];
+        $total += $count;
+
+        echo '<li><strong>' . esc_html($label) . ':</strong> ' . esc_html(number_format_i18n($count)) . '</li>';
+    }
+    echo '</ul>';
+    echo '<p><strong>' . esc_html($global['feedback_modal_0_admin_total_label'] ?? '') . ':</strong> ' . esc_html(number_format_i18n($total)) . '</p>';
+}
 
 function hihi_sync_tour_page_slugs()
 {

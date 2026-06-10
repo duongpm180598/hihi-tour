@@ -230,6 +230,7 @@ $(document).ready(function () {
         status.textContent = ''
         status.className = 'itinerary-feedback-modal__status'
         submitButton.disabled = false
+        submitButton.removeAttribute('aria-busy')
         modal.hidden = false
         document.body.classList.add('itinerary-feedback-open')
 
@@ -307,6 +308,7 @@ $(document).ready(function () {
         }
 
         submitButton.disabled = true
+        submitButton.setAttribute('aria-busy', 'true')
         status.textContent = ''
         status.className = 'itinerary-feedback-modal__status'
 
@@ -345,6 +347,7 @@ $(document).ready(function () {
                 status.textContent = status.dataset.errorMessage
                 status.className = 'itinerary-feedback-modal__status is-error'
                 submitButton.disabled = false
+                submitButton.removeAttribute('aria-busy')
             })
     })
 })()

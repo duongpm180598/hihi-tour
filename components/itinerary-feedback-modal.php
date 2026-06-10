@@ -15,6 +15,7 @@ $feedback_options = hihi_itinerary_feedback_options();
         aria-modal="true"
         aria-labelledby="itinerary-feedback-title"
         aria-describedby="itinerary-feedback-description">
+        <div class="itinerary-feedback-modal__handle" aria-hidden="true"></div>
         <button
             type="button"
             class="itinerary-feedback-modal__close"
@@ -23,12 +24,17 @@ $feedback_options = hihi_itinerary_feedback_options();
             <span aria-hidden="true">&times;</span>
         </button>
 
-        <h2 id="itinerary-feedback-title" class="itinerary-feedback-modal__title">
-            <?php echo esc_html($feedback_global['feedback_modal_0_title'] ?? ''); ?>
-        </h2>
-        <p id="itinerary-feedback-description" class="itinerary-feedback-modal__description">
-            <?php echo esc_html($feedback_global['feedback_modal_0_description'] ?? ''); ?>
-        </p>
+        <header class="itinerary-feedback-modal__header">
+            <div class="itinerary-feedback-modal__icon" aria-hidden="true">?</div>
+            <div>
+                <h2 id="itinerary-feedback-title" class="itinerary-feedback-modal__title">
+                    <?php echo esc_html($feedback_global['feedback_modal_0_title'] ?? ''); ?>
+                </h2>
+                <p id="itinerary-feedback-description" class="itinerary-feedback-modal__description">
+                    <?php echo esc_html($feedback_global['feedback_modal_0_description'] ?? ''); ?>
+                </p>
+            </div>
+        </header>
 
         <form id="itinerary-feedback-form" class="itinerary-feedback-modal__form">
             <fieldset class="itinerary-feedback-modal__options">
@@ -42,22 +48,32 @@ $feedback_options = hihi_itinerary_feedback_options();
                             type="radio"
                             name="destination"
                             value="<?php echo esc_attr($option['id']); ?>">
-                        <span><?php echo esc_html($feedback_global[$label_key] ?? ''); ?></span>
+                        <span class="itinerary-feedback-modal__option-content">
+                            <span class="itinerary-feedback-modal__option-index" aria-hidden="true">
+                                <?php echo esc_html(sprintf('%02d', $index + 1)); ?>
+                            </span>
+                            <span class="itinerary-feedback-modal__option-label">
+                                <?php echo esc_html($feedback_global[$label_key] ?? ''); ?>
+                            </span>
+                            <span class="itinerary-feedback-modal__option-control" aria-hidden="true"></span>
+                        </span>
                     </label>
                 <?php endforeach; ?>
             </fieldset>
 
-            <p
-                id="itinerary-feedback-status"
-                class="itinerary-feedback-modal__status"
-                data-required-message="<?php echo esc_attr($feedback_global['feedback_modal_0_required_message'] ?? ''); ?>"
-                data-success-message="<?php echo esc_attr($feedback_global['feedback_modal_0_success_message'] ?? ''); ?>"
-                data-error-message="<?php echo esc_attr($feedback_global['feedback_modal_0_error_message'] ?? ''); ?>"
-                aria-live="polite"></p>
+            <div class="itinerary-feedback-modal__footer">
+                <p
+                    id="itinerary-feedback-status"
+                    class="itinerary-feedback-modal__status"
+                    data-required-message="<?php echo esc_attr($feedback_global['feedback_modal_0_required_message'] ?? ''); ?>"
+                    data-success-message="<?php echo esc_attr($feedback_global['feedback_modal_0_success_message'] ?? ''); ?>"
+                    data-error-message="<?php echo esc_attr($feedback_global['feedback_modal_0_error_message'] ?? ''); ?>"
+                    aria-live="polite"></p>
 
-            <button type="submit" class="itinerary-feedback-modal__submit">
-                <?php echo esc_html($feedback_global['feedback_modal_0_submit_label'] ?? ''); ?>
-            </button>
+                <button type="submit" class="itinerary-feedback-modal__submit">
+                    <span><?php echo esc_html($feedback_global['feedback_modal_0_submit_label'] ?? ''); ?></span>
+                </button>
+            </div>
         </form>
     </div>
 </div>

@@ -13,15 +13,8 @@ $NinhThuanBaiDaTrung = $theme_uri . '/assets/images/ninh-thuan/bai-da-trung.webp
 $NhaTrangSunrise = $theme_uri . '/assets/images/nha-trang/sunrise-nha-trang.webp';
 $TaiwanTaipei101 = $theme_uri . '/assets/images/taiwan/taipei-101.webp';
 
-$qrs = [
-    'whatsapp_qr'  => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
-];
 $social = [
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
+    'threads' => $theme_uri . '/assets/images/threads-logo.png',
 ];
 
 // ── Topo icon SVGs (filled, matching the provided images) ─────────────────────
@@ -241,6 +234,10 @@ if (!function_exists('hihi_destination_sort_key')) {
     }
 }
 
+$destinations = array_values(array_filter($destinations, function ($destination) {
+    return !empty($destination['slug']);
+}));
+
 usort($destinations, function ($a, $b) use ($current_lang) {
     return hihi_destination_sort_key($a, $current_lang) <=> hihi_destination_sort_key($b, $current_lang);
 });
@@ -261,17 +258,17 @@ usort($destinations, function ($a, $b) use ($current_lang) {
     }
 
     .home-hero-heading {
-        display: grid;
-        grid-template-columns: 92px minmax(0, 1fr);
+        display: flex;
+        width: fit-content;
         gap: 14px;
-        margin: 0 0 24px;
+        margin: 0 auto 24px;
         color: #fff;
         font-family: 'Phudu', sans-serif;
         font-size: 58px;
         font-weight: 700;
         line-height: 1;
         letter-spacing: 0;
-        text-align: left;
+        text-align: center;
     }
 
     .home-hero-mark,
@@ -283,12 +280,16 @@ usort($destinations, function ($a, $b) use ($current_lang) {
     }
 
     .home-hero-mark {
+        width: 92px;
+        flex: 0 0 92px;
         justify-content: center;
         border-radius: 48px 48px 48px 8px;
     }
 
     .home-hero-title {
+        width: fit-content;
         padding: 12px 34px;
+        justify-content: center;
         border-radius: 48px 48px 8px 48px;
     }
 
@@ -303,7 +304,6 @@ usort($destinations, function ($a, $b) use ($current_lang) {
         }
 
         .home-hero-heading {
-            grid-template-columns: 64px minmax(0, 1fr);
             gap: 8px;
             margin-bottom: 18px;
             font-size: 26px;
@@ -315,6 +315,8 @@ usort($destinations, function ($a, $b) use ($current_lang) {
         }
 
         .home-hero-mark {
+            width: 64px;
+            flex-basis: 64px;
             border-radius: 34px 34px 34px 8px;
         }
 
@@ -448,36 +450,15 @@ usort($destinations, function ($a, $b) use ($current_lang) {
                 ? "We customize tours anywhere. Reach out and we'll plan it together."
                 : "Chúng tôi tổ chức tour theo yêu cầu đến bất cứ đâu. Liên hệ để lên kế hoạch cùng nhau."; ?>
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 gap-8">
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <img width="36" height="36" src="<?php echo esc_url($social['instagram']); ?>" alt="Instagram" />
+                    <img width="36" height="36" src="<?php echo esc_url($social['threads']); ?>" alt="<?php echo esc_attr($t['global']['social_threads_icon_alt']); ?>" />
                     <div>
-                        <p class="text-xs font-bold" style="color:#1D292C;">Instagram</p>
-                        <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="text-xs hover:underline" style="color:#1D292C;">@mr_hi_hi_04</a>
+                        <p class="text-xs font-bold" style="color:#1D292C;"><?php echo esc_html($t['global']['social_threads_label']); ?></p>
+                        <a href="https://www.threads.com/@timmotchonam" target="_blank" rel="noopener noreferrer" class="text-xs hover:underline" style="color:#1D292C;"><?php echo esc_html($t['global']['social_threads_handle']); ?></a>
                     </div>
                 </div>
-                <img width="160" height="160" src="<?php echo esc_url($qrs['instagram_qr']); ?>" alt="Instagram QR" class="rounded-xl" />
-            </div>
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <img width="36" height="36" src="<?php echo esc_url($social['facebook']); ?>" alt="Facebook" />
-                    <div>
-                        <p class="text-xs font-bold" style="color:#1D292C;">Facebook</p>
-                        <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="text-xs hover:underline" style="color:#1D292C;">ps.r.sau</a>
-                    </div>
-                </div>
-                <img width="160" height="160" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" class="rounded-xl" />
-            </div>
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <img width="36" height="36" src="<?php echo esc_url($social['whatsapp']); ?>" alt="WhatsApp" />
-                    <div>
-                        <p class="text-xs font-bold" style="color:#1D292C;">WhatsApp</p>
-                        <a href="https://wa.me/84936766696" target="_blank" class="text-xs hover:underline" style="color:#1D292C;">+84 936 766 696</a>
-                    </div>
-                </div>
-                <img width="160" height="160" src="<?php echo esc_url($qrs['whatsapp_qr']); ?>" alt="WhatsApp QR" class="rounded-xl" />
             </div>
         </div>
     </div>

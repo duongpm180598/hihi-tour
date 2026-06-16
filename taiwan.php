@@ -827,7 +827,7 @@ $activeId = $tableOfContents[0]['id'];
             </p>
 
             <!-- Category filter tabs -->
-            <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+            <div id="highlight-tabs" style="display:none; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
                     'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',

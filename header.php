@@ -16,8 +16,8 @@
     <?php
     function get_active_class($slug)
     {
-        $active_class = 'border-2 border-[#474E50] py-1 px-3 bg-gray-100';
-        $default_class = 'text-[#101F23] py-1 px-3 hover:bg-gray-50';
+        $active_class = 'border-2 border-[#474E50] py-2 px-3 bg-gray-100';
+        $default_class = 'text-[#101F23] py-2 px-3 hover:bg-gray-50';
 
         global $post;
         $current_post_id = isset($post->ID) ? $post->ID : 0;
@@ -54,7 +54,7 @@
         return $default_class;
     }
 
-    $common_class_desktop = 'mx-2 font-medium transition rounded-full duration-200 hover:opacity-70';
+    $common_class_desktop = 'mx-2 text-[15px] font-medium transition rounded-full duration-200 hover:opacity-70';
     $common_class_mobile = 'block text-base w-full px-4 py-2 font-medium transition duration-200 hover:bg-gray-100 rounded-md';
     $header_lang = function_exists('load_lang') ? load_lang() : [];
     $header_global = $header_lang['global'] ?? [];
@@ -103,15 +103,24 @@
         .hihi-explore-panel {
             padding: 16px 24px;
         }
+
+        #site-header {
+            box-shadow: none;
+            transition: box-shadow 150ms ease;
+        }
+
+        #site-header.is-scrolled {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
     </style>
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header id="site-header" class="bg-white sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="shrink-0">
                 <a
                     href="<?php echo esc_url(home_url('/')); ?>"
                     class="text-2xl font-bold text-gray-800 hover:text-indigo-600 transition duration-150">
-                    <img width="48" height="48" src="<?php echo get_template_directory_uri() . '/assets/images/logo_new.png' ?>" alt="logo" />
+                    <img width="40" height="40" src="<?php echo get_template_directory_uri() . '/assets/images/logo_new.png' ?>" alt="logo" />
                 </a>
             </div>
 
@@ -119,7 +128,7 @@
                 <div class="relative hihi-explore-wrap">
                     <a
                         href="<?php echo esc_url(home_url('/')); ?>"
-                        class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', is_front_page() ? 'border-2 border-[#474E50] py-1 px-3 bg-gray-100' : 'text-[#101F23] py-1 px-3 hover:bg-gray-50'); ?>">
+                        class="<?php echo $common_class_desktop; ?> <?php echo str_replace('block text-lg w-full text-center py-3 font-semibold transition duration-200', '', is_front_page() ? 'border-2 border-[#474E50] py-2 px-3 bg-gray-100' : 'text-[#101F23] py-2 px-3 hover:bg-gray-50'); ?>">
                         <?php echo esc_html($header_global['nav_explore_world']); ?>
                     </a>
 
@@ -163,7 +172,7 @@
                     <div class="hidden md:inline-block relative text-left group">
                         <button aria-label="<?php echo esc_attr($header_global['nav_change_language']); ?>"
                             class="flex items-center space-x-1 transition duration-250 p-2 rounded-md focus:outline-none">
-                            <span class="text-sm font-medium">
+                            <span class="text-[15px] font-medium">
                                 <?php echo esc_html($header_global['nav_language_prefix']); ?>: <?php echo strtoupper($current_lang); ?>
                             </span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -269,11 +278,19 @@
         <!-- JavaScript cho Mobile Menu -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                const siteHeader = document.getElementById('site-header');
                 const toggleButton = document.getElementById('mobile-menu-toggle');
                 const closeButton = document.getElementById('mobile-menu-close');
                 const mobileMenu = document.getElementById('mobile-menu');
                 const sidebarContent = mobileMenu.querySelector('div.absolute'); // Chọn nội dung sidebar
                 const body = document.body;
+
+                function updateHeaderShadow() {
+                    siteHeader.classList.toggle('is-scrolled', window.scrollY > 0);
+                }
+
+                updateHeaderShadow();
+                window.addEventListener('scroll', updateHeaderShadow, { passive: true });
 
                 function openMenu() {
                     mobileMenu.classList.remove('hidden');

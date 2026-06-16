@@ -10,18 +10,11 @@ $icons = [
     'visa'   => $theme_uri . '/assets/icons/visa.svg',
     'amex'   => $theme_uri . '/assets/icons/amex.svg',
     'money'   => $theme_uri . '/assets/icons/money.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
+    'threads'  => $theme_uri . '/assets/images/threads-logo.png',
 ];
 
 $current_lang = pll_current_language('slug');
+$t = load_lang();
 
 $faqs_data = [];
 
@@ -33,7 +26,7 @@ if ($current_lang === 'vi') {
         ],
         [
             'question' => 'Xác nhận tour',
-            'answer' => 'Chúng tôi chốt tour trực tiếp qua tin nhắn. Bạn có thể liên hệ với Hi Hi qua WhatsApp, Instagram hoặc Facebook để được hỗ trợ nhanh nhất.<br/>Ngoài ra, bạn cũng có thể điền thông tin vào mẫu đăng ký tại phần chi tiết tour. Đơn hàng sẽ được gửi đến hệ thống và tụi mình sẽ chủ động liên lạc lại để tư vấn kỹ hơn trong vòng 2 ngày. Bạn yên tâm là bước này hoàn toàn miễn phí, chúng mình chưa thu bất kỳ khoản phí nào và thông tin của bạn luôn được bảo mật tuyệt đối.',
+            'answer' => 'Chúng tôi chốt tour trực tiếp qua tin nhắn. Bạn có thể liên hệ với Hi Hi qua Threads để được hỗ trợ nhanh nhất.<br/>Ngoài ra, bạn cũng có thể điền thông tin vào mẫu đăng ký tại phần chi tiết tour. Đơn hàng sẽ được gửi đến hệ thống và tụi mình sẽ chủ động liên lạc lại để tư vấn kỹ hơn trong vòng 2 ngày. Bạn yên tâm là bước này hoàn toàn miễn phí, chúng mình chưa thu bất kỳ khoản phí nào và thông tin của bạn luôn được bảo mật tuyệt đối.',
         ],
         [
             'question' => 'Tôi có thể đi một mình được không? Có an toàn không?',
@@ -60,7 +53,7 @@ if ($current_lang === 'vi') {
         ],
         [
             'question' => 'Booking confirmation',
-            'answer' => 'We confirm your tour through direct messages. You can contact us in WhatsApp, Instagram or Facebook for fastest response.<br/>You also can fill in forms from any tour details, your order will be sent to us, and we’ll get in touch for more information within 2 days—no charges will apply just yet. Rest assured, your information is secure with us.',
+            'answer' => 'We confirm your tour through direct messages. You can contact us on Threads for the fastest response.<br/>You also can fill in forms from any tour details, your order will be sent to us, and we’ll get in touch for more information within 2 days—no charges will apply just yet. Rest assured, your information is secure with us.',
         ],
         [
             'question' => 'Can I go alone? Is it safe?',
@@ -189,55 +182,17 @@ $faqs_cat_ba_data = [
 
 <div class="container mx-auto">
     <h2 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Contact us now" : "Liên hệ với chúng tôi" ?></h2>
-    <p class="mb-4"><?php echo $current_lang === 'en' ? "Click the link or scan the QR code below" : "Nhấn link hoặc quét mã QR bên dưới" ?></p>
+    <p class="mb-4"><?php echo esc_html($t['global']['social_contact_link_instruction']); ?></p>
 
-    <div class="grid md:grid-cols-3 gap-8">
-
+    <div class="grid grid-cols-1 gap-8">
         <div class="block">
             <div class="flex items-center gap-4 mb-4">
-                <img width="48" height="48" src="<?php echo esc_url($icons['whatsapp']); ?>" alt="Whatsapp Icon" />
+                <img width="48" height="48" src="<?php echo esc_url($icons['threads']); ?>" alt="<?php echo esc_attr($t['global']['social_threads_icon_alt']); ?>" />
                 <div class="text-sm [#74797A]">
-                    <p class="text-[#101F23]">WhatsApp</p>
-                    <a href="https://wa.me/84936766696" target="_blank" class="hover:underline">+84 936766696</a>
+                    <p class="text-[#101F23]"><?php echo esc_html($t['global']['social_threads_label']); ?></p>
+                    <a href="https://www.threads.com/@timmotchonam" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html($t['global']['social_threads_handle']); ?></a>
                 </div>
             </div>
-            <?php if (isset($qrs['instagram_qr'])) : ?>
-                <img
-                    width="240"
-                    height="240"
-                    src="<?php echo esc_url($qrs['whatsapp_qr']); ?>"
-                    alt="whatsapp QR" />
-            <?php endif; ?>
-        </div>
-
-        <div class="block">
-            <div class="flex items-center gap-4 mb-4">
-                <img width="48" height="48" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram Icon" />
-                <div class="text-sm [#74797A]">
-                    <p class="text-[#101F23]">Instagram</p>
-                    <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="hover:underline">@mr_hi_hi_04</a>
-                </div>
-            </div>
-            <?php if (isset($qrs['instagram_qr'])) : ?>
-                <img
-                    width="240"
-                    height="240"
-                    src="<?php echo esc_url($qrs['instagram_qr']); ?>"
-                    alt="Instagram QR" />
-            <?php endif; ?>
-        </div>
-
-        <div class="block">
-            <div class="flex items-center gap-4 mb-4">
-                <img width="48" height="48" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook Icon" />
-                <div class="text-sm [#74797A]">
-                    <p class="text-[#101F23]">Facebook</p>
-                    <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="hover:underline">www.facebook.com/ps.r.sau</a>
-                </div>
-            </div>
-            <?php if (isset($qrs['facebook_qr'])) : ?>
-                <img width="240" height="240" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" />
-            <?php endif; ?>
         </div>
     </div>
 </div>

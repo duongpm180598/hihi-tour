@@ -74,12 +74,7 @@ function hihi_image_manifest()
                 ['https://hihitour.com/wp-content/uploads/2026/06/pho_bang_ha_giang-scaled.jpg'],
                 ['https://hihitour.com/wp-content/uploads/2026/06/cua-chu-m-hg.webp'],
                 ['https://hihitour.com/wp-content/uploads/2026/06/ha_giang_deo_gio-scaled.jpg'],
-                [
-                    'https://hihitour.com/wp-content/uploads/2026/06/meo-vac-market.webp',
-                    'https://hihitour.com/wp-content/uploads/2026/06/tre_em_ha_giang-scaled.jpg',
-                    'https://hihitour.com/wp-content/uploads/2026/06/ganh-co-pho-cao.webp',
-                    'https://hihitour.com/wp-content/uploads/2026/06/cua-chu-m-hg.webp',
-                ],
+                ['https://hihitour.com/wp-content/uploads/2026/06/thi-tran-dong-van.jpg'],
                 ['https://hihitour.com/wp-content/uploads/2026/06/xa_phin_ha_giang_mua_lua.webp'],
                 ['https://hihitour.com/wp-content/uploads/2026/06/tu_san_coffee_ha_giang-scaled.jpg'],
                 [
@@ -106,10 +101,16 @@ function hihi_image_manifest()
                 [
                     'https://hihitour.com/wp-content/uploads/2026/06/meo-vac-market.webp',
                     'https://hihitour.com/wp-content/uploads/2026/06/ha-giang-food.webp',
+                    'https://hihitour.com/wp-content/uploads/2025/12/PA120443-1-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2025/12/PA120435-1-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2025/12/PA120445-1-scaled.jpg',
                 ],
                 [
-                    'https://hihitour.com/wp-content/uploads/2026/06/ma_pi_leng_nho_que.webp',
-                    'https://hihitour.com/wp-content/uploads/2026/06/nho_que_ha_giang-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2026/06/ha-giang-mua-xuan.webp',
+                    'https://hihitour.com/wp-content/uploads/2025/11/DSCF3030-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2025/11/DSCF3779-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2025/12/DSCF3440-scaled.jpg',
+                    'https://hihitour.com/wp-content/uploads/2025/11/DSCF2992-scaled.jpg',
                 ],
             ],
             'transport' => [
@@ -118,11 +119,11 @@ function hihi_image_manifest()
                 $theme_uri . '/assets/images/ha-giang/transport-economy.webp',
             ],
             'weather' => [
-                'https://hihitour.com/wp-content/uploads/2026/06/ha-giang-mua-xuan.webp',
-                'https://hihitour.com/wp-content/uploads/2026/06/somewhere-ha-giang.webp',
-                'https://hihitour.com/wp-content/uploads/2026/06/mountain-du-gia.webp',
-                'https://hihitour.com/wp-content/uploads/2026/06/xa_phin_ha_giang_mua_lua.webp',
-                'https://hihitour.com/wp-content/uploads/2026/06/ma_pi_leng_nho_que.webp',
+                $theme_uri . '/assets/images/ha-giang/weather-1.png',
+                $theme_uri . '/assets/images/ha-giang/weather-2.png',
+                'https://hihitour.com/wp-content/uploads/2026/06/ha_giang_du_gia.webp',
+                $theme_uri . '/assets/images/ha-giang/weather-3.png',
+                $theme_uri . '/assets/images/ha-giang/weather-4.png',
             ],
             'culture' => [
                 'https://hihitour.com/wp-content/uploads/2026/06/cuoc-song-du-gia.webp',

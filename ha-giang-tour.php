@@ -108,8 +108,8 @@ $highlights = [
         'category' => 'viewpoints',
         'tag_en' => 'Viewpoint',
         'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'cua chữ M',
-        'title_vi' => 'cua chữ M',
+        'title_en' => 'M-shaped Pass',
+        'title_vi' => 'Cua chữ M',
         'desc_en' => 'Description placeholder.',
         'desc_vi' => 'Description placeholder.',
         'span'     => 'normal',
@@ -1101,7 +1101,7 @@ $activeId = $tableOfContents[0]['id'];
             </p>
 
             <!-- Category filter tabs -->
-            <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+            <div id="highlight-tabs" style="display:none; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
                     'all'        => $current_lang === 'en' ? 'All'           : 'Tất cả',

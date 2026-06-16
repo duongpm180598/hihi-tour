@@ -1,12 +1,11 @@
 <?php
 $current_lang = pll_current_language('slug');
 $theme_uri = get_template_directory_uri();
+$t = load_lang();
 $icons = [
-    'logo'      => $theme_uri . '/assets/images/logo.png',
+    'logo'      => $theme_uri . '/assets/images/logo_new.png',
     'messenger' => $theme_uri . '/assets/icons/messenger_logo.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
+    'threads'   => $theme_uri . '/assets/images/threads-logo.png',
     'cat'       => $theme_uri . '/assets/images/mascot_cat.png',
 ];
 ?>
@@ -26,7 +25,7 @@ $icons = [
             <div class="flex-shrink-0 space-y-3 z-10 min-w-[200px]">
                 <!-- Logo + brand name -->
                 <div class="flex items-center space-x-2">
-                    <img width="40" height="40" src="<?php echo esc_url($icons['logo']); ?>" alt="cari wiki logo" class="rounded-md" />
+                    <img width="48" height="48" src="<?php echo esc_url($icons['logo']); ?>" alt="cari wiki logo" class="rounded-md" />
                     <span class="text-lg font-bold tracking-tight">cari wiki</span>
                 </div>
 
@@ -49,13 +48,9 @@ $icons = [
 
                 <!-- Social links -->
                 <div class="flex items-center space-x-4 text-sm pt-1">
-                    <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="flex items-center space-x-1 hover:opacity-80 transition-opacity">
-                        <img width="20" height="20" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram" />
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="flex items-center space-x-1 hover:opacity-80 transition-opacity">
-                        <img width="20" height="20" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook" />
-                        <span>Facebook</span>
+                    <a href="https://www.threads.com/@timmotchonam" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1 hover:opacity-80 transition-opacity">
+                        <img width="20" height="20" src="<?php echo esc_url($icons['threads']); ?>" alt="<?php echo esc_attr($t['global']['social_threads_icon_alt']); ?>" />
+                        <span><?php echo esc_html($t['global']['social_threads_label']); ?></span>
                     </a>
                 </div>
             </div>
@@ -90,7 +85,7 @@ $icons = [
         "@type": "LocalBusiness",
         "name": "Hi Hi tour",
         "url": "https://hihitour.com/",
-        "logo": "https://hihitour.com/wp-content/themes/hihi-theme/assets/images/logo.png",
+        "logo": "<?php echo esc_url($icons['logo']); ?>",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Cat Ba island, Hai Phong, Vietnam",

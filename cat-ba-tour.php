@@ -39,13 +39,11 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
     'instagram' => $theme_uri . '/assets/images/instagram.png',
     'facebook'  => $theme_uri . '/assets/images/facebook.png',
 ];
 
 $qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
     'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
     'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];

@@ -867,7 +867,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
             </p>
 
             <!-- Category filter tabs -->
-            <div id="highlight-tabs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+            <div id="highlight-tabs" style="display:none; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
                 <?php
                 $hl_tabs = [
                     'all'        => $nt['highlight_tab_all'],

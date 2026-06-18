@@ -9,6 +9,7 @@ Template Post Type: page
 <?php
 $current_lang = pll_current_language('slug');
 $t = load_lang();
+$cat_ba = $t['cat_ba'];
 
 $theme_uri = get_template_directory_uri();
 
@@ -68,16 +69,20 @@ $tableOfContents = [
         'title' => $t['toc_gallery'] ?? 'Thư viện ảnh'
     ],
     [
+        'id' => 'transportation',
+        'title' => $t['toc_transportation'] ?? 'Phương tiện đi lại'
+    ],
+    [
         'id' => 'activities',
         'title' => $t['toc_activities'] ?? 'Các hoạt động',
     ],
     [
-        'id' => 'weather',
-        'title' => $t['toc_weather'] ?? 'Thời tiết'
-    ],
-    [
         'id' => 'accomodations',
         'title' => $t['toc_accomodations'] ?? 'Chỗ ở'
+    ],
+    [
+        'id' => 'weather',
+        'title' => $t['toc_weather'] ?? 'Thời tiết'
     ],
     [
         'id' => 'life-in-cat-ba',
@@ -142,9 +147,6 @@ $activeId = $tableOfContents[0]['id'];
                     <h3 class="text-2xl mb-3 uppercase font-phudu font-bold">
                         <?php echo $current_lang === 'en' ? "the beautiful island" : "hòn đảo xinh đẹp" ?>
                     </h3>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-16 font-delta-gothic text-[#0066FF]">
-                        <?php echo $current_lang === 'en' ? "Cat Ba" : "Cát Bà" ?>
-                    </h1>
                     <p class="mb-3 max-w-3xl">
                         <?php echo $current_lang === 'en' ? "Cat Ba is a perfect blend of the majestic grandeur of limestone mountains and the gentle tranquility of the sea. Recognized by UNESCO as a World Biosphere Reserve, Cat Ba features not only stunning beaches but also the Cat Ba National Park with its rich tropical forest ecosystem." : "Cát Bà là sự kết hợp hoàn hảo giữa vẻ hùng vĩ của những dãy núi đá vôi và sự bình yên dịu dàng của biển cả. Được UNESCO công nhận là Khu dự trữ sinh quyển thế giới, Cát Bà không chỉ sở hữu những bãi biển tuyệt đẹp mà còn có Vườn quốc gia Cát Bà với hệ sinh thái rừng nhiệt đới phong phú." ?>
                     </p>
@@ -168,6 +170,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <?php
             $cat_ba = $t['cat_ba'];
+            $vibe_destination_title = $cat_ba['destination_title'];
             $vibe_title = $cat_ba['hero_vibe_title'];
             $vibe_items = [
                 ['icon' => 'human', 'title' => $cat_ba['hero_vibe_0_title'], 'val' => $cat_ba['hero_vibe_0_val']],
@@ -175,7 +178,7 @@ $activeId = $tableOfContents[0]['id'];
                 ['icon' => 'globe', 'title' => $cat_ba['hero_vibe_2_title'], 'val' => $cat_ba['hero_vibe_2_val']],
                 ['icon' => 'clock', 'title' => $cat_ba['hero_vibe_3_title'], 'val' => $cat_ba['hero_vibe_3_val']],
             ];
-            $vibe_style = 'position:static; width:auto; max-width:none; margin:0; box-shadow:none;';
+            $vibe_style = 'position:relative; width:auto; max-width:none; margin:0; box-shadow:none;';
             include get_template_directory() . '/components/vibe-card.php';
             unset($vibe_style);
             ?>

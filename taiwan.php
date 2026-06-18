@@ -113,6 +113,10 @@ $tableOfContents = [
         'title' => $t['global']['toc_overview'] ?? 'Tổng quan',
     ],
     [
+        'id' => 'why-i-went',
+        'title' => $t['global']['toc_owner_take'] ?? 'Vì sao mình đi',
+    ],
+    [
         'id' => 'itinerary',
         'title' => $t['global']['toc_itinerary'] ?? 'Lịch trình',
     ],
@@ -125,12 +129,12 @@ $tableOfContents = [
         'title' => $t['global']['toc_transportation'] ?? 'Phương tiện đi lại',
     ],
     [
-        'id' => 'accomodations',
-        'title' => $t['global']['toc_accomodations'] ?? 'Chỗ ở',
-    ],
-    [
         'id' => 'weather',
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
+    ],
+    [
+        'id' => 'highlights',
+        'title' => $t['global']['toc_highlights'] ?? 'Điểm nổi bật',
     ],
     [
         'id' => 'activities',
@@ -197,9 +201,9 @@ $activeId = $tableOfContents[0]['id'];
                 alt="Taiwan"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
-
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
+            $vibe_destination_title = $taiwan['destination_title'];
             $vibe_title = $t['ha_giang']['hero_vibe_title'];
             $vibe_items = [
                 [
@@ -389,10 +393,10 @@ $activeId = $tableOfContents[0]['id'];
                         <img src="<?php echo esc_url($icons['itinerary']); ?>" alt="itinerary" />
                         <div class="flex flex-col">
                             <span class="font-bold">
-                                <?php echo $t['ha_giang']['itinerary_note_ref'] ?>
+                                <?php echo esc_html($taiwan['itinerary_note_ref']); ?>
                             </span>
                             <span style="font-size:15px; color:#74797A;">
-                                <?php echo $t['ha_giang']['itinerary_note_target'] ?>
+                                <?php echo esc_html($taiwan['itinerary_note_target']); ?>
                             </span>
                         </div>
                     </div>
@@ -899,59 +903,54 @@ $activeId = $tableOfContents[0]['id'];
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
-                <?php echo $t['ha_giang']['culture_title'] ?>
+                <?php echo esc_html($taiwan['culture_title']); ?>
             </h3>
 
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_desc'] ?>
+                <?php echo esc_html($taiwan['culture_desc']); ?>
             </p>
 
 
             <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_happywater_title'] ?>
+                <?php echo esc_html($taiwan['culture_city_title']); ?>
             </h3>
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_happywater_desc'] ?>
+                <?php echo esc_html($taiwan['culture_city_desc']); ?>
             </p>
 
             <h3 class="mb-2" style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#1D292C; line-height:24px;">
-                <?php echo $t['ha_giang']['culture_market_title'] ?>
+                <?php echo esc_html($taiwan['culture_nature_title']); ?>
             </h3>
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
-                <?php echo $t['ha_giang']['culture_market_desc'] ?>
+                <?php echo esc_html($taiwan['culture_nature_desc']); ?>
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                 <img
-                    data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
-                    alt="Cultural Aspect 1"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
+                    alt="<?php echo esc_attr($taiwan['culture_image_0_alt']); ?>"
+                    class="w-full h-full object-cover rounded-2xl" />
 
                 <img
-                    data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
-                    alt="Cultural Aspect 2"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
+                    alt="<?php echo esc_attr($taiwan['culture_image_1_alt']); ?>"
+                    class="w-full h-full object-cover rounded-2xl" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <img
-                    data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
+                    alt="<?php echo esc_attr($taiwan['culture_image_2_alt']); ?>"
+                    class="w-full h-full object-cover rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
+                    alt="<?php echo esc_attr($taiwan['culture_image_3_alt']); ?>"
+                    class="w-full h-full object-cover rounded-2xl" />
                 <img
-                    data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
-                    class="w-full h-full object-cover cursor-pointer rounded-2xl" />
+                    alt="<?php echo esc_attr($taiwan['culture_image_4_alt']); ?>"
+                    class="w-full h-full object-cover rounded-2xl" />
             </div>
 
         </div>
@@ -1006,34 +1005,77 @@ $activeId = $tableOfContents[0]['id'];
 </div>
 
 <?php
-$taiwan_itinerary_pairs = [
-    [$taiwan['itinerary_place_0_city'], $taiwan['highlight_item_0_title']],
-    [$taiwan['itinerary_place_1_city'], $taiwan['itinerary_place_1_stop']],
-    [$taiwan['itinerary_place_2_city'], $taiwan['highlight_item_5_title']],
-    [$taiwan['itinerary_place_3_city'], $taiwan['highlight_item_6_title']],
-    [$taiwan['itinerary_place_4_city'], $taiwan['itinerary_place_4_stop']],
-    [$taiwan['itinerary_place_5_city'], $taiwan['itinerary_place_5_stop']],
-    [$taiwan['itinerary_place_6_city'], $taiwan['highlight_item_3_title']],
-    [$taiwan['itinerary_place_7_city'], $taiwan['itinerary_place_7_stop']],
+$taiwan_itinerary_plan = [
+    [
+        ['time' => '07:05', 'key' => 'itinerary_day_0_item_0_desc'],
+        ['time' => '12:00', 'key' => 'itinerary_day_0_item_1_desc'],
+        ['time' => '13:00', 'key' => 'itinerary_day_0_item_2_desc'],
+        ['time' => '14:00', 'key' => 'itinerary_day_0_item_3_desc'],
+        ['time' => '16:30', 'key' => 'itinerary_day_0_item_4_desc'],
+        ['time' => '18:30', 'key' => 'itinerary_day_0_item_5_desc'],
+        ['time' => '20:00', 'key' => 'itinerary_day_0_item_6_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_1_item_0_desc'],
+        ['time' => '09:00', 'key' => 'itinerary_day_1_item_1_desc'],
+        ['time' => '12:30', 'key' => 'itinerary_day_1_item_2_desc'],
+        ['time' => '14:00', 'key' => 'itinerary_day_1_item_3_desc'],
+        ['time' => '16:30', 'key' => 'itinerary_day_1_item_4_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_2_item_0_desc'],
+        ['time' => '09:00', 'key' => 'itinerary_day_2_item_1_desc'],
+        ['time' => '12:00', 'key' => 'itinerary_day_2_item_2_desc'],
+        ['time' => '13:00', 'key' => 'itinerary_day_2_item_3_desc'],
+        ['time' => '15:00', 'key' => 'itinerary_day_2_item_4_desc'],
+        ['time' => '16:00', 'key' => 'itinerary_day_2_item_5_desc'],
+        ['time' => '18:30', 'key' => 'itinerary_day_2_item_6_desc'],
+        ['time' => '20:00', 'key' => 'itinerary_day_2_item_7_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_3_item_0_desc'],
+        ['time' => '09:00', 'key' => 'itinerary_day_3_item_1_desc'],
+        ['time' => '09:30', 'key' => 'itinerary_day_3_item_2_desc'],
+        ['time' => '10:00', 'key' => 'itinerary_day_3_item_3_desc'],
+        ['time' => '13:00', 'key' => 'itinerary_day_3_item_4_desc'],
+        ['time' => '17:00', 'key' => 'itinerary_day_3_item_5_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_4_item_0_desc'],
+        ['time' => '09:00', 'key' => 'itinerary_day_4_item_1_desc'],
+        ['time' => '10:30', 'key' => 'itinerary_day_4_item_2_desc'],
+        ['time' => '17:00', 'key' => 'itinerary_day_4_item_3_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_5_item_0_desc'],
+        ['time' => '10:00', 'key' => 'itinerary_day_5_item_1_desc'],
+        ['time' => '10:30', 'key' => 'itinerary_day_5_item_2_desc'],
+        ['time' => '12:00', 'key' => 'itinerary_day_5_item_3_desc'],
+        ['time' => '13:00', 'key' => 'itinerary_day_5_item_4_desc'],
+        ['time' => '15:00', 'key' => 'itinerary_day_5_item_5_desc'],
+        ['time' => '18:30', 'key' => 'itinerary_day_5_item_6_desc'],
+        ['time' => '20:00', 'key' => 'itinerary_day_5_item_7_desc'],
+    ],
+    [
+        ['time' => '09:00', 'key' => 'itinerary_day_6_item_0_desc'],
+        ['time' => '15:00', 'key' => 'itinerary_day_6_item_1_desc'],
+    ],
+    [
+        ['time' => '08:00', 'key' => 'itinerary_day_7_item_0_desc'],
+        ['time' => '10:00', 'key' => 'itinerary_day_7_item_1_desc'],
+        ['time' => '12:00', 'key' => 'itinerary_day_7_item_2_desc'],
+        ['time' => '15:00', 'key' => 'itinerary_day_7_item_3_desc'],
+        ['time' => '19:00', 'key' => 'itinerary_day_7_item_4_desc'],
+    ],
 ];
-$taiwan_itinerary_days = [];
-foreach ($taiwan_itinerary_pairs as $day_index => $pair) {
-    $day_number = $day_index + 1;
-    $taiwan_itinerary_days[$day_index] = [
-        [
-            'time' => '09:00',
-            'description' => sprintf($taiwan['itinerary_start_template'], $day_number, $pair[0]),
-        ],
-        [
-            'time' => '13:00',
-            'description' => sprintf($taiwan['itinerary_stop_template'], $pair[1]),
-        ],
-        [
-            'time' => '19:00',
-            'description' => $taiwan['itinerary_evening'],
-        ],
-    ];
-}
+$taiwan_itinerary_days = array_map(function($day) use ($taiwan) {
+    return array_map(function($item) use ($taiwan) {
+        return [
+            'time' => $item['time'],
+            'description' => $taiwan[$item['key']],
+        ];
+    }, $day);
+}, $taiwan_itinerary_plan);
 ?>
 <script>
 window.hihiTaiwanItineraryData = <?php echo wp_json_encode(['8' => $taiwan_itinerary_days], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG); ?>;

@@ -141,6 +141,10 @@ $tableOfContents = [
         'title' => $t['global']['toc_overview'] ?? 'Tổng quan',
     ],
     [
+        'id' => 'why-i-went',
+        'title' => $t['global']['toc_owner_take'] ?? 'Vì sao mình đi',
+    ],
+    [
         'id' => 'itinerary',
         'title' => $t['global']['toc_itinerary'] ?? 'Lịch trình',
     ],
@@ -153,12 +157,12 @@ $tableOfContents = [
         'title' => $t['global']['toc_transportation'] ?? 'Phương tiện đi lại',
     ],
     [
-        'id' => 'accomodations',
-        'title' => $t['global']['toc_accomodations'] ?? 'Chỗ ở',
-    ],
-    [
         'id' => 'weather',
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
+    ],
+    [
+        'id' => 'highlights',
+        'title' => $t['global']['toc_highlights'] ?? 'Điểm nổi bật',
     ],
     [
         'id' => 'activities',
@@ -225,9 +229,9 @@ $activeId = $tableOfContents[0]['id'];
                 alt="<?php echo esc_attr($mcc['hero_image_alt']); ?>"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
-
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
+            $vibe_destination_title = $mcc['destination_title'];
             $vibe_title = $mcc['hero_vibe_title'];
             $vibe_items = [
                 [
@@ -841,11 +845,9 @@ $activeId = $tableOfContents[0]['id'];
             ?>
 
             <div class="relative">
-                <!-- Scrollable row -->
-                <div id="season-scroll" style="display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:none; -ms-overflow-style:none; cursor:grab;">
-                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:12px;">
                     <?php foreach ($seasons as $s): ?>
-                    <div style="flex:0 0 calc((100% - 2 * 12px) / 3); scroll-snap-align:start; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="border-radius:8px; overflow:hidden; display:flex; flex-direction:column; min-width:0;">
                         <!-- Image -->
                         <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; flex-shrink:0;">
                             <img
@@ -1098,27 +1100,6 @@ function transTab(tab) {
         if (content) content.style.display = (t === tab) ? '' : 'none';
     });
 }
-
-// Mouse drag to scroll season cards
-(function() {
-    var el = document.getElementById('season-scroll');
-    if (!el) return;
-    var isDown = false, startX, scrollLeft;
-    el.addEventListener('mousedown', function(e) {
-        isDown = true;
-        el.classList.add('dragging');
-        startX = e.pageX - el.offsetLeft;
-        scrollLeft = el.scrollLeft;
-    });
-    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mousemove',  function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - el.offsetLeft;
-        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    });
-})();
 
 // Solo going / Book a tour tab switcher
 (function() {

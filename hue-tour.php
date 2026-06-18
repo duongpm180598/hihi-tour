@@ -137,6 +137,10 @@ $tableOfContents = [
         'title' => $t['global']['toc_overview'] ?? 'Tổng quan',
     ],
     [
+        'id' => 'why-i-went',
+        'title' => $t['global']['toc_owner_take'] ?? 'Vì sao mình đi',
+    ],
+    [
         'id' => 'itinerary',
         'title' => $t['global']['toc_itinerary'] ?? 'Lịch trình',
     ],
@@ -149,12 +153,12 @@ $tableOfContents = [
         'title' => $t['global']['toc_transportation'] ?? 'Phương tiện đi lại',
     ],
     [
-        'id' => 'accomodations',
-        'title' => $t['global']['toc_accomodations'] ?? 'Chỗ ở',
-    ],
-    [
         'id' => 'weather',
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
+    ],
+    [
+        'id' => 'highlights',
+        'title' => $t['global']['toc_highlights'] ?? 'Điểm nổi bật',
     ],
     [
         'id' => 'activities',
@@ -226,9 +230,9 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
-
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
+            $vibe_destination_title = $hue['destination_title'];
             $vibe_title = $t['ha_giang']['hero_vibe_title'];
             $vibe_items = [
                 [

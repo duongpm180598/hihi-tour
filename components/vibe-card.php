@@ -9,6 +9,7 @@
  * Optional variables:
  *   $vibe_class — extra classes on root.
  *   $vibe_style — inline style on root.
+ *   $vibe_destination_title — destination reminder bubble.
  *
  * Usage:
  *   $vibe_title = 'trip vibe';
@@ -20,8 +21,14 @@
 
 $vibe_class = $vibe_class ?? '';
 $vibe_style = $vibe_style ?? '';
+$vibe_destination_title = $vibe_destination_title ?? '';
 ?>
 <div class="vibe-card <?php echo esc_attr($vibe_class); ?>" style="<?php echo esc_attr($vibe_style); ?>">
+    <?php if ($vibe_destination_title !== ''): ?>
+        <h1 class="vibe-card__destination-title">
+            <?php echo esc_html($vibe_destination_title); ?>
+        </h1>
+    <?php endif; ?>
     <p class="vibe-card__header">
         <?php echo esc_html($vibe_title); ?>
     </p>
@@ -41,3 +48,4 @@ $vibe_style = $vibe_style ?? '';
         <?php endforeach; ?>
     </div>
 </div>
+<?php unset($vibe_destination_title); ?>

@@ -89,10 +89,10 @@ $highlight_modal_items = array_map(function($h) {
                     </div>
                 </div>
                 <div id="modal-quick-peek" style="display:none; margin-bottom:18px;">
-                    <p id="modal-summary" style="font-size:16px; font-weight:600; color:#1D292C; line-height:1.55; margin:0 0 10px;"></p>
-                    <div id="modal-keywords" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+                    <p id="modal-summary" style="font-size:16px; font-weight:600; color:#1D292C; line-height:1.55; margin:0;"></p>
                 </div>
                 <p id="modal-desc" style="font-size:15px; color:#474E50; line-height:1.7; margin:0;"></p>
+                <div id="modal-keywords" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;"></div>
             </div>
         </div>
     </div>
@@ -161,7 +161,7 @@ $highlight_modal_items = array_map(function($h) {
         });
         summaryEl.style.display = summary ? '' : 'none';
         keywordsEl.style.display = keywordsEl.children.length ? 'flex' : 'none';
-        quickPeekEl.style.display = summary || keywordsEl.children.length ? 'block' : 'none';
+        quickPeekEl.style.display = summary ? 'block' : 'none';
         renderThumbs(h.imgs, 0);
     }
 

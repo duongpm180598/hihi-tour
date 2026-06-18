@@ -27,6 +27,32 @@
     font-family: 'Inter', sans-serif;
 }
 
+.vibe-card__destination-title {
+    position: absolute;
+    top: -42px;
+    right: 52px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: min(360px, calc(100% - 40px));
+    min-height: 48px;
+    margin: 0;
+    padding: 14px 32px;
+    background: #7B63F7;
+    color: #F2F2F0;
+    border-radius: 28px 28px 4px 28px;
+    box-shadow: 0 8px 20px rgba(29, 41, 44, .22);
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-align: right;
+    transform: rotate(-2deg);
+    transform-origin: right bottom;
+    z-index: 2;
+}
+
 .vibe-card__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -83,6 +109,15 @@
         border-radius: 14px;
         padding: 20px;
         transform: translateY(-12px);
+    }
+
+    .vibe-card__destination-title {
+        top: -30px;
+        right: 18px;
+        max-width: calc(100% - 32px);
+        font-size: 19px;
+        padding: 10px 20px;
+        text-align: left;
     }
 
     .vibe-card__grid {

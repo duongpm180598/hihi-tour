@@ -153,20 +153,16 @@ $tableOfContents = [
         'title' => $t['global']['toc_itinerary'] ?? 'Lịch trình',
     ],
     [
-        'id' => 'gallery',
-        'title' => $t['global']['toc_gallery'] ?? 'Thư viện ảnh',
-    ],
-    [
         'id' => 'transportation',
         'title' => $t['global']['toc_transportation'] ?? 'Phương tiện đi lại',
     ],
     [
-        'id' => 'accomodations',
-        'title' => $t['global']['toc_accomodations'] ?? 'Chỗ ở',
-    ],
-    [
         'id' => 'weather',
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
+    ],
+    [
+        'id' => 'highlights',
+        'title' => $t['global']['toc_highlights'] ?? 'Điểm nổi bật',
     ],
     [
         'id' => 'how-to-book',
@@ -224,14 +220,6 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
 </div>
 <div class="gallery-container overflow-x-hidden">
     <section class="container mx-auto px-4 sm:px-6 lg:px-8 pt-16" id="overview" data-aos="fade-up" data-aos-duration="1000">
-        <div class="text-center mb-12">
-            <p class="mb-3" style="font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:600; color:#1D292C;">
-                <?php echo $current_lang === 'en' ? "the calm northeast" : "vùng đông bắc dịu êm" ?>
-            </p>
-            <h1 class="mb-4" style="font-family:'Phudu',sans-serif; font-size:clamp(32px,7vw,64px); line-height:1.05; font-weight:600; color:#1D292C;">
-                <?php echo $current_lang === 'en' ? "Cao Bang" : "Cao Bằng" ?>
-            </h1>
-        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div class="col-span-1 row-span-1 max-h-96">
                 <img
@@ -276,10 +264,11 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
     </section>
 
     <!-- ── VIBE ── -->
-    <section style="background:#E7F15A;">
+    <section style="background:#E7F15A; margin-top:24px;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <?php
             $cb = $t['cao_bang'];
+            $vibe_destination_title = $cb['destination_title'];
             $vibe_title = $cb['hero_vibe_title'];
             $vibe_items = [
                 ['icon' => 'human', 'title' => $cb['hero_vibe_0_title'], 'val' => $cb['hero_vibe_0_val']],
@@ -287,7 +276,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
                 ['icon' => 'globe', 'title' => $cb['hero_vibe_2_title'], 'val' => $cb['hero_vibe_2_val']],
                 ['icon' => 'clock', 'title' => $cb['hero_vibe_3_title'], 'val' => $cb['hero_vibe_3_val']],
             ];
-            $vibe_style = 'position:static; width:auto; max-width:none; margin:0; box-shadow:none;';
+            $vibe_style = 'position:relative; width:auto; max-width:none; margin:0; box-shadow:none;';
             include get_template_directory() . '/components/vibe-card.php';
             unset($vibe_style);
             ?>

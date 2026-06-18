@@ -106,12 +106,12 @@ $highlights = [
         'img'      => $highlight_image_groups[3][0] ?? '',
         'imgs'     => $highlight_image_groups[3] ?? [],
         'category' => 'viewpoints',
-        'tag_en' => 'Viewpoint',
-        'tag_vi' => 'Điểm ngắm',
-        'title_en' => 'M-shaped Pass',
-        'title_vi' => 'Cua chữ M',
-        'desc_en' => 'Description placeholder.',
-        'desc_vi' => 'Description placeholder.',
+        'tag_en' => $t['ha_giang']['highlight_item_13_tag'],
+        'tag_vi' => $t['ha_giang']['highlight_item_13_tag'],
+        'title_en' => $t['ha_giang']['highlight_item_13_title'],
+        'title_vi' => $t['ha_giang']['highlight_item_13_title'],
+        'desc_en' => $t['ha_giang']['highlight_item_13_desc'],
+        'desc_vi' => $t['ha_giang']['highlight_item_13_desc'],
         'span'     => 'normal',
     ],
     [
@@ -251,6 +251,10 @@ $tableOfContents = [
         'title' => $t['global']['toc_overview'] ?? 'Tổng quan',
     ],
     [
+        'id' => 'why-i-went',
+        'title' => $t['global']['toc_owner_take'] ?? 'Vì sao mình đi',
+    ],
+    [
         'id' => 'itinerary',
         'title' => $t['global']['toc_itinerary'] ?? 'Lịch trình',
     ],
@@ -263,12 +267,12 @@ $tableOfContents = [
         'title' => $t['global']['toc_transportation'] ?? 'Phương tiện đi lại',
     ],
     [
-        'id' => 'accomodations',
-        'title' => $t['global']['toc_accomodations'] ?? 'Chỗ ở',
-    ],
-    [
         'id' => 'weather',
         'title' => $t['global']['toc_weather'] ?? 'Thời tiết',
+    ],
+    [
+        'id' => 'highlights',
+        'title' => $t['global']['toc_highlights'] ?? 'Điểm nổi bật',
     ],
     [
         'id' => 'activities',
@@ -335,9 +339,9 @@ $activeId = $tableOfContents[0]['id'];
                 alt="Ha Giang"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
-
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
+            $vibe_destination_title = $t['ha_giang']['destination_title'];
             $vibe_title = $t['ha_giang']['hero_vibe_title'];
             $vibe_items = [
                 [

@@ -9,11 +9,12 @@ Template Post Type: page
 <?php
 $current_lang = pll_current_language('slug');
 $t = load_lang();
+$cat_ba = $t['cat_ba'];
 
 $theme_uri = get_template_directory_uri();
 
 $locations = [
-    'catba' => ['display' => $current_lang === 'en' ? 'Cat Ba' : 'Cát Bà', 'api_query' => 'latitude=20.7304&longitude=107.0480&current=temperature_2m,relative_humidity_2m'],
+    'catba' => ['display' => $current_lang === 'en' ? 'Cat Ba' : 'Cát Bà', 'api_query' => 'latitude=20.7304&longitude=107.0480'],
 ];
 $icon_root_path = $theme_uri . '/assets/icons/';
 
@@ -39,35 +40,23 @@ $icons = [
     'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
     'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
     'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
     'instagram' => $theme_uri . '/assets/images/instagram.png',
     'facebook'  => $theme_uri . '/assets/images/facebook.png',
 ];
 
 $qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
     'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
     'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
 ];
 
 // faqs
 $faqs_data = [
-    [
-        'q' => 'faq_q_age_catba',
-        'a' => 'faq_a_age_catba',
-    ],
-    [
-        'q' => 'faq_q_seasick',
-        'a' => 'faq_a_seasick',
-    ],
-    [
-        'q' => 'faq_q_cancel',
-        'a' => 'faq_a_cancel',
-    ],
-    [
-        'q' => 'faq_q_tip',
-        'a' => 'faq_a_tip',
-    ],
+    ['group' => 'cat_ba', 'q' => 'faq_q_price', 'a' => 'faq_a_price'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_family', 'a' => 'faq_a_family'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_seasick', 'a' => 'faq_a_seasick'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_days', 'a' => 'faq_a_days'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_weather', 'a' => 'faq_a_weather'],
+    ['group' => 'cat_ba', 'q' => 'faq_q_packing', 'a' => 'faq_a_packing'],
 ];
 
 $tableOfContents = [
@@ -80,16 +69,20 @@ $tableOfContents = [
         'title' => $t['toc_gallery'] ?? 'Thư viện ảnh'
     ],
     [
+        'id' => 'transportation',
+        'title' => $t['toc_transportation'] ?? 'Phương tiện đi lại'
+    ],
+    [
         'id' => 'activities',
         'title' => $t['toc_activities'] ?? 'Các hoạt động',
     ],
     [
-        'id' => 'weather',
-        'title' => $t['toc_weather'] ?? 'Thời tiết'
-    ],
-    [
         'id' => 'accomodations',
         'title' => $t['toc_accomodations'] ?? 'Chỗ ở'
+    ],
+    [
+        'id' => 'weather',
+        'title' => $t['toc_weather'] ?? 'Thời tiết'
     ],
     [
         'id' => 'life-in-cat-ba',
@@ -154,9 +147,6 @@ $activeId = $tableOfContents[0]['id'];
                     <h3 class="text-2xl mb-3 uppercase font-phudu font-bold">
                         <?php echo $current_lang === 'en' ? "the beautiful island" : "hòn đảo xinh đẹp" ?>
                     </h3>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-16 font-delta-gothic text-[#0066FF]">
-                        <?php echo $current_lang === 'en' ? "Cat Ba" : "Cát Bà" ?>
-                    </h1>
                     <p class="mb-3 max-w-3xl">
                         <?php echo $current_lang === 'en' ? "Cat Ba is a perfect blend of the majestic grandeur of limestone mountains and the gentle tranquility of the sea. Recognized by UNESCO as a World Biosphere Reserve, Cat Ba features not only stunning beaches but also the Cat Ba National Park with its rich tropical forest ecosystem." : "Cát Bà là sự kết hợp hoàn hảo giữa vẻ hùng vĩ của những dãy núi đá vôi và sự bình yên dịu dàng của biển cả. Được UNESCO công nhận là Khu dự trữ sinh quyển thế giới, Cát Bà không chỉ sở hữu những bãi biển tuyệt đẹp mà còn có Vườn quốc gia Cát Bà với hệ sinh thái rừng nhiệt đới phong phú." ?>
                     </p>
@@ -172,6 +162,26 @@ $activeId = $tableOfContents[0]['id'];
                     <img src="<?php echo $theme_uri . '/assets/images/cat-ba/banner.png' ?>" alt="banner" />
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ── VIBE ── -->
+    <section style="background:#E7F15A;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <?php
+            $cat_ba = $t['cat_ba'];
+            $vibe_destination_title = $cat_ba['destination_title'];
+            $vibe_title = $cat_ba['hero_vibe_title'];
+            $vibe_items = [
+                ['icon' => 'human', 'title' => $cat_ba['hero_vibe_0_title'], 'val' => $cat_ba['hero_vibe_0_val']],
+                ['icon' => 'money', 'title' => $cat_ba['hero_vibe_1_title'], 'val' => $cat_ba['hero_vibe_1_val']],
+                ['icon' => 'globe', 'title' => $cat_ba['hero_vibe_2_title'], 'val' => $cat_ba['hero_vibe_2_val']],
+                ['icon' => 'clock', 'title' => $cat_ba['hero_vibe_3_title'], 'val' => $cat_ba['hero_vibe_3_val']],
+            ];
+            $vibe_style = 'position:relative; width:auto; max-width:none; margin:0; box-shadow:none;';
+            include get_template_directory() . '/components/vibe-card.php';
+            unset($vibe_style);
+            ?>
         </div>
     </section>
 
@@ -329,7 +339,7 @@ $activeId = $tableOfContents[0]['id'];
             <div
                 id="weather-data-root"
                 data-icon-root="<?php echo esc_url($icon_root_path); ?>"
-                class="grid grid-cols-1 md:grid-cols-3 divide-x-0 md:divide-x divide-[#8A8E8F] border-b border-[#8A8E8F] py-4">
+                class="grid grid-cols-1 md:grid-cols-3 divide-x-0 md:divide-x divide-[#8A8E8F] py-4">
                 <?php $index = 0;
                 foreach ($locations as $id => $location) : ?>
                     <?php
@@ -423,104 +433,19 @@ $activeId = $tableOfContents[0]['id'];
         </div>
     </section>
 
-    <!-- How to book us -->
-    <section class="bg-[#FFF7E6]" id="how-to-book">
-        <div class="container mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold mb-8">
-                <?php echo $current_lang === 'en' ? "How to book us?" : "Làm thế nào để đặt tour?" ?>
-            </h2>
-            <p>
-                <?php echo $current_lang === 'en' ? "Feel free to reach out to us using the options below. We’ll confirm all the necessary details. Alternatively, you can fill out the form in the Pricing section above and click 'Book Now.' Your order will be sent to us, and we’ll get in touch for more information—no charges will apply just yet. Rest assured, your information is secure with us." : "Vui lòng liên hệ với chúng tôi qua các lựa chọn bên dưới. Chúng tôi sẽ xác nhận tất cả các chi tiết cần thiết. Hoặc, bạn có thể điền vào biểu mẫu trong mục Bảng Giá ở trên và nhấp vào 'Đặt Tour Ngay'. Đơn đặt hàng của bạn sẽ được gửi đến chúng tôi và chúng tôi sẽ liên hệ lại để biết thêm thông tin—hiện tại chưa có chi phí nào được áp dụng. Hãy yên tâm, thông tin của bạn được bảo mật an toàn với chúng tôi." ?>
+    <!-- May be you will interest in -->
+    <section id="how-to-book" style="background:#E7F15A;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <p class="text-xs font-bold tracking-widest uppercase text-center text-[#1D292C] mb-3">
+                <?php echo $t['ha_giang']['related_title'] ?? ($current_lang === 'en' ? 'You might also like' : 'Có thể bạn cũng muốn khám phá'); ?>
+            </p>
+            <p class="text-sm text-center text-[#474E50] mb-10 max-w-2xl mx-auto">
+                <?php echo $t['ha_giang']['related_desc'] ?? ($current_lang === 'en'
+                    ? 'If you have ample time and seek deep cultural immersion, our extended tours are perfect.'
+                    : 'Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc hơn, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo.'); ?>
             </p>
 
-            <div class="max-w-5xl py-12">
-                <div class="relative flex justify-between items-start pt-6">
-                    <div class="absolute top-1/2 left-0 w-[70%] h-1 bg-[#F9BB32] transform -translate-y-1/2"></div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['emoji']); ?>" alt="Emoji Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Contact us" : "Liên hệ" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['receipt']); ?>" alt="Receipt Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "Tour confirmation" : "Xác nhận tour" ?></p>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 relative z-10">
-                        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                            <img width="24" height="24" src="<?php echo esc_url($icons['payment']); ?>" alt="Payment Icon" />
-                        </div>
-
-                        <div class="mt-4 w-fit">
-                            <p class="text-sm "><?php echo $current_lang === 'en' ? "D-Day! Pay on arrival!" : "Tới ngày là đi! Đến nơi mới trả tiền!" ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Contact us now" : "Liên hệ với chúng tôi ngay" ?></h2>
-            <p class="mb-4"><?php echo $current_lang === 'en' ? "Click the link or scan the QR code below" : "Bấm vào dường link hoặc quét mã QR bên dưới" ?></p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['whatsapp']); ?>" alt="Whatsapp Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">WhatsApp</p>
-                            <a href="https://wa.me/84936766696" target="_blank" class="hover:underline">+84 936766696</a>
-                        </div>
-                    </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
-                        <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['whatsapp_qr']); ?>"
-                            alt="whatsapp QR" />
-                    <?php endif; ?>
-                </div>
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Instagram</p>
-                            <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="hover:underline">@mr_hi_hi_04</a>
-                        </div>
-                    </div>
-                    <?php if (isset($qrs['instagram_qr'])) : ?>
-                        <img
-                            width="240"
-                            height="240"
-                            src="<?php echo esc_url($qrs['instagram_qr']); ?>"
-                            alt="Instagram QR" />
-                    <?php endif; ?>
-                </div>
-
-                <div class="block">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img width="48" height="48" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook Icon" />
-                        <div class="text-sm text-gray-600">
-                            <p class="">Facebook</p>
-                            <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="hover:underline">www.facebook.com/ps.r.sau</a>
-                        </div>
-                    </div>
-                    <?php if (isset($qrs['facebook_qr'])) : ?>
-                        <img width="240" height="240" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" />
-                    <?php endif; ?>
-                </div>
-            </div>
+            <?php hihi_related_destinations('cat-ba-tour'); ?>
         </div>
     </section>
 
@@ -532,8 +457,9 @@ $activeId = $tableOfContents[0]['id'];
 
         <?php foreach ($faqs_data as $index => $faq): ?>
             <?php
-            $question_text = $t[$faq['q']] ?? 'Question key not found';
-            $answer_text = $t[$faq['a']] ?? 'Answer key not found';
+            $group = $faq['group'] ?? 'global';
+            $question_text = $t[$group][$faq['q']] ?? 'Question key not found';
+            $answer_text = $t[$group][$faq['a']] ?? 'Answer key not found';
             ?>
             <div class="border-b border-gray-200">
                 <button
@@ -555,143 +481,5 @@ $activeId = $tableOfContents[0]['id'];
 
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        const pathname = window.location.pathname
-        const lang = pathname.includes('/vi') ? 'vi' : 'en'
-
-        function getWeatherState(weatherCode, isDay) {
-            if (weatherCode === 0) {
-                return isDay ? 'sun.svg' : 'clear_sky.svg';
-            }
-            if ([1, 2, 3].includes(weatherCode)) {
-                if (weatherCode === 3) return 'cloud.svg';
-                return isDay ? 'sun_cloud.svg' : 'cloudy_night.svg';
-            }
-            if ([45, 48].includes(weatherCode)) {
-                return 'cloud.svg';
-            }
-            if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(weatherCode)) {
-                return 'rain.svg';
-            }
-            if ([95, 96, 99].includes(weatherCode)) {
-                return 'rain_thunder.svg';
-            }
-
-            return 'sun.svg';
-        }
-
-        async function updateWeatherCard(cardElement) {
-            const query = cardElement.getAttribute('data-city');
-            const cityId = cardElement.id.split('-').pop();
-            const iconRootPath = document.getElementById('weather-data-root').getAttribute('data-icon-root');
-
-            const iconElement = document.getElementById(`icon-${cityId}`);
-            const tempElement = document.getElementById(`temp-${cityId}`);
-            const conditionElement = document.getElementById(`condition-${cityId}`);
-
-            if (!query || !iconElement || !tempElement || !conditionElement) {
-                console.error("Thiếu thuộc tính hoặc phần tử UI.");
-                return;
-            }
-
-            const url = `https://api.open-meteo.com/v1/forecast?${query}&current=temperature_2m,is_day,weather_code&timezone=auto`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-                const data = await response.json();
-
-                const currentTemp = Math.round(data.current.temperature_2m);
-                const weatherCode = data.current.weather_code;
-                const isDay = data.current.is_day === 1;
-
-                const iconFileName = getWeatherState(weatherCode, isDay);
-                iconElement.src = iconRootPath + iconFileName;
-
-                tempElement.textContent = `${currentTemp}°C`;
-
-                const descMap = {
-                    0: {
-                        vi: "Trời quang",
-                        en: "Clear sky"
-                    },
-                    1: {
-                        vi: "Ít mây",
-                        en: "Mainly clear"
-                    },
-                    2: {
-                        vi: "Mây rải rác",
-                        en: "Partly cloudy"
-                    },
-                    3: {
-                        vi: "U ám",
-                        en: "Overcast"
-                    },
-                    45: {
-                        vi: "Sương mù",
-                        en: "Foggy"
-                    },
-                    48: {
-                        vi: "Sương muối",
-                        en: "Depositing rime fog"
-                    },
-                    51: {
-                        vi: "Mưa phùn nhẹ",
-                        en: "Light drizzle"
-                    },
-                    53: {
-                        vi: "Mưa phùn vừa",
-                        en: "Moderate drizzle"
-                    },
-                    55: {
-                        vi: "Mưa phùn dày",
-                        en: "Dense drizzle"
-                    },
-                    61: {
-                        vi: "Mưa nhẹ",
-                        en: "Slight rain"
-                    },
-                    63: {
-                        vi: "Mưa vừa",
-                        en: "Moderate rain"
-                    },
-                    65: {
-                        vi: "Mưa to",
-                        en: "Heavy rain"
-                    },
-                    80: {
-                        vi: "Mưa rào nhẹ",
-                        en: "Slight rain showers"
-                    },
-                    95: {
-                        vi: "Giông bão",
-                        en: "Thunderstorm"
-                    }
-                };
-                conditionElement.textContent = descMap[weatherCode][lang] || "Bình thường";
-
-            } catch (error) {
-                console.error("Lỗi khi lấy dữ liệu thời tiết:", error);
-                iconElement.src = iconRootPath + 'error.svg';
-                tempElement.textContent = 'Lỗi';
-                conditionElement.textContent = 'Không khả dụng';
-            }
-        }
-
-        // Hàm chính để khởi động:
-        function fetchAllWeather() {
-            const weatherCards = document.querySelectorAll('#weather-data-root > div');
-
-            weatherCards.forEach(card => {
-                updateWeatherCard(card); // Gọi hàm cập nhật cho từng thẻ
-            });
-        }
-
-        fetchAllWeather();
-    });
-</script>
 
 <?php get_footer(); ?>

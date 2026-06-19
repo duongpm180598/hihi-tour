@@ -1,737 +1,541 @@
+<?php get_header() ?>
+<?php
+$current_lang = pll_current_language('slug');
+$theme_uri    = get_template_directory_uri();
+$t            = load_lang();
+
+$HaGiangLoop = $theme_uri . '/assets/images/ha-giang/ha_giang_loop.jpg';
+$CaoBangTrip = $theme_uri . '/assets/images/cao-bang/cao_bang.jpg';
+$CatBaIsland = $theme_uri . '/assets/images/cat-ba/cat_ba_island.jpg';
+$HueImperialPalace = $theme_uri . '/assets/images/hue/imperial-palace.webp';
+$MuCangChaiHarvest = $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.webp';
+$NinhThuanBaiDaTrung = $theme_uri . '/assets/images/ninh-thuan/bai-da-trung.webp';
+$NhaTrangSunrise = $theme_uri . '/assets/images/nha-trang/sunrise-nha-trang.webp';
+$TaiwanTaipei101 = $theme_uri . '/assets/images/taiwan/taipei-101.webp';
+
+$social = [
+    'threads' => $theme_uri . '/assets/images/threads-logo.png',
+];
+
+// ── Topo icon SVGs (filled, matching the provided images) ─────────────────────
+// Sea  = blue island/palm  #2563EB
+// Mountain = green peaks   #16A34A
+// City = purple buildings  #7B63F7
+$svg_topo_sea = '<svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sea"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.7831 8.20833C16.7447 8.21844 16.7063 8.22905 16.668 8.24014C15.6076 8.54731 14.6882 9.21209 14.0679 10.1201C13.5768 10.8389 12.5924 11.026 11.869 10.5382C11.1456 10.0503 10.9572 9.07217 11.4483 8.35343C12.4821 6.84008 14.0145 5.73209 15.7818 5.22015C16.2183 5.09369 16.6624 5.00557 17.1092 4.95544C16.3162 4.5214 15.3923 4.37671 14.4992 4.55145C13.6414 4.71926 12.8091 4.1644 12.6401 3.31208C12.4712 2.45977 13.0297 1.6328 13.8875 1.46497C15.6535 1.11947 17.4855 1.46026 19.0061 2.41711C19.9644 3.02013 20.7529 3.83887 21.3153 4.79596C22.3786 4.40102 23.5272 4.2496 24.6737 4.36478C26.48 4.5462 28.1574 5.3766 29.3909 6.70003C29.9851 7.33736 29.9467 8.3325 29.3052 8.92277C28.6638 9.51301 27.662 9.47482 27.0681 8.8375C26.3587 8.07644 25.3941 7.59889 24.3554 7.49456L24.344 7.49343C24.6306 7.80215 24.8905 8.1382 25.1191 8.49851C26.0822 10.0177 26.4136 11.8495 26.0429 13.6069C25.8637 14.4571 25.0245 15.0019 24.1688 14.8237C23.3131 14.6456 22.7648 13.8119 22.9442 12.9617C23.1464 12.0031 22.9657 11.004 22.4402 10.1753C22.0204 9.51322 21.4068 9.00137 20.6887 8.70366C19.7876 9.31559 19.0292 10.3175 18.4532 11.7036C17.8795 13.084 17.524 14.7637 17.3899 16.5947C18.5451 16.8851 19.6657 17.363 20.724 18.0161C22.359 19.0251 23.806 20.4275 24.996 22.1276C24.3159 22.3088 23.5753 22.6982 23.0803 23.4763C22.8971 23.764 22.7095 23.9993 22.5261 24.1862C21.7321 24.994 20.3321 24.994 19.5381 24.1862C19.3819 24.027 19.2222 23.8326 19.0646 23.5996C18.2475 22.3912 16.8365 22.1289 16.0001 22.1289C15.1636 22.1289 13.7526 22.3912 12.9355 23.5996C12.7779 23.8326 12.6183 24.027 12.462 24.1862C11.668 24.994 10.2681 24.994 9.47408 24.1862C9.29064 23.9993 9.10291 23.764 8.91974 23.4763C8.13659 22.2452 6.7385 21.9872 5.93827 21.987C5.50448 21.9869 4.90234 22.062 4.3159 22.3205C5.53063 20.5335 7.02459 19.063 8.72109 18.0161C10.4361 16.9576 12.315 16.3594 14.2392 16.2734C14.3972 14.2217 14.8074 12.2342 15.5269 10.503C15.8657 9.6875 16.2813 8.91119 16.7831 8.20833ZM7.39096 25.4021C7.14028 24.821 6.56376 24.4456 5.92744 24.4489C5.29115 24.4523 4.71873 24.834 4.47435 25.4178C4.29482 25.8467 4.02138 26.2303 3.67391 26.5411C3.32644 26.8517 2.91367 27.0817 2.46559 27.214C1.62757 27.4617 1.15022 28.3373 1.3994 29.1699C1.64858 30.0026 2.52993 30.4768 3.36795 30.2293C4.26683 29.9638 5.09486 29.5025 5.7919 28.8792C5.84017 28.836 5.88772 28.7922 5.93456 28.7477C6.2996 29.1019 6.70684 29.4148 7.14944 29.6786C9.35907 30.9961 12.5769 30.9961 14.7865 29.6786C15.2286 29.4152 15.6353 29.1027 16 28.749C16.3647 29.1027 16.7715 29.4152 17.2135 29.6786C19.4231 30.9961 22.6409 30.9961 24.8506 29.6786C25.2932 29.4148 25.7004 29.1019 26.0655 28.7477C26.1124 28.7922 26.1599 28.836 26.2082 28.8792C26.9051 29.5025 27.7332 29.9638 28.6321 30.2293C29.4701 30.4768 30.3515 30.0026 30.6006 29.1699C30.8498 28.3373 30.3724 27.4617 29.5344 27.214C29.0863 27.0817 28.6735 26.8517 28.3261 26.5411C27.9786 26.2303 27.7051 25.8467 27.5257 25.4178C27.2813 24.834 26.7088 24.4523 26.0725 24.4489C25.4363 24.4456 24.8597 24.821 24.6091 25.4021C24.325 26.0604 23.8396 26.6128 23.2215 26.9813C22.0146 27.7008 20.0494 27.7008 18.8424 26.9813C18.2244 26.6128 17.7389 26.0604 17.455 25.4021C17.2055 24.8239 16.6332 24.4489 16 24.4489C15.3668 24.4489 14.7945 24.8239 14.545 25.4021C14.2611 26.0604 13.7756 26.6128 13.1576 26.9813C11.9506 27.7008 9.98535 27.7008 8.77837 26.9813C8.16036 26.6128 7.67492 26.0604 7.39096 25.4021Z" fill="#0066FF"/></svg>';
+
+$svg_topo_mountain = '<svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mountain"><path d="M25.9957 12C28.5612 12 30.1646 9.22226 28.8819 7.00004C28.2865 5.96871 27.1863 5.33337 25.9957 5.33337C23.4301 5.33337 21.8267 8.11115 23.1094 10.3334C23.7048 11.3647 24.805 12 25.9957 12ZM4.9954 26.6667H26.783C28.1911 26.6667 29.3284 25.525 29.3284 24.1209C29.3284 23.6542 29.1992 23.1959 28.9576 22.7959L23.4586 13.7834C23.2878 13.5042 22.9879 13.3334 22.6629 13.3334C22.338 13.3334 22.0381 13.5042 21.8673 13.7792L19.8593 17.0709L14.6144 8.70837C14.3395 8.26671 13.8521 8.00004 13.3314 8.00004C12.8106 8.00004 12.3274 8.26671 12.0483 8.70837L3.02494 23.1C2.79165 23.4709 2.66667 23.9 2.66667 24.3375C2.66667 25.625 3.70814 26.6667 4.9954 26.6667Z" fill="#5B9F05"/></svg>';
+
+$svg_topo_city = '<svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="City"><path d="M30 26H29V11C29 10.7348 28.8946 10.4804 28.7071 10.2929C28.5196 10.1054 28.2652 10 28 10H20C19.7348 10 19.4804 10.1054 19.2929 10.2929C19.1054 10.4804 19 10.7348 19 11V16H13V5C13 4.73478 12.8946 4.48043 12.7071 4.29289C12.5196 4.10536 12.2652 4 12 4H4C3.73478 4 3.48043 4.10536 3.29289 4.29289C3.10536 4.48043 3 4.73478 3 5V26H2C1.73478 26 1.48043 26.1054 1.29289 26.2929C1.10536 26.4804 1 26.7348 1 27C1 27.2652 1.10536 27.5196 1.29289 27.7071C1.48043 27.8946 1.73478 28 2 28H30C30.2652 28 30.5196 27.8946 30.7071 27.7071C30.8946 27.5196 31 27.2652 31 27C31 26.7348 30.8946 26.4804 30.7071 26.2929C30.5196 26.1054 30.2652 26 30 26ZM9 23C9 23.2652 8.89464 23.5196 8.70711 23.7071C8.51957 23.8946 8.26522 24 8 24C7.73478 24 7.48043 23.8946 7.29289 23.7071C7.10536 23.5196 7 23.2652 7 23V21C7 20.7348 7.10536 20.4804 7.29289 20.2929C7.48043 20.1054 7.73478 20 8 20C8.26522 20 8.51957 20.1054 8.70711 20.2929C8.89464 20.4804 9 20.7348 9 21V23ZM9 17C9 17.2652 8.89464 17.5196 8.70711 17.7071C8.51957 17.8946 8.26522 18 8 18C7.73478 18 7.48043 17.8946 7.29289 17.7071C7.10536 17.5196 7 17.2652 7 17V15C7 14.7348 7.10536 14.4804 7.29289 14.2929C7.48043 14.1054 7.73478 14 8 14C8.26522 14 8.51957 14.1054 8.70711 14.2929C8.89464 14.4804 9 14.7348 9 15V17ZM9 11C9 11.2652 8.89464 11.5196 8.70711 11.7071C8.51957 11.8946 8.26522 12 8 12C7.73478 12 7.48043 11.8946 7.29289 11.7071C7.10536 11.5196 7 11.2652 7 11V9C7 8.73478 7.10536 8.48043 7.29289 8.29289C7.48043 8.10536 7.73478 8 8 8C8.26522 8 8.51957 8.10536 8.70711 8.29289C8.89464 8.48043 9 8.73478 9 9V11ZM17 23C17 23.2652 16.8946 23.5196 16.7071 23.7071C16.5196 23.8946 16.2652 24 16 24C15.7348 24 15.4804 23.8946 15.2929 23.7071C15.1054 23.5196 15 23.2652 15 23V21C15 20.7348 15.1054 20.4804 15.2929 20.2929C15.4804 20.1054 15.7348 20 16 20C16.2652 20 16.5196 20.1054 16.7071 20.2929C16.8946 20.4804 17 20.7348 17 21V23ZM25 23C25 23.2652 24.8946 23.5196 24.7071 23.7071C24.5196 23.8946 24.2652 24 24 24C23.7348 24 23.4804 23.8946 23.2929 23.7071C23.1054 23.5196 23 23.2652 23 23V21C23 20.7348 23.1054 20.4804 23.2929 20.2929C23.4804 20.1054 23.7348 20 24 20C24.2652 20 24.5196 20.1054 24.7071 20.2929C24.8946 20.4804 25 20.7348 25 21V23ZM25 17C25 17.2652 24.8946 17.5196 24.7071 17.7071C24.5196 17.8946 24.2652 18 24 18C23.7348 18 23.4804 17.8946 23.2929 17.7071C23.1054 17.5196 23 17.2652 23 17V15C23 14.7348 23.1054 14.4804 23.2929 14.2929C23.4804 14.1054 23.7348 14 24 14C24.2652 14 24.5196 14.1054 24.7071 14.2929C24.8946 14.4804 25 14.7348 25 15V17Z" fill="#7B63F7"/></svg>';
+
+// ── Transport icon SVGs ───────────────────────────────────────────────────────
+$svg_bike = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>';
+$svg_car  = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9l2-4h14l2 4v6a2 2 0 0 1-2 2z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg>';
+$svg_boat = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1"/><path d="M4 18l-1-5h18l-2 5"/><path d="M12 2v8"/><path d="M6.8 15L12 2l5.2 13"/></svg>';
+
+// ── Destination data ──────────────────────────────────────────────────────────
+// geo:  'vietnam' | 'sea' | 'europe'
+// topo: array of 'sea' | 'mountain' | 'city'
+// types: transport array
+$destinations = [
+    [
+        'slug'  => 'ha-giang',
+        'en'    => 'Hà Giang', 'vi' => 'Hà Giang',
+        'img'   => $HaGiangLoop,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['bike', 'car'],
+        'kw_en' => 'ha giang loop motorbike mountain north vietnam majestic landscape rice terraces',
+        'kw_vi' => 'hà giang vòng lặp xe máy núi miền bắc việt nam hùng vĩ ruộng bậc thang',
+    ],
+    [
+        'slug'  => 'cao-bang',
+        'en'    => 'Cao Bằng', 'vi' => 'Cao Bằng',
+        'img'   => $CaoBangTrip,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['bike', 'car'],
+        'kw_en' => 'cao bang waterfall ban gioc northeast vietnam nature mountain',
+        'kw_vi' => 'cao bằng thác bản giốc đông bắc việt nam thiên nhiên núi',
+    ],
+    [
+        'slug'  => 'hue-trip',
+        'en'    => 'Huế', 'vi' => 'Huế',
+        'img'   => $HueImperialPalace,
+        'geo'   => 'vietnam',
+        'topo'  => ['city', 'sea'],
+        'types' => ['car', 'boat'],
+        'kw_en' => 'hue imperial city history central vietnam heritage',
+        'kw_vi' => 'huế cố đô lịch sử miền trung việt nam di sản',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Nha Trang', 'vi' => 'Nha Trang',
+        'img'   => $NhaTrangSunrise,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea', 'city'],
+        'types' => ['car', 'boat'],
+        'kw_en' => 'nha trang beach sea south central vietnam island diving',
+        'kw_vi' => 'nha trang biển nam trung bộ việt nam đảo lặn biển',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Sapa', 'vi' => 'Sapa',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['car'],
+        'kw_en' => 'sapa rice terraces trekking northwest vietnam fansipan',
+        'kw_vi' => 'sapa ruộng bậc thang trekking tây bắc việt nam fansipan',
+    ],
+    [
+        'slug'  => 'ninh-thuan',
+        'en'    => 'Ninh Thuận', 'vi' => 'Ninh Thuận',
+        'img'   => $NinhThuanBaiDaTrung,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea', 'mountain'],
+        'types' => ['bike'],
+        'kw_en' => 'ninh thuan desert sand dunes cham culture beach',
+        'kw_vi' => 'ninh thuận sa mạc đồi cát văn hóa chăm biển',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Phú Yên', 'vi' => 'Phú Yên',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea'],
+        'types' => ['bike'],
+        'kw_en' => 'phu yen yellow flower field ganh da dia beach coast',
+        'kw_vi' => 'phú yên hoa dã quỳ gành đá đĩa biển bờ biển',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Hòa Bình', 'vi' => 'Hòa Bình',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['car'],
+        'kw_en' => 'hoa binh mai chau valley ethnic minority mountain',
+        'kw_vi' => 'hòa bình mai châu thung lũng dân tộc thiểu số núi',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Đà Lạt', 'vi' => 'Đà Lạt',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain', 'city'],
+        'types' => ['bike'],
+        'kw_en' => 'da lat flower city highland cool weather mountain',
+        'kw_vi' => 'đà lạt thành phố hoa cao nguyên khí hậu mát mẻ núi',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Đà Nẵng', 'vi' => 'Đà Nẵng',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea', 'city'],
+        'types' => ['car', 'boat'],
+        'kw_en' => 'da nang beach marble mountains hoi an city sea',
+        'kw_vi' => 'đà nẵng biển ngũ hành sơn hội an thành phố',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Tà Xùa', 'vi' => 'Tà Xùa',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['bike'],
+        'kw_en' => 'ta xua cloud hunting northwest vietnam mountain',
+        'kw_vi' => 'tà xùa săn mây tây bắc việt nam núi',
+    ],
+    [
+        'slug'  => 'mu-cang-chai',
+        'en'    => 'Mù Cang Chải', 'vi' => 'Mù Cang Chải',
+        'img'   => $MuCangChaiHarvest,
+        'geo'   => 'vietnam',
+        'topo'  => ['mountain'],
+        'types' => ['bike'],
+        'kw_en' => 'mu cang chai rice terraces harvest season mountain',
+        'kw_vi' => 'mù cang chải ruộng bậc thang mùa vàng núi',
+    ],
+    [
+        'slug'  => 'cat-ba-tour',
+        'en'    => 'Cát Bà', 'vi' => 'Cát Bà',
+        'img'   => $CatBaIsland,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea', 'mountain'],
+        'types' => ['bike', 'boat'],
+        'kw_en' => 'cat ba island kayak national park halong bay sea',
+        'kw_vi' => 'cát bà đảo kayak vườn quốc gia vịnh hạ long biển',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Hải Phòng', 'vi' => 'Hải Phòng',
+        'img'   => null,
+        'geo'   => 'vietnam',
+        'topo'  => ['sea', 'city'],
+        'types' => ['car', 'boat'],
+        'kw_en' => 'hai phong port city do son beach sea',
+        'kw_vi' => 'hải phòng thành phố cảng bãi biển đồ sơn',
+    ],
+    [
+        'slug'  => 'taiwan-trip',
+        'en'    => 'Đài Loan', 'vi' => 'Đài Loan',
+        'img'   => $TaiwanTaipei101,
+        'geo'   => 'sea',
+        'topo'  => ['mountain', 'city', 'sea'],
+        'types' => ['bike', 'boat'],
+        'kw_en' => 'taiwan island asia motorbike city mountain sea',
+        'kw_vi' => 'đài loan đảo châu á xe máy thành phố núi biển',
+    ],
+    [
+        'slug'  => null,
+        'en'    => 'Thailand', 'vi' => 'Thái Lan',
+        'img'   => null,
+        'geo'   => 'sea',
+        'topo'  => ['sea', 'city', 'mountain'],
+        'types' => ['bike', 'car', 'boat'],
+        'kw_en' => 'thailand bangkok chiang mai beach island sea mountain city',
+        'kw_vi' => 'thái lan bangkok chiang mai biển đảo núi thành phố',
+    ],
+];
+
+if (!function_exists('hihi_destination_sort_key')) {
+    function hihi_destination_sort_key($destination, $lang) {
+        $label = $destination[$lang === 'en' ? 'en' : 'vi'] ?? '';
+        $label = strtr($label, [
+            'à' => 'a', 'á' => 'a', 'ạ' => 'a', 'ả' => 'a', 'ã' => 'a',
+            'â' => 'a', 'ầ' => 'a', 'ấ' => 'a', 'ậ' => 'a', 'ẩ' => 'a', 'ẫ' => 'a',
+            'ă' => 'a', 'ằ' => 'a', 'ắ' => 'a', 'ặ' => 'a', 'ẳ' => 'a', 'ẵ' => 'a',
+            'è' => 'e', 'é' => 'e', 'ẹ' => 'e', 'ẻ' => 'e', 'ẽ' => 'e',
+            'ê' => 'e', 'ề' => 'e', 'ế' => 'e', 'ệ' => 'e', 'ể' => 'e', 'ễ' => 'e',
+            'ì' => 'i', 'í' => 'i', 'ị' => 'i', 'ỉ' => 'i', 'ĩ' => 'i',
+            'ò' => 'o', 'ó' => 'o', 'ọ' => 'o', 'ỏ' => 'o', 'õ' => 'o',
+            'ô' => 'o', 'ồ' => 'o', 'ố' => 'o', 'ộ' => 'o', 'ổ' => 'o', 'ỗ' => 'o',
+            'ơ' => 'o', 'ờ' => 'o', 'ớ' => 'o', 'ợ' => 'o', 'ở' => 'o', 'ỡ' => 'o',
+            'ù' => 'u', 'ú' => 'u', 'ụ' => 'u', 'ủ' => 'u', 'ũ' => 'u',
+            'ư' => 'u', 'ừ' => 'u', 'ứ' => 'u', 'ự' => 'u', 'ử' => 'u', 'ữ' => 'u',
+            'ỳ' => 'y', 'ý' => 'y', 'ỵ' => 'y', 'ỷ' => 'y', 'ỹ' => 'y',
+            'đ' => 'd',
+            'À' => 'a', 'Á' => 'a', 'Ạ' => 'a', 'Ả' => 'a', 'Ã' => 'a',
+            'Â' => 'a', 'Ầ' => 'a', 'Ấ' => 'a', 'Ậ' => 'a', 'Ẩ' => 'a', 'Ẫ' => 'a',
+            'Ă' => 'a', 'Ằ' => 'a', 'Ắ' => 'a', 'Ặ' => 'a', 'Ẳ' => 'a', 'Ẵ' => 'a',
+            'È' => 'e', 'É' => 'e', 'Ẹ' => 'e', 'Ẻ' => 'e', 'Ẽ' => 'e',
+            'Ê' => 'e', 'Ề' => 'e', 'Ế' => 'e', 'Ệ' => 'e', 'Ể' => 'e', 'Ễ' => 'e',
+            'Ì' => 'i', 'Í' => 'i', 'Ị' => 'i', 'Ỉ' => 'i', 'Ĩ' => 'i',
+            'Ò' => 'o', 'Ó' => 'o', 'Ọ' => 'o', 'Ỏ' => 'o', 'Õ' => 'o',
+            'Ô' => 'o', 'Ồ' => 'o', 'Ố' => 'o', 'Ộ' => 'o', 'Ổ' => 'o', 'Ỗ' => 'o',
+            'Ơ' => 'o', 'Ờ' => 'o', 'Ớ' => 'o', 'Ợ' => 'o', 'Ở' => 'o', 'Ỡ' => 'o',
+            'Ù' => 'u', 'Ú' => 'u', 'Ụ' => 'u', 'Ủ' => 'u', 'Ũ' => 'u',
+            'Ư' => 'u', 'Ừ' => 'u', 'Ứ' => 'u', 'Ự' => 'u', 'Ử' => 'u', 'Ữ' => 'u',
+            'Ỳ' => 'y', 'Ý' => 'y', 'Ỵ' => 'y', 'Ỷ' => 'y', 'Ỹ' => 'y',
+            'Đ' => 'd',
+        ]);
+        return strtolower($label);
+    }
+}
+
+$destinations = array_values(array_filter($destinations, function ($destination) {
+    return !empty($destination['slug']);
+}));
+
+usort($destinations, function ($a, $b) use ($current_lang) {
+    return hihi_destination_sort_key($a, $current_lang) <=> hihi_destination_sort_key($b, $current_lang);
+});
+?>
+
+<main>
+
 <style>
-    .history-border {
-        margin-top: 64px;
+    .home-hero {
+        min-height: 300px;
+        background: #F8F8F8;
+    }
+
+    .home-hero-inner {
+        width: 100%;
+        max-width: 900px;
+        padding: 40px 16px 32px;
+    }
+
+    .home-hero-heading {
+        display: flex;
         width: fit-content;
-        flex-direction: column;
+        gap: 14px;
+        margin: 0 auto 24px;
+        color: #fff;
+        font-family: 'Phudu', sans-serif;
+        font-size: 58px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
     }
 
-    #btn-history-1,
-    #btn-history-2 {
-        width: 6px;
-        height: 100%;
-        max-height: 150px;
+    .home-hero-mark,
+    .home-hero-title {
+        display: flex;
+        align-items: center;
+        min-height: 96px;
+        background: #8500FF;
     }
 
-    @media screen and (max-width: 996px) {
+    .home-hero-mark {
+        width: 92px;
+        flex: 0 0 92px;
+        justify-content: center;
+        border-radius: 48px 48px 48px 8px;
+    }
 
-        .history-border {
-            margin-top: 0;
-            width: 100%;
-            flex-direction: row;
+    .home-hero-title {
+        width: fit-content;
+        padding: 12px 34px;
+        justify-content: center;
+        border-radius: 48px 48px 8px 48px;
+    }
+
+    @media (max-width: 640px) {
+        .home-hero {
+            min-height: 260px;
         }
 
-        #btn-history-1,
-        #btn-history-2 {
-            width: 100%;
-            height: 6px;
+        .home-hero-inner {
+            padding-top: 28px;
+            padding-bottom: 24px;
+        }
+
+        .home-hero-heading {
+            gap: 8px;
+            margin-bottom: 18px;
+            font-size: 26px;
+        }
+
+        .home-hero-mark,
+        .home-hero-title {
+            min-height: 68px;
+        }
+
+        .home-hero-mark {
+            width: 64px;
+            flex-basis: 64px;
+            border-radius: 34px 34px 34px 8px;
+        }
+
+        .home-hero-title {
+            padding: 10px 18px;
+            border-radius: 34px 34px 8px 34px;
         }
     }
 </style>
-<?php get_header() ?>
 
-<?php
-$current_lang = pll_current_language('slug');
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     HERO BANNER
+════════════════════════════════════════════════════════════════════════════ -->
+<section
+    class="home-hero relative flex flex-col items-center justify-center overflow-hidden"
+>
+    <div class="home-hero-inner relative z-10 mx-auto">
 
-$theme_uri = get_template_directory_uri();
+        <h1
+            class="home-hero-heading"
+            aria-label="<?php echo esc_attr($t['global']['home_hero_title']); ?>"
+        >
+            <span class="home-hero-mark" aria-hidden="true">?</span>
+            <span class="home-hero-title"><?php echo esc_html($t['global']['home_hero_title']); ?></span>
+        </h1>
 
-$banner = $theme_uri . '/assets/images/banner.png';
-$HaGiangLoop = $theme_uri . '/assets/images/ha_giang_loop.jpg';
-$CaoBangTrip = $theme_uri . '/assets/images/cao_bang.jpg';
-$CatBaIsland = $theme_uri . '/assets/images/cat_ba_island.jpg';
-$shortTrip1 = $theme_uri . '/assets/images/short_trip_1.jpg';
-$shortTrip2 = $theme_uri . '/assets/images/short_trip_2.jpg';
-$shortTrip3 = $theme_uri . '/assets/images/short_trip_3.jpg';
-$longTrip1 = $theme_uri . '/assets/images/long_trip_1.jpg';
-$longTrip2 = $theme_uri . '/assets/images/long_trip_2.jpg';
-$aboutUs = $theme_uri . '/assets/images/about_us.jpg';
-$gallery1 = $theme_uri . '/assets/images/gallery_1.jpg';
-$gallery2 = $theme_uri . '/assets/images/gallery_2.jpg';
-$gallery3 = $theme_uri . '/assets/images/gallery_3.jpg';
-$gallery4 = $theme_uri . '/assets/images/gallery_4.jpg';
-$gallery5 = $theme_uri . '/assets/images/gallery_5.jpg';
-$gallery6 = $theme_uri . '/assets/images/gallery_6.jpg';
-
-$icon_helmet = $theme_uri . '/assets/icons/helmet.svg';
-$icon_highfive = $theme_uri . '/assets/icons/highfive.svg';
-$icon_plump = $theme_uri . '/assets/icons/plump.svg';
-$icon_sun = $theme_uri . '/assets/icons/sun.svg';
-
-// how to book us
-$icons = [
-    'bike'      => $theme_uri . '/assets/icons/bike.svg',
-    'clock'     => $theme_uri . '/assets/icons/clock.svg',
-    'bus'       => $theme_uri . '/assets/icons/bus.svg',
-    'emoji'     => $theme_uri . '/assets/icons/emoji.svg',
-    'receipt'   => $theme_uri . '/assets/icons/receipt.svg',
-    'payment'   => $theme_uri . '/assets/icons/payment.svg',
-    'whatsapp'  => $theme_uri . '/assets/images/whatsapp.png',
-    'instagram' => $theme_uri . '/assets/images/instagram.png',
-    'facebook'  => $theme_uri . '/assets/images/facebook.png',
-];
-
-$qrs = [
-    'whatsapp_qr' => $theme_uri . '/assets/images/whatsapp_qr.jpg',
-    'instagram_qr' => $theme_uri . '/assets/images/instagram_qr.png',
-    'facebook_qr'  => $theme_uri . '/assets/images/facebook_qr.png',
-];
-
-$faqs_data = [
-    [
-        'question' => $current_lang === 'en' ? 'Does Hi Hi tour have age limit?' : 'Tour Hi Hi có giới hạn độ tuổi không?',
-        'answer' => $current_lang === 'en' ? 'For mountainous areas such as Ha Giang and Cao Bang, we kindly recommend for people under 75 and above 8. Though most destination can reach by bike or car, spending long hours on the road can be tiring.' : 'Đối với các khu vực miền núi như Hà Giang và Cao Bằng, chúng tôi khuyến nghị độ tuổi phù hợp là dưới 75 và trên 8 tuổi. Mặc dù hầu hết các điểm đến đều có thể đến bằng xe máy hoặc ô tô, nhưng việc dành nhiều giờ trên đường có thể gây mệt mỏi.',
-    ],
-    [
-        'question' => $current_lang === 'en' ? 'Booking confirmation' : 'Xác nhận đặt tour',
-        'answer' => $current_lang === 'en' ? 'We confirm your tour through direct messages. You can contact us in WhatsApp, Instagram or Facebook for fastest response. You also can fill in this form here, your order will be sent to us, and we’ll get in touch for more information within 2 days—no charges will apply just yet. Rest assured, your information is secure with us.' : 'Chúng tôi xác nhận tour của bạn qua tin nhắn trực tiếp. Bạn có thể liên hệ với chúng tôi qua WhatsApp, Instagram hoặc Facebook để nhận phản hồi nhanh nhất. Bạn cũng có thể điền vào biểu mẫu này tại đây, đơn đặt hàng của bạn sẽ được gửi đến chúng tôi, và chúng tôi sẽ liên hệ lại để biết thêm thông tin trong vòng 2 ngày—hiện tại chưa có chi phí nào được áp dụng. Hãy yên tâm, thông tin của bạn được bảo mật an toàn với chúng tôi.',
-    ],
-    [
-        'question' => $current_lang === 'en' ? 'Can I go alone? Is it safe?' : 'Có an toàn không khi tôi đi một mình?',
-        'answer' => $current_lang === 'en' ? 'Vietnam is consistently ranked as one of the safest nations in Southeast Asia and Asia, making it an excellent destination for solo travelers of any gender. While we always encourage standard precautions for your personal safety and belongings, you can feel very secure exploring here.<br/>For a focused and supported experience, Hi Hi Tour provides personalized 1:1 tours (one guest, one guide), which many of our previous solo guests have chosen. We maintain full transparency and provide accessible contact information so you can easily reach us in any situation.<br/>Alternatively, if you prefer traveling with others, we are happy to arrange for you to join one of our small group tours' : 'Việt Nam luôn được xếp hạng là một trong những quốc gia an toàn nhất Đông Nam Á và châu Á, trở thành điểm đến tuyệt vời cho du khách đi một mình ở mọi giới tính. Mặc dù chúng tôi luôn khuyến khích bạn thực hiện các biện pháp phòng ngừa tiêu chuẩn để đảm bảo an toàn cá nhân và tài sản, bạn vẫn có thể cảm thấy rất an tâm khi khám phá nơi đây.<br/>Để có trải nghiệm tập trung và được hỗ trợ tốt nhất, Hi Hi Tour cung cấp các tour cá nhân 1:1 (một khách, một hướng dẫn viên), lựa chọn của nhiều khách du lịch một mình trước đây. Chúng tôi luôn minh bạch và cung cấp thông tin liên lạc dễ tiếp cận để bạn có thể dễ dàng liên hệ với chúng tôi trong mọi tình huống.<br/>Ngoài ra, nếu bạn thích đi du lịch cùng người khác, chúng tôi rất vui lòng sắp xếp cho bạn tham gia một trong những tour nhóm nhỏ của chúng tôi.',
-    ],
-    [
-        'question' => $current_lang === 'en' ? "Are Hi Hi Tour's tours group tours or private tours?" : 'Các tour của Hi Hi Tour là tour nhóm hay tour riêng?',
-        'answer' => $current_lang === 'en' ? 'We offer both options! Unless you specifically request to join a group tour, your booking will automatically default to a private tour' : 'Chúng tôi cung cấp cả hai lựa chọn! Trừ khi bạn yêu cầu tham gia tour nhóm, đặt chỗ của bạn sẽ tự động mặc định là tour riêng.',
-    ],
-];
-
-$history_steps = [
-    [
-        'id' => 'history-1',
-        'title' => 'Let’s talk history',
-        'content' => 'Our founder - Hiếu was born and raised in Cat Ba Island. Growing up, with a thirst for exploration, he spent six years going across Viet Nam and began to work in tourism. Since 2017, he set his foot in Ha Giang and immediately felt a special bond to the place.',
-    ],
-    [
-        'id' => 'history-2',
-        'title' => 'Our Vision',
-        'content' => 'At Hi Hi Tour, we forge our own path, free from rigid itineraries. We explore uncharted roads, far from typical tourist trails, immersing you in the authentic tapestry of local culture and the embrace of untamed nature.',
-    ],
-];
-
-?>
-
-<main class="overflow-x-hidden">
-    <div class="gallery-container">
-
-        <section
-            class="pt-8 pl-8 md:pl-32"
-            data-aos="fade-up">
-            <h3 class="text-4xl mb-3 font-phudu"><?php echo $current_lang === 'en' ? "Hello world, we are" : "Xin chào, chúng tôi là" ?></h3>
-            <h2 class="text-5xl text-[#8CA865] font-delta-gothic">Hi Hi Tour</h2>
-        </section>
-
-        <section class="relative" data-aos="fade-up" data-aos-duration="1000">
-            <div class="h-auto lg:h-[800px] p-8">
-                <img
-                    src="<?php echo $banner; ?>"
-                    alt="banner"
-                    class="object-fill w-full rounded-2xl md:rounded-[64px]" />
-            </div>
-        </section>
-
-        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-3 md:p-8">
-            <div class="p-8 flex items-center" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="text-5xl font-light text-center text-[#8CA865] font-delta-gothic">
-                    <?php echo $current_lang === 'en' ? "We assure" : "Chúng tôi đảm bảo" ?>
-                </h2>
-            </div>
-
-            <div class="p-8" data-aos="fade-up" data-aos-duration="1000">
-                <img
-                    class="mb-5"
-                    src="<?php echo $icon_helmet; ?>"
-                    width="80"
-                    height="80"
-                    alt="helmet" />
-                <h3 class="text-2xl font-semibold mb-2 text-[#101F23] font-phudu"><?php echo $current_lang === 'en' ? "SAFE" : "AN TOÀN" ?></h3>
-                <p class="text-sm leading-relaxed text-[#101F23]">
-                    <?php echo $current_lang === 'en' ? "With Hi Hi tour, your safety is our top priority. Our vehicles are regularly inspected and maintained to ensure they meet the highest safety standards. We also provide comprehensive pre-trip briefings to equip you with the knowledge and awareness needed to navigate the region confidently." : "Sự an toàn của bạn là ưu tiên hàng đầu của chúng tôi. Lịch trình luôn được điều chỉnh để phù hợp với nhu cầu khách hàng. Phương tiện di chuyển đều sẽ được kiểm tra và bảo dưỡng trước khi lên đường. Chúng tôi luôn cố gắng cung cấp mọi thông tin cần thiết để bạn có sự chuẩn bị đầy đủ nhất, chuyến đi diễn ra suôn sẻ và an toàn." ?>
-                </p>
-            </div>
-
-            <div class="p-8" data-aos="fade-up" data-aos-duration="1000">
-                <img
-                    class="mb-5"
-                    src="<?php echo $icon_highfive; ?>"
-                    width="80"
-                    height="80"
-                    alt="highfive" />
-                <h3 class="text-2xl font-semibold mb-2 text-[#101F23] font-phudu"><?php echo $current_lang === 'en' ? "FUN" : "VUI VẺ" ?></h3>
-                <p class="text-sm leading-relaxed text-[#101F23]">
-                    <?php echo $current_lang === 'en' ? "Our tours are built to ignite your spirit of adventure. Our goal is simple: no matter how long or short the trip, we want you to feel completely at ease and enjoy every moment. With Hi Hi Tour, you’ll discover the raw beauty of Vietnam and create memories that truly last." : "Các tour của chúng tôi được thiết kế để khơi dậy tinh thần khám phá trong bạn. Chúng tôi luôn mong muốn rằng, khi đã bước vào hành trình này, dù dài hay ngắn, bạn cũng có thể thoải mái tận hưởng. Cùng với Hi Hi Tour, bạn sẽ khám phá vẻ đẹp hoang sơ của Việt Nam và tạo nên những kỷ niệm đáng nhớ." ?>
-                </p>
-            </div>
-
-            <div class="lg:col-span-3 flex flex-wrap lg:flex-nowrap gap-4" data-aos="fade-up" data-aos-duration="1000">
-                <div class="p-8 w-full lg:w-1/2">
-                    <img
-                        class="mb-5"
-                        src="<?php echo $icon_plump; ?>"
-                        width="80"
-                        height="80"
-                        alt="plump" />
-                    <h3 class="text-2xl font-semibold mb-2 text-[#101F23] font-phudu"><?php echo $current_lang === 'en' ? "WILD" : "PHÓNG KHOÁNG" ?></h3>
-                    <p class="text-sm leading-relaxed text-[#101F23]">
-                        <?php echo $current_lang === 'en' ? "Forget fixed schedules—we'll take you wherever your heart desires. Together with Hi Hi, you'll discover the raw, untouched beauty of every place we visit. After all, the experience isn't just about the destination; it’s about every moment of the journey we share." : "Không lịch trình cố định, chúng tôi sẽ đưa bạn đến bất cứ đâu. Bạn sẽ cùng Hi Hi ngắm nhìn vẻ đẹp nguyên sơ ở những nơi mình đặt chân đến. Vì trải nghiệm không chỉ nằm ở điểm đến, mà còn trên cả hành trình chúng ta đi." ?>
-                    </p>
-                </div>
-
-                <div class="p-8 w-full lg:w-1/2">
-                    <img
-                        class="mb-5"
-                        src="<?php echo $icon_sun; ?>"
-                        width="80"
-                        height="80"
-                        alt="sun" />
-                    <h3 class="text-2xl font-semibold mb-2 text-[#101F23] font-phudu">
-                        <?php echo $current_lang === 'en' ? "PEACE" : "BÌNH YÊN" ?>
-                    </h3>
-                    <p class="text-sm leading-relaxed text-[#101F23]">
-                        <?php echo $current_lang === 'en' ? "Our tour is not rushing you to travel, offer a serene escape from the everyday hustle. Imagine yourself surrounded by lush greenery and the soothing sounds of nature. Our itineraries include visits to less well-known places, where you can connect with the local culture and find inner peace. We provide comfortable accommodations and mindful activities to enhance your journey of self-discovery." : "Dù là \"tour\", nhưng chúng tôi không sử dụng một lịch trình cho tất cả mọi người. Chuyến đi không vội vã, mà là một khoảng lặng bình yên để bạn thoát khỏi những xô bồ thường nhật. Hi Hi sẽ đưa bạn đến những nơi ít nổi tiếng hơn — nơi bạn có thể kết nối với văn hóa bản địa và tìm thấy sự thư thái trong tâm hồn. Chúng mình chuẩn bị những chỗ ở thoải mái cùng các hoạt động nhẹ nhàng để hành trình khám phá thêm trọn vẹn." ?>
-
-                    </p>
-                </div>
-            </div>
+        <!-- Search -->
+        <div class="relative max-w-xl mx-auto">
+            <input
+                id="dest-search"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="<?php echo $current_lang === 'en' ? 'Search destinations, activities...' : 'Tìm điểm đến, hoạt động...' ?>"
+                oninput="destApplyFilters()"
+                style="width:100%; padding:12px 48px 12px 20px; border:2px solid #1D292C; border-radius:1rem; background:#fff; color:#1D292C; font-size:0.875rem; outline:none; appearance:none; -webkit-appearance:none; box-sizing:border-box;"
+            />
+            <!-- clear button -->
+            <button
+                id="dest-clear"
+                onclick="document.getElementById('dest-search').value=''; destApplyFilters(); this.style.display='none';"
+                aria-label="Clear search"
+                style="display:none; position:absolute; right:46px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#999; font-size:16px; line-height:1; padding:4px;"
+            >&#x2715;</button>
+            <!-- search icon button -->
+            <button
+                aria-label="Search"
+                onclick="destApplyFilters()"
+                style="position:absolute; right:6px; top:50%; transform:translateY(-50%); width:34px; height:34px; border-radius:0.75rem; background:#7B63F7; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;"
+            >
+                <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+                </svg>
+            </button>
         </div>
 
-        <section class="bg-[#8CA865] rounded-t-3xl md:rounded-t-[64px] py-6 md:py-12" data-aos="fade-up" data-aos-duration="1000">
-            <h3 class="text-[#101F23] text-3xl md:text-5xl font-bold text-center font-phudu">
-                <?php echo $current_lang === 'en' ? "LET'S PLAN YOUR TRIP" : 'Lên kế hoạch nha!' ?>
-            </h3>
-        </section>
-
-        <div class="bg-linear-to-b from-[#ECF5DC] to-[#FAF9F7]">
-            <section class="container mx-auto px-4 pt-8">
-                <h2 class="text-3xl font-bold mb-8" data-aos="fade-up" data-aos-duration="1000"><?php echo $current_lang === 'en' ? "Where do you wanna go?" : "Bạn muốn đi đâu?" ?></h2>
-
-                <div class="mx-auto mt-8 mb-20" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="w-full md:w-1/2">
-                            <img
-                                width="778"
-                                height="428"
-                                src="<?php echo $HaGiangLoop; ?>"
-                                alt="Ha Giang Loop"
-                                class="rounded-3xl w-full h-[428px] object-cover object-bottom" />
-                        </div>
-
-                        <div class="w-full md:w-1/2 p-3 md:p-10 flex flex-col justify-center">
-                            <h2 class="text-2xl text-[#101F23] font-bold mb-3 font-phudu">
-                                <?php echo $current_lang === 'en' ? "Ha Giang Loop" : "Một vòng Hà Giang" ?>
-                            </h2>
-
-                            <div class="flex flex-wrap space-x-3">
-                                <div class="flex gap-2 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['clock']); ?>" alt="Clock Icon" />
-                                    <?php echo $current_lang === 'en' ? "2+ days tour" : "Từ 2 ngày trở lên" ?>
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bike']); ?>" alt="Bike Icon" />
-                                    <?php echo $current_lang === 'en' ? "Motorbike tour" : "Tour xe máy" ?>
-
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bus']); ?>" alt="Bus Icon" />
-                                    <?php echo $current_lang === 'en' ? "Car tour" : "Tour ô tô" ?>
-                                </div>
-                            </div>
-
-                            <p class="text-[#474E50] text-lg leading-relaxed">
-                                <?php echo $current_lang === 'en' ? "Discover the majestic beauty of Ha Giang on our most popular tour. Beyond the famous landmarks, we’ll take you to the hidden gems that few people know about. Come immerse yourself in the grand mountain landscapes and the unique local culture." : "Khám phá vẻ đẹp hùng vĩ Hà Giang. Đây cũng là lịch trình được săn đón nhất tại Hi Hi. Ngoài các nơi đã nổi tiếng, chúng tôi cũng sẽ đưa bạn khám phá những điều đặc biệt ít biết ở Hà Giang. Đắm chìm vào không gian núi rừng kỳ vĩ và văn hóa bản địa đặc sắc." ?>
-                            </p>
-
-                            <!-- <div class="mt-3">
-                                <button class="flex items-center gap-1 bg-[#2C2C2C] text-[#F5F5F5] py-2 px-3 rounded-md hover:bg-[#3f3f3f] transition duration-300 w-full md:w-auto">
-                                    <?php echo $current_lang === 'en' ? "Explore" : "Khám phá" ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </button>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mx-auto my-8 md:my-20" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="w-full md:w-1/2 p-3 md:p-10 flex flex-col justify-center">
-                            <h2 class="text-2xl text-[#101F23] font-bold mb-3 font-phudu">
-                                <?php echo $current_lang === 'en' ? 'Cao Bang' : 'Cao Bằng' ?>
-                            </h2>
-
-                            <div class="flex flex-wrap space-x-3">
-                                <div class="flex gap-2 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['clock']); ?>" alt="Clock Icon" />
-                                    <?php echo $current_lang === 'en' ? "2+ days tour" : "Từ 2 ngày trở lên" ?>
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bike']); ?>" alt="Bike Icon" />
-                                    <?php echo $current_lang === 'en' ? "Motorbike tour" : "Tour xe máy" ?>
-
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bus']); ?>" alt="Bus Icon" />
-                                    <?php echo $current_lang === 'en' ? "Car tour" : "Tour ô tô" ?>
-                                </div>
-                            </div>
-
-                            <p class="text-[#474E50] text-lg leading-relaxed">
-                                <?php echo $current_lang === 'en' ? "Right next to Cao Bang, Cao Bang has stunning natural beauty and rich cultural heritage. Explore the majestic waterfall, the serene stream and enjoy the peaceful Cao Bang." : "Là một tỉnh vùng núi Đông Bắc, Cao Bằng vừa có cảnh đẹp nên thơ, vừa có bề dày lịch sử sâu sắc. Khám phá Non nước Cao Bằng với vẻ đẹp vừa hùng vĩ của núi non, thác nước, vừa nên thơ của thảo nguyên, suối ngà." ?>
-                            </p>
-
-                            <!-- <div class="mt-3">
-                                <button class="flex items-center gap-1 bg-[#2C2C2C] text-[#F5F5F5] py-2 px-3 rounded-md hover:bg-[#3f3f3f] transition duration-300 w-full md:w-auto">
-                                    <?php echo $current_lang === 'en' ? "Explore" : "Khám phá" ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </button>
-                            </div> -->
-                        </div>
-
-                        <div class="w-full md:w-1/2">
-                            <img
-                                width="778"
-                                height="428"
-                                src="<?php echo $CaoBangTrip; ?>"
-                                alt="Cao Bang Trip"
-                                class="rounded-3xl w-full h-[428px] object-cover object-bottom" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mx-auto py-8 md:py-20" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="w-full md:w-1/2">
-                            <img
-                                width="778"
-                                height="428"
-                                src="<?php echo $CatBaIsland; ?>"
-                                alt="Cat Ba Island"
-                                class="rounded-3xl w-full h-[428px] object-cover object-bottom" />
-                        </div>
-
-                        <div class="w-full md:w-1/2 p-3 md:p-10 flex flex-col justify-center">
-                            <h2 class="text-2xl text-[#101F23] font-bold mb-3 font-phudu">
-                                <?php echo $current_lang === 'en' ? "Cat Ba island" : "Đảo Cát Bà" ?>
-                            </h2>
-
-                            <div class="flex flex-wrap space-x-3">
-                                <div class="flex gap-2 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['clock']); ?>" alt="Clock Icon" />
-                                    <?php echo $current_lang === 'en' ? "Day tour" : "Tour ngày" ?>
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bike']); ?>" alt="Bike Icon" />
-                                    <?php echo $current_lang === 'en' ? "Motorbike renting" : "Cho thuê xe máy" ?>
-
-                                </div>
-                                <div class="flex gap-2 space-x-3 bg-[#C9E1A2] text-[#000000] py-2 px-3 rounded-md w-fit mb-3">
-                                    <img width="24" height="24" src="<?php echo esc_url($icons['bus']); ?>" alt="Bus Icon" />
-                                    <?php echo $current_lang === 'en' ? "Package combo" : "Tour trọn gói" ?>
-                                </div>
-                            </div>
-
-                            <p class="text-[#474E50] text-lg leading-relaxed">
-                                <?php echo $current_lang === 'en' ? "Beautiful island of North Vietnam. You can go kayaking through the stunning limestone karsts, explore hidden lagoons, and relax on pristine beaches. Don't miss the chance to hike in Cat Ba National Park, home to diverse wildlife and lush rainforests." : "Nằm trong quần đảo lớn nhất vịnh Bắc Bộ, Cát Bà luôn đón chào du khách. Bạn có thể chèo kayak quanh những dãy núi đá vôi ngoài vịnh, khám phá các bãi tắm êm đềm. Cũng đừng quên khám phá Vườn Quốc Gia Cát Bà, vẫn còn lưu giữ vẻ đẹp nguyên sinh, cũng là nơi trú ngụ của nhiều loài động vật quý." ?>
-                            </p>
-
-                            <!-- <div class="mt-3">
-                                <button class="flex items-center gap-1 bg-[#2C2C2C] text-[#F5F5F5] py-2 px-3 rounded-md hover:bg-[#3f3f3f] transition duration-300 w-full md:w-auto">
-                                    <?php echo $current_lang === 'en' ? "Explore" : "Khám phá" ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </button>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Filter rows -->
+        <!-- Row 1: Geography — toggle, no "All" chip -->
+        <div class="flex flex-wrap justify-center gap-2 mb-2" role="group" aria-label="Filter by region" style="display:none;">
+            <?php
+            $geo_filters = [
+                ['vietnam', 'Vietnam'],
+                ['sea',     $current_lang === 'en' ? 'SEA' : 'Đông Nam Á'],
+                ['europe',  'Europe'],
+            ];
+            foreach ($geo_filters as [$val, $lbl]):
+            ?>
+            <button
+                onclick="destFilterGeo('<?php echo $val; ?>')"
+                data-geo="<?php echo $val; ?>"
+                class="dest-geo-chip"
+                style="font-size:11px; font-weight:700; padding:6px 16px; border:2px solid #d1d5db; border-radius:999px; background:#fff; color:#1D292C; cursor:pointer; transition:all .15s;"
+            ><?php echo $lbl; ?></button>
+            <?php endforeach; ?>
         </div>
 
+        <!-- Row 2: Topo — toggle, no "All" chip -->
+        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter by landscape" style="display:none;">
+            <?php
+            $topo_filters = [
+                ['sea',      $current_lang === 'en' ? 'Sea'      : 'Biển'],
+                ['mountain', $current_lang === 'en' ? 'Mountain' : 'Núi'],
+                ['city',     $current_lang === 'en' ? 'City'     : 'Thành phố'],
+            ];
+            foreach ($topo_filters as [$val, $lbl]):
+            ?>
+            <button
+                onclick="destFilterTopo('<?php echo $val; ?>')"
+                data-topo="<?php echo $val; ?>"
+                class="dest-topo-chip"
+                style="font-size:11px; font-weight:700; padding:6px 16px; border:2px solid #d1d5db; border-radius:999px; background:#fff; color:#1D292C; cursor:pointer; transition:all .15s;"
+            ><?php echo $lbl; ?></button>
+            <?php endforeach; ?>
+        </div>
 
-        <section class="bg-[#FAF9F7] px-4 py-12">
-            <div class="container mx-auto">
-                <h2 class="text-3xl font-bold mb-8"> <?php echo $current_lang === 'en' ? "Best for short trip" : "Chuyến đi ngắn ngày" ?></h2>
-                <div class="grid md:grid-cols-3 gap-6 items-center">
-                    <div class="overflow-hidden relative" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="<?php echo esc_url(add_query_arg('plan', '2', get_translated_permalink_by_slug('cao-bang-tour'))); ?>" target="_blank">
-                            <div class="rounded-[40px] relative">
-                                <img class="w-full rounded-[40px] object-cover" src="<?php echo $shortTrip1 ?>" alt="short trip 1" />
-                                <div class="absolute bottom-4 right-4 py-2 px-3 bg-[#2C2C2C] bg-opacity-50 text-white rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="py-4 bg-[#FAF9F7]">
-                                <div class="flex justify-between">
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "Just 2 days in Cao Bang?" : "Chỉ có 2 ngày ở Cao Bằng" ?>
-                                    </p>
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "130 USD" : "3.000.000 VNĐ" ?>
-                                    </p>
-                                </div>
-                                <p class="mt-1">
-                                    <?php echo $current_lang === 'en' ? "Short on time? It’s okay. We guarantee you can have best time in Cao Bang. No rush. Still mesmerizing" : "Ít thời gian có đi được không? Được chứ! Chúng tôi đảm bảo bạn vẫn sẽ có khoảng thời gian tuyệt vời ở Cao Bằng. Lịch trình không vội vã nhưng vẫn đáng nhớ." ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="overflow-hidden relative" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="<?php echo esc_url(add_query_arg('plan', '3', get_translated_permalink_by_slug('ha-giang-tour'))); ?>" target="_blank">
-                            <div class="rounded-[40px] relative">
-                                <img class="w-full h-full md:h-[420px] rounded-[40px] object-cover" src="<?php echo $shortTrip2 ?>" alt="short trip 2" />
-                                <div class="flex gap-1 absolute font-bold bottom-4 right-4 py-2 px-4 bg-[#F9BB32] bg-opacity-50 text-[#2C2C2C] border-[#2C2C2C] rounded-full">
-                                    <?php echo $current_lang === 'en' ? "Most popular choice" : "Lựa chọn phổ biến" ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="py-4 bg-[#FAF9F7]">
-                                <div class="flex justify-between">
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "Just 3 days in Ha Giang" : "Hà Giang 3 ngày" ?>
-                                    </p>
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "195 USD" : "4.500.000 VNĐ" ?>
-                                    </p>
-                                </div>
-                                <p class="mt-1">
-                                    <?php echo $current_lang === 'en' ? "Popular choice when you want to complete Ha Giang Loop." : "Lựa chọn phổ biến nhất khi đi Hà Giang. Thời gian vừa đủ để khám phá, dù bạn đi một vòng hay đi chuyên sâu vài điểm." ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class=" overflow-hidden relative" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="<?php echo esc_url(get_translated_permalink_by_slug('cat-ba-tour')); ?>" target="_blank">
-                            <div class="rounded-[40px] relative">
-                                <img class="w-full object-cover rounded-[40px]" src="<?php echo $shortTrip3 ?>" alt="short trip 3" />
-                                <div class="absolute bottom-4 right-4 py-2 px-3 bg-[#2C2C2C] bg-opacity-50 text-white rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="py-4 bg-[#FAF9F7]">
-                                <div class="flex justify-between">
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "Cat Ba day trip" : "Cát Bà đi trong ngày" ?>
-                                    </p>
-                                    <p class="font-bold">
-                                        <?php echo $current_lang === 'en' ? "?? USD" : "?? VNĐ" ?>
-                                    </p>
-                                </div>
-                                <p class="mt-1">
-                                    <?php echo $current_lang === 'en' ? "Have a fresh breeze of the sea just within 1 day at one of the largest island in North Vietnam, why not?" : "Đi tìm chút 'vitamin sea' trong ngày tại hòn đảo lớn nhất miền Bắc, tại sao không thử nhỉ?" ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-4 py-12">
-            <h2 class="text-3xl font-light mb-2"><?php echo $current_lang === 'en' ? "Plan for a longooooong trip" : "Những chuyến đi dài" ?></h2>
-            <p class="text-sm mb-6">
-                <?php echo $current_lang === 'en' ? "If you have ample time and seek deep cultural immersion, our extended tours are perfect. We offer diverse options to explore Northern Vietnam or create a custom itinerary to anywhere you desire." : "Nếu bạn có nhiều thời gian và muốn trải nghiệm văn hóa sâu sắc, các tour dài ngày của chúng tôi là lựa chọn hoàn hảo. Chúng tôi cung cấp nhiều lựa chọn để khám phá miền Bắc Việt Nam hoặc tạo lịch trình tùy chỉnh đến bất cứ nơi nào bạn muốn." ?>
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:p-6" data-aos="fade-up" data-aos-duration="1000">
-                <div class=" overflow-hidden relative">
-                    <div class="relative">
-                        <img src="<?php echo $longTrip1 ?>" alt="long trip 1" />
-                    </div>
-                    <div class="py-4 bg-white">
-                        <div class="flex justify-between">
-                            <p class="font-bold">
-                                <?php echo $current_lang === 'en' ? "Explore Ha Giang and Cao Bang for 5 days" : "5 ngày Hà Giang - Cao Bằng" ?>
-                            </p>
-                            <p class="font-bold">
-                                <?php echo $current_lang === 'en' ? "325 USD" : "7.500.000 VNĐ" ?>
-                            </p>
-                        </div>
-                        <p class="text-[#74797A] mt-1">
-                            <?php echo $current_lang === 'en' ? "Explore the two famous provinces of Northeast Vietnam. Although they are adjacent to each other, each place has its own distinct beauty. Ha Giang boasts majestic landscapes, while Cao Bang is renowned for its picturesque scenery." : "Một vòng Hà Giang - Cao Bằng. Dù nằm sát cạnh nhau, nhưng mỗi nơi lại mang một vẻ đẹp riêng biệt. Nếu Cao Bằng gây ấn tượng bởi khung cảnh hùng vĩ, thì Cao Bang lại nức tiếng với vẻ đẹp thơ mộng, hữu tình" ?>
-                        </p>
-                    </div>
-                </div>
-
-                <div class=" overflow-hidden relative" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="relative">
-                        <img src="<?php echo $longTrip2 ?>" alt="long trip 2" />
-                    </div>
-                    <div class="py-4 bg-white">
-                        <div class="flex justify-between">
-                            <p class="font-bold">
-                                <?php echo $current_lang === 'en' ? "Run wild till one day who knows when" : "Đi rồi sẽ đến" ?>
-                            </p>
-                        </div>
-                        <p class="text-[#74797A] mt-1">
-                            <?php echo $current_lang === 'en' ? "We have extensive experience organizing tours across many provinces in Vietnam. If you have the need to travel anywhere, even embarking on a complete cross-Vietnam journey, we are ready to accommodate your request!" : "Chúng mình có kinh nghiệm dày dặn trong việc tổ chức tour tại khắp các tỉnh thành trên dải đất hình chữ S. Nếu bạn đang có ý định du lịch ở bất cứ đâu, hay thậm chí là thực hiện một chuyến xuyên Việt trọn vẹn, Hi Hi Tour luôn sẵn sàng đồng hành và đáp ứng mọi yêu cầu của bạn!" ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-4 py-12" id="about-us">
-            <h2 class="text-3xl font-light mb-8"><?php echo $current_lang === 'en' ? "About Hi Hi Tour" : "Hiểu thêm về Hi Hi tour" ?></h2>
-            <div class="flex flex-wrap gap-8 rounded-lg px-4 py-4 lg:py-16">
-                <img src="<?php echo esc_url($theme_uri . '/assets/images/about_us.jpg'); ?>" alt="About us" />
-
-                <div class="history-border flex gap-2 shrink-0 py-2">
-                    <div style="background: #8CA865" id="btn-history-1" class="history-tab-btn rounded-full cursor-pointer transition-all"></div>
-                    <div style="background: #CDCECD" id="btn-history-2" class="history-tab-btn rounded-full cursor-pointer transition-all"></div>
-                </div>
-
-                <div class="flex-1 md:py-8 px-4 py-4 rounded-lg w-auto">
-                    <div id="history-1">
-                        <h3 class="text-2xl font-bold mb-4">
-                            <?php echo $current_lang === 'en' ? "Let’s talk history" : "Chuyện cũ giờ mới kể" ?>
-                        </h3>
-                        <p class="text-sm leading-relaxed">
-                            <?php echo $current_lang === 'en' ? "Our founder - Hiếu was born and raised in Cat Ba Island. Growing up, with a thirst for exploration, he spent six years going across Viet Nam and began to work in tourism. Since 2017, he set his foot in Ha Giang and immediately felt a special bond to the place. He has been dedicated to curating tours, including the now-famous loop tour in Ha Giang. At Hi Hi Tour, we forge our own path, free from rigid itineraries. We explore uncharted roads, far from typical tourist trails, immersing you in the authentic tapestry of local culture and the embrace of untamed nature. We don’t rush into things, we go with your pace. Whether you want to seek for inner peace or want to go all out, just go with us." : "Người sáng lập của chúng tôi - Hiếu - sinh ra và lớn lên ở đảo Cát Bà. Từ nhỏ, với khát khao khám phá, anh đã dành sáu năm đi khắp Việt Nam và bắt đầu làm việc trong ngành du lịch. Từ năm 2017, anh đặt chân đến Hà Giang và ngay lập tức cảm nhận được mối liên kết đặc biệt với nơi này. Anh đã dành tâm huyết để thiết kế các tour du lịch, trong đó có tour vòng quanh Hà Giang nổi tiếng. Tại Hi Hi Tour, chúng tôi tự tạo ra con đường riêng, không bị ràng buộc bởi lịch trình cứng nhắc. Chúng tôi khám phá những con đường chưa được khai phá, xa rời những tuyến du lịch quen thuộc, đưa bạn hòa mình vào bức tranh văn hóa địa phương chân thực và vòng tay của thiên nhiên hoang sơ. Chúng tôi không vội vàng, chúng tôi đi theo nhịp độ của bạn. Cho dù bạn muốn tìm kiếm sự bình yên nội tâm hay muốn trải nghiệm hết mình, hãy cứ đi cùng chúng tôi." ?>
-                        </p>
-                        <p class="text-sm leading-relaxed">
-                            <?php echo $current_lang === 'en' ? "Today, Hi Hi Tour primarily operates in Cat Ba, Ha Giang, and Cao Bang, but we also do customize tours anywhere our customers desire." : "Hiện nay, Hi Hi Tour chủ yếu hoạt động tại Cát Bà, Hà Giang và Cao Bằng, nhưng chúng tôi cũng cung cấp các tour du lịch theo yêu cầu đến bất cứ nơi nào khách hàng mong muốn." ?>
-                        </p>
-                    </div>
-
-                    <div id="history-2" style="display: none;">
-                        <h3 class="text-2xl font-bold mb-4 mt-6">
-                            <?php echo $current_lang === 'en' ? "How we do toursim" : "Làm du lịch... kiểu Hi Hi" ?>
-                        </h3>
-                        <p class="text-sm leading-relaxed">
-                            <?php echo $current_lang === 'en' ? "We firmly believe that responsible tourism goes hand in hand with preserving local traditions. Inspired by the Vietnamese saying, ’Văn hóa là bản chất. Văn hóa là dân tộc’ (Culture is identity. Culture is the nation), we strive to promote tourism in a way that honors and supports the communities we visit. Beside tourism, we frequently lend a hand to remote villages, providing essentials like warm clothing for children, school supplies, and blankets for families in the highlands. We lead travelers through less known area and make sure not to affect the local’s daily life or the surrounding landscape. We hope that we can share this love with you, our beloved customers." : "Chúng tôi tin rằng du lịch trách nhiệm luôn đi đôi với việc gìn giữ các giá trị truyền thống. Khắc ghi câu nói: 'Văn hóa là bản chất. Văn hóa là dân tộc', chúng tôi nỗ lực phát triển du lịch theo cách tôn trọng và hỗ trợ cộng đồng địa phương. Bên cạnh các hoạt động lữ hành, chúng tôi thường xuyên chung tay giúp đỡ những bản làng xa xôi, gửi tặng những món quà thiết yếu như áo ấm cho trẻ nhỏ, đồ dùng học tập hay chăn ấm cho các gia đình vùng cao. Trong mỗi chuyến đi, chúng tôi dẫn dắt du khách qua những vùng đất ít dấu chân người, luôn ý thức không làm ảnh hưởng đến nhịp sống thường nhật hay cảnh quan thiên nhiên. Chúng tôi hy vọng có thể lan tỏa tình yêu này đến bạn – những vị khách quý của Hi Hi Tour." ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-4 py-12" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="text-3xl font-light mb-8"><?php echo $current_lang === 'en' ? 'Hi Hi gallery' : 'Kho tàng của Hi Hi' ?></h2>
-            <p><?php echo $current_lang === 'en' ? "Gaze upon the very soul of Vietnam through our lens! We have personally traversed this incredible land, from the South's heart to the North's majesty, and our passion is capturing every cherished moment shared with you, our guests. We believe every single step of your journey is unique, ensuring that when you look back at these photographs, you won't just remember—you will deeply relive the joy, connection, and beauty of those unforgettable memories." : "Hãy cùng chúng tôi ngắm nhìn tâm hồn của Việt Nam qua lăng kính riêng! Chúng tôi đã tự mình đi dọc chiều dài đất nước, từ Nam ra Bắc, với niềm đam mê cháy bỏng là ghi lại từng khoảnh khắc trân quý cùng bạn. Chúng tôi tin rằng mỗi bước chân bạn đi là độc nhất, để khi nhìn lại những thước hình này, bạn không chỉ nhớ về kỷ niệm — mà sẽ thực sự sống lại niềm vui, sự gắn kết và vẻ đẹp của những ngày tháng không thể nào quên" ?></p>
-            <div class="columns-2 md:columns-3 gap-4">
-                <img
-                    data-src="<?php echo $gallery1 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery1 ?>"
-                    width="537"
-                    height="281"
-                    alt="Image 01" />
-                <img
-                    data-src="<?php echo $gallery4 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery4 ?>"
-                    width="537"
-                    height="596"
-                    alt="Image 04" />
-
-                <img
-                    data-src="<?php echo $gallery2 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery2 ?>"
-                    width="471"
-                    height="459"
-                    alt="Image 02" />
-                <img
-                    data-src="<?php echo $gallery5 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery5 ?>"
-                    width="471"
-                    height="428"
-                    alt="Image 05" />
-
-                <img
-                    data-src="<?php echo $gallery3 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery3 ?>"
-                    width="537"
-                    height="281"
-                    alt="Image 03" />
-                <img
-                    data-src="<?php echo $gallery6 ?>"
-                    class="w-full mb-4 rounded-xl break-inside-avoid cursor-pointer"
-                    src="<?php echo $gallery6 ?>"
-                    width="537"
-                    height="596"
-                    alt="Image 06" />
-            </div>
-        </section>
-
-        <section class="bg-[#FFF7E6]" id="how-to-book-us">
-            <div class="container mx-auto px-4 py-12">
-                <h2 class="text-3xl font-bold mb-8">
-                    <?php echo $current_lang === 'en' ? "How to book us?" : "Làm thế nào để đặt lịch?" ?>
-                </h2>
-                <p>
-                    <?php echo $current_lang === 'en' ? "Feel free to reach out to us using the options below. We’ll confirm all the necessary details. Alternatively, you can fill out the form in the Pricing section above and click 'Book Now.' Your order will be sent to us, and we’ll get in touch for more information—no charges will apply just yet. Rest assured, your information is secure with us." : "Đừng ngần ngại liên hệ với chúng tôi qua các kênh bên dưới nhé, chúng tôi sẽ xác nhận lại mọi chi tiết cần thiết. Hoặc ở mỗi tour đều có mục Giá tour và có nút \"Đặt ngay\". Yêu cầu của bạn sẽ được gửi tới hệ thống và tụi mình sẽ chủ động liên hệ lại để tư vấn kỹ hơn. Bước này hoàn toàn không mất phí. Mọi thông tin cá nhân của bạn đều được chúng mình bảo mật và chỉ sử dụng cho mục đích xác nhận thông tin." ?>
-                </p>
-
-                <div class="max-w-5xl py-12">
-                    <div class="relative flex justify-between items-start pt-6">
-                        <div class="absolute top-1/2 left-0 w-[70%] h-1 bg-[#F9BB32] transform -translate-y-1/2"></div>
-
-                        <div class="flex-1 relative z-10">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                                <img width="24" height="24" src="<?php echo esc_url($icons['emoji']); ?>" alt="Emoji Icon" />
-                            </div>
-
-                            <div class="mt-4 w-fit">
-                                <p class="text-sm "><?php echo $current_lang === 'en' ? "Contact us" : "Liên hệ" ?></p>
-                            </div>
-                        </div>
-
-                        <div class="flex-1 relative z-10">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                                <img width="24" height="24" src="<?php echo esc_url($icons['receipt']); ?>" alt="Receipt Icon" />
-                            </div>
-
-                            <div class="mt-4 w-fit">
-                                <p class="text-sm "><?php echo $current_lang === 'en' ? "Tour confirmation" : "Xác nhận tour" ?></p>
-                            </div>
-                        </div>
-
-                        <div class="flex-1 relative z-10">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#F9BB32] text-white shadow-xl">
-                                <img width="24" height="24" src="<?php echo esc_url($icons['payment']); ?>" alt="Payment Icon" />
-                            </div>
-
-                            <div class="mt-4 w-fit">
-                                <p class="text-sm "><?php echo $current_lang === 'en' ? "D-Day! Pay on arrival!" : "Tới ngày là đi! Đến nơi mới trả tiền!" ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="text-xl font-bold mb-2"><?php echo $current_lang === 'en' ? "Contact us now" : "Liên hệ với chúng tôi ngay" ?></h2>
-                <p class="mb-4"><?php echo $current_lang === 'en' ? "Click the link or scan the QR code below" : "Bấm vào dường link hoặc quét mã QR bên dưới" ?></p>
-
-                <div class="grid md:grid-cols-3 gap-8">
-
-                    <div class="block">
-                        <div class="flex items-center gap-4 mb-4">
-                            <img width="48" height="48" src="<?php echo esc_url($icons['whatsapp']); ?>" alt="Whatsapp Icon" />
-                            <div class="text-sm text-gray-600">
-                                <p class="">WhatsApp</p>
-                                <a href="https://wa.me/84936766696" target="_blank" class="hover:underline">+84 936766696</a>
-                            </div>
-                        </div>
-                        <?php if (isset($qrs['instagram_qr'])) : ?>
-                            <img
-                                width="240"
-                                height="240"
-                                src="<?php echo esc_url($qrs['whatsapp_qr']); ?>"
-                                alt="whatsapp QR" />
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="block">
-                        <div class="flex items-center gap-4 mb-4">
-                            <img width="48" height="48" src="<?php echo esc_url($icons['instagram']); ?>" alt="Instagram Icon" />
-                            <div class="text-sm text-gray-600">
-                                <p class="">Instagram</p>
-                                <a href="https://www.instagram.com/mr_hi_hi_04" target="_blank" class="hover:underline">@mr_hi_hi_04</a>
-                            </div>
-                        </div>
-                        <?php if (isset($qrs['instagram_qr'])) : ?>
-                            <img
-                                width="240"
-                                height="240"
-                                src="<?php echo esc_url($qrs['instagram_qr']); ?>"
-                                alt="Instagram QR" />
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="block">
-                        <div class="flex items-center gap-4 mb-4">
-                            <img width="48" height="48" src="<?php echo esc_url($icons['facebook']); ?>" alt="Facebook Icon" />
-                            <div class="text-sm text-gray-600">
-                                <p class="">Facebook</p>
-                                <a href="https://www.facebook.com/ps.r.sau" target="_blank" class="hover:underline">www.facebook.com/ps.r.sau</a>
-                            </div>
-                        </div>
-                        <?php if (isset($qrs['facebook_qr'])) : ?>
-                            <img width="240" height="240" src="<?php echo esc_url($qrs['facebook_qr']); ?>" alt="Facebook QR" />
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold mb-2"><?php echo $current_lang === 'en' ? 'FAQs' : 'Câu hỏi thường gặp' ?></h2>
-            <div class="space-y-4">
-                <?php foreach ($faqs_data as $index => $faq): ?>
-                    <div class="border-b border-gray-200">
-                        <button
-                            class="flex justify-between items-center w-full py-4 text-left font-semibold text-lg text-[#101F23] hover:text-[#8CA865] focus:outline-none"
-                            onclick="document.getElementById('faq-answer-<?php echo $index; ?>').classList.toggle('hidden');">
-                            <?php echo htmlspecialchars($faq['question']); ?>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div id="faq-answer-<?php echo $index; ?>" class="hidden pb-4 text-gray-600">
-                            <p><?php echo htmlspecialchars($faq['answer']); ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="mt-8">
-                <a class="font-bold text-[#0066FF] hover:underline" href="<?php echo esc_url(get_translated_permalink_by_slug('helps')); ?>" target="_blank">
-                    <?php echo $current_lang === 'en' ? "See all FAQs" : "Xem thêm các câu hỏi thường gặp" ?>
-                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
-            </div>
-        </section>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn1 = document.getElementById('btn-history-1');
-            const btn2 = document.getElementById('btn-history-2');
-            const content1 = document.getElementById('history-1');
-            const content2 = document.getElementById('history-2');
+</section>
 
-            const activeColor = '#8CA865'; // Màu xanh active
-            const inactiveColor = '#CDCECD'; // Màu xám (gray-300)
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     DESTINATION CARDS
+════════════════════════════════════════════════════════════════════════════ -->
+<section style="background:#F8F8F8;" class="px-4 py-4">
+    <div class="container mx-auto">
 
-            // Hàm chuyển đổi
-            function showHistory(index) {
-                if (index === 1) {
-                    // Hiện 1, ẩn 2
-                    content1.style.display = 'block';
-                    content2.style.display = 'none';
-                    // Cập nhật border
-                    btn1.style.backgroundColor = activeColor;
-                    btn2.style.backgroundColor = inactiveColor;
-                } else {
-                    // Hiện 2, ẩn 1
-                    content1.style.display = 'none';
-                    content2.style.display = 'block';
-                    // Cập nhật border
-                    btn1.style.backgroundColor = inactiveColor;
-                    btn2.style.backgroundColor = activeColor;
-                }
+        <p id="dest-no-results" class="hidden text-center py-16 text-sm" style="color:#1D292C; opacity:.5;">
+            <?php echo $current_lang === 'en' ? 'No destinations found.' : 'Không tìm thấy điểm đến.' ?>
+        </p>
+
+        <div id="dest-grid" class="grid grid-cols-3 gap-3 md:gap-4">
+            <?php
+            $card_template = get_template_directory() . '/components/card.php';
+            foreach ($destinations as $d) {
+                include $card_template;
             }
+            ?>
+        </div>
 
-            // Gán sự kiện click
-            btn1.addEventListener('click', () => showHistory(1));
-            btn2.addEventListener('click', () => showHistory(2));
-        });
-    </script>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CONTACT / QR
+════════════════════════════════════════════════════════════════════════════ -->
+<section style="background:#E7F15A;" class="py-12 px-4">
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-2" style="color:#1D292C;">
+            <?php echo $current_lang === 'en' ? "Can't find what you're looking for?" : "Không tìm thấy điểm đến bạn muốn?" ?>
+        </h2>
+        <p class="text-sm mb-8" style="color:#1D292C; opacity:.7;">
+            <?php echo $current_lang === 'en'
+                ? "We customize tours anywhere. Reach out and we'll plan it together."
+                : "Chúng tôi tổ chức tour theo yêu cầu đến bất cứ đâu. Liên hệ để lên kế hoạch cùng nhau."; ?>
+        </p>
+        <div class="grid grid-cols-1 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img width="36" height="36" src="<?php echo esc_url($social['threads']); ?>" alt="<?php echo esc_attr($t['global']['social_threads_icon_alt']); ?>" />
+                    <div>
+                        <p class="text-xs font-bold" style="color:#1D292C;"><?php echo esc_html($t['global']['social_threads_label']); ?></p>
+                        <a href="https://www.threads.com/@timmotchonam" target="_blank" rel="noopener noreferrer" class="text-xs hover:underline" style="color:#1D292C;"><?php echo esc_html($t['global']['social_threads_handle']); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </main>
 
+<script>
+(function () {
+    var activeGeo  = null;  // null = no filter (show all)
+    var activeTopo = null;
+
+    /* ── chip toggle helpers ── */
+    function setChip(selector, attr, value) {
+        document.querySelectorAll(selector).forEach(function (btn) {
+            var on = btn.dataset[attr] === value;
+            btn.style.background  = on ? '#1D292C' : '#fff';
+            btn.style.color       = on ? '#fff'    : '#1D292C';
+            btn.style.borderColor = on ? '#1D292C' : '#d1d5db';
+        });
+    }
+
+    window.destFilterGeo = function (val) {
+        // toggle: clicking active chip clears it
+        activeGeo = (activeGeo === val) ? null : val;
+        setChip('.dest-geo-chip', 'geo', activeGeo);
+        destApplyFilters();
+    };
+
+    window.destFilterTopo = function (val) {
+        activeTopo = (activeTopo === val) ? null : val;
+        setChip('.dest-topo-chip', 'topo', activeTopo);
+        destApplyFilters();
+    };
+
+    /* strip diacritics: "Hà Giang" → "ha giang" */
+    function normalize(str) {
+        return str
+            .normalize('NFD')                        // decompose: à → a + ̀
+            .replace(/[\u0300-\u036f]/g, '')         // strip combining marks
+            .replace(/đ/g, 'd').replace(/Đ/g, 'd')  // Vietnamese Đ not covered by NFD
+            .toLowerCase()
+            .trim();
+    }
+
+    window.destApplyFilters = function () {
+        var raw     = document.getElementById('dest-search').value || '';
+        var query   = normalize(raw);
+        var cards   = document.querySelectorAll('.dest-card');
+        var visible = 0;
+
+        /* show/hide clear button */
+        var clearBtn = document.getElementById('dest-clear');
+        if (clearBtn) clearBtn.style.display = raw.trim() ? 'block' : 'none';
+
+        cards.forEach(function (card) {
+            var sd     = normalize(card.dataset.search || '');
+            var textOk = !query || sd.indexOf(query) !== -1;
+            var geoOk  = !activeGeo  || card.classList.contains('dg-' + activeGeo);
+            var topoOk = !activeTopo || card.classList.contains('dt-' + activeTopo);
+            var show   = textOk && geoOk && topoOk;
+            card.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        var nr = document.getElementById('dest-no-results');
+        if (nr) nr.classList.toggle('hidden', visible > 0);
+    };
+
+    /* Escape clears search */
+    var inp = document.getElementById('dest-search');
+    if (inp) {
+        inp.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { inp.value = ''; destApplyFilters(); }
+        });
+    }
+})();
+</script>
 
 <?php get_footer() ?>

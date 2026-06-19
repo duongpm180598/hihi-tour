@@ -1,58 +1,1489 @@
 const pathname = window.location.pathname
 
 const isCatBa = pathname.includes('/cat-ba-tour')
-const isHaGiang = pathname.includes('/ha-giang-tour')
+const isHaGiang = pathname.includes('/ha-giang')
+const isMuCangChai = pathname.includes('/mu-cang-chai')
+const isCaoBang = pathname.includes('/cao-bang')
+const isNinhThuan = pathname.includes('/ninh-thuan')
+const isTaiwan = pathname.includes('/taiwan')
+const isHue = pathname.includes('/hue')
 const vi = pathname.includes('/vi')
 
 let ALL_ITINERARY_PLANS_DATA = {}
 
+function makeTaiwanItinerary(isVi) {
+    return window.hihiTaiwanItineraryData || {}
+}
+
+function makeNinhThuanItinerary() {
+    return window.hihiNinhThuanItineraryData || {}
+}
+
+function makeCaoBangItinerary() {
+    return window.hihiCaoBangItineraryData || {}
+}
+
+function makeHueItinerary(isVi) {
+    return isVi ? {
+    "hue_only_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Lăng Minh Mạng"
+            },
+            {
+                "time": "10:30",
+                "description": "Lăng Khải Định"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Nem lụi đii. Xong về homestay ngủ."
+            },
+            {
+                "time": "15:00",
+                "description": "Đi cung An Định"
+            },
+            {
+                "time": "16:00",
+                "description": "Ra biển Thuận An thật là chill"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối ở quán ăn ven biển"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn một bát bún bò nhưng ở chỗ khác"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 60km ra Vịnh Lăng Cô"
+            },
+            {
+                "time": "11:00",
+                "description": "Ngắm nghía vùng vẫy"
+            },
+            {
+                "time": "12:00",
+                "description": "Ăn trưa ở nhà hàng sát biển. Ngon nhé mình ưng."
+            },
+            {
+                "time": "14:00",
+                "description": "Lấy sức đi về. Có thể dừng ở bất kỳ đâu bạn muốn."
+            },
+            {
+                "time": "16:00",
+                "description": "Về nhà tắm rửa, phơi khô ráo nước"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "Night time",
+                "description": "Lượn lờ tiếp"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "hue_only_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Lăng Minh Mạng"
+            },
+            {
+                "time": "10:30",
+                "description": "Lăng Khải Định"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Nem lụi đii. Xong về homestay ngủ."
+            },
+            {
+                "time": "15:00",
+                "description": "Đi cung An Định"
+            },
+            {
+                "time": "16:00",
+                "description": "Ra biển Thuận An thật là chill"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn tối ở quán ăn ven biển"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "central_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi tàu Huế - Đà Nẵng, ngắm đèo Hải Vân"
+            },
+            {
+                "time": "12:00",
+                "description": "Về homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bát mỳ Quảng thật là ngon"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra biển Mỹ Khê tắm mát"
+            },
+            {
+                "time": "16:00",
+                "description": "Không tắm thì chạy lên Chùa Linh Ứng hoặc Ngũ Hành Sơn"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn hải sản Đà Nẵng"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ cà phê hoặc đi bar hoặc ngắm biển đêm tuỳ sở thích"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bún chả cá"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi Hội An"
+            },
+            {
+                "time": "10:00",
+                "description": "Dạo quanh phố cổ, đạp xe hoặc đi bộ"
+            },
+            {
+                "time": "12:00",
+                "description": "Ăn trưa trong phố: Cao Lầu, Mỳ Quảng, Bún thịt nướng"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi biển An Bàng"
+            },
+            {
+                "time": "16:00",
+                "description": "Về Đà Nẵng"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn bò nướng"
+            },
+            {
+                "time": "Night time",
+                "description": "Lượn lờ tiếp"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Cồn mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Làm bát bún mắm nêm (ai bụng yếu thì ăn món khác nhé)"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "central_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "08:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "10:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi tàu Huế - Đà Nẵng, ngắm đèo Hải Vân"
+            },
+            {
+                "time": "12:00",
+                "description": "Về homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bát mỳ Quảng thật là ngon"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Hội An"
+            },
+            {
+                "time": "16:00",
+                "description": "Dạo quanh phố cổ, đạp xe hoặc đi bộ"
+            },
+            {
+                "time": "17:00",
+                "description": "Về Đà Nẵng"
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn hải sản Đà Nẵng"
+            },
+            {
+                "time": "Nigh time",
+                "description": "Lượn lờ cà phê hoặc đi bar hoặc ngắm biển đêm tuỳ sở thích"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bún chả cá"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Cồn mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Làm bát bún mắm nêm (ai bụng yếu thì ăn món khác nhé)"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "15:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ],
+    "advanced_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Lên xe giường nằm đi Huế"
+            },
+            {
+                "time": "06:00",
+                "description": "Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm"
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "Vẫn kịp bát bún bò Mệ Kéo. Nhưng ăn quán khác cũng ok vẫn ngon nha"
+            },
+            {
+                "time": "08:00",
+                "description": "Đi 1 vòng thành phố đã"
+            },
+            {
+                "time": "09:00",
+                "description": "Chùa Thiên Mụ. Làm bát tào phớ, nhiều người bảo không ngon chứ mình thấy ngon mà nhể"
+            },
+            {
+                "time": "10:00",
+                "description": "Lăng Tự Đức"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn các thể loại bánh Huế"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi Đại Nội. Nhớ mang ô, mũ, nước, hoặc mua nón & quạt của các cô bán ở cổng"
+            },
+            {
+                "time": "17:00",
+                "description": "Làm cốc cà phê. Mãi iu Tan cà phê ở Huế."
+            },
+            {
+                "time": "19:00",
+                "description": "Ăn 1 bữa bánh ép làm vui"
+            },
+            {
+                "time": "20:00",
+                "description": "Đi ăn chè Huế, có thể ăn ở đầu cầu Trường Tiền luôn cũng được. Không nên ăn combo 20 món nếu bạn không có đủ 20 người. Vì nó nhiều mà nó ngọt ấy."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn bát bánh canh"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi A Lưới, 70km"
+            },
+            {
+                "time": "11:00",
+                "description": "Đến nơi, lấy phòng, nghỉ 1 tị"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Ăn trưa trong thị trấn. Hẻo món lắm nên đừng kén chọn"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi cột mốc 666. Mang theo giấy tờ tuỳ thân để được qua đồn biên phòng"
+            },
+            {
+                "time": "16:00",
+                "description": "Về đến Anor, không đi 1 mình nếu là nữ"
+            },
+            {
+                "time": "18:00",
+                "description": "Ăn tối. Các hàng ăn ở A Lưới không mở muộn nên đi sớm 1 chút"
+            },
+            {
+                "time": "19:00",
+                "description": "Về phòng xem phim cho sớm chợ hoặc khoảng lặng Capcut"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng trong chợ A Lưới, có 1 2 hàng ăn thôi"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi đồi thông A Lưới, uống cà phê ở đây, thích lắm, phải thử nhé"
+            },
+            {
+                "time": "11:00",
+                "description": "Về trả phòng rồi về Huế"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Ăn một bữa trưa thiệt nhiều để bù đắp năng lượng"
+            },
+            {
+                "time": "14:00",
+                "description": "Về homestay nghỉ chút"
+            },
+            {
+                "time": "16:00",
+                "description": "Đi Phá Tam Giang ngắm hoàng hôn"
+            },
+            {
+                "time": "17:00",
+                "description": "Thuê thuyền ra phá ngắm hoàng hôn"
+            },
+            {
+                "time": "19:00",
+                "description": "Về thành phố ăn tối hoặc quay ra biển Thuận An ăn"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Ăn sáng"
+            },
+            {
+                "time": "09:00",
+                "description": "Đi chợ Đông Ba, Tây Lộc mua quà"
+            },
+            {
+                "time": "13:00",
+                "description": "Ăn trưa vài bát cơm hến, bún hến"
+            },
+            {
+                "time": "14:00",
+                "description": "Đi chơi quanh thành phố cho bõ chuyến đi du lịch"
+            },
+            {
+                "time": "17:00",
+                "description": "Ra bến xe đi về"
+            },
+            {
+                "time": "05:00",
+                "description": "Về đến Hà Nội"
+            }
+        ]
+    ]
+} : {
+    "hue_only_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Minh Mang Mausoleum"
+            },
+            {
+                "time": "10:30",
+                "description": "Khai Dinh Mausoleum"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Let's have some grilled pork skewers. Then we'll go back to the homestay to sleep."
+            },
+            {
+                "time": "15:00",
+                "description": "Visit An Dinh Palace"
+            },
+            {
+                "time": "16:00",
+                "description": "Going to Thuan An beach is so relaxing."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner at a seaside restaurant."
+            },
+            {
+                "time": "Nigh time",
+                "description": "Wandering around"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of beef noodle soup, but at a different place."
+            },
+            {
+                "time": "09:00",
+                "description": "Travel 60km to Lang Co Bay"
+            },
+            {
+                "time": "11:00",
+                "description": "Gazing around and splashing"
+            },
+            {
+                "time": "12:00",
+                "description": "We had lunch at a restaurant right by the sea. The food was delicious, I liked it."
+            },
+            {
+                "time": "14:00",
+                "description": "Gather your strength and head back. You can stop anywhere you like."
+            },
+            {
+                "time": "16:00",
+                "description": "Go home, take a shower, and dry yourself off."
+            },
+            {
+                "time": "18:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "Night time",
+                "description": "Keep wandering around."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "hue_only_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner"
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Minh Mang Mausoleum"
+            },
+            {
+                "time": "10:30",
+                "description": "Khai Dinh Mausoleum"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Let's have some grilled pork skewers. Then we'll go back to the homestay to sleep."
+            },
+            {
+                "time": "15:00",
+                "description": "Visit An Dinh Palace"
+            },
+            {
+                "time": "16:00",
+                "description": "Going to Thuan An beach is so relaxing."
+            },
+            {
+                "time": "19:00",
+                "description": "Have dinner at a seaside restaurant."
+            },
+            {
+                "time": "Nigh time",
+                "description": "Wandering around"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "central_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "09:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Take the train from Hue to Da Nang and admire the Hai Van Pass."
+            },
+            {
+                "time": "12:00",
+                "description": "Regarding homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eating a bowl of Quang noodles is really delicious."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to My Khe beach for a refreshing swim."
+            },
+            {
+                "time": "16:00",
+                "description": "If you don't want to swim, head up to Linh Ung Pagoda or Marble Mountains."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating seafood in Da Nang"
+            },
+            {
+                "time": "Nigh time",
+                "description": "You can stroll around, have coffee, go to a bar, or admire the sea at night—it's up to you."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of bun cha ca (made out of fish)"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Hoi An"
+            },
+            {
+                "time": "10:00",
+                "description": "Stroll around the old town, cycle, or walk."
+            },
+            {
+                "time": "12:00",
+                "description": "Lunch in the city: Cao Lau, Quang Noodles, Grilled Pork Vermicelli"
+            },
+            {
+                "time": "14:00",
+                "description": "Go to An Bang Beach"
+            },
+            {
+                "time": "16:00",
+                "description": "About Da Nang"
+            },
+            {
+                "time": "18:00",
+                "description": "Eat grilled beef"
+            },
+            {
+                "time": "Night time",
+                "description": "Keep wandering around."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Con Market to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Make a bowl of bun with fermented fish sauce (those with sensitive stomachs should eat something else)."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "central_3": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "08:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "10:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "Take the train from Hue to Da Nang and admire the Hai Van Pass."
+            },
+            {
+                "time": "12:00",
+                "description": "Regarding homestay check-in"
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eating a bowl of Quang noodles is really delicious."
+            },
+            {
+                "time": "14:00",
+                "description": "Go to Hoi An"
+            },
+            {
+                "time": "16:00",
+                "description": "Stroll around the old town, cycle, or walk."
+            },
+            {
+                "time": "17:00",
+                "description": "Return to Da Nang"
+            },
+            {
+                "time": "19:00",
+                "description": "Eating seafood in Da Nang"
+            },
+            {
+                "time": "Nigh time",
+                "description": "You can stroll around, have coffee, go to a bar, or admire the sea at night—it's up to you."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of bun cha ca (made out of fish)"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Con Market to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Make a bowl of vermicelli with fermented fish sauce (those with sensitive stomachs should eat something else)."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "15:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ],
+    "advanced_4": [
+        [
+            {
+                "time": "17:00",
+                "description": "Board a sleeper bus to Hue."
+            },
+            {
+                "time": "06:00",
+                "description": "Hue City, the bus stops at a private station, very close to the city center."
+            }
+        ],
+        [
+            {
+                "time": "06:30",
+                "description": "I still managed to get a bowl of Mệ Kéo's beef noodle soup. But eating at another place was also fine and delicious."
+            },
+            {
+                "time": "08:00",
+                "description": "Let's take a tour around the city."
+            },
+            {
+                "time": "09:00",
+                "description": "Thien Mu Pagoda. I had a bowl of tofu pudding, and many people said it wasn't good, but I thought it was delicious!"
+            },
+            {
+                "time": "10:00",
+                "description": "Tu Duc Tomb"
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Eating various types of Hue cakes"
+            },
+            {
+                "time": "14:00",
+                "description": "When visiting the Imperial Citadel, remember to bring an umbrella, hat, and water, or buy hats and fans from the vendors at the gate."
+            },
+            {
+                "time": "17:00",
+                "description": "Make a cup of coffee. Forever in love with Tan coffee in Hue."
+            },
+            {
+                "time": "19:00",
+                "description": "Eating a meal of pressed cakes is fun."
+            },
+            {
+                "time": "20:00",
+                "description": "If you want to eat Hue-style sweet soup, you can eat it at the beginning of Truong Tien Bridge. Don't order the 20-item combo if you don't have 20 people. It's a lot and it's very sweet."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Eat a bowl of banh canh (Vietnamese noodle soup)."
+            },
+            {
+                "time": "09:00",
+                "description": "To A Luoi, 70km"
+            },
+            {
+                "time": "11:00",
+                "description": "Arrived, checked into a room, and rested for a while."
+            },
+            {
+                "time": "12:00",
+                "short": "Lunch time",
+                "description": "Have lunch in town. There aren't many options, so don't be picky."
+            },
+            {
+                "time": "14:00",
+                "description": "Go to milestone 666. Bring your identification documents to pass through the border guard station."
+            },
+            {
+                "time": "16:00",
+                "description": "When you arrive in Anor, do not travel alone if you are a woman."
+            },
+            {
+                "time": "18:00",
+                "description": "Dinner. Restaurants in A Lưới don't stay open late, so go a little early."
+            },
+            {
+                "time": "19:00",
+                "description": "Go back to the room, watch a movie or rewind all the photos you took"
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "There are only one or two food stalls for breakfast in A Lưới market."
+            },
+            {
+                "time": "09:00",
+                "description": "Go to the pine hills of A Lưới, have coffee there, it's great, you have to try it!"
+            },
+            {
+                "time": "11:00",
+                "description": "Check out of the hotel and then head back to Hue."
+            },
+            {
+                "time": "13:00 - Lunch time",
+                "description": "Eat a really big lunch to replenish your energy."
+            },
+            {
+                "time": "14:00",
+                "description": "Let's go back to the homestay to rest for a bit."
+            },
+            {
+                "time": "16:00",
+                "description": "Go to Tam Giang Lagoon to watch the sunset."
+            },
+            {
+                "time": "17:00",
+                "description": "Rent a boat to go out onto the lagoon and watch the sunset."
+            },
+            {
+                "time": "19:00",
+                "description": "Go back to the city for dinner or head to Thuan An beach for a meal."
+            }
+        ],
+        [
+            {
+                "time": "08:00",
+                "description": "Have breakfast"
+            },
+            {
+                "time": "09:00",
+                "description": "Go to Dong Ba and Tay Loc markets to buy souvenirs."
+            },
+            {
+                "time": "13:00",
+                "description": "Have a few bowls of clam rice or clam noodles for lunch."
+            },
+            {
+                "time": "14:00",
+                "description": "Take a stroll around the city to make the most of your trip."
+            },
+            {
+                "time": "17:00",
+                "description": "Go to the bus station to go home."
+            },
+            {
+                "time": "05:00",
+                "description": "Arrived in Hanoi"
+            }
+        ]
+    ]
+}
+}
+
 if (vi) {
-    if (isHaGiang) {
+    if (isTaiwan) {
+        ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
+    } else if (isHue) {
+        ALL_ITINERARY_PLANS_DATA = makeHueItinerary(true)
+    } else if (isNinhThuan) {
+        ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
+    } else if (isCaoBang) {
+        ALL_ITINERARY_PLANS_DATA = makeCaoBangItinerary()
+    } else if (isMuCangChai) {
+        ALL_ITINERARY_PLANS_DATA = {
+            3: {
+                // Ngày 0: Hà Nội -> Tú Lệ
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Xe giường nằm Hà Nội - Tú Lệ. Xe này sẽ đi tít lên tận Lai Châu, bạn có thể dừng ở Nghĩa Lộ, Tú Lệ hoặc Mù Cang Chải tuỳ theo ý thích nhé',
+                    },
+                    {
+                        time: '05:30',
+                        description: 'Tới Tú Lệ',
+                    },
+                ],
+
+                // Ngày 1: Khám phá Tú Lệ
+                1: [
+                    {
+                        time: '06:00',
+                        description: 'Ăn sáng. Thử món xôi cồm Tú Lệ nổi tiếng nếu đúng mùa cốm.',
+                    },
+                    {
+                        time: '07:00',
+                        description: 'Thuê xe máy, ở dọc chợ Tú Lệ có khá nhiều hàng cho thuê, giá cả ngang nhau, thích nhà nào thuê nhà đó. 180k/ngày (tính trong ngày không phải 24h)',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Về homestay cất đồ, hỏi chủ homestay xem mình nên đi đâu',
+                    },
+                    {
+                        time: '11:00',
+                        description: 'Đi theo các con đường nhỏ lên cao, vào làng bản xung quanh Tú Lệ. Đừng đi ra hẳn Lùng Cúng nhé, đường xấu mà xa á',
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Đi núi Hổ. Đường rất bé và trơn, nhiều đoạn đường đất. Cân nhắc, view cũng cũng',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Ăn tối ở homestay',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Tự chơi với nhau thôi vì tối ở đây không có hoạt động gì nhiều',
+                    },
+                ],
+
+                // Ngày 2: Khám phá Mù Cang Chải
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Ăn sáng',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'Lên đường đi Mù Cang Chải, qua đèo Khau Phạ. Dừng ở đỉnh đèo ngắm cảnh.',
+                    },
+                    {
+                        time: '12:00',
+                        short: 'Ăn trưa',
+                        description: 'Ăn trưa ở thị trấn',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Check-in homestay. Hỏi chủ homestay xem nên đi đâu tiếp',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Đi lên Mồ Dề ngắm hoa. 3km cuối siêu siêu siêu xấu, phải có người bản địa chở đi mới đi nổi',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Lang thang loanh quanh. Vẫn còn thừa thời gian nên đi thẳng xuống Kim Nọi.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'Ăn tối ở thị trấn',
+                    },
+                ],
+
+                // Ngày 3: Về Hà Nội
+                3: [
+                    {
+                        time: '08:00',
+                        description: 'Ăn sáng',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'Đi Lao Chải, dừng ở thuỷ điện Khau Mang Thượng siêu siêu đẹp',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Ăn trưa, check-out',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Đón xe về Hà Nội',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Về tới Hà Nội',
+                    },
+                ],
+            },
+        }
+    } else if (isHaGiang) {
         ALL_ITINERARY_PLANS_DATA = {
             4: {
                 // Ngày 0: Hà Nội -> Hà Giang
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
+                        description: 'Lên xe giường nằm đi Hà Giang.',
                     },
-                    { time: '03:00', description: 'Đến Thành phố Hà Giang, nhân viên của chúng tôi sẽ hướng dẫn quý khách nhận phòng và nghỉ ngơi.' },
+                    {
+                        time: '03:00',
+                        description: 'Trung tâm thành phố. Nghỉ lại tại chỗ thuê xe máy.',
+                    },
                 ],
 
                 // Ngày 1: Hà Giang -> Đồng Văn
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Gặp gỡ hướng dẫn viên và tài xế của Hi Hi tour. Thưởng thức bữa sáng đơn giản nhưng ý nghĩa, nạp đầy đủ năng lượng và sẵn sàng để bị rung động bởi vẻ đẹp thiên nhiên sắp tới.',
+                        description: 'Ăn sáng.',
                     },
                     {
                         time: '09:00',
-                        description: `Cùng nhau, chúng ta bắt đầu hành trình tuyệt vời. Chúng ta sẽ không vội vã. Thay vào đó, chúng ta sẽ tận dụng khoảnh khắc để dừng chân tại các điểm ngắm cảnh và đi sâu vào các làng bản địa phương để cảm nhận nhịp sống chân thực nhất của các cộng đồng dân tộc.`,
+                        description: 'TP. Hà Giang - Quản Bạ - Yên Minh. Thích đâu dừng đó.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Dừng chân tại Yên Minh và thưởng thức bữa trưa ngon miệng với các món ăn địa phương chân thực. Thưởng thức trọn vẹn hương vị núi rừng.<br/>Sau bữa trưa, chúng ta sẽ có một quãng nghỉ ngắn khoảng 15 - 30 phút trước khi tiếp tục hành trình.',
+                        description: 'Ăn trưa ở thị trấn Yên Minh.',
                     },
                     {
                         time: '14:00',
-                        description: `Chúng ta tiếp tục từ Yên Minh hướng về Đồng Văn. Hãy chuẩn bị máy ảnh—khung cảnh trở nên ấn tượng và ngoạn mục hơn khi chúng ta lên cao.<br/>Hành trình từ Yên Minh đến Đồng Văn là một bản giao hưởng của những dãy núi đá. Mỗi khúc cua, mỗi con đèo, đều mở ra một cảnh đẹp ngoạn mục mới, khiến chúng ta không ngừng thốt lên kinh ngạc trước sự hùng vĩ của thiên nhiên.`,
+                        description: 'Yên Minh - Đồng Văn.',
                     },
                     {
                         time: '17:00',
-                        description: `Đến Đồng Văn và nhận phòng tại homestay ấm cúng của bạn. Hãy dành thời gian này để thư giãn, sảng khoái và đắm mình trong không khí yên bình của phố cổ.`,
+                        description: 'Tới Đồng Văn. Check-in homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng tại một nhà hàng địa phương, nếm thử các đặc sản núi rừng ngon nhất của khu vực. Nếu bạn có thể uống, chúng tôi rất sẵn lòng chia sẻ vài chén vui vẻ cùng nhau. Hà Giang nổi tiếng với các loại rượu tự nấu độc đáo ủ từ nguyên liệu rừng, như rượu ngô men lá hoặc rượu chuối. Nếu bạn không uống rượu, điều đó hoàn toàn ổn—chúng tôi chỉ đơn giản mời bạn đắm mình vào không khí nhộn nhịp và sự đồng hành tốt đẹp xung quanh chúng ta.`,
+                        description: 'Ăn tối ở phố cổ Đồng Văn tại các nhà hàng bản địa. Ăn lẩu gà đen, thắng cố, ăn vặt linh tinh.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối là của bạn! Tản bộ qua Phố cổ Đồng Văn dưới ánh sao. Hầu như mỗi đêm, bạn sẽ bắt gặp một buổi giao lưu văn hóa cộng đồng sôi động với âm nhạc và lửa trại, hoặc bạn có thể tìm một góc yên tĩnh để uống một ly và suy ngẫm về những cảnh tượng tuyệt vời trong ngày.',
+                        description: 'Buổi tối (đặc biệt là cuối tuần) ở Đồng Văn có đốt lửa trại, mọi người cùng nhau ca hát, nhảy múa khá là vui nhộn. Đi dạo quanh phố cổ nhỏ nhỏ cũng vui vui, còn có thể đi mát-xa ở các nhà trong phố nữa siêu thích.',
                     },
                 ],
 
@@ -60,39 +1491,36 @@ if (vi) {
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng tại Đồng Văn. Thực đơn ở đây có sự kết hợp giữa hương vị truyền thống địa phương và các món ăn quốc tế, đảm bảo bạn được nạp đầy năng lượng cho ngày mới.',
+                        description: 'Ăn sáng ở Đồng Văn.',
                     },
                     {
                         time: '09:00',
-                        description: `Chuyến đi được mong chờ nhất! Chúng ta bắt đầu hành trình vượt qua Đèo Mã Pì Lèng—được công nhận là một trong "Tứ Đại Đỉnh Đèo của Việt Nam." Hãy chuẩn bị để choáng ngợp trước khung cảnh hùng vĩ. Ở đây, bạn sẽ nhận thấy một sự thay đổi rõ rệt: sự xuất hiện của những ngọn núi đá vôi lởm chởm đặc trưng "tai mèo" (núi đá tai mèo) của Mèo Vạc, khác biệt rõ rệt so với cảnh quan ngày đầu tiên. Cảnh tượng này thực sự minh chứng tại sao Hà Giang được mệnh danh là nơi "đá nở hoa."`,
+                        description: 'Qua đèo Mã Pí Lèng, một trong tứ đại đỉnh đèo ở Việt Nam. Siêu đẹp siêu thích. Có thể dừng lại ở đỉnh đèo ngắm cảnh.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
+                        description: 'Dừng lại ăn trưa ở thị trấn Mèo Vạc.',
                     },
                     {
                         time: '14:00',
-                        description: `Trải nghiệm trái tim Hà Giang - Sông Nho Quế. Đây là điểm đến bạn không thể bỏ lỡ! Chúng ta sẽ đi xuống bến thuyền để tận hưởng chuyến đi trên Sông Nho Quế. Trên bờ sông sừng sững một ngọn núi cao từ 700 đến 900 mét, tạo thành hẻm vực Tu Sản. Đứng dưới lòng sông, bạn sẽ cảm thấy một sự nhỏ bé trước thiên nhiên hùng vĩ như vậy. Đặc biệt vào mùa Thu và Đông, nước sông mang một màu xanh ngọc bích độc đáo, tuyệt đẹp.`,
+                        description: 'Ngược về bến thuyền sông Nho Quế. 120k/người, đi thuyền khoảng 30 - 45 phút.',
                     },
                     {
                         time: '15:00',
-                        description:
-                            'Sau khi lên bờ, chúng ta sẽ dành thời gian đi dạo quanh, ngắm cảnh, hoặc chụp ảnh những khung cảnh tuyệt đẹp xung quanh.',
+                        description: 'Đi loanh quanh khu này, đường nào đẹp thì rẽ.',
                     },
                     {
                         time: '17:00',
-                        description: `Nhận phòng tại homestay yên bình ở Mèo Vạc. Dành chút thời gian để thư giãn và cảm nhận không khí tĩnh lặng, đối lập với không khí sôi động hơn ở Đồng Văn.`,
+                        description: 'Về homestay. Có thể ở làng du lịch H\'Mong hoặc ở trong thị trấn, 2 nơi này cách nhau 3km thôi.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng với ẩm thực đặc trưng của Mèo Vạc.`,
+                        description: 'Ăn tối ở homestay (nếu có) hoặc ăn ở thị trấn.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối ở Mèo Vạc mang lại cảm giác thân mật và yên bình hơn. Đặc biệt vào cuối tuần, bạn thường có cơ hội tham gia các buổi biểu diễn văn hóa nhỏ và lửa trại, mang đến hương vị đậm đà của văn hóa vùng cao Việt Nam.',
+                        description: 'Buổi tối ở Mèo Vạc sẽ yên bình hơn Đồng Văn dù cũng vẫn có các hoạt động văn nghệ giao lưu.',
                     },
                 ],
 
@@ -100,32 +1528,32 @@ if (vi) {
                 3: [
                     {
                         time: '08:00',
-                        description: `Nếu chuyến đi của bạn rơi vào Chủ Nhật, chúng ta sẽ bắt đầu ngày mới bằng việc ghé thăm Chợ phiên Mèo Vạc—một trong những chợ vùng cao lớn và sôi động nhất. Đây là một cuộc tụ họp lớn của người dân địa phương trong trang phục truyền thống, trao đổi hàng hóa và duy trì các phong tục độc đáo. Hãy dùng bữa sáng ngay tại chợ cùng chúng tôi để cảm nhận năng lượng nhộn nhịp và nét quyến rũ chân thực, hiếm có này.`,
+                        description: 'Nếu ngày này là Chủ Nhật, phải đi chợ phiên Mèo Vạc! Phải đi! Một trong những chợ phiên lớn ở vùng cao Hà Giang, bán rất nhiều đồ hay ho, đồ ăn sáng trong chợ siêu ngon siêu bản địa. Phải thử phở lợn, phở gà đen, xôi,...',
                     },
                     {
                         time: '10:00',
-                        description: `Sau khi nói lời tạm biệt Mèo Vạc (hoặc sau bữa sáng nếu không phải Chủ Nhật), chúng ta sẽ lên đường hướng về Du Già. Tuyến đường của chúng ta sẽ đi qua những con đường nhỏ uốn lượn qua các thôn bản, nơi bạn có thể tận mắt chứng kiến cảnh quan của những cánh đồng lúa và đồi hoa theo mùa, mang lại cảm giác thư giãn và khám phá liên tục.`,
+                        description: 'Về Du Già theo đường qua cua chữ M.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: `Chúng ta sẽ dừng lại ăn trưa tại một điểm ngắm cảnh nổi tiếng: Đường hình chữ M. Từ đây, bạn sẽ thấy con đường uốn lượn nhẹ nhàng như một sợi chỉ thêu vắt ngang sườn núi. Bữa trưa tại đây mang đến một trải nghiệm vừa ngon miệng vừa mãn nhãn.`,
+                        description: 'Ăn trưa ở cua chữ M, view đẹp.',
                     },
                     {
                         time: '14:00',
-                        description: `Chúng ta tiếp tục hành trình hướng về Du Già. Trên đường đi, chúng ta sẽ vui vẻ rẽ ngang để đảm bảo không bỏ lỡ bất kỳ vẻ đẹp thiên nhiên bất ngờ nào mà núi rừng ban tặng.`,
+                        description: 'Tiếp tục về Du Già.',
                     },
                     {
                         time: '16:00',
-                        description: `Đến homestay Du Già, nhanh chóng nhận phòng và đi thẳng đến Thác Du Già. Nước tự nhiên ở đây luôn trong vắt và lạnh buốt, thác khá rộng, rất thích hợp để bạn thỏa sức bơi lội và thư giãn. (Đừng quên đồ bơi để tận hưởng trọn vẹn sự sảng khoái này!)`,
+                        description: 'Đến Du Già, check-in homestay. Nếu thích tắm thác có thể ghé thác Du Già, khá là đông vui du khách tắm ở đây.',
                     },
                     {
                         time: '17:00 - 18:00',
-                        description: `Trở về homestay. Tắm rửa và cùng nhau thưởng thức bữa tối với các món ăn "cây nhà lá vườn" đậm đà hương vị địa phương, tạo ra một cảm giác ấm cúng, như ở nhà. Buổi tối ở Du Già thường vui vẻ và sôi động, đặc trưng của cộng đồng du lịch bụi. Bạn có thể dễ dàng kết bạn và giao lưu tại các homestay khác, hát karaoke, hoặc đơn giản là tìm một quán cà phê nhỏ để tận hưởng sự yên bình dưới ánh sao núi.`,
+                        description: 'Về homestay ăn tối.',
                     },
                     {
                         time: 'Night time',
-                        description: `Buổi tối ở Du Già thường vui vẻ và sôi động, đặc trưng của cộng đồng du lịch bụi. Bạn có thể dễ dàng kết bạn và giao lưu tại các homestay khác, hát karaoke, hoặc đơn giản là tìm một quán cà phê nhỏ để tận hưởng sự yên bình dưới ánh sao núi.`,
+                        description: 'Có thể dạo quanh làng Du Già, có một vài quán cà phê và thậm chí là nhiều quán bar dưới tầng hầm, mọi người rất hay hát karaoke ở đấy.',
                     },
                 ],
 
@@ -133,26 +1561,28 @@ if (vi) {
                 4: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng yên bình ở Du Già, hít thở những hơi thở trong lành cuối cùng của không khí núi rừng. Đây là khoảnh khắc hoàn hảo để tận hưởng sự tĩnh lặng trước khi trở lại nhịp sống hối hả của thành phố.',
+                        description: 'Ăn sáng ở Du Già.',
                     },
                     {
                         time: '09:00',
-                        description: `Chúng ta rời Du Già, biết rằng những kỷ niệm chúng ta tạo ra vẫn còn ở lại đây, và bắt đầu lái xe về Thành phố Hà Giang. Hãy chú ý sự thay đổi dần dần của cảnh quan khi chúng ta rời khỏi thung lũng và các khu vực núi đá cao. Chúng ta sẽ dừng lại ở một điểm ngắm cảnh đẹp trên đường. Tận dụng khoảnh khắc cuối cùng này để chiêm ngưỡng và hứa với những ngọn núi hùng vĩ rằng chúng ta sẽ quay lại khám phá chúng một lần nữa.`,
+                        description: 'Về thành phố theo google map. Hỏi homestay trước xem đường nào đang đẹp không bị sạt thì đi.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Thưởng thức bữa trưa gần Thành phố Hà Giang. Đây là bữa ăn chung cuối cùng của chúng ta, nơi chúng ta có thể lên kế hoạch cho chuyến phiêu lưu tiếp theo và chia sẻ những khoảnh khắc yêu thích của mình.',
+                        description: 'Ăn trưa.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Ghé check-in km0. Giờ này check-in vừa vắng vừa đẹp.',
                     },
                     {
                         time: '17:00',
-                        description: `Chúng ta ghé thăm Cột mốc Km 0 để chụp bức ảnh cuối cùng, chính thức đánh dấu sự hoàn thành của chương này trong hành trình. Sau đó, chúng ta lên xe để trở về Hà Nội. Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!`,
+                        description: 'Kết thúc hành trình. Đón xe về Hà Nội, thường có chuyến 4 rưỡi - 5h.',
                     },
                     {
                         time: '23:00',
-                        description: 'Quý khách sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
+                        description: 'Về đến Hà Nội.',
                     },
                 ],
             },
@@ -160,46 +1590,45 @@ if (vi) {
                 // Ngày 0: Hà Nội -> Hà Giang
                 0: [
                     {
-                        time: '0:00',
-                        description:
-                            'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
+                        time: '21:00',
+                        description: 'Lên xe giường nằm đi Hà Giang.',
                     },
-                    { time: '03:00', description: 'Đến Thành phố Hà Giang, nhân viên của chúng tôi sẽ hướng dẫn quý khách nhận phòng và nghỉ ngơi.' },
+                    {
+                        time: '03:00',
+                        description: 'Đến trung tâm thành phố. Nghỉ tại chỗ thuê xe máy.',
+                    },
                 ],
 
                 // Ngày 1: Hà Giang -> Đồng Văn
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Gặp gỡ hướng dẫn viên và tài xế của Hi Hi tour. Thưởng thức bữa sáng đơn giản nhưng ý nghĩa, nạp đầy đủ năng lượng và sẵn sàng để bị rung động bởi vẻ đẹp thiên nhiên sắp tới.',
+                        description: 'Ăn sáng.',
                     },
                     {
                         time: '09:00',
-                        description: `Cùng nhau, chúng ta bắt đầu hành trình tuyệt vời. Chúng ta sẽ không vội vã. Thay vào đó, chúng ta sẽ tận dụng khoảnh khắc để dừng chân tại các điểm ngắm cảnh và đi sâu vào các làng bản địa phương để cảm nhận nhịp sống chân thực nhất của các cộng đồng dân tộc.`,
+                        description: 'Đi từ TP. Hà Giang qua Quản Bạ đến Yên Minh. Thích đâu dừng đó trên đường.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Dừng chân tại Yên Minh và thưởng thức bữa trưa ngon miệng với các món ăn địa phương chân thực. Thưởng thức trọn vẹn hương vị núi rừng.<br/>Sau bữa trưa, chúng ta sẽ có một quãng nghỉ ngắn khoảng 15 - 30 phút trước khi tiếp tục hành trình.',
+                        description: 'Ăn trưa ở thị trấn Yên Minh.',
                     },
                     {
                         time: '14:00',
-                        description: `Chúng ta tiếp tục từ Yên Minh hướng về Đồng Văn. Hãy chuẩn bị máy ảnh—khung cảnh trở nên ấn tượng và ngoạn mục hơn khi chúng ta lên cao.<br/>Hành trình từ Yên Minh đến Đồng Văn là một bản giao hưởng của những dãy núi đá. Mỗi khúc cua, mỗi con đèo, đều mở ra một cảnh đẹp ngoạn mục mới, khiến chúng ta không ngừng thốt lên kinh ngạc trước sự hùng vĩ của thiên nhiên.`,
+                        description: 'Tiếp tục đi từ Yên Minh đến Đồng Văn.',
                     },
                     {
                         time: '17:00',
-                        description: `Đến Đồng Văn và nhận phòng tại homestay ấm cúng của bạn. Hãy dành thời gian này để thư giãn, sảng khoái và đắm mình trong không khí yên bình của phố cổ.`,
+                        description: 'Đến Đồng Văn, check-in homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng tại một nhà hàng địa phương, nếm thử các đặc sản núi rừng ngon nhất của khu vực.<br/>Nếu bạn có thể uống, chúng tôi rất sẵn lòng chia sẻ vài chén vui vẻ cùng nhau. Hà Giang nổi tiếng với các loại rượu tự nấu độc đáo ủ từ nguyên liệu rừng, như rượu ngô men lá hoặc rượu chuối. Nếu bạn không uống rượu, điều đó hoàn toàn ổn—chúng tôi chỉ đơn giản mời bạn đắm mình vào không khí nhộn nhịp và sự đồng hành tốt đẹp xung quanh chúng ta.`,
+                        description: 'Ăn tối ở phố cổ Đồng Văn tại các nhà hàng địa phương. Thử lẩu gà đen, thắng cố và đồ ăn vặt địa phương.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối là của bạn! Tản bộ qua Phố cổ Đồng Văn dưới ánh sao. Hầu như mỗi đêm, bạn sẽ bắt gặp một buổi giao lưu văn hóa cộng đồng sôi động với âm nhạc và lửa trại, hoặc bạn có thể tìm một góc yên tĩnh để uống một ly và suy ngẫm về những cảnh tượng tuyệt vời trong ngày.',
+                        description: 'Buổi tối, đặc biệt là cuối tuần, Đồng Văn thường có lửa trại để mọi người cùng hát và nhảy. Đi dạo quanh phố cổ nhỏ nhỏ cũng vui, thậm chí có thể đi massage ở các nhà trong khu vực.',
                     },
                 ],
 
@@ -207,37 +1636,36 @@ if (vi) {
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng tại Đồng Văn. Thực đơn ở đây có sự kết hợp giữa hương vị truyền thống địa phương và các món ăn quốc tế, đảm bảo bạn được nạp đầy năng lượng cho ngày mới.',
+                        description: 'Ăn sáng ở Đồng Văn.',
                     },
                     {
                         time: '09:00',
-                        description: `Chuyến đi được mong chờ nhất! Chúng ta bắt đầu hành trình vượt qua Đèo Mã Pì Lèng—được công nhận là một trong "Tứ Đại Đỉnh Đèo của Việt Nam." Hãy chuẩn bị để choáng ngợp trước khung cảnh hùng vĩ. Ở đây, bạn sẽ nhận thấy một sự thay đổi rõ rệt: sự xuất hiện của những ngọn núi đá vôi lởm chởm đặc trưng "tai mèo" (núi đá tai mèo) của Mèo Vạc, khác biệt rõ rệt so với cảnh quan ngày đầu tiên. Cảnh tượng này thực sự minh chứng tại sao Hà Giang được mệnh danh là nơi "đá nở hoa."`,
+                        description: 'Đi qua đèo Mã Pì Lèng, một trong tứ đại đỉnh đèo của Việt Nam. Rất đẹp. Có thể dừng ở đỉnh đèo để ngắm cảnh.',
                     },
                     {
                         time: '11:00',
-                        description: `Trải nghiệm trái tim Hà Giang - Sông Nho Quế.<br/>Đây là điểm đến bạn không thể bỏ lỡ! Chúng ta sẽ đi xuống bến thuyền để tận hưởng chuyến đi trên Sông Nho Quế. Trên bờ sông sừng sững một ngọn núi cao từ 700 đến 900 mét, tạo thành hẻm vực Tu Sản. Đứng dưới lòng sông, bạn sẽ cảm thấy một sự nhỏ bé trước thiên nhiên hùng vĩ như vậy. Đặc biệt vào mùa Thu và Đông, nước sông mang một màu xanh ngọc bích độc đáo, tuyệt đẹp.`,
+                        description: 'Đi xuống bến thuyền sông Nho Quế. Vé khoảng 120.000 VND/người, đi thuyền khoảng 30 - 45 phút.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
+                        description: 'Ăn trưa ở thị trấn Mèo Vạc, hoặc đặt trước ăn trưa ở nhà hàng gần hẻm Tu Sản.',
                     },
                     {
-                        time: '15:00',
-                        description: `Chúng ta tiếp tục hành trình hướng về Du Già. Trên đường đi, chúng ta sẽ vui vẻ rẽ ngang để đảm bảo không bỏ lỡ bất kỳ vẻ đẹp thiên nhiên bất ngờ nào mà núi rừng ban tặng.`,
+                        time: '14:00',
+                        description: 'Quay về Du Già.',
                     },
                     {
-                        time: '17:00',
-                        description: `Đến homestay Du Già, nhanh chóng nhận phòng và đi thẳng đến Thác Du Già. Nước tự nhiên ở đây luôn trong vắt và lạnh buốt, thác khá rộng, rất thích hợp để bạn thỏa sức bơi lội và thư giãn. (Đừng quên đồ bơi để tận hưởng trọn vẹn sự sảng khoái này!)`,
+                        time: '16:00',
+                        description: 'Check-in homestay. Nếu đến sớm và còn thời gian, ghé thác Du Già để bơi và nghỉ ngơi.',
                     },
                     {
                         time: '19:00',
-                        description: `Trở về homestay. Tắm rửa và cùng nhau thưởng thức bữa tối với các món ăn "cây nhà lá vườn" đậm đà hương vị địa phương, tạo ra một cảm giác ấm cúng, như ở nhà.`,
+                        description: 'Ăn tối tại homestay.',
                     },
                     {
                         time: 'Night time',
-                        description: `Buổi tối ở Du Già thường vui vẻ và sôi động, đặc trưng của cộng đồng du lịch bụi. Bạn có thể dễ dàng kết bạn và giao lưu tại các homestay khác, hát karaoke, hoặc đơn giản là tìm một quán cà phê nhỏ để tận hưởng sự yên bình dưới ánh sao núi.`,
+                        description: 'Có thể đi dạo quanh làng Du Già. Có vài quán cà phê và cả một số quán bar tầng hầm, nơi mọi người hay hát karaoke.',
                     },
                 ],
 
@@ -245,120 +1673,114 @@ if (vi) {
                 3: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng ở Du Già. Bạn có thể dành chút thời gian đi dạo quanh, ngắm cảnh, hoặc chụp ảnh những khung cảnh tuyệt đẹp xung quanh.',
+                        description: 'Ăn sáng ở Du Già.',
                     },
                     {
                         time: '09:00',
-                        description:
-                            'Chúng ta rời Du Già, biết rằng những kỷ niệm chúng ta tạo ra vẫn còn ở lại đây, và bắt đầu lái xe về Thành phố Hà Giang. Hãy chú ý sự thay đổi dần dần của cảnh quan khi chúng ta rời khỏi thung lũng và các khu vực núi đá cao. Chúng ta sẽ dừng lại ở một điểm ngắm cảnh đẹp trên đường. Tận dụng khoảnh khắc cuối cùng này để chiêm ngưỡng và hứa với những ngọn núi hùng vĩ rằng chúng ta sẽ quay lại khám phá chúng một lần nữa.',
+                        description: 'Về thành phố theo Google Maps. Trước khi đi, hỏi homestay xem đường nào hiện an toàn và không bị sạt.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Thưởng thức bữa trưa gần Thành phố Hà Giang. Đây là bữa ăn chung cuối cùng của chúng ta, nơi chúng ta có thể lên kế hoạch cho chuyến phiêu lưu tiếp theo và chia sẻ những khoảnh khắc yêu thích của mình.',
+                        description: 'Ăn trưa.',
                     },
                     {
-                        time: '15:00',
-                        description:
-                            'Chúng ta ghé thăm Cột mốc Km 0 để chụp bức ảnh cuối cùng, chính thức đánh dấu sự hoàn thành của chương này trong hành trình. Sau đó, chúng ta lên xe để trở về Hà Nội.',
+                        time: '16:00',
+                        description: 'Về đến TP. Hà Giang và ghé Km0 check-in. Giờ này thường vắng và rất đẹp để chụp ảnh.',
                     },
                     {
                         time: '17:00',
-                        description:
-                            'Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!',
+                        description: 'Kết thúc hành trình. Đón xe về Hà Nội, thường khởi hành khoảng 16:30 - 17:00.',
                     },
                     {
-                        time: '21:00',
-                        description: 'Quý khách sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
+                        time: '23:00',
+                        description: 'Về đến Hà Nội.',
                     },
                 ],
             },
             2: {
-                // Ngày 0: Hà Nội -> Hà Giang (Giống như mẫu bạn cung cấp)
+                // Ngày 0: Hà Nội -> Hà Giang
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Xe giường nằm chất lượng cao của chúng tôi sẽ đón quý khách để bắt đầu hành trình đến Hà Giang! Quý khách sẽ được đặt trên xe cabin VIP, mỗi khách có một khoang ngủ riêng tư, cá nhân.',
+                        description: 'Lên xe giường nằm đi Hà Giang.',
                     },
-                    { time: '03:00', description: 'Đến Thành phố Hà Giang, nhân viên của chúng tôi sẽ hướng dẫn quý khách nhận phòng và nghỉ ngơi.' },
+                    {
+                        time: '03:00',
+                        description: 'Trung tâm thành phố. Nghỉ lại tại chỗ thuê xe máy.',
+                    },
                 ],
 
                 // Ngày 1: Hà Giang -> Đồng Văn
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Gặp gỡ hướng dẫn viên và tài xế của Hi Hi tour. Thưởng thức bữa sáng đơn giản nhưng ý nghĩa, nạp đầy đủ năng lượng và sẵn sàng để bị rung động bởi vẻ đẹp thiên nhiên sắp tới.',
+                        description: 'Ăn sáng.',
                     },
                     {
                         time: '09:00',
-                        description: `Cùng nhau, chúng ta bắt đầu hành trình tuyệt vời. Chúng ta sẽ không vội vã. Thay vào đó, chúng ta sẽ tận dụng khoảnh khắc để dừng chân tại các điểm ngắm cảnh và đi sâu vào các làng bản địa phương để cảm nhận nhịp sống chân thực nhất của các cộng đồng dân tộc.`,
+                        description: 'TP. Hà Giang - Quản Bạ - Yên Minh. Thích đâu dừng đó.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description:
-                            'Dừng chân tại Yên Minh và thưởng thức bữa trưa ngon miệng với các món ăn địa phương chân thực. Thưởng thức trọn vẹn hương vị núi rừng.<br/>Sau bữa trưa, chúng ta sẽ có một quãng nghỉ ngắn khoảng 15 - 30 phút trước khi tiếp tục hành trình.',
+                        description: 'Ăn trưa ở thị trấn Yên Minh.',
                     },
                     {
                         time: '14:00',
-                        description: `Sau khi nghỉ ngơi tại Yên Minh, hành trình của chúng ta tiếp tục hướng tới một trong những điểm dừng mang tính biểu tượng nhất của Hà Giang: Đèo Thẩm Mã. Vị trí này mang đến cho du khách một cái nhìn toàn cảnh ngoạn mục, cho phép chúng ta đánh giá trọn vẹn sự hùng vĩ của thiên nhiên khi những con đường núi quanh co uốn lượn duyên dáng như những dải lụa vắt qua những ngọn núi đá.`,
+                        description: 'Qua dốc Thẩm Mã. Rất nhiều khách du lịch. Thích thì dừng cũng được.',
                     },
                     {
-                        time: '16:00',
-                        description: `Tiếp theo, chúng ta sẽ đưa quý khách đến Cột cờ Lũng Cú, nằm gần điểm cực Bắc thiêng liêng của Việt Nam. Dưới chân Cột cờ là Làng Lô Lô Chải quyến rũ. Ngôi làng này tự hào được công nhận là Làng Du lịch Tốt nhất Thế giới năm 2023 vì những nỗ lực nổi bật trong việc bảo tồn các giá trị truyền thống trong cả lối sống và thực hành du lịch bền vững.`,
+                        time: '15:00',
+                        description: 'Đi thẳng lên cột cờ Lũng Cú, chân cột cờ là làng Lô Lô Chải. Chú ý nếu book homestay ở Đồng Văn thì phải lên đây trước 3h chiều và bắt đầu về trước 4h không thì trời tối quá, đi nguy hiểm.',
                     },
                     {
                         time: '17:00',
-                        description: `Đến Đồng Văn và nhận phòng tại homestay ấm cúng của bạn. Hãy dành thời gian này để thư giãn, sảng khoái và đắm mình trong không khí yên bình của phố cổ.`,
+                        description: 'Về đến Đồng Văn, check-in homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Thưởng thức bữa tối ngon miệng tại một nhà hàng địa phương, nếm thử các đặc sản núi rừng ngon nhất của khu vực.<br/>Nếu bạn có thể uống, chúng tôi rất sẵn lòng chia sẻ vài chén vui vẻ cùng nhau. Hà Giang nổi tiếng với các loại rượu tự nấu độc đáo ủ từ nguyên liệu rừng, như rượu ngô men lá hoặc rượu chuối. Nếu bạn không uống rượu, điều đó hoàn toàn ổn—chúng tôi chỉ đơn giản mời bạn đắm mình vào không khí nhộn nhịp và sự đồng hành tốt đẹp xung quanh chúng ta.`,
+                        description: 'Ăn tối ở phố cổ Đồng Văn tại các nhà hàng bản địa. Ăn lẩu gà đen, thắng cố, ăn vặt linh tinh.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Buổi tối là của bạn! Tản bộ qua Phố cổ Đồng Văn dưới ánh sao. Hầu như mỗi đêm, bạn sẽ bắt gặp một buổi giao lưu văn hóa cộng đồng sôi động với âm nhạc và lửa trại, hoặc bạn có thể tìm một góc yên tĩnh để uống một ly và suy ngẫm về những cảnh tượng tuyệt vời trong ngày.',
+                        description: 'Buổi tối (đặc biệt là cuối tuần) ở Đồng Văn có đốt lửa trại, mọi người cùng nhau ca hát, nhảy múa khá là vui nhộn. Đi dạo quanh phố cổ nhỏ nhỏ cũng vui vui, còn có thể đi mát-xa ở các nhà trong phố nữa siêu thích.',
                     },
                 ],
 
-                // Ngày 2: Đồng Văn -> Hà Giang (Kết thúc)
+                // Ngày 2: Đồng Văn -> Mèo Vạc (Gần Sông Nho Quế) -> Hà Giang
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Thưởng thức bữa sáng tại Đồng Văn. Thực đơn ở đây có sự kết hợp giữa hương vị truyền thống địa phương và các món ăn quốc tế, đảm bảo bạn được nạp đầy năng lượng cho ngày mới.',
+                        description: 'Ăn sáng ở Đồng Văn.',
                     },
                     {
                         time: '09:00',
-                        description: `Chuyến đi được mong chờ nhất! Chúng ta bắt đầu hành trình vượt qua Đèo Mã Pì Lèng—được công nhận là một trong "Tứ Đại Đỉnh Đèo của Việt Nam." Tiếp theo, chúng ta sẽ đi thẳng về phía bến Sông Nho Quế, trái tim ngọc bích của Hà Giang—đây là điểm đến bạn không thể bỏ lỡ! Chúng ta sẽ đi xuống bến thuyền để tận hưởng chuyến đi trên Sông Nho Quế. Trên bờ sông sừng sững một ngọn núi cao từ 700 đến 900 mét, tạo thành hẻm vực Tu Sản. Đứng dưới lòng sông, bạn sẽ cảm thấy một sự nhỏ bé trước thiên nhiên hùng vĩ như vậy. Đặc biệt vào mùa Thu và Đông, nước sông mang một màu xanh ngọc bích độc đáo, tuyệt đẹp.`,
+                        description: 'Đi xuống bến thuyền sông Nho Quế. 120k/người, đi thuyền khoảng 30 - 45 phút.',
                     },
                     {
                         time: '13:00',
                         short: 'Ăn trưa',
-                        description: 'Chúng ta dừng lại ở Thị trấn Mèo Vạc để ăn trưa.',
+                        description: 'Ăn trưa ở thị trấn Mèo Vạc. Hoặc có thể đặt trước ăn trưa ở nhà hàng ở ngay hẻm Tu Sản luôn.',
                     },
                     {
-                        time: '15:00',
-                        description: `Sau bữa trưa, chúng ta bắt đầu hành trình trở về thành phố. Chúng ta sẽ dành thời gian đi dạo quanh, ngắm cảnh, hoặc chụp ảnh những khung cảnh tuyệt đẹp xung quanh.`,
+                        time: '14:00',
+                        description: 'Lên đường quay về thành phố Hà Giang.',
                     },
                     {
                         time: '17:00',
-                        description: `Cuộc chinh phục Hà Giang tạm kết thúc. Chúng tôi hy vọng bạn mang theo nhiều kỷ niệm tuyệt vời và đã mong chờ đến lần gặp lại tiếp theo trên những cung đường núi tuyệt vời này!`,
+                        description: 'Kết thúc hành trình. Đón xe về Hà Nội, thường có chuyến 4 rưỡi - 5h.',
                     },
                     {
                         time: '23:00',
-                        description: 'Chúng ta sẽ đến Hà Nội vào khoảng thời gian này. Tạm biệt và hẹn gặp lại sớm!',
+                        description: 'Về đến Hà Nội.',
                     },
                 ],
             },
         }
     } else {
         ALL_ITINERARY_PLANS_DATA = {
+
             3: {
                 //  0: Ha Noi -> Cao Bang
                 0: [
@@ -560,51 +1982,164 @@ if (vi) {
         }
     }
 } else {
-    if (isHaGiang) {
+    if (isTaiwan) {
+        ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
+    } else if (isHue) {
+        ALL_ITINERARY_PLANS_DATA = makeHueItinerary(false)
+    } else if (isNinhThuan) {
+        ALL_ITINERARY_PLANS_DATA = makeNinhThuanItinerary()
+    } else if (isCaoBang) {
+        ALL_ITINERARY_PLANS_DATA = makeCaoBangItinerary()
+    } else if (isMuCangChai) {
         ALL_ITINERARY_PLANS_DATA = {
-            4: {
+            3: {
+                // Day 0: Hanoi -> Tu Le
                 0: [
                     {
                         time: '21:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
+                        description: 'Hanoi - Tu Le sleeper bus. This bus will go all the way to Lai Chau, you can stop in Nghia Lo, Tu Le or Mu Cang Chai depending on your preference.',
                     },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
+                    {
+                        time: '05:30',
+                        description: 'To Tu Le',
+                    },
+                ],
+
+                // Day 1: Explore Tu Le
+                1: [
+                    {
+                        time: '06:00',
+                        description: "Have breakfast. Try the famous Tú Lệ sticky rice dish if it's the right season for young rice flakes.",
+                    },
+                    {
+                        time: '07:00',
+                        description: 'Motorbike rentals are available at many shops along Tu Le market, with similar prices; choose whichever one you like. 180k/day (calculated for the day, not 24 hours).',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'After dropping off our belongings at the homestay, we asked the owner where we should go next.',
+                    },
+                    {
+                        time: '11:00',
+                        description: "Follow the small paths uphill, into the villages surrounding Tú Lệ. Don't go all the way to Lùng Cúng; the road is bad and it's far away.",
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Going to Tiger Mountain. The road is very narrow and slippery, with many dirt sections. Consider this carefully, the view is also...',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Having dinner at the homestay.',
+                    },
+                    {
+                        time: '21:00',
+                        description: "We'll just have to entertain ourselves because there aren't many activities here in the evening.",
+                    },
+                ],
+
+                // Day 2: Explore Mu Cang Chai
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'On the way to Mu Cang Chai, we crossed the Khau Pha Pass. We stopped at the top of the pass to admire the view.',
+                    },
+                    {
+                        time: '12:00',
+                        short: 'Lunch time',
+                        description: 'Lunch in town',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Check in at the homestay. Ask the homestay owner where we should go next.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Go up to Mo De to see the flowers. The last 3km are extremely bad; you need a local to drive you through them.',
+                    },
+                    {
+                        time: '16:00',
+                        description: 'Wandering around aimlessly. Still have time to spare, so head straight down to Kim Noi.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'Dinner in town',
+                    },
+                ],
+
+                // Day 3: Back to Hanoi
+                3: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast',
+                    },
+                    {
+                        time: '10:00',
+                        description: 'When going to Lao Chai, stop at the incredibly beautiful Khau Mang Thuong hydroelectric power plant.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Lunch, check out',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Take a bus back to Hanoi.',
+                    },
+                    {
+                        time: '21:00',
+                        description: 'Back in Hanoi',
+                    },
+                ],
+            },
+        }
+    } else if (isHaGiang) {
+        ALL_ITINERARY_PLANS_DATA = {
+            4: {
+                // Day 0: Hanoi -> Ha Giang
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Board the sleeper bus to Ha Giang.',
+                    },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
                 ],
 
                 //  1: Ha Giang -> Dong Van
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
+                        description: 'Breakfast.',
                     },
                     {
                         time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
+                        description: 'Travel from Ha Giang City to Quan Ba and Yen Minh. Stop anywhere that looks interesting.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
+                        description: 'Lunch in Yen Minh Town.',
                     },
                     {
                         time: '14:00',
-                        description: `We press on from Yen Minh toward Dong Van. Prepare your camera—the vistas become more dramatic and breathtaking as we gain elevation.<br/>The journey from Yen Minh to Dong Van is a symphony of rock mountains. Every curve, every pass, reveals a new breathtaking vista, prompting endless exclamations of wonder at nature's grandeur.`,
+                        description: 'Travel from Yen Minh to Dong Van.',
                     },
                     {
                         time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
+                        description: 'Arrive in Dong Van. Check in to the homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties. If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
+                        description: 'Dinner in Dong Van Old Quarter at local restaurants. Try black chicken hotpot, thang co, and local snacks.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'The evening is yours! Stroll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
+                        description: 'At night, especially on weekends, Dong Van has campfires, singing, and dancing activities. Walking around the old quarter is also enjoyable, and local massage services are available in town.',
                     },
                 ],
 
@@ -612,39 +2147,36 @@ if (vi) {
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
+                        description: 'Breakfast in Dong Van.',
                     },
                     {
                         time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Prepare to be overwhelmed by the majestic scenery. Here, you will notice a clear shift: the emergence of the characteristic "cat-ear" jagged limestone mountains (núi đá tai mèo) of Mèo Vạc, distinctly different from the first 's landscape. This sight truly exemplifies why Hà Giang is known as the place where "flowers grow on stones."`,
+                        description: 'Cross Ma Pi Leng Pass, one of the four greatest mountain passes in Vietnam. Stop at the top for scenic views.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
+                        description: 'Lunch stop in Meo Vac Town.',
                     },
                     {
                         time: '14:00',
-                        description: `Experience Hà Giang heart - Nho Quế river. This is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
+                        description: 'Head to the Nho Que River boat station. Boat ticket: around 120,000 VND per person for a 30–45 minute ride.',
                     },
                     {
                         time: '15:00',
-                        description:
-                            'After disembarking, we will take some time to stroll around, sightsee, or take photos of the stunning surroundings.',
+                        description: 'Explore the surrounding area and take any beautiful roads along the way.',
                     },
                     {
                         time: '17:00',
-                        description: `Settle into your peaceful homestay in Mèo Vạc. Take a moment to relax and feel the calm atmosphere, a contrast to the livelier atmosphere of Dong Van.`,
+                        description: "Return to the homestay. You can stay in the H'Mong tourism village or in town, about 3 km apart.",
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner featuring Mèo Vạc's distinctive cuisine.`,
+                        description: 'Dinner at the homestay or in town.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'Evenings in Mèo Vạc offer a more intimate and peaceful feeling. Especially on weekends, you often have the chance to attend small cultural performances and bonfires, providing a rich taste of Vietnamese highlands culture.',
+                        description: 'Meo Vac is quieter and more peaceful than Dong Van, though cultural exchange activities are still available.',
                     },
                 ],
 
@@ -652,32 +2184,32 @@ if (vi) {
                 3: [
                     {
                         time: '08:00',
-                        description: `If your trip falls on a Sun, we'll begin the  by visiting the Mèo Vạc Fair Market—one of the largest and most vibrant highland markets. This is a massive gathering of local people in their traditional attire, trading goods, and maintaining unique customs. Join us for breakfast right in the market to feel the bustling energy and this rare, authentic charm.`,
+                        description: 'If it is Sunday, visit the Meo Vac weekend market. One of the largest highland markets in Ha Giang with unique local products and delicious traditional breakfast dishes such as pork pho, black chicken pho, and sticky rice.',
                     },
                     {
                         time: '10:00',
-                        description: `After saying goodbye to Me Vạc (or after breakfast if it's not Sun), we'll hit the road toward Du Gia. Our route will take us through small roads winding through hamlets, where you can witness firsthand the scenery of seasonal rice fields and flower hills, offering a continuous feeling of relaxation and discovery.`,
+                        description: 'Travel to Du Gia via the M-shaped curve road.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: `We'll pause for lunch at a famous viewpoint: the "M-Bend" Road. From here, you'll see the road gently curve like an embroidered thread stretched across the mountainside. Lunch here provides an experience that is both delicious and visually stunning.`,
+                        description: 'Lunch at the M-shaped curve viewpoint with a beautiful view.',
                     },
                     {
                         time: '14:00',
-                        description: `We continue our journey toward Du Gia. Along the way, we’ll happily take detours to ensure we don't miss any unexpected natural beauty that the mountains offer.`,
+                        description: 'Continue to Du Gia.',
                     },
                     {
                         time: '16:00',
-                        description: `Arrive at the Du Gia homestay, quickly check-in, and head straight to the Du Gia Waterfall. The natural water here is always crystal clear and icy cold, and the falls are quite wide, making it perfect for you to freely swim and relax. (Don't forget your swimwear to fully enjoy this refreshment!)`,
+                        description: 'Arrive in Du Gia and check in to the homestay. Visit Du Gia Waterfall if you would like to swim.',
                     },
                     {
                         time: '17:00 - 18:00',
-                        description: `Return to the homestay. Wash up and enjoy dinner together featuring "home-cooked" dishes rich in local flavors, creating a wonderfully cozy, home-away-from-home feeling. The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
+                        description: 'Return to the homestay for dinner.',
                     },
                     {
                         time: 'Night time',
-                        description: `The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
+                        description: 'Walk around Du Gia Village. There are several cafes and even underground bars where people often sing karaoke.',
                     },
                 ],
 
@@ -685,231 +2217,226 @@ if (vi) {
                 4: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy a serene breakfast in Du Gia, taking in the mountain air’s final clean breaths. This is the perfect moment to savor the stillness before returning to the hustle of city life.',
+                        description: 'Breakfast in Du Gia.',
                     },
                     {
                         time: '09:00',
-                        description: `We leave Du Gia, knowing the memories we made remain here, and begin our drive toward Ha Giang City. Notice the gradual shift in scenery as we leave the valley and the high rocky areas behind. We will make a stop at a beautiful viewing point along the way. Take advantage of this final moment to admire and promise the majestic mountains that we will be back to explore them again.`,
+                        description: 'Return to the city following Google Maps. Ask the homestay which roads are in good condition and free from landslides.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Enjoy lunch near Ha Giang City. This is our final shared meal, where we can plan our next adventure and share our favorite moments.',
+                        description: 'Lunch.',
+                    },
+                    {
+                        time: '13:00',
+                        description: 'Visit Km0 landmark for photos. This time is usually less crowded and good for pictures.',
                     },
                     {
                         time: '17:00',
-                        description: `We visit the Zero Kilometer Marker for a final photo, officially marking the completion of this chapter of the journey. We then board the vehicle for the direct drive back to Hanoi. The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!`,
+                        description: 'End of the journey. Take the bus back to Hanoi. Most buses depart around 4:30 PM – 5:00 PM.',
                     },
                     {
                         time: '23:00',
-                        description: 'You will arrive in Ha Noi around this time. Goodbye and see you real soon!',
+                        description: 'Arrive in Hanoi.',
                     },
                 ],
             },
             3: {
-                //  0: Ha Noi -> Ha Giang (Giống như mẫu bạn cung cấp)
+                // Day 0: Hanoi -> Ha Giang
                 0: [
                     {
-                        time: '0:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
+                        time: '21:00',
+                        description: 'Board the sleeper bus to Ha Giang.',
                     },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
                 ],
 
-                //  1: Ha Giang -> Dong Van
+                // Day 1: Ha Giang -> Dong Van
                 1: [
                     {
                         time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
+                        description: 'Have breakfast.',
                     },
                     {
                         time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
+                        description: 'Travel from Ha Giang City to Quan Ba to Yen Minh. Stop anywhere you like along the way.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
+                        description: 'Have lunch in Yen Minh town.',
                     },
                     {
                         time: '14:00',
-                        description: `We press on from Yen Minh toward Dong Van. Prepare your camera—the vistas become more dramatic and breathtaking as we gain elevation.<br/>The journey from Yen Minh to Dong Van is a symphony of rock mountains. Every curve, every pass, reveals a new breathtaking vista, prompting endless exclamations of wonder at nature's grandeur.`,
+                        description: 'Continue from Yen Minh to Dong Van.',
                     },
                     {
                         time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
+                        description: 'Arrive in Dong Van and check in to the homestay.',
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties.<br/>If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
+                        description: 'Have dinner in Dong Van Old Quarter at local restaurants. Try black chicken hotpot, thang co, and local street snacks.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'The evening is yours! Stoll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
+                        description: 'In the evening, especially on weekends, Dong Van often has campfires where people sing and dance together. Walking around the small old quarter is also enjoyable, and you can even get a massage at local houses in the area.',
                     },
                 ],
 
-                //  2: Dong Van -> Du Gia
+                // Day 2: Dong Van -> Du Gia
                 2: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
+                        description: 'Have breakfast in Dong Van.',
                     },
                     {
                         time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Prepare to be overwhelmed by the majestic scenery. Here, you will notice a clear shift: the emergence of the characteristic "cat-ear" jagged limestone mountains (núi đá tai mèo) of Mèo Vạc, distinctly different from the first 's landscape. This sight truly exemplifies why Hà Giang is known as the place where "flowers grow on stones."`,
+                        description: 'Cross Ma Pi Leng Pass, one of the four greatest mountain passes in Vietnam. It is incredibly beautiful. You can stop at the top of the pass to enjoy the view.',
                     },
                     {
                         time: '11:00',
-                        description: `Experience Hà Giang heart - Nho Quế river.<br/>This is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
+                        description: 'Go down to the Nho Que River boat station. Ticket price is around 120,000 VND per person, and the boat ride lasts about 30 to 45 minutes.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
-                    },
-                    {
-                        time: '15:00',
-                        description: `We continue our journey toward Du Gia. Along the way, we’ll happily take detours to ensure we don't miss any unexpected natural beauty that the mountains offer.`,
-                    },
-                    {
-                        time: '17:00',
-                        description: `Arrive at the Du Gia homestay, quickly check-in, and head straight to the Du Gia Waterfall. The natural water here is always crystal clear and icy cold, and the falls are quite wide, making it perfect for you to freely swim and relax. (Don't forget your swimwear to fully enjoy this refreshment!)`,
-                    },
-                    {
-                        time: '19:00',
-                        description: `Return to the homestay. Wash up and enjoy dinner together featuring "home-cooked" dishes rich in local flavors, creating a wonderfully cozy, home-away-from-home feeling.`,
-                    },
-                    {
-                        time: 'Night time',
-                        description: `The evening in Du Gia is typically cheerful and lively, characteristic of the backpacker community. You can easily make friends and socialize at other homestays, sing karaoke, or simply find a small café to enjoy the peace under the mountain stars.`,
-                    },
-                ],
-
-                //  3: Du Gia -> Ha Giang (Kết thúc)
-                3: [
-                    {
-                        time: '08:00',
-                        description:
-                            'Enjoy breakfast in Du Gia. You can take some time to stroll around, sightsee, or take photos of the stunning surroundings.',
-                    },
-                    {
-                        time: '09:00',
-                        description:
-                            'We leave Du Gia, knowing the memories we made remain here, and begin our drive toward Ha Giang City. Notice the gradual shift in scenery as we leave the valley and the high rocky areas behind. We will make a stop at a beautiful viewing point along the way. Take advantage of this final moment to admire and promise the majestic mountains that we will be back to explore them again.',
-                    },
-                    {
-                        time: '13:00',
-                        short: 'Lunch time',
-                        description:
-                            'Enjoy lunch near Ha Giang City. This is our final shared meal, where we can plan our next adventure and share our favorite moments.',
-                    },
-                    {
-                        time: '15:00',
-                        description:
-                            'We visit the Zero Kilometer Marker for a final photo, officially marking the completion of this chapter of the journey. We then board the vehicle for the direct drive back to Hanoi.',
-                    },
-                    {
-                        time: '17:00',
-                        description:
-                            'The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!',
-                    },
-                    {
-                        time: '21:00',
-                        description: 'You will arrive in Ha Noi around this time. Goodbye and see you real soon!',
-                    },
-                ],
-            },
-            2: {
-                //  0: Ha Noi -> Ha Giang (Giống như mẫu bạn cung cấp)
-                0: [
-                    {
-                        time: '21:00',
-                        description:
-                            'Our high-quality sleeper bus will pick you up to commence your journey to Ha Giang! You will be booked on a VIP cabin bus, where each guest enjoys a private, individual sleeping compartment.',
-                    },
-                    { time: '03:00', description: 'Arrives in Ha Giang City, our staff guide you to check in and rest.' },
-                ],
-
-                //  1: Ha Giang -> Dong Van
-                1: [
-                    {
-                        time: '08:00',
-                        description:
-                            'Meet up with Hi Hi tour guide and your drivers. Enjoy a simple yet meaningful breakfast, fully charging your energy and ready to be moved by the upcoming natural beauty.',
-                    },
-                    {
-                        time: '09:00',
-                        description: `Together, we set off to the amazing journey. We won't rush. Instead, we'll seize moments to linger at scenic spots and weave into local villages to feel the most authentic rhythm of life of the ethnic communities.`,
-                    },
-                    {
-                        time: '13:00',
-                        short: 'Lunch time',
-                        description:
-                            'Stop at Yen Minh and have a satisfying lunch featuring authentic local dishes. Savor the complete flavor of the mountains.<br/>After lunch we will have a short break for around 15 - 30 minutes before back to our journey.',
+                        description: 'Have lunch in Meo Vac town, or pre-order lunch at a restaurant near Tu San Alley.',
                     },
                     {
                         time: '14:00',
-                        description: `After resting in Yen Minh, our journey continues toward one of Ha Giang's most iconic stops: Thẩm Mã Pass. This location offers guests a spectacular panoramic view, providing a full appreciation of nature's grandeur as the winding mountain roads curve gracefully like ribbons draped across the rocky mountains.`,
+                        description: 'Head back to Du Gia.',
                     },
                     {
                         time: '16:00',
-                        description: `Subsequently, we will take you to Lũng Cú Flagpole, located near the sacred northernmost point of Vietnam. At the foot of the Flagpole lies the charming Lô Lô Chải Village. This village was proudly recognized as the Best Tourism Village in the World in 2023 for its outstanding preservation of traditional values in both its lifestyle and sustainable tourism practices.`,
-                    },
-                    {
-                        time: '17:00',
-                        description: `Arrive in Dong Van and check-in to your cozy homestay. Take this time to unwind, refresh, and soak in the peaceful atmosphere of the ancient town.`,
+                        description: 'Check in to the homestay. If you arrive early and have extra time, visit Du Gia Waterfall where you can swim and relax.',
                     },
                     {
                         time: '19:00',
-                        description: `Enjoy a delightful dinner at a local restaurant, sampling the region's best mountain specialties.<br/>If you can drink, we would be delighted to share a few cheerful drinks together. Ha Giang is famous for its unique homemade liquors brewed from forest ingredients, such as corn wine fermented with forest leaves (rượu ngô men lá) or banana wine. If you prefer not to drink, that is absolutely fine—we simply invite you to immerse yourself in the bustling atmosphere and good company around us.`,
+                        description: 'Have dinner at the homestay.',
                     },
                     {
                         time: 'Night time',
-                        description:
-                            'The evening is yours! Stoll through Dong Van Old Town under the stars. Almost every nights, you will catch a lively community cultural exchange with music and bonfires, or you can find a quiet spot for a drink and reflect on the ’s amazing sights.',
+                        description: 'You can walk around Du Gia village. There are a few cafes and even some basement bars where people often sing karaoke.',
                     },
                 ],
 
-                //  2: Dong Van -> Ha Giang (Kết thúc)
-                2: [
+                // Day 3: Du Gia -> Ha Giang City
+                3: [
                     {
                         time: '08:00',
-                        description:
-                            'Enjoy breakfast in Đồng Văn. Here features a mix of traditional local flavors and international dishes, ensuring you are fully energized for the .',
+                        description: 'Have breakfast in Du Gia.',
                     },
                     {
                         time: '09:00',
-                        description: `The most anticipated drive! We begin our journey over the Mã Pì Lèng Pass—recognized as one of the "Four Great Passes of Việt Nam." Next, we will immediately head towards the Nho Quế River pier, the emerald heart of Hà Giang—this is the destination you simply cannot miss! We will head down to the boat dock to enjoy a trip on the Nho Quế River. On the riverbank stands a towering mountain reaching heights of 700 to 900 meters, forming the Tu Sản canyon. Standing in the river, you’ll feel a sense of insignificance in the face of such majestic nature. Especially during Autumn and Winter, the water takes on a unique, stunning jade-blue color.`,
+                        description: 'Return to the city following Google Maps. Ask your homestay which roads are currently safe and free from landslides before departing.',
                     },
                     {
                         time: '13:00',
                         short: 'Lunch time',
-                        description: 'We stop in Mèo Vạc Town for lunch.',
+                        description: 'Have lunch.',
                     },
                     {
-                        time: '15:00',
-                        description: `After lunch, we begin our journey back to the city. We will take some time to stroll around, sightsee, or take photos of the stunning surroundings.`,
+                        time: '16:00',
+                        description: 'Arrive back in Ha Giang City and stop by Km0 for check-in photos. This time of day is usually less crowded and very beautiful.',
                     },
                     {
                         time: '17:00',
-                        description: `The conquest of Ha Giang concludes for now. We hope you carry many wonderful memories with you and are already looking forward to the next time we meet again on these incredible mountain roads!`,
+                        description: 'End of the journey. Take the bus back to Hanoi, usually departing around 4:30 PM to 5:00 PM.',
                     },
                     {
                         time: '23:00',
-                        description: 'We will arrive in Ha Noi around this time. Goodbye and see you real soon!',
+                        description: 'Arrive back in Hanoi.',
+                    },
+                ],
+            },
+
+            2: {
+                // Day 0: Hanoi -> Ha Giang
+                0: [
+                    {
+                        time: '21:00',
+                        description: 'Board the sleeper bus to Ha Giang.',
+                    },
+                    {
+                        time: '03:00',
+                        description: 'Arrive at the city center. Rest at the motorbike rental accommodation.',
+                    },
+                ],
+
+                // Day 1: Ha Giang -> Dong Van
+                1: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast.',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Travel from Ha Giang City to Quan Ba to Yen Minh. Stop anywhere you like for sightseeing and photos.',
+                    },
+                    {
+                        time: '13:00',
+                        short: 'Lunch time',
+                        description: 'Have lunch in Yen Minh town.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Pass through Tham Ma Slope. There are many tourists here. Stop anywhere you like for photos.',
+                    },
+                    {
+                        time: '15:00',
+                        description: 'Continue to Lung Cu Flag Tower. At the foot of the tower is Lo Lo Chai Village where you can walk around and relax.',
+                    },
+                    {
+                        time: '17:00',
+                        description: 'Arrive in Dong Van and check in to the homestay.',
+                    },
+                    {
+                        time: '19:00',
+                        description: 'Have dinner in Dong Van Old Quarter at local restaurants. Try local specialties and street food.',
+                    },
+                    {
+                        time: 'Night time',
+                        description: 'In the evening, especially on weekends, Dong Van often has campfires, music, and dancing activities. Walking around the old quarter is also very enjoyable.',
+                    },
+                ],
+
+                // Day 2: Dong Van -> Meo Vac (near Nho Que River) -> Ha Giang
+                2: [
+                    {
+                        time: '08:00',
+                        description: 'Have breakfast in Dong Van.',
+                    },
+                    {
+                        time: '09:00',
+                        description: 'Go down to the Nho Que River boat station. The ticket costs around 120,000 VND per person and the boat trip lasts about 30 to 45 minutes.',
+                    },
+                    {
+                        time: '13:00',
+                        short: 'Lunch time',
+                        description: 'Have lunch in Meo Vac town, or pre-order lunch at a restaurant near Tu San Alley.',
+                    },
+                    {
+                        time: '14:00',
+                        description: 'Start the journey back to Ha Giang City.',
+                    },
+                    {
+                        time: '17:00',
+                        description: 'End of the trip. Take the bus back to Hanoi, usually departing around 4:30 PM to 5:00 PM.',
+                    },
+                    {
+                        time: '23:00',
+                        description: 'Arrive back in Hanoi.',
                     },
                 ],
             },
         }
     } else {
+
         ALL_ITINERARY_PLANS_DATA = {
             3: {
                 //  0: Ha Noi -> Cao Bang
@@ -1120,23 +2647,62 @@ if (vi) {
         const $tabsContainer = $('#itinerary-tabs')
         const $timelineList = $('#timeline-list')
         const $priceByPlan = $('#price-per-plan')
+        const $pricingIncludes = $('.pricing-include')
+        let currentPlan = null
+        let currentTimelineIndex = 0
 
         // --- MỚI: Lấy plan từ URL ---
         const urlParams = new URLSearchParams(window.location.search)
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isHaGiang ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isNinhThuan ? '4' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
 
+        function getHueLongTransport() {
+            const $selected = $pricingIncludes.filter('[data-type="long-transport"]:checked')
+            return $selected.data('itinerary-transport') || 'bus'
+        }
+
+        function getHueFirstVisibleDay() {
+            return isHue && getHueLongTransport() === 'flight' ? 1 : 0
+        }
+
+        function getHueItineraryItem(item) {
+            if (!isHue) return item
+
+            const transport = getHueLongTransport()
+
+            const trainReplacements = {
+                'Lên xe giường nằm đi Huế': 'Lên tàu giường nằm đi Huế',
+                'Thành phố Huế, xe đỗ tại bến riêng, rất gần trung tâm': 'Thành phố Huế, tàu đến ga Huế, khá gần trung tâm',
+                'Ra bến xe đi về': 'Ra ga tàu đi về',
+                'Board a sleeper bus to Hue.': 'Board a sleeper train to Hue.',
+                'Hue City, the bus stops at a private station, very close to the city center.': 'Hue City, the train arrives at Hue station, close to the city center.',
+                'Go to the bus station to go home.': 'Go to the train station to go home.',
+            }
+            const flightReplacements = {
+                'Ra bến xe đi về': 'Bay về Hà Nội',
+                'Go to the bus station to go home.': 'Fly back to Hanoi.',
+            }
+            const replacements = transport === 'train' ? trainReplacements : transport === 'flight' ? flightReplacements : {}
+
+            return {
+                ...item,
+                description: replacements[item.description] || item.description,
+            }
+        }
+
         function renderTimeline(Index = 0) {
+            currentTimelineIndex = Index
             const data = ITINERARY_DATA[Index]
             if (!data) return $timelineList.html('<li class="p-4">No itinerary data available.</li>')
 
             let html = ''
             data.forEach((item, index) => {
+                item = getHueItineraryItem(item)
                 const isFirstOrLast = index === 0 || index === data.length - 1
                 const dotStyle = isFirstOrLast ? 'block' : 'none'
                 let dotTopPos = index === data.length - 1 ? '18px' : '-8px'
@@ -1145,14 +2711,14 @@ if (vi) {
                 html += `
                     <li class="relative" style="margin-bottom: ${marginBottom}">
                         <div class="flex items-start">
-                            <div class="absolute w-2 h-2 bg-[#74797A] rounded-full left-[93px] z-10" 
-                                 style="display: ${dotStyle}; top: ${dotTopPos};"></div>
+                            <div class="absolute w-2 h-2 rounded-full left-[93px] z-10"
+                                 style="display: ${dotStyle}; top: ${dotTopPos}; background:#74797A;"></div>
                             <div class="flex items-start gap-16">
                                 <div class="flex flex-col space-y-2 min-w-20">
-                                    <time class="block text-base font-bold leading-none mt-1">${item.time}</time>
-                                    ${item.short ? `<small>${item.short}</small>` : ''}
+                                    <time class="block mt-1" style="font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;color:#1D292C;">${item.time}</time>
+                                    ${item.short ? `<small style="font-family:'Inter',sans-serif;font-size:12px;line-height:20px;color:rgba(29,41,44,.7);">${item.short}</small>` : ''}
                                 </div>
-                                <p class="text-sm font-normal ">${item.description}</p>
+                                <p style="font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:400;color:#1D292C;">${item.description}</p>
                             </div>
                         </div>
                     </li>`
@@ -1162,21 +2728,23 @@ if (vi) {
 
         function renderTabs(totals) {
             let tabsHtml = ''
-            for (let i = 0; i <= totals; i++) {
-                const isActive = i === 0 ? 'border-b border-[#101F23]' : ''
-                const style = isActive ? '1px solid #101F23' : ''
+            const firstVisibleDay = getHueFirstVisibleDay()
+            for (let i = firstVisibleDay; i <= totals; i++) {
+                const isActive = i === firstVisibleDay
                 const isLast = i === totals
-                const borderClasses = `${i === 0 ? 'rounded-tl-lg' : ''} ${isLast ? 'rounded-tr-lg' : ''}`
+                const dayNumber = isTaiwan ? i + 1 : i
+                const borderClasses = `${i === firstVisibleDay ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
+                const dayLabel = (window.hihiItineraryLabels && window.hihiItineraryLabels.day) || (vi ? 'ngày' : 'day')
 
                 tabsHtml += `
-                    <li class="w-full ${isHaGiang ? 'bg-[#DEE9CA]' : 'bg-[#DCF5ED]'} flex-1 ${borderClasses}">
-                        <a data--index="${i}" class="inline-block cursor-pointer p-4 text-fg-brand bg-neutral-secondary-soft rounded-t-base w-full tab-link ${isActive}"
-                           style="border-bottom: ${style};">${vi ? 'Ngày' : 'Day'} ${i}</a>
+                    <li class="w-full flex-1 ${borderClasses}">
+                        <a data--index="${i}" class="inline-flex items-center justify-center cursor-pointer w-full tab-link"
+                           style="min-height:48px;font-family:'Inter',sans-serif;font-size:15px;line-height:24px;font-weight:600;background:${isActive ? '#7B63F7' : '#F9FBDF'};color:${isActive ? '#F2F2F0' : '#1D292C'};">${dayLabel} ${dayNumber}</a>
                     </li>`
             }
             $tabsContainer.html(tabsHtml)
             bindTabClickEvent()
-            renderTimeline(0)
+            renderTimeline(firstVisibleDay)
         }
 
         function bindTabClickEvent() {
@@ -1184,8 +2752,14 @@ if (vi) {
                 .find('.tab-link')
                 .off('click')
                 .on('click', function () {
-                    $tabsContainer.find('.tab-link').removeClass('border-b border-[#101F23]').css('border-bottom', '')
-                    $(this).addClass('border-b border-[#101F23]').css('border-bottom', '1px solid #101F23')
+                    $tabsContainer.find('.tab-link').css({
+                        background: '#F9FBDF',
+                        color: '#1D292C',
+                    })
+                    $(this).css({
+                        background: '#7B63F7',
+                        color: '#F2F2F0',
+                    })
                     renderTimeline($(this).data('-index'))
                 })
         }
@@ -1193,21 +2767,94 @@ if (vi) {
         function bindPillClickEvent() {
             $('#itinerary-plans').on('click', '.plan-pill', function () {
                 const planValue = $(this).data('plan-value').toString()
-                $('.plan-pill').removeClass('bg-black text-white').addClass('bg-white text-gray-800 border border-gray-300 hover:bg-gray-50')
-                $(this).removeClass('bg-white text-gray-800 border border-gray-300 hover:bg-gray-50').addClass('bg-black text-white')
+                $('.plan-pill').removeClass('text-[#F2F2F0]').addClass('text-[#1D292C]').css({
+                    background: 'transparent',
+                    border: '1px solid #1D292C99',
+                    color: '#1D292C',
+                })
+                $(this).removeClass('text-[#1D292C]').addClass('text-[#F2F2F0]').css({
+                    background: '#7B63F7',
+                    border: '1px solid #7B63F7',
+                    color: '#F2F2F0',
+                })
 
                 if (ALL_ITINERARY_PLANS_DATA[planValue]) {
                     ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[planValue]
+                    currentPlan = planValue
                     renderPrice(planValue)
                     renderTabs(Object.keys(ITINERARY_DATA).length - 1)
                 }
             })
         }
 
+        function getPricingItemTotal($item, plan) {
+            const unit = $item.data('unit')
+            const price = Number($item.data(vi ? 'vnd' : 'usd')) || 0
+            const planDaysMatch = String(plan).match(/_(\d+)$/)
+            const planDays = planDaysMatch ? Number(planDaysMatch[1]) : Number(plan)
+            const travelDays = Math.max((planDays || 0) - 1, 0)
+
+            if (unit === 'all') return price
+            if (unit === 'meal') return price * travelDays * 3
+            if (unit === 'day') return price * travelDays
+            return price
+        }
+
+        function isPricingItemApplicable($item, plan) {
+            const scope = $item.data('plan-scope') || 'all'
+            if (scope === 'all') return true
+            if (scope === 'central') return String(plan).indexOf('central_') === 0
+            if (scope === 'hue_core') return String(plan).indexOf('hue_only_') === 0 || String(plan).indexOf('central_') === 0
+            return true
+        }
+
+        function updatePricingItemAvailability(plan) {
+            $pricingIncludes.each(function () {
+                const $item = $(this)
+                const applicable = isPricingItemApplicable($item, plan)
+                $item.prop('disabled', !applicable)
+                $item.closest('.pricing-item-row').toggle(applicable)
+            })
+        }
+
         function renderPrice(plan) {
+            const fixedPrice = $priceByPlan.data('fixed-price')
+            if (fixedPrice) {
+                $priceByPlan.text(fixedPrice)
+                return
+            }
+            if ($pricingIncludes.length) {
+                updatePricingItemAvailability(plan)
+                let total = 0
+                $pricingIncludes.each(function () {
+                    const $item = $(this)
+                    if ($item.is(':checked') && isPricingItemApplicable($item, plan)) {
+                        total += getPricingItemTotal($item, plan)
+                    }
+                })
+                $priceByPlan.text(vi ? `${total.toLocaleString('vi-VN')} VNĐ` : `${total.toLocaleString('en-US')} USD`)
+                return
+            }
             let html = vi ? `${(Number(plan) * 1500000).toLocaleString('vi-VN')} VNĐ` : `${(Number(plan) * 65).toLocaleString('en-US')} USD`
             $priceByPlan.text(html)
         }
+
+        $pricingIncludes.on('change', function () {
+            const $item = $(this)
+            if ($item.is(':checked') && $item.data('type') === 'easy-driver') {
+                $pricingIncludes.filter('[data-type="motorbike"]').prop('checked', false)
+            }
+            if ($item.is(':checked') && $item.data('type') === 'motorbike') {
+                $pricingIncludes.filter('[data-type="easy-driver"]').prop('checked', false)
+            }
+            if ($item.is(':checked') && $item.data('type') === 'long-transport') {
+                $pricingIncludes.filter('[data-type="long-transport"]').not($item).prop('checked', false)
+            }
+            renderPrice(currentPlan || initialPlan)
+            if (isHue && $item.data('type') === 'long-transport') {
+                renderTabs(Object.keys(ITINERARY_DATA).length - 1)
+            }
+        })
 
         // --- KHỞI CHẠY LẦN ĐẦU ---
         bindPillClickEvent()
@@ -1216,6 +2863,7 @@ if (vi) {
         $(`.plan-pill[data-plan-value="${initialPlan}"]`).trigger('click')
 
         // Nếu trigger click không hoạt động do cấu trúc HTML, dùng trực tiếp:
+        currentPlan = initialPlan
         renderPrice(initialPlan)
         renderTabs(Object.keys(ITINERARY_DATA).length - 1)
     })

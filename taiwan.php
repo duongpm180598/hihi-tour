@@ -16,6 +16,7 @@ $theme_uri = get_template_directory_uri();
 $all_gallery_images = hihi_image_group('taiwan.gallery');
 $hero_image = hihi_image_url('taiwan.hero');
 $highlight_images = hihi_image_group('taiwan.highlight');
+$ximending_images = hihi_image_group('taiwan.ximending');
 $bitoujiao_images = hihi_image_group('taiwan.bitoujiao');
 $hualien_images = hihi_image_group('taiwan.hualien');
 $jiufen_images = hihi_image_group('taiwan.jiufen');
@@ -74,6 +75,7 @@ $faqs_data = [
 $highlight_categories = ['city', 'nature', 'nature', 'viewpoints', 'nature', 'city', 'viewpoints', 'nature', 'nature'];
 $highlight_spans = ['tall', 'normal', 'normal', 'normal', 'tall', 'normal', 'normal', 'normal', 'normal'];
 $highlight_galleries = [
+    0 => $ximending_images,
     1 => $bitoujiao_images,
     2 => $hualien_images,
     3 => $liushishi_images,
@@ -195,7 +197,7 @@ $activeId = $tableOfContents[0]['id'];
     <section id="overview" style="position:relative;">
 
         <!-- Full-width banner image -->
-        <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
+        <div class="overview-hero-media" style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($hero_image); ?>"
                 alt="Taiwan"

@@ -1,12 +1,14 @@
-# Task: Itinerary Download Feedback Pop-up
+# Task: Thailand Destination Page
 
-- [x] Add bilingual feedback copy to both locale files.
-- [x] Add shared modal component.
-- [x] Add stable feedback option configuration.
-- [x] Add anonymous AJAX vote storage and validation.
-- [x] Add WordPress dashboard vote totals.
-- [x] Add modal frontend behavior and repeat-prompt control.
-- [x] Add isolated responsive modal styles.
-- [x] Mark every real itinerary file link as a trigger.
-- [x] Validate PHP, JSON, JavaScript, locale usage, and whitespace.
-- [x] Update `walkthrough.md`.
+- [x] Clone `taiwan.php` into `thailand.php`.
+- [x] Rename template metadata and namespace to `thailand`.
+- [x] Replace Taiwan route data with 6-day Bangkok + Chiang Mai itinerary structure.
+- [x] Remove copied Taiwan/Hualien key references from the template.
+- [x] Add Thailand support to `assets/js/itinerary.js`.
+- [x] Add Thailand image manifest groups.
+- [x] Link Thailand card from `front-page.php`.
+- [x] Add `thailand` content to `lang/en.json`.
+- [x] Add `thailand` content to `lang/vi.json`.
+- [x] Run locale preflight for `thailand.php`.
+- [x] Validate PHP, JSON, stale weather carousel code, and diff whitespace.
+- [x] Write `walkthrough.md`.

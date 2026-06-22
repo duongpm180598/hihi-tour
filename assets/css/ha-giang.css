@@ -102,13 +102,26 @@
 
 /* Mobile: static, centered below hero */
 @media (max-width: 767px) {
+    #overview .overview-hero-media {
+        height: auto !important;
+        overflow: visible !important;
+        padding-top: 64px;
+        background: #F9FBDF;
+    }
+
+    #overview .overview-hero-media > img {
+        height: clamp(260px, 62vw, 420px) !important;
+    }
+
     .vibe-card {
+        position: static;
         width: auto;
         max-width: 100%;
-        margin: 0 16px;
+        margin: 0 16px 0;
         border-radius: 14px;
         padding: 20px;
-        transform: translateY(-12px);
+        transform: none;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
     }
 
     .vibe-card__destination-title {
@@ -123,6 +136,47 @@
     .vibe-card__grid {
         grid-template-columns: 1fr 1fr;
         gap: 16px 20px;
+    }
+}
+
+@media (max-width: 639px) {
+    .vibe-card {
+        margin: 0 16px 0;
+        padding: 24px 20px 20px;
+    }
+
+    .vibe-card__header {
+        margin-top: 8px;
+        margin-bottom: 18px;
+    }
+
+    .vibe-card__destination-title {
+        right: 16px;
+        max-width: calc(100% - 32px);
+        min-height: 44px;
+        font-size: 17px;
+        line-height: 1.25;
+    }
+
+    .vibe-card__grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .vibe-card__item {
+        align-items: center;
+        gap: 12px;
+    }
+
+    .vibe-card__icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .vibe-card__title,
+    .vibe-card__val {
+        font-size: 15px;
+        line-height: 1.35;
     }
 }
 

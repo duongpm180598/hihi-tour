@@ -32,7 +32,7 @@ $href_attr  = $has_page ? 'href="' . $url . '"' : '';
     data-search="<?php echo $search_str; ?>"
 >
     <!-- Image — padding-bottom trick guarantees 4:5 height regardless of context -->
-    <div style="position:relative; width:100%; padding-bottom:75%; background:#2a2a2a; overflow:hidden;">
+    <div class="dest-card__media" style="position:relative; width:100%; padding-bottom:75%; background:#2a2a2a; overflow:hidden;">
         <?php if (!empty($d['img'])): ?>
             <img
                 src="<?php echo esc_url($d['img']); ?>"
@@ -44,11 +44,11 @@ $href_attr  = $has_page ? 'href="' . $url . '"' : '';
         <?php endif; ?>
     </div>
 
-    <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 10px 8px; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%); display:flex; align-items:flex-end; justify-content:space-between; gap:6px;">
-        <span style="font-size:clamp(13px, 1.5vw, 20px); font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+    <div class="dest-card__body" style="position:absolute; bottom:0; left:0; right:0; padding:24px 10px 8px; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%); display:flex; align-items:flex-end; justify-content:space-between; gap:6px;">
+        <span class="dest-card__title" style="font-size:clamp(13px, 1.5vw, 20px); font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
             <?php echo esc_html($label); ?>
         </span>
-        <div style="display:flex; align-items:center; gap:3px; flex-shrink:0;">
+        <div class="dest-card__icons" style="display:flex; align-items:center; gap:3px; flex-shrink:0;">
             <?php foreach ($d['topo'] as $topo_item) {
                 if ($topo_item === 'sea')      echo $svg_topo_sea;
                 if ($topo_item === 'mountain') echo $svg_topo_mountain;

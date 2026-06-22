@@ -6,6 +6,7 @@ const isMuCangChai = pathname.includes('/mu-cang-chai')
 const isCaoBang = pathname.includes('/cao-bang')
 const isNinhThuan = pathname.includes('/ninh-thuan')
 const isTaiwan = pathname.includes('/taiwan')
+const isThailand = pathname.includes('/thailand')
 const isHue = pathname.includes('/hue')
 const vi = pathname.includes('/vi')
 
@@ -13,6 +14,10 @@ let ALL_ITINERARY_PLANS_DATA = {}
 
 function makeTaiwanItinerary(isVi) {
     return window.hihiTaiwanItineraryData || {}
+}
+
+function makeThailandItinerary() {
+    return window.hihiThailandItineraryData || {}
 }
 
 function makeNinhThuanItinerary() {
@@ -1328,6 +1333,8 @@ function makeHueItinerary(isVi) {
 if (vi) {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(true)
+    } else if (isThailand) {
+        ALL_ITINERARY_PLANS_DATA = makeThailandItinerary()
     } else if (isHue) {
         ALL_ITINERARY_PLANS_DATA = makeHueItinerary(true)
     } else if (isNinhThuan) {
@@ -1984,6 +1991,8 @@ if (vi) {
 } else {
     if (isTaiwan) {
         ALL_ITINERARY_PLANS_DATA = makeTaiwanItinerary(false)
+    } else if (isThailand) {
+        ALL_ITINERARY_PLANS_DATA = makeThailandItinerary()
     } else if (isHue) {
         ALL_ITINERARY_PLANS_DATA = makeHueItinerary(false)
     } else if (isNinhThuan) {
@@ -2656,7 +2665,7 @@ if (vi) {
         const planParam = urlParams.get('plan')
 
         // Xác định plan khởi tạo
-        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isNinhThuan ? '4' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
+        let initialPlan = planParam && ALL_ITINERARY_PLANS_DATA[planParam] ? planParam : isTaiwan ? '8' : isThailand ? '6' : isHue ? (window.hihiHueDefaultPlan || 'hue_only_4') : isNinhThuan ? '4' : isMuCangChai ? '3' : isHaGiang ? '4' : '3'
 
         let ITINERARY_DATA = ALL_ITINERARY_PLANS_DATA[initialPlan]
         // ---------------------------
@@ -2732,7 +2741,7 @@ if (vi) {
             for (let i = firstVisibleDay; i <= totals; i++) {
                 const isActive = i === firstVisibleDay
                 const isLast = i === totals
-                const dayNumber = isTaiwan ? i + 1 : i
+                const dayNumber = (isTaiwan || isThailand) ? i + 1 : i
                 const borderClasses = `${i === firstVisibleDay ? 'rounded-tl-xl' : ''} ${isLast ? 'rounded-tr-xl' : ''}`
                 const dayLabel = (window.hihiItineraryLabels && window.hihiItineraryLabels.day) || (vi ? 'ngày' : 'day')
 

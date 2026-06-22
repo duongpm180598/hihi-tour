@@ -2,7 +2,7 @@
 
 require_once get_template_directory() . '/inc/image-assets.php';
 
-define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-09-1');
+define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-19-1');
 
 function hihi_scripts()
 {
@@ -14,7 +14,7 @@ function hihi_scripts()
     wp_enqueue_style('aos_style', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
     // Ha Giang layout pages
-    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php') || is_page_template('thailand.php')) {
         wp_enqueue_style('ha_giang_style', get_theme_file_uri('/assets/css/ha-giang.css'));
     }
 
@@ -29,9 +29,10 @@ function hihi_scripts()
         'nonce' => wp_create_nonce('hihi_itinerary_feedback_vote'),
         'action' => 'hihi_itinerary_feedback_vote',
         'optionSetVersion' => HIHI_ITINERARY_FEEDBACK_VERSION,
+        'language' => function_exists('pll_current_language') ? pll_current_language('slug') : 'vi',
     ));
     wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.12', true);
-    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php') || is_page_template('thailand.php')) {
         wp_enqueue_script('weather_script', get_theme_file_uri('/assets/js/weather.js'), array(), '1.1', true);
     }
     wp_enqueue_script('ionicons_script', '//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js');
@@ -54,6 +55,45 @@ function hihi_itinerary_feedback_option_ids()
     return array_column(hihi_itinerary_feedback_options(), 'id');
 }
 
+function hihi_itinerary_feedback_results($counts)
+{
+    $counts = is_array($counts) ? $counts : array();
+    $total = 0;
+    foreach (hihi_itinerary_feedback_option_ids() as $option_id) {
+        $total += max(0, (int) ($counts[$option_id] ?? 0));
+    }
+
+    $results = array();
+    foreach (hihi_itinerary_feedback_option_ids() as $option_id) {
+        $count = max(0, (int) ($counts[$option_id] ?? 0));
+        $results[$option_id] = array(
+            'count' => $count,
+            'percent' => $total > 0 ? round(($count / $total) * 100) : 0,
+        );
+    }
+
+    return array(
+        'total' => $total,
+        'options' => $results,
+    );
+}
+
+function hihi_itinerary_feedback_file_path_from_url($file_url)
+{
+    $theme_uri = trailingslashit(get_theme_file_uri());
+    if (strpos($file_url, $theme_uri) !== 0) {
+        return '';
+    }
+
+    $relative_path = ltrim(substr($file_url, strlen($theme_uri)), '/');
+    if ($relative_path === '' || strpos($relative_path, '..') !== false) {
+        return '';
+    }
+
+    $file_path = get_theme_file_path($relative_path);
+    return is_readable($file_path) ? $file_path : '';
+}
+
 function hihi_handle_itinerary_feedback_vote()
 {
     check_ajax_referer('hihi_itinerary_feedback_vote', 'nonce');
@@ -61,9 +101,41 @@ function hihi_handle_itinerary_feedback_vote()
     $option_id = isset($_POST['optionId'])
         ? sanitize_key(wp_unslash($_POST['optionId']))
         : '';
+    $email = isset($_POST['email'])
+        ? sanitize_email(wp_unslash($_POST['email']))
+        : '';
+    $file_url = isset($_POST['fileUrl'])
+        ? esc_url_raw(wp_unslash($_POST['fileUrl']))
+        : '';
+    $file_name = isset($_POST['fileName'])
+        ? sanitize_file_name(wp_unslash($_POST['fileName']))
+        : '';
+    $lang = isset($_POST['lang'])
+        ? sanitize_key(wp_unslash($_POST['lang']))
+        : 'en';
 
     if (!in_array($option_id, hihi_itinerary_feedback_option_ids(), true)) {
         wp_send_json_error(array('code' => 'invalid_option'), 400);
+    }
+
+    if (empty($email) || !is_email($email)) {
+        wp_send_json_error(array('code' => 'invalid_email'), 400);
+    }
+
+    $file_path = hihi_itinerary_feedback_file_path_from_url($file_url);
+    if ($file_path === '') {
+        wp_send_json_error(array('code' => 'invalid_file'), 400);
+    }
+
+    $translations = load_lang($lang);
+    $global = $translations['global'] ?? array();
+    $subject = $global['feedback_modal_0_email_subject'] ?? 'Your HiHi Tour itinerary file';
+    $message_template = $global['feedback_modal_0_email_body'] ?? 'Your itinerary file is attached.';
+    $message = sprintf($message_template, $file_name ?: basename($file_path));
+
+    $mail_sent = wp_mail($email, $subject, $message, array(), array($file_path));
+    if (!$mail_sent) {
+        wp_send_json_error(array('code' => 'email_failed'), 500);
     }
 
     $counts = get_option('hihi_itinerary_feedback_counts', array());
@@ -76,7 +148,23 @@ function hihi_handle_itinerary_feedback_vote()
         : 1;
 
     update_option('hihi_itinerary_feedback_counts', $counts, false);
-    wp_send_json_success();
+
+    $submissions = get_option('hihi_itinerary_feedback_submissions', array());
+    if (!is_array($submissions)) {
+        $submissions = array();
+    }
+
+    $submissions[] = array(
+        'email' => $email,
+        'option_id' => $option_id,
+        'file_name' => $file_name ?: basename($file_path),
+        'created_at' => current_time('mysql'),
+    );
+
+    update_option('hihi_itinerary_feedback_submissions', array_slice($submissions, -500), false);
+    wp_send_json_success(array(
+        'results' => hihi_itinerary_feedback_results($counts),
+    ));
 }
 
 add_action('wp_ajax_hihi_itinerary_feedback_vote', 'hihi_handle_itinerary_feedback_vote');
@@ -182,6 +270,7 @@ function get_translated_permalink_by_slug($slug)
             'cat-ba-tour' => 'cat-ba-tour.php',
             'taiwan' => 'taiwan.php',
             'hue-tour' => 'hue-tour.php',
+            'thailand-trip' => 'thailand.php',
         ];
 
         if (!empty($template_by_slug[$slug])) {

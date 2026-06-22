@@ -185,7 +185,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
     <section id="overview" style="position:relative;">
 
         <!-- Full-width banner image -->
-        <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
+        <div class="overview-hero-media" style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($hero_image); ?>"
                 alt="Ha Giang"
@@ -373,7 +373,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
 
                 <div class="md:col-span-1" style="align-self:start;">
                     <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
-                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                        <div class="itinerary-pricing-summary mb-4 flex items-baseline justify-between gap-3">
                             <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
                             <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($nt['itinerary_price_note']); ?></p>
                         </div>

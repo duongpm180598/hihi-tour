@@ -61,11 +61,27 @@ $feedback_options = hihi_itinerary_feedback_options();
                 <?php endforeach; ?>
             </fieldset>
 
+            <label class="itinerary-feedback-modal__email-field" for="itinerary-feedback-email">
+                <span class="itinerary-feedback-modal__email-label">
+                    <?php echo esc_html($feedback_global['feedback_modal_0_email_label'] ?? ''); ?>
+                </span>
+                <input
+                    id="itinerary-feedback-email"
+                    class="itinerary-feedback-modal__email-input"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    placeholder="<?php echo esc_attr($feedback_global['feedback_modal_0_email_placeholder'] ?? ''); ?>">
+            </label>
+
             <div class="itinerary-feedback-modal__footer">
                 <p
                     id="itinerary-feedback-status"
                     class="itinerary-feedback-modal__status"
                     data-required-message="<?php echo esc_attr($feedback_global['feedback_modal_0_required_message'] ?? ''); ?>"
+                    data-email-required-message="<?php echo esc_attr($feedback_global['feedback_modal_0_email_required_message'] ?? ''); ?>"
+                    data-email-invalid-message="<?php echo esc_attr($feedback_global['feedback_modal_0_email_invalid_message'] ?? ''); ?>"
                     data-success-message="<?php echo esc_attr($feedback_global['feedback_modal_0_success_message'] ?? ''); ?>"
                     data-error-message="<?php echo esc_attr($feedback_global['feedback_modal_0_error_message'] ?? ''); ?>"
                     aria-live="polite"></p>
@@ -74,6 +90,34 @@ $feedback_options = hihi_itinerary_feedback_options();
                     <span><?php echo esc_html($feedback_global['feedback_modal_0_submit_label'] ?? ''); ?></span>
                 </button>
             </div>
+
+            <section
+                id="itinerary-feedback-results"
+                class="itinerary-feedback-modal__results"
+                aria-live="polite"
+                hidden>
+                <h3 class="itinerary-feedback-modal__results-title">
+                    <?php echo esc_html($feedback_global['feedback_modal_0_results_title'] ?? ''); ?>
+                </h3>
+                <div class="itinerary-feedback-modal__results-list">
+                    <?php foreach ($feedback_options as $index => $option) : ?>
+                        <?php $label_key = "feedback_modal_0_option_{$index}_label"; ?>
+                        <div
+                            class="itinerary-feedback-modal__result"
+                            data-feedback-result="<?php echo esc_attr($option['id']); ?>">
+                            <div class="itinerary-feedback-modal__result-row">
+                                <span class="itinerary-feedback-modal__result-label">
+                                    <?php echo esc_html($feedback_global[$label_key] ?? ''); ?>
+                                </span>
+                                <span class="itinerary-feedback-modal__result-percent">0%</span>
+                            </div>
+                            <div class="itinerary-feedback-modal__result-track" aria-hidden="true">
+                                <span class="itinerary-feedback-modal__result-bar"></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
         </form>
     </div>
 </div>

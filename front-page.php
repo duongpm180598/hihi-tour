@@ -12,6 +12,7 @@ $MuCangChaiHarvest = $theme_uri . '/assets/images/mu-cang-chai/mu_cang_chai3.web
 $NinhThuanBaiDaTrung = $theme_uri . '/assets/images/ninh-thuan/bai-da-trung.webp';
 $NhaTrangSunrise = $theme_uri . '/assets/images/nha-trang/sunrise-nha-trang.webp';
 $TaiwanTaipei101 = $theme_uri . '/assets/images/taiwan/taipei-101.webp';
+$ThailandBangkok = function_exists('hihi_image_url') ? hihi_image_url('thailand.hero') : '';
 
 $social = [
     'threads' => $theme_uri . '/assets/images/threads-logo.png',
@@ -188,9 +189,9 @@ $destinations = [
         'kw_vi' => 'đài loan đảo châu á xe máy thành phố núi biển',
     ],
     [
-        'slug'  => null,
+        'slug'  => 'thailand-trip',
         'en'    => 'Thailand', 'vi' => 'Thái Lan',
-        'img'   => null,
+        'img'   => $ThailandBangkok,
         'geo'   => 'sea',
         'topo'  => ['sea', 'city', 'mountain'],
         'types' => ['bike', 'car', 'boat'],
@@ -249,6 +250,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
     .home-hero {
         min-height: 300px;
         background: #F8F8F8;
+        justify-content: flex-start !important;
     }
 
     .home-hero-inner {
@@ -277,6 +279,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
         align-items: center;
         min-height: 96px;
         background: #8500FF;
+        transition: background .18s ease, color .18s ease, transform .18s ease;
     }
 
     .home-hero-mark {
@@ -284,13 +287,69 @@ usort($destinations, function ($a, $b) use ($current_lang) {
         flex: 0 0 92px;
         justify-content: center;
         border-radius: 48px 48px 48px 8px;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        font: inherit;
+        line-height: 1;
+        padding: 0;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .home-hero-mark:hover,
+    .home-hero-mark.is-active {
+        background: #E7F15A;
+        color: #1D292C;
+    }
+
+    .home-hero-mark.is-active {
+        transform: translateY(2px);
     }
 
     .home-hero-title {
         width: fit-content;
+        margin: 0;
         padding: 12px 34px;
         justify-content: center;
         border-radius: 48px 48px 8px 48px;
+        color: inherit;
+        font: inherit;
+    }
+
+    .home-about-panel {
+        max-width: 900px;
+        margin: 28px auto 0;
+        color: #1D292C;
+    }
+
+    .home-about-panel[hidden] {
+        display: none;
+    }
+
+    .home-about-title {
+        display: inline-flex;
+        align-items: center;
+        min-height: 46px;
+        margin: 0 0 20px;
+        padding: 8px 26px;
+        border: 2px solid #C8C8C8;
+        border-radius: 999px;
+        background: #fff;
+        font-family: 'Phudu', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .home-about-body {
+        max-width: 860px;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+        color: #474E50;
     }
 
     @media (max-width: 640px) {
@@ -324,6 +383,20 @@ usort($destinations, function ($a, $b) use ($current_lang) {
             padding: 10px 18px;
             border-radius: 34px 34px 8px 34px;
         }
+
+        .home-about-panel {
+            margin-top: 24px;
+        }
+
+        .home-about-title {
+            min-height: 40px;
+            padding: 8px 18px;
+            font-size: 18px;
+        }
+
+        .home-about-body {
+            font-size: 15px;
+        }
     }
 </style>
 
@@ -335,13 +408,20 @@ usort($destinations, function ($a, $b) use ($current_lang) {
 >
     <div class="home-hero-inner relative z-10 mx-auto">
 
-        <h1
+        <div
             class="home-hero-heading"
             aria-label="<?php echo esc_attr($t['global']['home_hero_title']); ?>"
         >
-            <span class="home-hero-mark" aria-hidden="true">?</span>
-            <span class="home-hero-title"><?php echo esc_html($t['global']['home_hero_title']); ?></span>
-        </h1>
+            <button
+                id="home-about-toggle"
+                type="button"
+                class="home-hero-mark"
+                aria-label="<?php echo esc_attr($t['global']['home_about_toggle_label']); ?>"
+                aria-controls="about-us"
+                aria-expanded="false"
+            >?</button>
+            <h1 class="home-hero-title"><?php echo esc_html($t['global']['home_hero_title']); ?></h1>
+        </div>
 
         <!-- Search -->
         <div class="relative max-w-xl mx-auto">
@@ -412,6 +492,11 @@ usort($destinations, function ($a, $b) use ($current_lang) {
             <?php endforeach; ?>
         </div>
 
+        <section id="about-us" class="home-about-panel" hidden>
+            <h2 class="home-about-title"><?php echo esc_html($t['global']['home_about_title']); ?></h2>
+            <p class="home-about-body"><?php echo esc_html($t['global']['home_about_body']); ?></p>
+        </section>
+
     </div>
 </section>
 
@@ -425,7 +510,7 @@ usort($destinations, function ($a, $b) use ($current_lang) {
             <?php echo $current_lang === 'en' ? 'No destinations found.' : 'Không tìm thấy điểm đến.' ?>
         </p>
 
-        <div id="dest-grid" class="grid grid-cols-3 gap-3 md:gap-4">
+        <div id="dest-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <?php
             $card_template = get_template_directory() . '/components/card.php';
             foreach ($destinations as $d) {
@@ -533,6 +618,17 @@ usort($destinations, function ($a, $b) use ($current_lang) {
     if (inp) {
         inp.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') { inp.value = ''; destApplyFilters(); }
+        });
+    }
+
+    var aboutToggle = document.getElementById('home-about-toggle');
+    var aboutPanel = document.getElementById('about-us');
+    if (aboutToggle && aboutPanel) {
+        aboutToggle.addEventListener('click', function () {
+            var isOpen = aboutToggle.getAttribute('aria-expanded') === 'true';
+            aboutToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            aboutToggle.classList.toggle('is-active', !isOpen);
+            aboutPanel.hidden = isOpen;
         });
     }
 })();

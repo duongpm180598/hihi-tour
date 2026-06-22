@@ -721,7 +721,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
                 <?php endforeach; ?>
             </div>
 
-            <!-- Season cards — horizontal scroll with right arrow button -->
+            <!-- Season cards -->
             <?php
             $seasons = [
                 [
@@ -756,7 +756,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
             ?>
 
             <div class="relative">
-                <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:12px;">
+                <div class="weather-season-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:12px;">
                     <?php foreach ($seasons as $s): ?>
                     <div style="border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
                         <!-- Image -->

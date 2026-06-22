@@ -380,7 +380,7 @@ $activeId = $tableOfContents[0]['id'];
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 mt-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
                 <?php for ($i = 1; $i <= $image_grid_count; $i++) : ?>
                     <div class="w-full overflow-hidden">
                         <img

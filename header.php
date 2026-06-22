@@ -66,6 +66,7 @@
         ['slug' => 'cat-ba-tour', 'label' => $header_global['nav_destination_4_label'] ?? 'Cat Ba'],
         ['slug' => 'taiwan', 'label' => $header_global['nav_destination_5_label'] ?? 'Taiwan'],
         ['slug' => 'hue-tour', 'label' => $header_global['nav_destination_6_label'] ?? 'Hue'],
+        ['slug' => 'thailand-trip', 'label' => $header_global['nav_destination_7_label'] ?? 'Thailand'],
     ];
     usort($destinations_menu, function ($a, $b) {
         $label_a = function_exists('remove_accents') ? remove_accents($a['label']) : $a['label'];

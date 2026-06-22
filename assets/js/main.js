@@ -190,26 +190,12 @@ $(document).ready(function () {
         return
     }
 
-    const storageKey = 'hihiItineraryFeedbackVersion'
     const submitButton = form.querySelector('button[type="submit"]')
+    const emailInput = form.querySelector('input[name="email"]')
+    const resultsPanel = document.getElementById('itinerary-feedback-results')
     let previousFocus = null
     let closeTimer = null
-
-    function hasVoted() {
-        try {
-            return window.localStorage.getItem(storageKey) === settings.optionSetVersion
-        } catch (error) {
-            return false
-        }
-    }
-
-    function rememberVote() {
-        try {
-            window.localStorage.setItem(storageKey, settings.optionSetVersion)
-        } catch (error) {
-            // The vote still succeeds when browser storage is unavailable.
-        }
-    }
+    let pendingFile = null
 
     function getFocusableElements() {
         return Array.from(
@@ -220,10 +206,6 @@ $(document).ready(function () {
     }
 
     function openModal() {
-        if (hasVoted()) {
-            return
-        }
-
         window.clearTimeout(closeTimer)
         previousFocus = document.activeElement
         form.reset()
@@ -231,12 +213,14 @@ $(document).ready(function () {
         status.className = 'itinerary-feedback-modal__status'
         submitButton.disabled = false
         submitButton.removeAttribute('aria-busy')
+        if (resultsPanel) {
+            resultsPanel.hidden = true
+        }
         modal.hidden = false
         document.body.classList.add('itinerary-feedback-open')
 
-        const firstOption = form.querySelector('input[name="destination"]')
-        if (firstOption) {
-            window.setTimeout(() => firstOption.focus(), 50)
+        if (emailInput) {
+            window.setTimeout(() => emailInput.focus(), 50)
         }
     }
 
@@ -247,6 +231,7 @@ $(document).ready(function () {
 
         window.clearTimeout(closeTimer)
         modal.hidden = true
+        pendingFile = null
         document.body.classList.remove('itinerary-feedback-open')
 
         if (previousFocus && typeof previousFocus.focus === 'function') {
@@ -257,7 +242,12 @@ $(document).ready(function () {
     document.addEventListener('click', event => {
         const downloadLink = event.target.closest('[data-itinerary-download]')
         if (downloadLink && !event.defaultPrevented) {
-            window.setTimeout(openModal, 450)
+            event.preventDefault()
+            pendingFile = {
+                href: downloadLink.href,
+                name: downloadLink.getAttribute('download') || '',
+            }
+            openModal()
             return
         }
 
@@ -301,9 +291,26 @@ $(document).ready(function () {
         event.preventDefault()
 
         const selected = form.querySelector('input[name="destination"]:checked')
+        const email = emailInput ? emailInput.value.trim() : ''
         if (!selected) {
             status.textContent = status.dataset.requiredMessage
             status.className = 'itinerary-feedback-modal__status is-error'
+            return
+        }
+
+        if (!email) {
+            status.textContent = status.dataset.emailRequiredMessage
+            status.className = 'itinerary-feedback-modal__status is-error'
+            if (emailInput) {
+                emailInput.focus()
+            }
+            return
+        }
+
+        if (emailInput && !emailInput.checkValidity()) {
+            status.textContent = status.dataset.emailInvalidMessage
+            status.className = 'itinerary-feedback-modal__status is-error'
+            emailInput.focus()
             return
         }
 
@@ -316,6 +323,10 @@ $(document).ready(function () {
             action: settings.action,
             nonce: settings.nonce,
             optionId: selected.value,
+            email: email,
+            fileUrl: pendingFile ? pendingFile.href : '',
+            fileName: pendingFile ? pendingFile.name : '',
+            lang: settings.language || 'vi',
         })
 
         window
@@ -338,10 +349,28 @@ $(document).ready(function () {
                     throw new Error('Vote was rejected')
                 }
 
-                rememberVote()
                 status.textContent = status.dataset.successMessage
                 status.className = 'itinerary-feedback-modal__status is-success'
-                closeTimer = window.setTimeout(closeModal, 1400)
+
+                if (resultsPanel && result.data && result.data.results && result.data.results.options) {
+                    Object.entries(result.data.results.options).forEach(([optionId, optionResult]) => {
+                        const row = resultsPanel.querySelector('[data-feedback-result="' + optionId + '"]')
+                        if (!row) {
+                            return
+                        }
+
+                        const percent = Math.max(0, Math.min(100, Number(optionResult.percent) || 0))
+                        const percentEl = row.querySelector('.itinerary-feedback-modal__result-percent')
+                        const barEl = row.querySelector('.itinerary-feedback-modal__result-bar')
+                        if (percentEl) {
+                            percentEl.textContent = percent + '%'
+                        }
+                        if (barEl) {
+                            barEl.style.width = percent + '%'
+                        }
+                    })
+                    resultsPanel.hidden = false
+                }
             })
             .catch(() => {
                 status.textContent = status.dataset.errorMessage

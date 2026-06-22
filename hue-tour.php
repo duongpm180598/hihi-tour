@@ -224,7 +224,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
     <section id="overview" style="position:relative;">
 
         <!-- Full-width banner image -->
-        <div style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
+        <div class="overview-hero-media" style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($hero_image); ?>"
                 alt="Ha Giang"
@@ -447,7 +447,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 
                 <div class="md:col-span-1" style="align-self:start;">
                     <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
-                        <div class="mb-4 flex items-baseline justify-between gap-3">
+                        <div class="itinerary-pricing-summary mb-4 flex items-baseline justify-between gap-3">
                             <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
                             <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($hue['itinerary_price_note']); ?></p>
                         </div>
@@ -1029,31 +1029,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
             ?>
 
             <div class="relative">
-                <!-- Left scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:-300,behavior:'smooth'})"
-                    style="display:none;"
-                    aria-label="Scroll left"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Right scroll button -->
-                <button
-                    onclick="document.getElementById('season-scroll').scrollBy({left:300,behavior:'smooth'})"
-                    style="display:none;"
-                    aria-label="Scroll right"
-                >
-                    <svg width="18" height="18" fill="none" stroke="#1D292C" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-
-                <!-- Scrollable row -->
-                <div id="season-scroll" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; padding-bottom:8px;">
-                    <style>#season-scroll::-webkit-scrollbar{display:none} #season-scroll.dragging{cursor:grabbing; scroll-snap-type:none;}</style>
+                <div class="weather-season-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:12px; padding-bottom:8px;">
                     <?php foreach ($seasons as $s): ?>
                     <div style="border-radius:8px; overflow:hidden; display:flex; flex-direction:column; min-width:0;">
                         <!-- Image -->
@@ -1329,27 +1305,6 @@ function transTab(tab) {
         }
     });
 }
-
-// Mouse drag to scroll season cards
-(function() {
-    var el = document.getElementById('season-scroll');
-    if (!el) return;
-    var isDown = false, startX, scrollLeft;
-    el.addEventListener('mousedown', function(e) {
-        isDown = true;
-        el.classList.add('dragging');
-        startX = e.pageX - el.offsetLeft;
-        scrollLeft = el.scrollLeft;
-    });
-    el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('dragging'); });
-    el.addEventListener('mousemove',  function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - el.offsetLeft;
-        el.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    });
-})();
 
 // Solo going / Book a tour tab switcher
 (function() {

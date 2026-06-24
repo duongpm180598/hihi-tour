@@ -371,6 +371,9 @@ $(document).ready(function () {
                     })
                     resultsPanel.hidden = false
                 }
+
+                submitButton.disabled = false
+                submitButton.removeAttribute('aria-busy')
             })
             .catch(() => {
                 status.textContent = status.dataset.errorMessage

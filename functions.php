@@ -2,7 +2,8 @@
 
 require_once get_template_directory() . '/inc/image-assets.php';
 
-define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-09-1');
+define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-19-1');
+define('HIHI_ITINERARY_FEEDBACK_DB_VERSION', '1.0.0');
 
 function hihi_scripts()
 {
@@ -14,7 +15,7 @@ function hihi_scripts()
     wp_enqueue_style('aos_style', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
     // Ha Giang layout pages
-    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php') || is_page_template('thailand.php')) {
         wp_enqueue_style('ha_giang_style', get_theme_file_uri('/assets/css/ha-giang.css'));
     }
 
@@ -23,15 +24,16 @@ function hihi_scripts()
     wp_enqueue_script('flatpickr_script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), '4.6.13', true);
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
-    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.1', true);
+    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.2', true);
     wp_localize_script('main_script', 'hihiItineraryFeedback', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('hihi_itinerary_feedback_vote'),
         'action' => 'hihi_itinerary_feedback_vote',
         'optionSetVersion' => HIHI_ITINERARY_FEEDBACK_VERSION,
+        'language' => function_exists('pll_current_language') ? pll_current_language('slug') : 'vi',
     ));
     wp_enqueue_script('itinerary_script', get_theme_file_uri('/assets/js/itinerary.js'), array('jquery'), '1.12', true);
-    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php')) {
+    if (is_page_template('ha-giang-tour.php') || is_page_template('cao-bang-tour.php') || is_page_template('mu-cang-chai.php') || is_page_template('ninh-thuan.php') || is_page_template('cat-ba-tour.php') || is_page_template('taiwan.php') || is_page_template('hue-tour.php') || is_page_template('thailand.php')) {
         wp_enqueue_script('weather_script', get_theme_file_uri('/assets/js/weather.js'), array(), '1.1', true);
     }
     wp_enqueue_script('ionicons_script', '//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js');
@@ -54,6 +56,122 @@ function hihi_itinerary_feedback_option_ids()
     return array_column(hihi_itinerary_feedback_options(), 'id');
 }
 
+function hihi_itinerary_feedback_results($counts)
+{
+    $counts = is_array($counts) ? $counts : array();
+    $total = 0;
+    foreach (hihi_itinerary_feedback_option_ids() as $option_id) {
+        $total += max(0, (int) ($counts[$option_id] ?? 0));
+    }
+
+    $results = array();
+    foreach (hihi_itinerary_feedback_option_ids() as $option_id) {
+        $count = max(0, (int) ($counts[$option_id] ?? 0));
+        $results[$option_id] = array(
+            'count' => $count,
+            'percent' => $total > 0 ? round(($count / $total) * 100) : 0,
+        );
+    }
+
+    return array(
+        'total' => $total,
+        'options' => $results,
+    );
+}
+
+function hihi_itinerary_feedback_table_name()
+{
+    global $wpdb;
+    return $wpdb->prefix . 'hihi_itinerary_feedback';
+}
+
+function hihi_itinerary_feedback_install_table()
+{
+    if (get_option('hihi_itinerary_feedback_db_version') === HIHI_ITINERARY_FEEDBACK_DB_VERSION) {
+        return;
+    }
+
+    global $wpdb;
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+    $table_name = hihi_itinerary_feedback_table_name();
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE {$table_name} (
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        email VARCHAR(190) NOT NULL,
+        option_id VARCHAR(60) NOT NULL,
+        file_name VARCHAR(190) NOT NULL DEFAULT '',
+        file_url VARCHAR(500) NOT NULL DEFAULT '',
+        status VARCHAR(20) NOT NULL DEFAULT 'pending',
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NOT NULL,
+        PRIMARY KEY  (id),
+        KEY email (email),
+        KEY status (status)
+    ) {$charset_collate};";
+
+    dbDelta($sql);
+
+    update_option('hihi_itinerary_feedback_db_version', HIHI_ITINERARY_FEEDBACK_DB_VERSION, false);
+}
+
+add_action('after_switch_theme', 'hihi_itinerary_feedback_install_table');
+add_action('init', 'hihi_itinerary_feedback_install_table');
+
+function hihi_itinerary_feedback_option_label($option_id)
+{
+    $options = hihi_itinerary_feedback_options();
+    $translations = load_lang();
+    $global = $translations['global'] ?? array();
+
+    foreach ($options as $index => $option) {
+        if ($option['id'] === $option_id) {
+            $label_key = "feedback_modal_0_option_{$index}_label";
+            return $global[$label_key] ?? $option_id;
+        }
+    }
+
+    return $option_id;
+}
+
+function hihi_itinerary_feedback_file_path_from_url($file_url)
+{
+    $theme_uri = trailingslashit(get_theme_file_uri());
+    if (strpos($file_url, $theme_uri) !== 0) {
+        return '';
+    }
+
+    $relative_path = ltrim(substr($file_url, strlen($theme_uri)), '/');
+    if ($relative_path === '' || strpos($relative_path, '..') !== false) {
+        return '';
+    }
+
+    $file_path = get_theme_file_path($relative_path);
+    return is_readable($file_path) ? $file_path : '';
+}
+
+// Surfaces the real SMTP error (e.g. Gmail/hosting auth failure) in the PHP error log,
+// since wp_mail() only returns a boolean and the UI shows a generic failure notice.
+function hihi_log_itinerary_feedback_mail_error($wp_error)
+{
+    error_log('Hihi itinerary feedback mail error: ' . $wp_error->get_error_message());
+}
+
+add_action('wp_mail_failed', 'hihi_log_itinerary_feedback_mail_error');
+
+function hihi_render_itinerary_feedback_email_html($subject, $message, $file_name)
+{
+    ob_start();
+    include get_template_directory() . '/inc/email-templates/itinerary-feedback-email.php';
+    return ob_get_clean();
+}
+
+function hihi_itinerary_feedback_mail_content_type()
+{
+    return 'text/html';
+}
+
 function hihi_handle_itinerary_feedback_vote()
 {
     check_ajax_referer('hihi_itinerary_feedback_vote', 'nonce');
@@ -61,9 +179,44 @@ function hihi_handle_itinerary_feedback_vote()
     $option_id = isset($_POST['optionId'])
         ? sanitize_key(wp_unslash($_POST['optionId']))
         : '';
+    $email = isset($_POST['email'])
+        ? sanitize_email(wp_unslash($_POST['email']))
+        : '';
+    $file_url = isset($_POST['fileUrl'])
+        ? esc_url_raw(wp_unslash($_POST['fileUrl']))
+        : '';
+    $file_name = isset($_POST['fileName'])
+        ? sanitize_file_name(wp_unslash($_POST['fileName']))
+        : '';
+    $lang = isset($_POST['lang'])
+        ? sanitize_key(wp_unslash($_POST['lang']))
+        : 'en';
 
     if (!in_array($option_id, hihi_itinerary_feedback_option_ids(), true)) {
         wp_send_json_error(array('code' => 'invalid_option'), 400);
+    }
+
+    if (empty($email) || !is_email($email)) {
+        wp_send_json_error(array('code' => 'invalid_email'), 400);
+    }
+
+    $file_path = hihi_itinerary_feedback_file_path_from_url($file_url);
+    if ($file_path === '') {
+        wp_send_json_error(array('code' => 'invalid_file'), 400);
+    }
+
+    $translations = load_lang($lang);
+    $global = $translations['global'] ?? array();
+    $subject = $global['feedback_modal_0_email_subject'] ?? 'Your HiHi Tour itinerary file';
+    $message_template = $global['feedback_modal_0_email_body'] ?? 'Your itinerary file is attached.';
+    $message = sprintf($message_template, $file_name ?: basename($file_path));
+    $email_html = hihi_render_itinerary_feedback_email_html($subject, $message, $file_name ?: basename($file_path));
+
+    add_filter('wp_mail_content_type', 'hihi_itinerary_feedback_mail_content_type');
+    $mail_sent = wp_mail($email, $subject, $email_html, array(), array($file_path));
+    remove_filter('wp_mail_content_type', 'hihi_itinerary_feedback_mail_content_type');
+    if (!$mail_sent) {
+        wp_send_json_error(array('code' => 'email_failed'), 500);
     }
 
     $counts = get_option('hihi_itinerary_feedback_counts', array());
@@ -76,7 +229,25 @@ function hihi_handle_itinerary_feedback_vote()
         : 1;
 
     update_option('hihi_itinerary_feedback_counts', $counts, false);
-    wp_send_json_success();
+
+    global $wpdb;
+    $now = current_time('mysql');
+    $wpdb->insert(
+        hihi_itinerary_feedback_table_name(),
+        array(
+            'email' => $email,
+            'option_id' => $option_id,
+            'file_name' => $file_name ?: basename($file_path),
+            'file_url' => $file_url,
+            'status' => 'pending',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ),
+        array('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+    );
+    wp_send_json_success(array(
+        'results' => hihi_itinerary_feedback_results($counts),
+    ));
 }
 
 add_action('wp_ajax_hihi_itinerary_feedback_vote', 'hihi_handle_itinerary_feedback_vote');
@@ -119,6 +290,244 @@ function hihi_render_itinerary_feedback_dashboard_widget()
     }
     echo '</ul>';
     echo '<p><strong>' . esc_html($global['feedback_modal_0_admin_total_label'] ?? '') . ':</strong> ' . esc_html(number_format_i18n($total)) . '</p>';
+}
+
+function hihi_register_itinerary_feedback_admin_page()
+{
+    add_menu_page(
+        'Feedback',
+        'Feedback',
+        'manage_options',
+        'hihi-itinerary-feedback',
+        'hihi_render_itinerary_feedback_admin_page',
+        'dashicons-email-alt',
+        26
+    );
+}
+
+add_action('admin_menu', 'hihi_register_itinerary_feedback_admin_page');
+
+function hihi_handle_feedback_status_update()
+{
+    if (!current_user_can('manage_options')) {
+        wp_die('Bạn không có quyền thực hiện hành động này.');
+    }
+
+    check_admin_referer('hihi_feedback_status_update');
+
+    $id = isset($_POST['id']) ? absint($_POST['id']) : 0;
+    $status = isset($_POST['status']) ? sanitize_key(wp_unslash($_POST['status'])) : '';
+
+    if ($id && in_array($status, array('pending', 'completed'), true)) {
+        global $wpdb;
+        $wpdb->update(
+            hihi_itinerary_feedback_table_name(),
+            array('status' => $status, 'updated_at' => current_time('mysql')),
+            array('id' => $id),
+            array('%s', '%s'),
+            array('%d')
+        );
+    }
+
+    wp_safe_redirect(wp_get_referer() ?: admin_url('admin.php?page=hihi-itinerary-feedback'));
+    exit;
+}
+
+add_action('admin_post_hihi_feedback_status_update', 'hihi_handle_feedback_status_update');
+
+function hihi_handle_feedback_send_email()
+{
+    if (!current_user_can('manage_options')) {
+        wp_die('Bạn không có quyền thực hiện hành động này.');
+    }
+
+    check_admin_referer('hihi_feedback_send_email');
+
+    $id = isset($_POST['id']) ? absint($_POST['id']) : 0;
+    $subject = isset($_POST['subject']) ? sanitize_text_field(wp_unslash($_POST['subject'])) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field(wp_unslash($_POST['message'])) : '';
+    $redirect_url = admin_url('admin.php?page=hihi-itinerary-feedback');
+
+    global $wpdb;
+    $row = $id ? $wpdb->get_row($wpdb->prepare(
+        'SELECT * FROM ' . hihi_itinerary_feedback_table_name() . ' WHERE id = %d',
+        $id
+    )) : null;
+
+    if (!$row || $subject === '' || $message === '') {
+        wp_safe_redirect(add_query_arg('hihi_feedback_notice', 'email_failed', $redirect_url));
+        exit;
+    }
+
+    $sent = wp_mail($row->email, $subject, $message);
+
+    if ($sent) {
+        $wpdb->update(
+            hihi_itinerary_feedback_table_name(),
+            array('status' => 'completed', 'updated_at' => current_time('mysql')),
+            array('id' => $id),
+            array('%s', '%s'),
+            array('%d')
+        );
+    }
+
+    wp_safe_redirect(add_query_arg('hihi_feedback_notice', $sent ? 'email_sent' : 'email_failed', $redirect_url));
+    exit;
+}
+
+add_action('admin_post_hihi_feedback_send_email', 'hihi_handle_feedback_send_email');
+
+function hihi_render_itinerary_feedback_admin_page()
+{
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    global $wpdb;
+    $table_name = hihi_itinerary_feedback_table_name();
+
+    $status_filter = isset($_GET['status_filter']) ? sanitize_key(wp_unslash($_GET['status_filter'])) : 'all';
+    $per_page = 20;
+    $paged = isset($_GET['paged']) ? max(1, absint($_GET['paged'])) : 1;
+    $offset = ($paged - 1) * $per_page;
+
+    $where = '';
+    $where_args = array();
+    if (in_array($status_filter, array('pending', 'completed'), true)) {
+        $where = 'WHERE status = %s';
+        $where_args[] = $status_filter;
+    }
+
+    $total_sql = "SELECT COUNT(*) FROM {$table_name} {$where}";
+    $total = (int) ($where_args ? $wpdb->get_var($wpdb->prepare($total_sql, $where_args)) : $wpdb->get_var($total_sql));
+
+    $list_sql = "SELECT * FROM {$table_name} {$where} ORDER BY created_at DESC LIMIT %d OFFSET %d";
+    $rows = $wpdb->get_results($wpdb->prepare($list_sql, array_merge($where_args, array($per_page, $offset))));
+
+    $total_pages = (int) ceil($total / $per_page);
+    $notice = isset($_GET['hihi_feedback_notice']) ? sanitize_key(wp_unslash($_GET['hihi_feedback_notice'])) : '';
+?>
+    <div class="wrap">
+        <h1>Feedback</h1>
+
+        <?php if ($notice === 'email_sent') : ?>
+            <div class="notice notice-success is-dismissible">
+                <p>Đã gửi email feedback thành công.</p>
+            </div>
+        <?php elseif ($notice === 'email_failed') : ?>
+            <div class="notice notice-error is-dismissible">
+                <p>Gửi email thất bại, vui lòng thử lại.</p>
+            </div>
+        <?php endif; ?>
+
+        <ul class="subsubsub">
+            <li>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=hihi-itinerary-feedback')); ?>" class="<?php echo $status_filter === 'all' ? 'current' : ''; ?>">Tất cả</a> |
+            </li>
+            <li>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=hihi-itinerary-feedback&status_filter=pending')); ?>" class="<?php echo $status_filter === 'pending' ? 'current' : ''; ?>">Đang chờ</a> |
+            </li>
+            <li>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=hihi-itinerary-feedback&status_filter=completed')); ?>" class="<?php echo $status_filter === 'completed' ? 'current' : ''; ?>">Hoàn tất</a>
+            </li>
+        </ul>
+
+        <table class="widefat striped" style="margin-top:10px;">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Lựa chọn</th>
+                    <th>File</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày gửi</th>
+                    <th style="width:320px;">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!$rows) : ?>
+                    <tr>
+                        <td colspan="6">Chưa có dữ liệu feedback.</td>
+                    </tr>
+                <?php else : ?>
+                    <?php foreach ($rows as $row) : ?>
+                        <tr>
+                            <td><?php echo esc_html($row->email); ?></td>
+                            <td><?php echo esc_html(hihi_itinerary_feedback_option_label($row->option_id)); ?></td>
+                            <td><?php echo esc_html($row->file_name); ?></td>
+                            <td>
+                                <span class="hihi-feedback-status hihi-feedback-status--<?php echo esc_attr($row->status); ?>">
+                                    <?php echo $row->status === 'completed' ? 'Hoàn tất' : 'Đang chờ'; ?>
+                                </span>
+                            </td>
+                            <td><?php echo esc_html(mysql2date('d/m/Y H:i', $row->created_at)); ?></td>
+                            <td>
+                                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" style="margin-bottom:8px;">
+                                    <?php wp_nonce_field('hihi_feedback_status_update'); ?>
+                                    <input type="hidden" name="action" value="hihi_feedback_status_update">
+                                    <input type="hidden" name="id" value="<?php echo esc_attr($row->id); ?>">
+                                    <input type="hidden" name="status" value="<?php echo $row->status === 'completed' ? 'pending' : 'completed'; ?>">
+                                    <button type="submit" class="button button-small">
+                                        <?php echo $row->status === 'completed' ? 'Đánh dấu đang chờ' : 'Đánh dấu hoàn tất'; ?>
+                                    </button>
+                                </form>
+
+                                <details>
+                                    <summary style="cursor:pointer;">Gửi email feedback</summary>
+                                    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" style="margin-top:8px;">
+                                        <?php wp_nonce_field('hihi_feedback_send_email'); ?>
+                                        <input type="hidden" name="action" value="hihi_feedback_send_email">
+                                        <input type="hidden" name="id" value="<?php echo esc_attr($row->id); ?>">
+                                        <p style="margin:4px 0;">
+                                            <input type="text" name="subject" class="regular-text" placeholder="Chủ đề email" required>
+                                        </p>
+                                        <p style="margin:4px 0;">
+                                            <textarea name="message" class="regular-text" rows="3" placeholder="Nội dung email" required></textarea>
+                                        </p>
+                                        <button type="submit" class="button button-primary button-small">Gửi email</button>
+                                    </form>
+                                </details>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <?php if ($total_pages > 1) : ?>
+            <div class="tablenav">
+                <div class="tablenav-pages">
+                    <?php
+                    echo paginate_links(array(
+                        'base' => add_query_arg('paged', '%#%'),
+                        'format' => '',
+                        'current' => $paged,
+                        'total' => $total_pages,
+                    ));
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <style>
+        .hihi-feedback-status {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hihi-feedback-status--pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .hihi-feedback-status--completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+    </style>
+    <?php
 }
 
 function hihi_sync_tour_page_slugs()

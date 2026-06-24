@@ -231,10 +231,40 @@ body.itinerary-feedback-open {
 }
 
 .itinerary-feedback-modal__option input:focus-visible + .itinerary-feedback-modal__option-content,
+.itinerary-feedback-modal__email-input:focus-visible,
 .itinerary-feedback-modal__close:focus-visible,
 .itinerary-feedback-modal__submit:focus-visible {
     outline: 3px solid #e7f15a;
     outline-offset: 2px;
+}
+
+.itinerary-feedback-modal__email-field {
+    display: block;
+    margin: 16px 0 20px;
+}
+
+.itinerary-feedback-modal__email-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1d292c;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.itinerary-feedback-modal__email-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #a1a4a3;
+    border-radius: 8px;
+    background: #fff;
+    color: #1d292c;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 100ms ease;
+}
+
+.itinerary-feedback-modal__email-input::placeholder {
+    color: #a1a4a3;
 }
 
 .itinerary-feedback-modal__footer {
@@ -301,6 +331,60 @@ body.itinerary-feedback-open {
     border-radius: 50%;
     content: '';
     animation: itinerary-feedback-spin 700ms linear infinite;
+}
+
+.itinerary-feedback-modal__results {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #d7d9d8;
+}
+
+.itinerary-feedback-modal__results[hidden] {
+    display: none;
+}
+
+.itinerary-feedback-modal__results-title {
+    margin: 0 0 12px;
+    color: #1d292c;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.itinerary-feedback-modal__results-list {
+    display: grid;
+    gap: 12px;
+}
+
+.itinerary-feedback-modal__result-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+    color: #1d292c;
+    font-size: 14px;
+}
+
+.itinerary-feedback-modal__result-percent {
+    color: #74797a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.itinerary-feedback-modal__result-track {
+    height: 8px;
+    border-radius: 999px;
+    background: #e5e6e4;
+    overflow: hidden;
+}
+
+.itinerary-feedback-modal__result-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: #7b63f7;
+    transition: width 300ms ease;
 }
 
 @keyframes itinerary-feedback-enter {

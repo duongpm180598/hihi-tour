@@ -12,6 +12,7 @@ $t = load_lang();
 $cb = $t['cao_bang'];
 
 $theme_uri = get_template_directory_uri();
+$itinerary_file = hihi_itinerary_feedback_file_for_destination('cao-bang');
 
 $banner_group = hihi_image_group('cao_bang.banners');
 $banner_images = [
@@ -296,24 +297,59 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="md:col-span-2 mb-8">
-                    <div id="itinerary-plans" class="flex flex-wrap gap-2 mb-6">
-                        <?php foreach ($plan_options as $value => $text) : ?>
-                            <?php
-                            $is_active = ($value == $default_plan);
-                            $active_class = $is_active
-                                ? 'text-[#F2F2F0]'
-                                : 'text-[#1D292C] border border-[#1D292C99] hover:bg-[#F9FBDF]';
-                            $active_style = $is_active
-                                ? 'background:#7B63F7; border:1px solid #7B63F7;'
-                                : 'background:transparent;';
-                            ?>
-                            <a
-                                data-plan-value="<?php echo esc_attr($value); ?>"
-                                class="plan-pill inline-flex items-center cursor-pointer px-5 rounded-full transition duration-200 <?php echo $active_class; ?>"
-                                style="min-height:48px; font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:600; <?php echo $active_style; ?>">
-                                <?php echo esc_html($text); ?>
-                            </a>
-                        <?php endforeach; ?>
+                    <div class="flex items-center justify-between gap-2 mb-6">
+                        <div id="itinerary-plans" class="flex flex-wrap gap-2">
+                            <?php foreach ($plan_options as $value => $text) : ?>
+                                <?php
+                                $is_active = ($value == $default_plan);
+                                $active_class = $is_active
+                                    ? 'text-[#F2F2F0]'
+                                    : 'text-[#1D292C] border border-[#1D292C99] hover:bg-[#F9FBDF]';
+                                $active_style = $is_active
+                                    ? 'background:#7B63F7; border:1px solid #7B63F7;'
+                                    : 'background:transparent;';
+                                ?>
+                                <a
+                                    data-plan-value="<?php echo esc_attr($value); ?>"
+                                    class="plan-pill inline-flex items-center cursor-pointer px-5 rounded-full transition duration-200 <?php echo $active_class; ?>"
+                                    style="min-height:48px; font-family:'Inter',sans-serif; font-size:15px; line-height:24px; font-weight:600; <?php echo $active_style; ?>">
+                                    <?php echo esc_html($text); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <div class="relative flex-shrink-0" id="itinerary-download-wrap">
+                            <button
+                                id="itinerary-download-btn"
+                                onclick="document.getElementById('itinerary-download-menu').classList.toggle('hidden')"
+                                style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:transparent; color:#1D292C; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; line-height:24px; border-radius:999px; border:1.5px solid #1D292C; cursor:pointer; transition:opacity .15s;"
+                                onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'"
+                            >
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/download.svg'); ?>" alt="" width="15" height="15" style="display:block;" />
+                                <?php echo esc_html($t['ha_giang']['itinerary_btn_download']); ?>
+                                <img src="<?php echo esc_url($theme_uri . '/assets/icons/chevron-down.svg'); ?>" alt="" width="12" height="12" style="display:block;" />
+                            </button>
+                            <div
+                                id="itinerary-download-menu"
+                                class="hidden absolute right-0 mt-1 z-20"
+                                style="width:200px; background:#F2F2F0; border-radius:12px; box-shadow:0 4px 16px rgba(29,41,44,.15); overflow:hidden;"
+                            >
+                                <a
+                                    href="<?php echo esc_url($itinerary_file['url'] ?? '#'); ?>"
+                                    download="<?php echo esc_attr($itinerary_file['download_name'] ?? ''); ?>"
+                                    data-itinerary-download
+                                    data-itinerary-destination="cao-bang"
+                                    onclick="document.getElementById('itinerary-download-menu').classList.add('hidden');"
+                                    style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s; text-decoration:none;"
+                                    onmouseover="this.style.background='#F9FBDF'" onmouseout="this.style.background='none'"
+                                >
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    <?php echo esc_html($t['ha_giang']['itinerary_download_xlsx']); ?>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <?php

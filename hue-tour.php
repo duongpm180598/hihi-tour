@@ -12,6 +12,7 @@ $t = load_lang();
 $hue = $t['hue'];
 
 $theme_uri = get_template_directory_uri();
+$itinerary_file = hihi_itinerary_feedback_file_for_destination('hue');
 $hero_image = hihi_image_url('hue.hero');
 $all_gallery_images = hihi_image_group('hue.gallery');
 $highlight_image_groups = hihi_image_group('hue.highlights');
@@ -375,9 +376,10 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
                                 style="width:200px; background:#F2F2F0; border-radius:12px; box-shadow:0 4px 16px rgba(29,41,44,.15); overflow:hidden;"
                             >
                                 <a
-                                    href="<?php echo esc_url(get_theme_file_uri('/assets/itinerary/Ha_Giang_schedule.xlsx')); ?>"
-                                    download="Ha_Giang_schedule.xlsx"
+                                    href="<?php echo esc_url($itinerary_file['url'] ?? '#'); ?>"
+                                    download="<?php echo esc_attr($itinerary_file['download_name'] ?? ''); ?>"
                                     data-itinerary-download
+                                    data-itinerary-destination="hue"
                                     onclick="document.getElementById('itinerary-download-menu').classList.add('hidden');"
                                     style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s; text-decoration:none;"
                                     onmouseover="this.style.background='#F9FBDF'" onmouseout="this.style.background='none'"

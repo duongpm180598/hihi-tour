@@ -12,6 +12,7 @@ $t = load_lang();
 $mcc = $t['mu_cang_chai'];
 
 $theme_uri = get_template_directory_uri();
+$itinerary_file = hihi_itinerary_feedback_file_for_destination('mu-cang-chai');
 $hero_image = hihi_image_url('mu_cang_chai.hero');
 $all_gallery_images = hihi_image_group('mu_cang_chai.gallery');
 $highlight_image_groups = hihi_image_group('mu_cang_chai.highlights');
@@ -344,16 +345,20 @@ $activeId = $tableOfContents[0]['id'];
                                 class="hidden absolute right-0 mt-1 z-20"
                                 style="width:200px; background:#F2F2F0; border-radius:12px; box-shadow:0 4px 16px rgba(29,41,44,.15); overflow:hidden;"
                             >
-                                <button
-                                    onclick="alert('Download XLSX coming soon'); document.getElementById('itinerary-download-menu').classList.add('hidden');"
-                                    style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s;"
+                                <a
+                                    href="<?php echo esc_url($itinerary_file['url'] ?? '#'); ?>"
+                                    download="<?php echo esc_attr($itinerary_file['download_name'] ?? ''); ?>"
+                                    data-itinerary-download
+                                    data-itinerary-destination="mu-cang-chai"
+                                    onclick="document.getElementById('itinerary-download-menu').classList.add('hidden');"
+                                    style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s; text-decoration:none;"
                                     onmouseover="this.style.background='#F9FBDF'" onmouseout="this.style.background='none'"
                                 >
                                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
                                     <?php echo $t['ha_giang']['itinerary_download_xlsx']; ?>
-                                </button>
+                                </a>
                                 <button
                                     onclick="alert('Add to Google Drive coming soon'); document.getElementById('itinerary-download-menu').classList.add('hidden');"
                                     style="display:flex; align-items:center; gap:8px; width:100%; padding:12px 16px; background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:#1D292C; text-align:left; transition:background .12s;"

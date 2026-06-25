@@ -135,6 +135,47 @@ function hihi_itinerary_feedback_option_label($option_id)
     return $option_id;
 }
 
+function hihi_itinerary_feedback_file_options()
+{
+    return array(
+        'ha-giang' => array(
+            'relative_path' => 'assets/itinerary/Ha_Giang_schedule.xlsx',
+            'download_name' => 'Ha_Giang_schedule.xlsx',
+        ),
+        'cao-bang' => array(
+            'relative_path' => 'assets/itinerary/Lịch trình Cao Bằng_VI.xlsx',
+            'download_name' => 'Lịch trình Cao Bằng_VI.xlsx',
+        ),
+        'mu-cang-chai' => array(
+            'relative_path' => 'assets/itinerary/Lịch trình Mù Cang Chải_VI.xlsx',
+            'download_name' => 'Lịch trình Mù Cang Chải_VI.xlsx',
+        ),
+        'hue' => array(
+            'relative_path' => 'assets/itinerary/Lịch trình Huế_VI.xlsx',
+            'download_name' => 'Lịch trình Huế_VI.xlsx',
+        ),
+    );
+}
+
+function hihi_itinerary_feedback_file_for_destination($destination_id)
+{
+    $files = hihi_itinerary_feedback_file_options();
+    if (empty($files[$destination_id])) {
+        return array();
+    }
+
+    $file = $files[$destination_id];
+    $file_path = get_theme_file_path($file['relative_path']);
+    if (!is_readable($file_path)) {
+        return array();
+    }
+
+    $file['path'] = $file_path;
+    $file['url'] = get_theme_file_uri('/' . $file['relative_path']);
+
+    return $file;
+}
+
 function hihi_itinerary_feedback_file_path_from_url($file_url)
 {
     $theme_uri = trailingslashit(get_theme_file_uri());
@@ -188,6 +229,9 @@ function hihi_handle_itinerary_feedback_vote()
     $file_name = isset($_POST['fileName'])
         ? sanitize_file_name(wp_unslash($_POST['fileName']))
         : '';
+    $destination_id = isset($_POST['destinationId'])
+        ? sanitize_key(wp_unslash($_POST['destinationId']))
+        : '';
     $lang = isset($_POST['lang'])
         ? sanitize_key(wp_unslash($_POST['lang']))
         : 'en';
@@ -200,10 +244,14 @@ function hihi_handle_itinerary_feedback_vote()
         wp_send_json_error(array('code' => 'invalid_email'), 400);
     }
 
-    $file_path = hihi_itinerary_feedback_file_path_from_url($file_url);
-    if ($file_path === '') {
+    $destination_file = hihi_itinerary_feedback_file_for_destination($destination_id);
+    if (!$destination_file) {
         wp_send_json_error(array('code' => 'invalid_file'), 400);
     }
+
+    $file_path = $destination_file['path'];
+    $file_url = $destination_file['url'];
+    $file_name = $destination_file['download_name'];
 
     $translations = load_lang($lang);
     $global = $translations['global'] ?? array();

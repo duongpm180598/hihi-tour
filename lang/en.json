@@ -38,7 +38,6 @@
   "global": {
     "highlight_quick_peek_label": "Quick peek",
     "feedback_modal_0_title": "What destination should I do next?",
-        "feedback_modal_0_success_title": "Itinerary sent! Thank you for your opinion",
     "feedback_modal_0_description": "You got the itinerary. Now help me choose the next destination guide.",
     "feedback_modal_0_option_0_label": "Nha Trang",
     "feedback_modal_0_option_1_label": "Phu Yen",

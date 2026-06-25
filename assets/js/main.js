@@ -196,14 +196,12 @@ $(document).ready(function () {
     return;
   }
 
-    const submitButton = form.querySelector('button[type="submit"]')
-    const emailInput = form.querySelector('input[name="email"]')
-    const title = document.getElementById('itinerary-feedback-title')
-    const icon = modal.querySelector('.itinerary-feedback-modal__icon')
-    const optionInputs = Array.from(form.querySelectorAll('input[name="destination"]'))
-    let previousFocus = null
-    let closeTimer = null
-    let pendingFile = null
+  const submitButton = form.querySelector('button[type="submit"]');
+  const emailInput = form.querySelector('input[name="email"]');
+  const resultsPanel = document.getElementById("itinerary-feedback-results");
+  let previousFocus = null;
+  let closeTimer = null;
+  let pendingFile = null;
 
   function getFocusableElements() {
     return Array.from(
@@ -213,32 +211,19 @@ $(document).ready(function () {
     ).filter((element) => !element.hasAttribute("hidden"));
   }
 
-    function openModal() {
-        window.clearTimeout(closeTimer)
-        previousFocus = document.activeElement
-        form.reset()
-        status.textContent = ''
-        status.className = 'itinerary-feedback-modal__status'
-        submitButton.disabled = false
-        submitButton.removeAttribute('aria-busy')
-        modal.classList.remove('is-results-visible', 'is-success-state')
-        if (title) {
-            title.textContent = title.dataset.defaultTitle || title.textContent
-        }
-        if (icon) {
-            icon.textContent = '?'
-        }
-        optionInputs.forEach(input => {
-            input.disabled = false
-            const option = input.closest('[data-feedback-option]')
-            if (!option) return
-            const percentEl = option.querySelector('.itinerary-feedback-modal__option-percent')
-            const fillEl = option.querySelector('.itinerary-feedback-modal__option-result-fill')
-            if (percentEl) percentEl.textContent = '0%'
-            if (fillEl) fillEl.style.width = '0%'
-        })
-        modal.hidden = false
-        document.body.classList.add('itinerary-feedback-open')
+  function openModal() {
+    window.clearTimeout(closeTimer);
+    previousFocus = document.activeElement;
+    form.reset();
+    status.textContent = "";
+    status.className = "itinerary-feedback-modal__status";
+    submitButton.disabled = false;
+    submitButton.removeAttribute("aria-busy");
+    if (resultsPanel) {
+      resultsPanel.hidden = true;
+    }
+    modal.hidden = false;
+    document.body.classList.add("itinerary-feedback-open");
 
     if (emailInput) {
       window.setTimeout(() => emailInput.focus(), 50);
@@ -260,18 +245,17 @@ $(document).ready(function () {
     }
   }
 
-    document.addEventListener('click', event => {
-        const downloadLink = event.target.closest('[data-itinerary-download]')
-        if (downloadLink && !event.defaultPrevented) {
-            event.preventDefault()
-            pendingFile = {
-                href: downloadLink.href,
-                name: downloadLink.getAttribute('download') || '',
-                destinationId: downloadLink.dataset.itineraryDestination || '',
-            }
-            openModal()
-            return
-        }
+  document.addEventListener("click", (event) => {
+    const downloadLink = event.target.closest("[data-itinerary-download]");
+    if (downloadLink && !event.defaultPrevented) {
+      event.preventDefault();
+      pendingFile = {
+        href: downloadLink.href,
+        name: downloadLink.getAttribute("download") || "",
+      };
+      openModal();
+      return;
+    }
 
     if (event.target.closest("[data-feedback-close]")) {
       closeModal();
@@ -341,16 +325,15 @@ $(document).ready(function () {
     status.textContent = "";
     status.className = "itinerary-feedback-modal__status";
 
-        const body = new URLSearchParams({
-            action: settings.action,
-            nonce: settings.nonce,
-            optionId: selected.value,
-            email: email,
-            fileUrl: pendingFile ? pendingFile.href : '',
-            fileName: pendingFile ? pendingFile.name : '',
-            destinationId: pendingFile ? pendingFile.destinationId : '',
-            lang: settings.language || 'vi',
-        })
+    const body = new URLSearchParams({
+      action: settings.action,
+      nonce: settings.nonce,
+      optionId: selected.value,
+      email: email,
+      fileUrl: pendingFile ? pendingFile.href : "",
+      fileName: pendingFile ? pendingFile.name : "",
+      lang: settings.language || "vi",
+    });
 
     window
       .fetch(settings.ajaxUrl, {
@@ -372,44 +355,53 @@ $(document).ready(function () {
           throw new Error("Vote was rejected");
         }
 
-                status.textContent = status.dataset.successMessage
-                status.className = 'itinerary-feedback-modal__status is-success'
-                modal.classList.add('is-success-state')
-                if (title && title.dataset.successTitle) {
-                    title.textContent = title.dataset.successTitle
-                }
-                if (icon) {
-                    icon.textContent = ''
-                }
-                optionInputs.forEach(input => {
-                    input.disabled = true
-                })
+        status.textContent = status.dataset.successMessage;
+        status.className = "itinerary-feedback-modal__status is-success";
 
-                if (result.data && result.data.results && result.data.results.options) {
-                    Object.entries(result.data.results.options).forEach(([optionId, optionResult]) => {
-                        const option = form.querySelector('[data-feedback-option="' + optionId + '"]')
-                        if (!option) {
-                            return
-                        }
+        if (
+          resultsPanel &&
+          result.data &&
+          result.data.results &&
+          result.data.results.options
+        ) {
+          Object.entries(result.data.results.options).forEach(
+            ([optionId, optionResult]) => {
+              const row = resultsPanel.querySelector(
+                '[data-feedback-result="' + optionId + '"]',
+              );
+              if (!row) {
+                return;
+              }
 
-                        const percent = Math.max(0, Math.min(100, Number(optionResult.percent) || 0))
-                        const percentEl = option.querySelector('.itinerary-feedback-modal__option-percent')
-                        const fillEl = option.querySelector('.itinerary-feedback-modal__option-result-fill')
-                        if (percentEl) {
-                            percentEl.textContent = percent + '%'
-                        }
-                        if (fillEl) {
-                            fillEl.style.width = percent + '%'
-                        }
-                    })
-                    modal.classList.add('is-results-visible')
-                }
-            })
-            .catch(() => {
-                status.textContent = status.dataset.errorMessage
-                status.className = 'itinerary-feedback-modal__status is-error'
-                submitButton.disabled = false
-                submitButton.removeAttribute('aria-busy')
-            })
-    })
-})()
+              const percent = Math.max(
+                0,
+                Math.min(100, Number(optionResult.percent) || 0),
+              );
+              const percentEl = row.querySelector(
+                ".itinerary-feedback-modal__result-percent",
+              );
+              const barEl = row.querySelector(
+                ".itinerary-feedback-modal__result-bar",
+              );
+              if (percentEl) {
+                percentEl.textContent = percent + "%";
+              }
+              if (barEl) {
+                barEl.style.width = percent + "%";
+              }
+            },
+          );
+          resultsPanel.hidden = false;
+        }
+
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+      })
+      .catch(() => {
+        status.textContent = status.dataset.errorMessage;
+        status.className = "itinerary-feedback-modal__status is-error";
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+      });
+  });
+})();

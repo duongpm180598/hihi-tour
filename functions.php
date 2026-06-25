@@ -24,7 +24,7 @@ function hihi_scripts()
     wp_enqueue_script('flatpickr_script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), '4.6.13', true);
     wp_enqueue_script('lightgallery_script', get_theme_file_uri('/assets/js/lightgallery.js'));
     wp_enqueue_script('custom_date_picker', get_theme_file_uri('/assets/js/date-picker.js'), array('flatpickr_script'), '1.0', true);
-    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.1', true);
+    wp_enqueue_script('main_script', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.2', true);
     wp_localize_script('main_script', 'hihiItineraryFeedback', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('hihi_itinerary_feedback_vote'),
@@ -151,7 +151,7 @@ function hihi_itinerary_feedback_file_path_from_url($file_url)
     return is_readable($file_path) ? $file_path : '';
 }
 
-// Surfaces the real SMTP error (e.g. Gmail auth failure) in the PHP error log,
+// Surfaces the real SMTP error (e.g. Gmail/hosting auth failure) in the PHP error log,
 // since wp_mail() only returns a boolean and the UI shows a generic failure notice.
 function hihi_log_itinerary_feedback_mail_error($wp_error)
 {

@@ -38,6 +38,7 @@
   "global": {
     "highlight_quick_peek_label": "Xem nhanh",
     "feedback_modal_0_title": "Điểm đến tiếp theo mình nên làm là đâu?",
+    "feedback_modal_0_success_title": "Đã gửi lịch trình! Cảm ơn bạn đã góp ý",
     "feedback_modal_0_description": "Bạn đã có lịch trình rồi. Giờ giúp mình chọn điểm đến cho bài hướng dẫn tiếp theo nhé.",
     "feedback_modal_0_option_0_label": "Nha Trang",
     "feedback_modal_0_option_1_label": "Phú Yên",

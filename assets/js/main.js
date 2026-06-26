@@ -198,7 +198,9 @@ $(document).ready(function () {
 
   const submitButton = form.querySelector('button[type="submit"]');
   const emailInput = form.querySelector('input[name="email"]');
-  const resultsPanel = document.getElementById("itinerary-feedback-results");
+  const title = document.getElementById("itinerary-feedback-title");
+  const icon = modal.querySelector(".itinerary-feedback-modal__icon");
+  const optionInputs = Array.from(form.querySelectorAll('input[name="destination"]'));
   let previousFocus = null;
   let closeTimer = null;
   let pendingFile = null;
@@ -208,7 +210,13 @@ $(document).ready(function () {
       modal.querySelectorAll(
         'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
       ),
-    ).filter((element) => !element.hasAttribute("hidden"));
+    ).filter(
+      (element) =>
+        !element.hasAttribute("hidden") &&
+        element.offsetParent !== null &&
+        window.getComputedStyle(element).display !== "none" &&
+        window.getComputedStyle(element).visibility !== "hidden",
+    );
   }
 
   function openModal() {
@@ -219,9 +227,32 @@ $(document).ready(function () {
     status.className = "itinerary-feedback-modal__status";
     submitButton.disabled = false;
     submitButton.removeAttribute("aria-busy");
-    if (resultsPanel) {
-      resultsPanel.hidden = true;
+    modal.classList.remove("is-results-visible", "is-success-state");
+    if (title) {
+      title.textContent = title.dataset.defaultTitle || title.textContent;
     }
+    if (icon) {
+      icon.textContent = "?";
+    }
+    optionInputs.forEach((input) => {
+      input.disabled = false;
+      const option = input.closest("[data-feedback-option]");
+      if (!option) {
+        return;
+      }
+      const percentEl = option.querySelector(
+        ".itinerary-feedback-modal__option-percent",
+      );
+      const fillEl = option.querySelector(
+        ".itinerary-feedback-modal__option-result-fill",
+      );
+      if (percentEl) {
+        percentEl.textContent = "0%";
+      }
+      if (fillEl) {
+        fillEl.style.width = "0%";
+      }
+    });
     modal.hidden = false;
     document.body.classList.add("itinerary-feedback-open");
 
@@ -357,19 +388,24 @@ $(document).ready(function () {
 
         status.textContent = status.dataset.successMessage;
         status.className = "itinerary-feedback-modal__status is-success";
+        modal.classList.add("is-success-state");
+        if (title && title.dataset.successTitle) {
+          title.textContent = title.dataset.successTitle;
+        }
+        if (icon) {
+          icon.textContent = "";
+        }
+        optionInputs.forEach((input) => {
+          input.disabled = true;
+        });
 
-        if (
-          resultsPanel &&
-          result.data &&
-          result.data.results &&
-          result.data.results.options
-        ) {
+        if (result.data && result.data.results && result.data.results.options) {
           Object.entries(result.data.results.options).forEach(
             ([optionId, optionResult]) => {
-              const row = resultsPanel.querySelector(
-                '[data-feedback-result="' + optionId + '"]',
+              const option = form.querySelector(
+                '[data-feedback-option="' + optionId + '"]',
               );
-              if (!row) {
+              if (!option) {
                 return;
               }
 
@@ -377,24 +413,26 @@ $(document).ready(function () {
                 0,
                 Math.min(100, Number(optionResult.percent) || 0),
               );
-              const percentEl = row.querySelector(
-                ".itinerary-feedback-modal__result-percent",
+              const percentEl = option.querySelector(
+                ".itinerary-feedback-modal__option-percent",
               );
-              const barEl = row.querySelector(
-                ".itinerary-feedback-modal__result-bar",
+              const fillEl = option.querySelector(
+                ".itinerary-feedback-modal__option-result-fill",
               );
               if (percentEl) {
                 percentEl.textContent = percent + "%";
               }
-              if (barEl) {
-                barEl.style.width = percent + "%";
+              if (fillEl) {
+                fillEl.style.width = percent + "%";
               }
             },
           );
-          resultsPanel.hidden = false;
+          modal.classList.add("is-results-visible");
         }
 
-        submitButton.disabled = false;
+        if (!modal.classList.contains("is-success-state")) {
+          submitButton.disabled = false;
+        }
         submitButton.removeAttribute("aria-busy");
       })
       .catch(() => {

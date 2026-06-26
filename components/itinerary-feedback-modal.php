@@ -27,7 +27,11 @@ $feedback_options = hihi_itinerary_feedback_options();
         <header class="itinerary-feedback-modal__header">
             <div class="itinerary-feedback-modal__icon" aria-hidden="true">?</div>
             <div>
-                <h2 id="itinerary-feedback-title" class="itinerary-feedback-modal__title">
+                <h2
+                    id="itinerary-feedback-title"
+                    class="itinerary-feedback-modal__title"
+                    data-default-title="<?php echo esc_attr($feedback_global['feedback_modal_0_title'] ?? ''); ?>"
+                    data-success-title="<?php echo esc_attr($feedback_global['feedback_modal_0_success_title'] ?? ''); ?>">
                     <?php echo esc_html($feedback_global['feedback_modal_0_title'] ?? ''); ?>
                 </h2>
                 <p id="itinerary-feedback-description" class="itinerary-feedback-modal__description">
@@ -43,18 +47,20 @@ $feedback_options = hihi_itinerary_feedback_options();
                 </legend>
                 <?php foreach ($feedback_options as $index => $option) : ?>
                     <?php $label_key = "feedback_modal_0_option_{$index}_label"; ?>
-                    <label class="itinerary-feedback-modal__option">
+                    <label class="itinerary-feedback-modal__option" data-feedback-option="<?php echo esc_attr($option['id']); ?>">
                         <input
                             type="radio"
                             name="destination"
                             value="<?php echo esc_attr($option['id']); ?>">
                         <span class="itinerary-feedback-modal__option-content">
+                            <span class="itinerary-feedback-modal__option-result-fill" aria-hidden="true"></span>
                             <span class="itinerary-feedback-modal__option-index" aria-hidden="true">
                                 <?php echo esc_html(sprintf('%02d', $index + 1)); ?>
                             </span>
                             <span class="itinerary-feedback-modal__option-label">
                                 <?php echo esc_html($feedback_global[$label_key] ?? ''); ?>
                             </span>
+                            <span class="itinerary-feedback-modal__option-percent" aria-hidden="true">0%</span>
                             <span class="itinerary-feedback-modal__option-control" aria-hidden="true"></span>
                         </span>
                     </label>
@@ -91,33 +97,6 @@ $feedback_options = hihi_itinerary_feedback_options();
                 </button>
             </div>
 
-            <section
-                id="itinerary-feedback-results"
-                class="itinerary-feedback-modal__results"
-                aria-live="polite"
-                hidden>
-                <h3 class="itinerary-feedback-modal__results-title">
-                    <?php echo esc_html($feedback_global['feedback_modal_0_results_title'] ?? ''); ?>
-                </h3>
-                <div class="itinerary-feedback-modal__results-list">
-                    <?php foreach ($feedback_options as $index => $option) : ?>
-                        <?php $label_key = "feedback_modal_0_option_{$index}_label"; ?>
-                        <div
-                            class="itinerary-feedback-modal__result"
-                            data-feedback-result="<?php echo esc_attr($option['id']); ?>">
-                            <div class="itinerary-feedback-modal__result-row">
-                                <span class="itinerary-feedback-modal__result-label">
-                                    <?php echo esc_html($feedback_global[$label_key] ?? ''); ?>
-                                </span>
-                                <span class="itinerary-feedback-modal__result-percent">0%</span>
-                            </div>
-                            <div class="itinerary-feedback-modal__result-track" aria-hidden="true">
-                                <span class="itinerary-feedback-modal__result-bar"></span>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </section>
         </form>
     </div>
 </div>

@@ -204,7 +204,7 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
-            $vibe_destination_title = $thailand['destination_title'];
+            $vibe_destination_title = $thailand['seo_h1'] ?? $thailand['destination_title'];
             $vibe_title = $thailand['hero_vibe_title'];
             $vibe_items = [
                 [

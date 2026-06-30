@@ -232,7 +232,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $hue['itinerary
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
-            $vibe_destination_title = $hue['destination_title'];
+            $vibe_destination_title = $hue['seo_h1'] ?? $hue['destination_title'];
             $vibe_title = $t['ha_giang']['hero_vibe_title'];
             $vibe_items = [
                 [

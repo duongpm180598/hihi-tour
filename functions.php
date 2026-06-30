@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/inc/image-assets.php';
+require_once get_template_directory() . '/rank-math.php';
 
 define('HIHI_ITINERARY_FEEDBACK_VERSION', '2026-06-19-1');
 define('HIHI_ITINERARY_FEEDBACK_DB_VERSION', '1.0.0');

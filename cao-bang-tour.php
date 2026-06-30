@@ -268,7 +268,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $current_lang =
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <?php
             $cb = $t['cao_bang'];
-            $vibe_destination_title = $cb['destination_title'];
+            $vibe_destination_title = $cb['seo_h1'] ?? $cb['destination_title'];
             $vibe_title = $cb['hero_vibe_title'];
             $vibe_items = [
                 ['icon' => 'human', 'title' => $cb['hero_vibe_0_title'], 'val' => $cb['hero_vibe_0_val']],

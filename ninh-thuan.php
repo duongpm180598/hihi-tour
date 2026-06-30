@@ -192,7 +192,7 @@ window.hihiItineraryLabels = <?php echo wp_json_encode(['day' => $nt['itinerary_
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
             <?php
-            $vibe_destination_title = $nt['destination_title'];
+            $vibe_destination_title = $nt['seo_h1'] ?? $nt['destination_title'];
             $vibe_title = $nt['hero_vibe_title'];
             $vibe_items = [
                 ['icon' => 'Beach Sea', 'title' => $nt['hero_vibe_0_title'], 'val' => $nt['hero_vibe_0_val']],

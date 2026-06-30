@@ -17,6 +17,10 @@ $highlight_image_groups = hihi_image_group('ha_giang.highlights');
 $transport_images = hihi_image_group('ha_giang.transport');
 $weather_images = hihi_image_group('ha_giang.weather');
 $culture_images = hihi_image_group('ha_giang.culture');
+$gallery_alts = [];
+foreach ($all_gallery_images as $index => $image_url) {
+    $gallery_alts[] = $t['ha_giang']['gallery_img_' . $index . '_alt'] ?? $t['ha_giang']['gallery_alt_prefix'] . ' ' . ($index + 1);
+}
 
 // itinerary
 $plan_options = [
@@ -336,12 +340,12 @@ $activeId = $tableOfContents[0]['id'];
         <div class="overview-hero-media" style="width:100%; height:clamp(350px, 45vw, 560px); overflow:hidden; position:relative;">
             <img
                 src="<?php echo esc_url($hero_image); ?>"
-                alt="Ha Giang"
+                alt="<?php echo esc_attr($t['ha_giang']['hero_img_alt']); ?>"
                 style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
-            $vibe_destination_title = $t['ha_giang']['destination_title'];
+            $vibe_destination_title = $t['ha_giang']['seo_h1'];
             $vibe_title = $t['ha_giang']['hero_vibe_title'];
             $vibe_items = [
                 [
@@ -373,6 +377,12 @@ $activeId = $tableOfContents[0]['id'];
         </div>
     </section>
 
+    <?php if (function_exists('rank_math_the_breadcrumbs')): ?>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-2" style="font-size:13px; color:#74797A; line-height:20px;">
+            <?php rank_math_the_breadcrumbs(); ?>
+        </div>
+    <?php endif; ?>
+
     <!-- ── "WHY I WENT" HOOK BLOCK ── -->
     <section id="why-i-went" style="background:#F9FBDF; border-bottom:2px solid #E7F15A;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-3xl">
@@ -397,7 +407,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section label -->
-            <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></p>
+            <h2 style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px; margin-bottom:16px;" class="mb-4"><?php echo $t['ha_giang']['itinerary_title']; ?></h2>
 
             <!-- Solo going / Book a tour tabs — Book tab temporarily hidden -->
             <div class="flex border-b border-gray-200 mb-6 hidden" id="itinerary-mode-tabs">
@@ -541,8 +551,8 @@ $activeId = $tableOfContents[0]['id'];
                 <div class="md:col-span-1" style="align-self:start;">
                     <div class="p-6 rounded-xl" style="background:#F2F2F0; color:#1D292C;">
                         <div class="itinerary-pricing-summary mb-4 flex items-baseline justify-between gap-3">
-                            <h2 class="text-2xl font-bold" style="color:#7B63F7;"><span id="price-per-plan"></span></h2>
-                            <p style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($t['ha_giang']['itinerary_price_note']); ?></p>
+                            <p class="text-2xl font-bold" style="color:#7B63F7;" aria-live="polite"><span id="price-per-plan"></span></p>
+                            <p data-nosnippet style="color:#7B63F7; font-size:13px; font-weight:600; white-space:nowrap;"><?php echo esc_html($t['ha_giang']['itinerary_price_note']); ?></p>
                         </div>
                         <?php
                         $close_icon = '<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
@@ -679,9 +689,9 @@ $activeId = $tableOfContents[0]['id'];
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
-                        <span class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C;">
+                        <h2 class="font-phudu" style="font-family:'Phudu',sans-serif; font-size:30px; font-weight:800; text-transform:uppercase; color:#1D292C; margin:0;">
                             <?php echo $t['ha_giang']['gallery_title']; ?>
-                        </span>
+                        </h2>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="#7B63F7">
                             <path d="M7 0l1.8 5.2H14L9.6 8.4l1.8 5.2L7 10.4l-4.4 3.2 1.8-5.2L0 5.2h5.2z" />
                         </svg>
@@ -715,10 +725,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($gallery_alts[$index]); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($gallery_alts[$index]); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -732,10 +742,10 @@ $activeId = $tableOfContents[0]['id'];
                             data-index="<?php echo $index; ?>"
                             onclick="openGalleryModal(<?php echo ($is_last && $remaining_count > 0) ? $visible_count : $index; ?>)"
                             role="button" tabindex="0"
-                            aria-label="Ha Giang photo <?php echo $index + 1; ?>"
+                            aria-label="<?php echo esc_attr($gallery_alts[$index]); ?>"
                         >
                             <img src="<?php echo $image_url; ?>"
-                                alt="Ha Giang <?php echo $index + 1; ?>"
+                                alt="<?php echo esc_attr($gallery_alts[$index]); ?>"
                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
                                 class="group-hover:scale-105"
                                 draggable="false" oncontextmenu="return false;" />
@@ -761,9 +771,9 @@ $activeId = $tableOfContents[0]['id'];
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
                 <!-- Section heading -->
-                <h3 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
+                <h2 class="font-phudu text-center mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
                     <?php echo $t['ha_giang']['transport_title']; ?>
-                </h3>
+                </h2>
 
                 <!-- Tab row: Sleep bus (active) | Bikes | Bicycle -->
                 <div class="flex items-center justify-center gap-12 mb-8">
@@ -858,7 +868,7 @@ $activeId = $tableOfContents[0]['id'];
                             <div style="position:relative; margin-bottom:8px;">
                                 <img
                                     src="<?php echo esc_url($bt['img']); ?>"
-                                    alt="<?php echo esc_attr($bt['badge_en']); ?>"
+                                    alt="<?php echo esc_attr(($current_lang === 'en' ? $bt['label_en'] : $bt['label_vi']) . ' ' . $t['ha_giang']['transport_img_alt_suffix']); ?>"
                                     class="w-full object-cover rounded-lg"
                                     style="height:220px; object-fit:cover;"
                                 />
@@ -921,7 +931,7 @@ $activeId = $tableOfContents[0]['id'];
 
                     <!-- See article link -->
                     <p class="text-center mb-10">
-                        <a href="#" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
+                        <a href="<?php echo esc_url($t['ha_giang']['transport_guide_url']); ?>" class="font-semibold underline" style="color:#7B63F7; font-size:15px;">
                             <?php echo $t['ha_giang']['transport_guide_link']; ?>
                         </a>
                     </p>
@@ -929,9 +939,9 @@ $activeId = $tableOfContents[0]['id'];
                     <!-- How to book box -->
                     <div class="rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:#F9FBDF; border:1px solid #e5e7eb;">
                         <div class="flex-1">
-                            <h4 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
+                            <h3 class="font-bold mb-2" style="color:#7B63F7; font-size:1.1rem;">
                                 <?php echo $t['ha_giang']['transport_book_title']; ?>
-                            </h4>
+                            </h3>
                             <p style="color:#1D292C; line-height:1.7; font-size:15px;">
                                 <?php echo $t['ha_giang']['transport_book_desc']; ?>
                             </p>
@@ -975,9 +985,9 @@ $activeId = $tableOfContents[0]['id'];
     <section class="py-16" style="background:#F9FBDF;" id="weather">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-            <h3 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
+            <h2 class="font-phudu text-center mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px; text-transform:uppercase;">
                 <?php echo $t['ha_giang']['weather_title']; ?>
-            </h3>
+            </h2>
 
             <!-- Live weather strip -->
             <div
@@ -1073,9 +1083,9 @@ $activeId = $tableOfContents[0]['id'];
             <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:400; color:#1D292C; text-transform:uppercase; line-height:20px;" class="mb-2">
                 <?php echo $t['ha_giang']['highlight_title']; ?>
             </p>
-            <h3 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
+            <h2 class="font-phudu mb-2" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
                 <?php echo $t['ha_giang']['highlight_subtitle']; ?>
-            </h3>
+            </h2>
             <p style="font-size:15px; color:#474E50;" class="mb-8 max-w-xl">
                 <?php echo $t['ha_giang']['highlight_desc']; ?>
             </p>
@@ -1152,9 +1162,9 @@ $activeId = $tableOfContents[0]['id'];
     <!-- Culture -->
     <section class="pt-16" id="activities" data-aos="fade-up" data-aos-duration="1000">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
-            <h3 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
+            <h2 class="font-phudu mb-8" style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;">
                 <?php echo $t['ha_giang']['culture_title'] ?>
-            </h3>
+            </h2>
 
             <p class="mb-4" style="font-size:15px; color:#474E50; line-height:1.7;">
                 <?php echo $t['ha_giang']['culture_desc'] ?>
@@ -1180,13 +1190,13 @@ $activeId = $tableOfContents[0]['id'];
                 <img
                     data-src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[0] ?? ''); ?>"
-                    alt="Cultural Aspect 1"
+                    alt="<?php echo esc_attr($t['ha_giang']['culture_img_0_alt']); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
 
                 <img
                     data-src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[1] ?? ''); ?>"
-                    alt="Cultural Aspect 2"
+                    alt="<?php echo esc_attr($t['ha_giang']['culture_img_1_alt']); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
@@ -1194,17 +1204,17 @@ $activeId = $tableOfContents[0]['id'];
                 <img
                     data-src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[2] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
+                    alt="<?php echo esc_attr($t['ha_giang']['culture_img_2_alt']); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
                     data-src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[3] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
+                    alt="<?php echo esc_attr($t['ha_giang']['culture_img_3_alt']); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
                 <img
                     data-src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
                     src="<?php echo esc_url($culture_images[4] ?? ''); ?>"
-                    alt="Cultural Aspect 3"
+                    alt="<?php echo esc_attr($t['ha_giang']['culture_img_4_alt']); ?>"
                     class="w-full h-full object-cover cursor-pointer rounded-2xl" />
             </div>
 
@@ -1216,9 +1226,9 @@ $activeId = $tableOfContents[0]['id'];
     <!-- May be you will interest in -->
     <section id="how-to-book" style="background:#E7F15A;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <p style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;" class="mb-3">
+            <h2 style="font-family:'Phudu',sans-serif; font-size:24px; font-weight:600; color:#1D292C; line-height:36px;" class="mb-3">
                 <?php echo $t['ha_giang']['related_title']; ?>
-            </p>
+            </h2>
             <p style="font-size:15px; color:#474E50;" class="mb-10">
                 <?php echo $t['ha_giang']['related_desc']; ?>
             </p>
@@ -1252,7 +1262,7 @@ $activeId = $tableOfContents[0]['id'];
                     </svg>
                 </button>
                 <div id="faq-answer-<?php echo $index; ?>" class="hidden pb-4" style="font-size:15px; line-height:24px; color:#474E50;">
-                    <div><?php echo $answer_text; ?></div>
+                    <div data-nosnippet><?php echo $answer_text; ?></div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -1265,7 +1275,7 @@ $activeId = $tableOfContents[0]['id'];
     id="gallery-modal"
     role="dialog"
     aria-modal="true"
-    aria-label="Gallery image"
+    aria-label="<?php echo esc_attr($t['ha_giang']['gallery_modal_label']); ?>"
     style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(29,41,44,.85); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px;"
     onclick="if(event.target===this) closeGalleryModal()"
 >
@@ -1273,7 +1283,7 @@ $activeId = $tableOfContents[0]['id'];
         <!-- Close -->
         <button
             onclick="closeGalleryModal()"
-            aria-label="Close"
+            aria-label="<?php echo esc_attr($t['ha_giang']['gallery_modal_close_label']); ?>"
             style="position:absolute; top:-44px; right:0; width:36px; height:36px; border-radius:50%; background:rgba(242,242,240,.15); border:1.5px solid rgba(242,242,240,.4); cursor:pointer; display:flex; align-items:center; justify-content:center;"
         >
             <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24">
@@ -1290,11 +1300,11 @@ $activeId = $tableOfContents[0]['id'];
         />
         <!-- Nav row -->
         <div style="display:flex; align-items:center; gap:24px; margin-top:16px;">
-            <button onclick="navGallery(-1)" aria-label="Previous" style="width:40px; height:40px; border-radius:50%; background:rgba(242,242,240,.15); border:1.5px solid rgba(242,242,240,.4); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <button onclick="navGallery(-1)" aria-label="<?php echo esc_attr($t['ha_giang']['gallery_modal_previous_label']); ?>" style="width:40px; height:40px; border-radius:50%; background:rgba(242,242,240,.15); border:1.5px solid rgba(242,242,240,.4); cursor:pointer; display:flex; align-items:center; justify-content:center;">
                 <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
             </button>
             <span id="gal-modal-counter" style="font-size:13px; color:rgba(242,242,240,.7); min-width:48px; text-align:center;"></span>
-            <button onclick="navGallery(1)" aria-label="Next" style="width:40px; height:40px; border-radius:50%; background:rgba(242,242,240,.15); border:1.5px solid rgba(242,242,240,.4); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <button onclick="navGallery(1)" aria-label="<?php echo esc_attr($t['ha_giang']['gallery_modal_next_label']); ?>" style="width:40px; height:40px; border-radius:50%; background:rgba(242,242,240,.15); border:1.5px solid rgba(242,242,240,.4); cursor:pointer; display:flex; align-items:center; justify-content:center;">
                 <svg width="16" height="16" fill="none" stroke="#F2F2F0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/></svg>
             </button>
         </div>
@@ -1372,13 +1382,16 @@ document.addEventListener('click', function(e) {
     var galleryImages = <?php
         echo json_encode(array_values($all_gallery_images), JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
     ?>;
+    var galleryAlts = <?php
+        echo json_encode($gallery_alts, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
+    ?>;
 
     var galCurrent = 0;
     var galModal   = document.getElementById('gallery-modal');
 
     function galRender(i) {
         document.getElementById('gal-modal-img').src = galleryImages[i];
-        document.getElementById('gal-modal-img').alt = 'Ha Giang ' + (i + 1);
+        document.getElementById('gal-modal-img').alt = galleryAlts[i] || '';
         document.getElementById('gal-modal-counter').textContent = (i + 1) + ' / ' + galleryImages.length;
     }
 

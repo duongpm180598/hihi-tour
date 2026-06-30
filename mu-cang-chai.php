@@ -231,7 +231,7 @@ $activeId = $tableOfContents[0]['id'];
 
             <!-- ── VIBE CARD — responsive (styles: assets/css/ha-giang.css) ── -->
             <?php
-            $vibe_destination_title = $mcc['destination_title'];
+            $vibe_destination_title = $mcc['seo_h1'] ?? $mcc['destination_title'];
             $vibe_title = $mcc['hero_vibe_title'];
             $vibe_items = [
                 [

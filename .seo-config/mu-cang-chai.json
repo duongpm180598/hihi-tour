@@ -1,21 +1,18 @@
 {
-  "canonical_url": "https://hihitour.com/mu-cang-chai/",
   "vi": {
+    "canonical_url": "https://hihitour.com/mu-cang-chai/",
     "focus_keywords": "hướng dẫn du lịch Mù Cang Chải, lịch trình Mù Cang Chải, ruộng bậc thang Mù Cang Chải, mùa đẹp nhất đi Mù Cang Chải, Tú Lệ Mù Cang Chải",
     "breadcrumb_title": "Mù Cang Chải",
-    "meta_snippet": {
-      "title": "Hướng Dẫn Du Lịch Mù Cang Chải: Ruộng Bậc Thang, Tú Lệ, Khau Phạ",
-      "description": "Lên lịch Mù Cang Chải với ruộng bậc thang, Tú Lệ, Khau Phạ, thời tiết và xe."
-    },
+    "seo_title": "Du Lịch Mù Cang Chải: Ruộng Bậc Thang Tú Lệ Đẹp",
+    "meta_description": "Hướng dẫn du lịch Mù Cang Chải với ruộng bậc thang, Tú Lệ, Khau Phạ, mùa đẹp, thời tiết và cách đi thực tế.",
     "page_snippet": "Mù Cang Chải: ruộng, Tú Lệ, Khau Phạ."
   },
   "en": {
+    "canonical_url": "https://hihitour.com/en/mu-cang-chai/",
     "focus_keywords": "Mu Cang Chai travel guide, Mu Cang Chai itinerary, Mu Cang Chai rice terraces, best time to visit Mu Cang Chai, Tu Le Mu Cang Chai",
     "breadcrumb_title": "Mu Cang Chai",
-    "meta_snippet": {
-      "title": "Mu Cang Chai Travel Guide: Rice Terraces, Tu Le and Khau Pha",
-      "description": "Plan Mu Cang Chai with terraces, Tu Le, Khau Pha, weather, and transport."
-    },
+    "seo_title": "Mu Cang Chai Travel Guide: Terraces and Local Route",
+    "meta_description": "Mu Cang Chai travel guide with rice terraces, Tu Le, Khau Pha, best season, weather, and practical route notes.",
     "page_snippet": "Mu Cang Chai guide: terraces, Tu Le, Khau Pha."
   }
 }

@@ -170,7 +170,7 @@ $activeId = $tableOfContents[0]['id'];
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <?php
             $cat_ba = $t['cat_ba'];
-            $vibe_destination_title = $cat_ba['destination_title'];
+            $vibe_destination_title = $cat_ba['seo_h1'] ?? $cat_ba['destination_title'];
             $vibe_title = $cat_ba['hero_vibe_title'];
             $vibe_items = [
                 ['icon' => 'human', 'title' => $cat_ba['hero_vibe_0_title'], 'val' => $cat_ba['hero_vibe_0_val']],

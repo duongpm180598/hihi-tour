@@ -327,6 +327,8 @@ body.itinerary-feedback-open {
 }
 
 .itinerary-feedback-modal__option-index {
+  grid-column: 1;
+  grid-row: 1;
   display: grid;
   width: 40px;
   height: 40px;
@@ -339,11 +341,16 @@ body.itinerary-feedback-open {
 }
 
 .itinerary-feedback-modal__option-label {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
   font-size: 16px;
   font-weight: 700;
 }
 
 .itinerary-feedback-modal__option-percent {
+  grid-column: 3;
+  grid-row: 1;
   display: none;
   justify-self: end;
   color: #7b63f7;
@@ -353,6 +360,8 @@ body.itinerary-feedback-open {
 }
 
 .itinerary-feedback-modal__option-control {
+  grid-column: 3;
+  grid-row: 1;
   position: relative;
   width: 22px;
   height: 22px;
@@ -403,30 +412,30 @@ body.itinerary-feedback-open {
   transform: scale(1);
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option-content {
   grid-template-columns: 40px minmax(0, 1fr) auto;
   background: #fff;
   border-color: #d7d9d8;
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option:hover
   .itinerary-feedback-modal__option-content {
   background: #fff;
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option-control {
   display: none;
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option-percent {
   display: block;
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option
   input:checked
   + .itinerary-feedback-modal__option-content {
@@ -434,7 +443,7 @@ body.itinerary-feedback-open {
   border-color: #d7d9d8;
 }
 
-.itinerary-feedback-modal.is-results-visible
+.itinerary-feedback-modal.is-success-state.is-results-visible
   .itinerary-feedback-modal__option
   input:checked
   + .itinerary-feedback-modal__option-content
